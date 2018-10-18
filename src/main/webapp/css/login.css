@@ -1,0 +1,60 @@
+/*全局样式*/
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.all{
+    width:100%;
+    height:615px;
+    position: absolute;
+    /* border:1px solid #fac; */
+    overflow-y: hidden;
+
+    /*条纹 */
+    background: linear-gradient(
+            rgb(238,70,205),
+            rgb(248,154,154),
+            rgb(251,206,177),
+            rgb(199,200,168),
+            rgb(132,175,156)
+    );
+}
+.form-div h2{
+    position: absolute;
+    margin-top:110px;
+    left:50%;
+    margin-left:-150px;
+    font: italic 2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
+}
+.form {
+    position:absolute;
+    width:300px;
+    height:300px;
+    left:50%;
+    margin-left:-150px;
+    margin-top:150px;
+    background: rgba(255,255,255,.5);
+    border-radius: 4px;
+}
+
+#username,#password,#login {
+    width:220px;
+    height: 30px;
+    margin-left:38px;
+    border:2px solid rgba(172,172,172,.6);
+    border-radius: 4px;
+    texe-algin: center;
+}
+.form p{
+    font-size:18px;
+    /* color:rgb(183,172,183); */
+    margin-left:38px;
+    margin-top:22px;
+    margin-bottom: -16px;
+}
+#login{
+    float:left;
+    height: 40px;
+    margin-top:40px;
+}
