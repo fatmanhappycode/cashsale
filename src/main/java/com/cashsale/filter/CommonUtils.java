@@ -35,14 +35,11 @@ public class CommonUtils {
         long nowMillis=System.currentTimeMillis();
         // 使用自定义的方法generalKey生成密钥
         SecretKey key = generalKey();
-        long startTime = System.currentTimeMillis();
         JwtBuilder builder = Jwts.builder()
                 .setIssuedAt(new Date()) // 签发时间
                 .setSubject(subject)  // 负载的内容
                 .signWith(signatureAlgorithm, key) // 采用的加密算法
                 .setExpiration(new Date(nowMillis + ttlMillis)); // 过期时间
-        long endTime = System.currentTimeMillis();
-        System.out.println("程序运行时间："+(endTime-startTime)+"ms");
         // 生成JWT并返回
         return builder.compact();
     }

@@ -20,7 +20,7 @@ import java.sql.PreparedStatement;
  * @author 肥宅快乐码
  * @date 2018/10/17 - 22:30
  */
-@WebServlet("/public")
+@WebServlet(urlPatterns = {"/public"})
 public class PublicServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
