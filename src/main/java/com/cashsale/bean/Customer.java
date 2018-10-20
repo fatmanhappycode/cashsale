@@ -9,12 +9,8 @@ public class Customer {
     private String password;
 
     public String getUsername() {
-        return "11";
+        return username;
     }
-  /**
-   * 
-   * @param username
-   */
 
     public void setUsername(String username) {
         this.username = username;
