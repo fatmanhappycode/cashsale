@@ -1,4 +1,4 @@
-package com.cashsale.controler;
+package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.Product;
