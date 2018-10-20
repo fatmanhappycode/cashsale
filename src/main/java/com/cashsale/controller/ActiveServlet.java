@@ -21,9 +21,6 @@ import com.cashsale.bean.Result;
 @WebServlet("/active")
 public class ActiveServlet extends HttpServlet{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -58,9 +55,6 @@ public class ActiveServlet extends HttpServlet{
 			pstmt2.setString(1, result.getString(1));
 			ResultSet result2 = pstmt2.executeQuery();
 			result2.next();
-			/*System.out.println(result2.getString(1));
-			System.out.println(password);
-			System.out.println(result2.getString(1).equals(password));*/
 			if( result2.getString(1).equals(password) )
 			{
 				pstmt = conn.prepareStatement("UPDATE user_data SET code = ?,state = ? 	WHERE user_name=?");
