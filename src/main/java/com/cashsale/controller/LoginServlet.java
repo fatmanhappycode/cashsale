@@ -34,7 +34,6 @@ public class LoginServlet extends HttpServlet {
 //        Customer c = new Gson().fromJson(user,Customer.class);
 //        String userName = c.getUsername();
 //        String password = c.getPassword();
-        // abc
 
         BufferedReader br = req.getReader();
         String str,user = "";
