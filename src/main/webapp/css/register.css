@@ -15,62 +15,62 @@
 	background:rgb(249,249,248); 
 	/*条纹 */
 	/* background: linear-gradient(
-		
-		rgb(251,206,177),
-		#fac
-	); */ 
-	
+		135deg,
+		rgb(255,255,255) 25%,
+		rgb(77,189,253) 25%,
+		rgb(77,189,253) 50%,
+		rgb(255,255,255) 50%,
+		rgb(255,255,255) 75%,
+		rgb(77,189,253) 75%
+	);  */
 }
+/*整个main（图片和登录框）*/
 .form-div{
 	position:absolute;
 	width:860px;
-	height:350px;
+	height:355px;
 	left:50%;
 	margin-top:100px;
 	margin-left:-430px;
-	/* border:1px solid #FAC; */
 }
-.form-div img{
-	display:block;
-	width:560px;
-	height:350px;
-	border-radius: 4px;
-	position:absolute;
-	/* border:1px solid #FAC; */
-}
+
+/* 标题登录 */
 .form-div h2{
-	width:300px;
+	width:600px;
 	text-align:center;
 	font: italic 2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
 }
-
+/* username等 */
 .form p{
 	font-size:18px;
 	margin-left:25px;
 }
-
+/* 登录框 */
 .form {
 	position:absolute;
-	width:300px;
+	width:600px;
 	height:350px;
 	left:50%;
-	margin-left:130px;
-	background: rgb(249,249,248);
+	margin-left:-300px;
+	background: rgb(249,249,247);
 	border-radius: 4px;
-    border: 1px solid #EEE;
+	/*原始边框 */
+	border: 1px solid #eee;
     transition: all .4s;
 }
-
+/* 所有input元素外套着的div */
 .g-username {
+	float:left;
     padding :15px;
     transition: 0.4s;
 }
-
-#username,#password,#login,#register {
+/* 所有输入框 */
+#username,#password,#login,#register,#nickname,#Cpassword {
 	width:220px;
 	height: 30px;
 	font-size: 18px;
 	margin-left:25px;
+	margin-top:-10px;
 	border-radius: 4px;
 	border-color:rgba(251,206,177,0.5);
 	
@@ -81,19 +81,21 @@
         border-color: hsl(199, 98%, 48%);
     }
 }
-
+/* 按钮 */
 #login,#register{
-	float:left;
 	display:inline-block;
 	width:100px;
 	height: 40px;
 	background: rgb(255,255,255);
 	margin-top:12px;
 }
+#login{
+	margin-left:147px;
+}
 #register{
-	margin-top:-18px;
 	background: rgb(14,143,251);
 }
+
 
 
 .form:focus-within {
@@ -102,7 +104,22 @@
     box-shadow: 0 0 10px rgba(172,172,172,.8);
     border-color: hsl(199, 98%, 48%);
 }
-
+/* 提示语 */
+#passwordItem,#passwordItem1{
+	position:absolute;
+	width:96px;
+	height: 15px;
+	margin-top:240px;
+	margin-left:580px;
+	opacity:.75;
+	font-size:12px;
+	color:red;
+	display: none;
+}
+#passwordItem1{
+	margin-top:260px;
+}
+/* 版权 */
 .bottom{
 	whidth:200px;
 	position:absolute;
@@ -113,5 +130,3 @@
 	bottom:10px;
 	text-align: center;
 }
-
-
