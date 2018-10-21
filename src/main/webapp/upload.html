@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>现卖-变闲为现的买卖|注册界面</title>
+	<meta charset="utf-8">
+	<meta http-equiv=Expires content="1s" />
+	<link rel="stylesheet" type="text/css" href="css/upload.css">
+	<!-- <link rel="shortcut icon" type="image/x-icon"  href="img/favicon.png" /> -->
+</head>
+<body>
+	<div class="all">
+		<div class="form-div">
+			<form action="#" class="form">
+				<h2>商品发布</h2>
+				<div class="g-username">
+					<p>商品标题:</p><br/><input type="text" id="commodity" placeholder="" maxlength="40"><br/>
+				</div>
+				<div class="g-username Other-g">
+					<p>价格:</p><br/><input type="text" id="price" maxlength="40"><br/>
+				</div>
+				<div class="g-username">
+					<p>交易地点:</p><br/><input type="text" id="place" maxlength="40"><br/>
+				</div>
+				<div class="g-username">
+					<p>是否让买者自提:</p>
+					<div id="myBox">
+						<span id="myText">买家自提</span>
+						<input type="radio" name="bbb" value="自提" class="myCheckBox" id="myCheckbox01">
+					</div>
+					<div id="myBox">
+						<p id="myText">送货上门</p>
+						<input type="radio" name="bbb" value="不自提" class="myCheckBox" id="myCheckbox02">
+					</div>
+				</div>
+				<div class="g-username">
+					<p>可否议价:</p>
+					<div id="myBox">
+						<span id="myText">可议价</span>
+						<input type="radio" name="aaa" value="可议价" class="myCheckBox" id="myCheckbox11">
+					</div>
+					<div id="myBox">
+						<p id="myText">不可议价</p>
+						<input type="radio" name="aaa" value="不可议价" class="myCheckBox" id="myCheckbox12">
+					</div>
+				</div>
+				<div class="g-username">
+					<p>选择商品标签:</p>
+					<div id="myBox">
+						<span id="myText">标签1</span>
+						<input type="checkbox" value="1" class="myCheckBox" id="myCheckbox21">
+					</div>
+					<div id="myBox">
+						<span id="myText">标签2</span>
+						<input type="checkbox" value="2" class="myCheckBox" id="myCheckbox22">
+					</div>
+					<div id="myBox">
+						<span id="myText">标签3</span>
+						<input type="checkbox" value="3" class="myCheckBox" id="myCheckbox23">
+					</div>
+					<div id="myBox">
+						<span id="myText">标签4</span>
+						<input type="checkbox" value="4" class="myCheckBox" id="myCheckbox24">
+					</div>
+					<div id="myBox">
+						<span id="myText">标签5</span>
+						<input type="checkbox" value="5" class="myCheckBox" id="myCheckbox25">
+					</div>
+					<div id="myBox">
+						<span id="myText">标签6</span>
+						<input type="checkbox" value="6" class="myCheckBox" id="myCheckbox26">
+					</div>
+					<div id="myBox">
+						<span id="myText">其他</span>
+						<input type="checkbox" value="7" class="myCheckBox" id="myCheckbox27">
+					</div>
+				</div>
+				<div class="g-username Other-gg">
+					<p>商品描述:</p><br/><textarea rows="12" cols="70" id="and" placeholder="最多输入400字"  maxlength="440"></textarea>
+				</div>
+				<div class="g-username Other-gg">
+					<p>商品图片:(最多6张)</p><br/>
+					<input type="file" id="myfile" multiple="multiple" onchange="preview(this)">
+					<div id="container"></div>
+				</div>
+				<input type="button" value="hhhhh"  onclick="f()">
+			</form>
+		</div>
+		<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
+	</div>
+</body>
+<script type="text/javascript" src="js/upload.js"></script>
+<script type="text/javascript" src="js/upload_1.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+</html>
