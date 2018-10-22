@@ -29,9 +29,6 @@ import com.google.gson.Gson;
 @WebServlet("/upload")
 public class UploadServlet extends HttpServlet{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -61,20 +58,21 @@ public class UploadServlet extends HttpServlet{
 		String realPath = request.getSession().getServletContext().getRealPath("img");
 		//System.out.println(realPath);
 		Upload up = new Gson().fromJson(img, Upload.class);
+		//获取上传商品的id
 		String productId = up.getProductId();
+		String imgUrl = "";
 		ArrayList<String> returnUri = new ArrayList<String>();
 		
 		try {
-			//判断存放上传文件的目录是否存在（不存在则创建）
 	        File f = new File(realPath);
-	        PreparedStatement pstmt = conn.prepareStatement("");
-	        
+	        //判断存放上传文件的目录是否存在（不存在则创建）
 	        if(!f.exists()&&!f.isDirectory()){
 	                f.mkdir();
 	            }
 			
 			for(int i = 0; i < up.getImgUri().size(); i ++)
 			{
+				//获取图片地址
 				String imgUri = up.getImgUri().get(i);
 				// 获取图片的后缀名
 				String suffix = imgUri.substring(imgUri.lastIndexOf(".") + 1);
@@ -87,7 +85,14 @@ public class UploadServlet extends HttpServlet{
 				//将文件复制到新的路径
 				FileUtils.copyFile(originFile, destFile);
 				returnUri.add("img\\" + newFileName);
+				imgUrl += "img\\" + newFileName +";";
 			}
+			//System.out.println(imgUrl);
+			PreparedStatement pstmt = conn.prepareStatement("UPDATE product_info SET image_url = ? WHERE "
+					+ "product_id = ?");
+			pstmt.setString(1, imgUrl);
+			pstmt.setString(2, productId);
+			pstmt.execute();
 			writer.println(JSONObject.toJSON(new Upload(returnUri, productId)));
 		}
 		catch (Exception e) {
