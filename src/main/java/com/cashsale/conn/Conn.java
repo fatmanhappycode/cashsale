@@ -13,7 +13,7 @@ public class Conn {
             Class.forName("com.mysql.jdbc.Driver");
             String url="jdbc:mysql://localhost/cashsale?useUnicode=true&characterEncoding=utf-8";
             String user="root";
-            String password="2230609";
+            String password="3624";
             Connection conn = DriverManager.getConnection(url,user,password);
             return conn;
         } catch(Exception e) {

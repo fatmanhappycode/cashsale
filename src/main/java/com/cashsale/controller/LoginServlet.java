@@ -24,7 +24,10 @@ import java.sql.ResultSet;
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    @Override
+	
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 设置响应编码
         resp.setContentType("application/json;charset=UTF-8");
