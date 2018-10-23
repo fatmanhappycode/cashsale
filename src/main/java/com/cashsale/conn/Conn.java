@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 /**
+ * 用于与数据库建立连接
  * @author 肥宅快乐码
  * @date 2018/10/11 - 22:47
  */

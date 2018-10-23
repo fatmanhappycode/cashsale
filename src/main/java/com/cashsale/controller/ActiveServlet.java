@@ -36,7 +36,7 @@ public class ActiveServlet extends HttpServlet{
 		
 		request.setCharacterEncoding("utf-8");
 		
-		//接收激活码
+		// 接收激活码
 		String code = request.getParameter("code");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");

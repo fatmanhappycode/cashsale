@@ -24,7 +24,7 @@ import com.cashsale.util.UUIDUtil;
 import com.google.gson.Gson;
 
 /**
- * 用户登录方法
+ * 用户注册方法
  * @author Sylvia
  * 2018年10月14日
  */
@@ -45,6 +45,7 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 
+        // 读取前端传过来的json串
         BufferedReader br = request.getReader();
         String str,user = "";
         while((str = br.readLine()) != null){
@@ -75,7 +76,7 @@ public class RegisterServlet extends HttpServlet {
             pstmt3.setString(1, email);
             ResultSet rs3 = pstmt3.executeQuery();
             
-            if (rs.next() || rs2.next())  {
+            if (rs.next() || rs2.next()) {
                 writer.print(JSONObject.toJSON(new Result<String>(103, null, "该手机号已被注册！")));
             } 
             else if(rs3.next()){

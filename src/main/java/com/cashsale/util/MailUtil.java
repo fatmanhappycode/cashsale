@@ -51,5 +51,4 @@ public class MailUtil {
 		//发送一封激活邮件
 		Transport.send(message);
 	}
-	
 }

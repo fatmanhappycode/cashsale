@@ -19,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
+ *
  * @author 肥宅快乐码
  * @date 2018/10/11 - 22:50
  */
@@ -34,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 //        Customer c = new Gson().fromJson(user,Customer.class);
 //        String userName = c.getUsername();
 //        String password = c.getPassword();
-        // 123
+
         BufferedReader br = req.getReader();
         String str,user = "";
         while((str = br.readLine()) != null){

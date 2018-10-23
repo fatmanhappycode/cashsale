@@ -3,29 +3,52 @@ package com.cashsale.bean;
 /**
  * @author Sylvia
  * 2018年10月16日
+ * 用户的个人信息
  */
 public class CustomerData {
-	/**  用户名 */
+	/**
+	 * 用户名
+	 * */
 	private String username;
-	/** 信用值 */
+	/**
+	 * 信用值
+	 */
 	private int credit;
-	/** 学号 */
+	/**
+	 * 学号
+	 */
 	private String sno;
-	/** 真实姓名 */
+	/**
+	 * 真实姓名
+	 */
 	private String realname;
-	/** 昵称 */
+	/**
+	 * 昵称
+	 */
 	private String nickname;
-	/** 是否验证 */
+	/**
+	 * 是否验证
+	 */
 	private boolean isCertificate;
-	/** 手机号码 */
+	/**
+	 *手机号码
+	 */
 	private String number;
-	/** 邮箱 */
+	/**
+	 * 邮箱
+	 */
 	private String email;
-	/** 密码 */
+	/**
+	 * 密码
+	 */
 	private String password;
-	/** 状态（邮箱验证是否通过）*/
+	/**
+	 * 状态（邮箱验证是否通过）
+	 */
 	private boolean state;
-	/** 验证码 */
+	/**
+	 * 验证码
+	 */
 	private String code;
 	
 	public CustomerData(String username) {

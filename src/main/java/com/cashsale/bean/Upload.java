@@ -3,16 +3,19 @@ package com.cashsale.bean;
 import java.util.ArrayList;
 
 /**
- * 上传
+ * 存放图片地址即对应id
  * @author Sylvia
  * 2018年10月14日
  */
 public class Upload {
 	
-	/** 图片地址 */
+	/**
+	 * 图片地址
+	 */
 	private ArrayList<String> imgUri;
-	
-	/** 商品id */
+	/**
+	 * 商品id
+	 */
 	private String productId;
 
 	public Upload(ArrayList<String> imgUri, String productId) {

@@ -8,9 +8,7 @@ import java.util.UUID;
  * 2018年10月16日
  */
 public class UUIDUtil {
-	
 	public static String getUUID() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}
-	
 }
