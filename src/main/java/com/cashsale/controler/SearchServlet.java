@@ -85,7 +85,7 @@ public class SearchServlet extends HttpServlet {
             Pager<Product> product = new Pager<>(currentPage+1,result);
             writer.print(JSONObject.toJSON(new Result<>(107, product,"查询成功")));
         } catch (Exception e) {
-            writer.print(JSONObject.toJSON(new Result<String>(108,null,"发布失败")));
+            writer.print(JSONObject.toJSON(new Result<String>(108,null,"查询失败")));
             e.printStackTrace();
         }
     }
