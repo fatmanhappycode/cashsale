@@ -6,7 +6,6 @@ function f() {
 	var price = $("#price").val();
 	var place = $("#place").val();
 	var and = $("#and").val();
-	alert(commodity+"\n"+price +"\n"+ place +"\n"+ and);
 	//是否自提myCheckbox0
 	//是否可议价myCheckbox1
 	var myCheckbox0="";
@@ -24,8 +23,6 @@ function f() {
 		myCheckbox1 ="1";
 	else if($("#myCheckbox12").prop('checked'))
 		myCheckbox1 = "0";
-	alert(myCheckbox0);
-	alert(myCheckbox1);
 	
 	
 			
@@ -63,8 +60,6 @@ function f() {
 	if($("#myCheckbox27").prop('checked')){
 		label=label+";"+$("#myCheckbox27").val();
 	}
-
-	alert(label);
 	if(label=="" || myCheckbox0=="" || myCheckbox1=="" ||commodity==""||price==""|| place==""|| and==""){
 		alert("请填写完内容！");
 	}else{

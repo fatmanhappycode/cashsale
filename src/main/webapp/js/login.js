@@ -8,7 +8,7 @@ function loadXMLDoc()
 	var saveData={"username":username,"password":password};
 	
 	$.ajax({
-		url:"",
+		url:"/login",
 		type:"post",
 		dataType:"json",
 		data:JSON.stringify(saveData),

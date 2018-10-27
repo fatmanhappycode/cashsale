@@ -112,7 +112,7 @@ public class RegisterServlet extends HttpServlet {
                 //System.out.println(encodedCode);
                 String encodedPass = RSAUtil.publicEncrypt(password, RSAUtil.getPublicKey(publicKey));
                 //System.out.println(encodedPass);
-                
+
             	//发送邮件
             	MailUtil.sendMail(email, encodedCode, username, encodedPass, nickname, currentTime);
             	

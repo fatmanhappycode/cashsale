@@ -6,6 +6,7 @@ function register() {
 	var username = $("#username").val();
 	var nickname = $("#nickname").val();
 	var password = $("#password").val();
+	var email = $("#email").val();
 	var Cpassword = $("#Cpassword").val();
 	if(username==""||username==null||nickname==""||nickname==null||password==""||password==null||Cpassword==""||Cpassword==null)
 	{
@@ -15,24 +16,30 @@ function register() {
 	else
 	{
 		//定义json串
-		var saveData={"username":username,"nickname":nickname,"password":password};
+		var saveData={"username":username,"nickname":nickname,"password":password,"email":email};
 		$.ajax({
-			url:"",
+			url:"/register",
 			type:"post",
 			dataType:"json",
 			data:JSON.stringify(saveData),
-			contentType:"application/json",
+            headers: {
+                ContentType: "application/json; charset=UTF-8"
+            },
 			success:function(result,testStatus)
 			{
-				if(result.code==101)
+				if(result.code==110)
 				{
 					//转跳到页面
-					alert("注册成功，请登录！");
+					alert("该邮箱已被注册！");
 					window.location.href="login.html";
+				} else if (result.code == 102) {
+					alert("注册失败");
+				} else if(result.code==103){
+					alert("该手机号已被注册！");
+				} else if(result.code==109) {
+					alert("请到邮箱进行账号激活")
 				}
-				else if(result.code==103){
-					alert("用户已存在，注册失败！");
-				}else{
+				else{
 					alert("注册失败！");
 				}
 			},
