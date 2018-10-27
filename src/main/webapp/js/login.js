@@ -84,8 +84,6 @@ function loadXMLDoc()
         error:function(xhr,errrorMessage,e){
             alert("系统异常！");
         }
-
-
     });
 
 }

@@ -1,14 +1,30 @@
 package com.cashsale.bean;
 
+import java.util.List;
+
 /**
  * @author 肥宅快乐码
  * @date 2018/10/26 - 22:20
  */
-public class Pager {
+public class Pager <T>{
     /**
      * 当前第几页数据
      */
     private int currentPage;
+    private List<T> data;
+
+    public Pager(int currentPage, List<T> data) {
+        this.currentPage = currentPage;
+        this.data = data;
+    }
+
+    public List<T> getData() {
+        return data;
+    }
+
+    public void setData(List<T> data) {
+        this.data = data;
+    }
 
     public int getCurrentPage() {
         return currentPage;
