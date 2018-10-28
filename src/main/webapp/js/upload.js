@@ -68,7 +68,8 @@ function f() {
 	if(label=="" || myCheckbox0=="" || myCheckbox1=="" ||commodity==""||price==""|| place==""|| and==""){
 		alert("请填写完信息再提交，否则将清空！");
 	}else{
-		document.getElementById("passwordItem").style.display="none";
+        alert("123");
+        document.getElementById("passwordItem");
 		var token=window.location.search.split('=')[1];
 		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":and,"imageUrl":imageUrl};
 		saveData=encodeURIComponent(encodeURIComponent(saveData));
