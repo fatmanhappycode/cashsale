@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>现卖-变闲为现的买卖|注册界面</title>
+	<title>现卖-变闲为现的买卖|发布界面</title>
 	<meta charset="utf-8">
 	<meta http-equiv=Expires content="1s" />
 	<link rel="stylesheet" type="text/css" href="css/upload.css">
-	<!-- <link rel="shortcut icon" type="image/x-icon"  href="img/favicon.png" /> -->
+	<link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
 </head>
 <body>
 	<div class="all">
 		<div class="form-div">
-			<form action="#" class="form">
+			<form action="" method="post" accept-charset="UTF-8" class="form" oninput="item()">
 				<h2>商品发布</h2>
 				<div class="g-username">
 					<p>商品标题:</p><br/><input type="text" id="commodity" placeholder="" maxlength="40"><br/>
@@ -78,11 +78,15 @@
 					<p>商品描述:</p><br/><textarea rows="12" cols="70" id="and" placeholder="最多输入400字"  maxlength="440"></textarea>
 				</div>
 				<div class="g-username Other-gg">
-					<p>商品图片:(最多6张)</p><br/>
-					<input type="file" id="myfile" multiple="multiple" onchange="preview(this)">
+					<p>商品图片:(最多6张，默认第一张为封面)</p><br/>
+					<input type="file" id="myfile" multiple="multiple" name="imgUrl" onchange="preview(this)" >
 					<div id="container"></div>
 				</div>
-				<input type="button" value="hhhhh"  onclick="f()">
+				<div class="Other-ggg">
+					<span id="passwordItem">请填写完信息，否则提交时将清空！</span>
+					<input type="submit" id="submit" value="提交"  onclick="f()">
+					<input type="reset" id="reset" value="重置" onclick="clearimg()">
+				</div>
 			</form>
 		</div>
 		<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>

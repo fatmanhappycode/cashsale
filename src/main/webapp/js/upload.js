@@ -19,7 +19,6 @@ function f() {
 	else
 		myCheckbox0="0";
 	
-	
 	if($("#myCheckbox11").prop('checked'))
 		myCheckbox1 ="1";
 	else if($("#myCheckbox12").prop('checked'))
