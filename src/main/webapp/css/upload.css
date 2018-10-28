@@ -9,7 +9,7 @@
 .all{
 	width:100%;
 	/*height:615px;*/
-	height:1550px;;
+	height:1600px;;
 	position: absolute;
 	overflow-x: hidden;
 	background:rgb(249,249,248); 
@@ -43,7 +43,7 @@
 .form {
 	position:absolute;
 	width:1000px;
-	height:1350px;
+	height:1400px;
 	left:50%;
 	padding-left:70px;
 	margin-left:-530px;
@@ -64,7 +64,6 @@
     transition: all .4s;
 	float:left;
     padding :25px;
-    transition: 0.8s;
 }
 /* 所有input元素外套着的  个别   div ，第二个为Other-g，最后二个为Other-gg*/
 .Other-g,.Other-gg{
@@ -73,6 +72,12 @@
 }
 .Other-gg{
 	width:800px;
+}
+.Other-ggg{
+	width:800px;
+	border:none;
+	position: absolute;
+	bottom: 50px;
 }
 /* 获取焦点时 */
 .g-username:focus-within{
@@ -94,7 +99,7 @@
 
 /* 所有输入框 */
 #commodity,#price,#place{
-	-webkit-appearance: none;
+	appearance: none;
 	width:320px;
 	height: 30px;
 	font-size: 18px;
@@ -133,6 +138,7 @@
 #container{
 	width:800px;
 }
+
 
 
 /* 选择框外面的div，内含复选框和文字 */
@@ -203,17 +209,38 @@
 
 
 
-
+img{
+	width:100px;height:100px;
+}
 
 
 
 /* 按钮 */
-#login,#register{
+#submit,#reset{
 	display:inline-block;
 	width:100px;
 	height: 40px;
 	background: rgb(14,143,251);
 	margin-top:12px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	margin-top: 120px;
+	margin-left: 240px;
+}
+#submit{
+	background:rgb(249,249,248);
+}
+/* 提示语 */
+#passwordItem{
+	position:absolute;
+	width:196px;
+	height: 15px;
+	bottom:0px;
+	right:-100px;
+	opacity:.75;
+	font-size:12px;
+	color:red;
+	display: none;
 }
 
 

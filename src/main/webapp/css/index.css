@@ -1,0 +1,302 @@
+/*全局样式*/
+*{
+	padding: 0;
+	margin: 0;
+}
+
+/* 头栏 */
+.ost{
+	position:absolute;
+	width:83%;
+	z-index:1000;
+	top:0;
+	height:55px;
+	padding:0 7% 0 10%;
+	background: rgba(231,238,254,.9);
+}
+
+.slogan,.login,.register{
+	float:left;
+	padding-top:14px;
+	width:180px;
+	height:41px;
+	text-align:center;
+}
+.slogan{
+	padding-top:4px;
+}
+.login,.register{
+	float:right;
+	width:80px;
+	border:none;
+}
+/* 鼠标滑过 login register 的样式 */
+.login:hover,.register:hover{
+	background: linear-gradient(
+		rgba(0,0,0,0),
+		rgba(166,128,226,.6)
+	);
+	cursor: pointer;
+}
+.slogan a,.login a,.register a{
+	color: rgba(131,111,191,1);;
+	text-decoration: none;
+	font-size:18px;
+}
+
+
+/* 网页整体大小*/
+.all{
+	width:1040px;
+	height:3600px;
+	margin-left:-520px;
+	position: absolute;
+	left:50%;
+	background:rgba(172,172,172,.3); 
+	box-shadow: 0 0 50px rgba(172,172,172,1);
+}
+.back-head img{
+	width:100%;
+	height:400px;
+	opacity: 0.85;
+	border-radius: 14px;
+}
+  
+  
+/* 图片上面的  */
+.search{
+	position:absolute;
+	width:855px;
+	z-index:100;
+	height:200px;
+	padding:120px 115px 0 70px;
+	margin-top:-400px;
+	background:linear-gradient( rgba(0,0,0,.8),rgba(231,238,254,0));
+}
+/* 文字 */
+.heading{
+	width:555px;
+} 
+.heading h1,.heading h2{
+	font:'SimSun',arial,tahoma,\5b8b\4f53,sans-serif;
+	color: #fff;
+	font-size: 38px;
+}
+/* 搜索框 */
+ .mySearch{
+ 	float:right;
+ 	width:300px;
+ 	height: 40px;
+/*  	border-radius: 20px; */
+ 	border:3px solid #fff;
+ 	background: rgba(231,238,254,.6);
+ 	font-size: 22px;
+ 	color:#000;
+ }
+/*  放大镜 */
+ .mySearch-img{
+ float:right;
+ 	width:70px;
+ 	height: 40px;
+ 	border:3px solid #fff;
+ 	border-left: none;
+ 	cursor: pointer;
+ 	-webkit-appearance: none;
+ }
+  
+  
+  
+  
+  
+/* 导航条 */
+.header{
+	position:absolute;
+	z-index:10000;
+	height:135px;
+	margin-left:110px;
+	margin-top:-55px;
+	margin-bottom: 100px;
+/* 	border:1px solid #FAC; */
+}
+.index,.upload,.youlike,.box,.myself{
+	float:left;
+	border:1px solid rgba(172,172,172,.6);
+	border-radius:10px;
+	width:140px;
+	height:135px;
+	margin-right:25px;
+	padding-top:-55px;
+	text-align:center;
+	list-style-type: none;
+	text-decoration:none;
+	cursor:pointer;
+	background:#fff  url("../img/badge_3.jpg") no-repeat;
+	background-size: 190px 135px;
+	background-position: -20px -15px;
+}
+
+.upload{
+	background:#fff  url("../img/badge_4.jpg") no-repeat;
+	background-size: 190px 135px;
+	background-position: -20px -15px;
+}
+.youlike{
+	background:#fff url("../img/badge_5.jpg") no-repeat;
+	background-size: 190px 135px;
+	background-position: -20px 5px;
+}
+.box{
+	background:#fff  url("../img/badge_1.jpg") no-repeat;
+	background-size: 190px 135px;
+	background-position: -20px -20px;
+}
+.myself{
+	background:#fff  url("../img/badge_2.jpg") no-repeat;
+	background-size: 190px 135px;
+	background-position: -20px -20px;
+}
+.index a,.upload a,.youlike a,.box a,.myself a{
+	display:block;
+	width:125px;
+	height:100px;
+	padding:35px 0 0 15px;
+	text-decoration:none;
+	color: rgba(131,111,191,1);
+	font-size:18px;
+	background:rgba(131,111,191,0);
+/* 	border:1px solid #FAC; */
+	}
+.index:hover,.upload:hover,.youlike:hover,.box:hover,.myself:hover{
+	border:3px solid rgba(131,111,191,1);
+	box-shadow:0 0 30px rgba(172,172,172,.8);
+	transition:translataY(4px);
+}
+
+/* 分类 */
+.species{
+/* 	position:fixed; */
+	margin-top:110px;
+	margin-left:30px;
+	height:360px;
+	width:160px;
+	border-radius:10px;
+	overflow:hidden;
+	transition:1s;
+	border:2px solid rgba(131,111,191,.5);
+}
+
+
+
+.species li{
+	height:35px;
+	padding-top:15px;
+	margin-bottom:2px;
+	list-style-type: none;	
+	text-align:center;
+	background: #FFF;
+}
+.species li:hover{
+	background:rgba(166,128,226,.5);
+	cursor: pointer;
+}
+.species a{
+	border:1px solid #FAC;
+	text-align:center;
+}
+
+
+
+/* 轮播图 */
+.frame{
+	margin-top:-363px;
+	margin-left:250px;
+	width:700px;
+	height:360px;
+	border-radius:10px;
+	overflow: hidden;
+	border:2px solid rgba(166,128,226,.5);
+}
+.play{
+	width:2800px;
+	height:360px;
+	animation:ma 35s infinite;
+}
+
+.play img{
+	float:left;
+	width:700px;
+	height:360px;
+	
+}
+@keyframes ma{
+	0%,14%{margin-left:0px;}
+	18%,28%{margin-left:-700px;}
+	32%,42%{margin-left:-1400px;}
+	46%,56%{margin-left:-2100px;}
+	60%,70%{margin-left:-1400px;}
+	74%,84%{margin-left:-700px;}
+	88%,100%{margin-left:0px;}
+}
+
+
+.main{
+	float:right;
+	width:720px;
+	height:2280px;
+	margin-right:80px;
+	padding-left:23px;
+/* 	border:1px solid #FAC; */
+}
+/* 商品 */
+.goods{
+	float:left;
+	width:200px;
+	height:280px;
+	border-radius:15px;
+	background:#fff;
+	margin:15px;
+	border:1px solid rgba(166,128,226,.5);
+}
+.goods img{
+	border-radius:15px;
+	width:200px;
+	height:200px;
+	border-bottom: 1.5px solid rgba(166,128,226,.5);
+}
+.myH{
+	width:200px;
+	margin-top:15px;
+	text-align:center;
+/* 	border-bottom:1px solid rgba(166,128,226,.5); */
+}
+.price{
+	color:red;
+	text-align:center;
+/* 	border-bottom:1px solid rgba(166,128,226,.5); */
+}
+
+
+#test{
+	 position:fixed;
+	 right:50px;
+	 bottom:30px;
+	 height:60px;
+	 width:60px;
+	 border:none;
+	 border-radius: 30px;
+	 background: rgba(166,128,226,.5);
+}
+#test:hover{
+	border-radius: 0;
+}
+/* 版权 */
+.bottom{
+	whidth:200px;
+	position:absolute;
+	color:rgba(172,172,172,.9);
+	font-size:14px;
+	left:50%;
+	margin-left:-100px;
+	bottom:10px;
+	text-align: center;
+}
