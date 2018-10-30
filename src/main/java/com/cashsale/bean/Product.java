@@ -1,18 +1,51 @@
 package com.cashsale.bean;
 
+import java.util.Map;
+
 /**
  * @author 肥宅快乐码
  * @date 2018/10/17 - 22:52
+ * 商品信息
  */
 public class Product {
+    /**
+     * 商品标题
+     */
     private String title;
+    /**
+     * 商品标签
+     */
     private String label;
+    /**
+     * 商品价格
+     */
     private int price;
+    /**
+     * 交易方式
+     */
     private int tradeMethod;
+    /**
+     * 是否议价
+     */
     private int isBargain;
+    /**
+     * 商品描述
+     */
     private String pdDescription;
+    /**
+     * 商品图片地址
+     */
     private String imageUrl;
 
+    public Product(Map<String, Object> map){
+        this.title = (String) map.get("title");
+        this.label = (String)map.get("label");
+        this.price = (int)map.get("price");
+        this.tradeMethod = (int)map.get("trade_method");
+        this.isBargain = (int)map.get("is_bargain");
+        this.pdDescription = (String)map.get("product_description");
+        this.imageUrl = (String)map.get("image_url");
+    }
     public String getTitle() {
         return title;
     }

@@ -1,4 +1,4 @@
-package com.cashsale.controler;
+package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.Product;
@@ -20,10 +20,13 @@ import java.sql.PreparedStatement;
  * @author 肥宅快乐码
  * @date 2018/10/17 - 22:30
  */
-@WebServlet("/public")
+@WebServlet(urlPatterns = {"/publish"})
 public class PublicServlet extends HttpServlet {
-    @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+   
+	private static final long serialVersionUID = 1L;
+
+	@Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 设置响应编码
         resp.setContentType("application/json;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");

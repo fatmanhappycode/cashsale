@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="thecashsale:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3cb94eed-a298-4cd9-a9a3-8c35072f119c" name="Default Changelist" comment="add">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/background (2).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/badge_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/badge_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/badge_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/badge_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/badge_5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/icon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/play (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/play (2).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/play (3).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/play (4).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/upload.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/upload.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/upload.html" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1319386645">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="20" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.3" value="5" />
+          <entry key="project.open.time.31" value="1" />
+          <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.36" value="3" />
+          <entry key="project.open.time.38" value="2" />
+          <entry key="project.open.time.39" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.opened" value="23" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="7" />
+          <entry key="html" value="64" />
+          <entry key="ini" value="15" />
+          <entry key="java" value="4840" />
+          <entry key="js" value="360" />
+          <entry key="jsp" value="30" />
+          <entry key="sql" value="206" />
+          <entry key="txt" value="3" />
+          <entry key="xml" value="18" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="64" />
+          <entry key="JAVA" value="4839" />
+          <entry key="JSP" value="30" />
+          <entry key="JavaScript" value="360" />
+          <entry key="PLAIN_TEXT" value="25" />
+          <entry key="SQL" value="1" />
+          <entry key="Scratch" value="206" />
+          <entry key="XML" value="18" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="class" value="22" />
+          <entry key="css" value="8" />
+          <entry key="html" value="12" />
+          <entry key="ini" value="1" />
+          <entry key="java" value="140" />
+          <entry key="js" value="20" />
+          <entry key="jsp" value="1" />
+          <entry key="sql" value="3" />
+          <entry key="xml" value="11" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="22" />
+          <entry key="CSS" value="8" />
+          <entry key="HTML" value="12" />
+          <entry key="JAVA" value="140" />
+          <entry key="JSP" value="1" />
+          <entry key="JavaScript" value="20" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Scratch" value="3" />
+          <entry key="XML" value="11" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts" />
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.local" value="11" />
+          <entry key="git.branch.checkout.remote" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.spring.boot.run.usages" />
+      <usages-collector id="statistics.spring.boot.mvc.usages" />
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/upload.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1002">
+              <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/upload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1173">
+              <caret line="70" column="48" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/conn/Conn.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Singleton" />
+        <option value="Class" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="sq" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/C3p0Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/test.java" />
+        <option value="$PROJECT_DIR$/src/c3p0-config.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0dc9541e-3311-457d-9b2a-a61fae25ad6a/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/login.css" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="D:/eclipse-jee-photon-R-win32-x86_64/eclipse/eclipse.ini" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controler/PublicServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/filter/CommonUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/filter/UserFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controler/InitServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/bean/Customer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/bean/CustomerData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/bean/Result.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/bean/Upload.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controller/InitServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controller/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/util/UUIDUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controler/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/bean/Product.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/bean/Pager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controler/SearchServlet.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/bc63a0f1-c3bd-4c53-8847-ce6b1c4cc1b5/console.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controler/SortServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/login.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controller/RegisterServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/util/MailUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/register.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/register_1.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/verify.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controller/ActiveServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/login.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/conn/Conn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cashsale/controller/PublicServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/upload.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="D:\apache-maven-3.5.4\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="15" />
+    <option name="y" value="30" />
+    <option name="width" value="1890" />
+    <option name="height" value="930" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashsale" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="conn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="thecashsale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="thecashsale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540691983915" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15722656" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="vcs.TFS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\javawork2\thecashsale\src\main\webapp" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Unnamed">
+    <configuration name="CommonUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cashsale.filter.CommonUtils" />
+      <module name="thecashsale" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cashsale.filter.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <module name="thecashsale" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.10" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="thecashsale:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_thecashsale_2" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="javadebug" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="thecashsale:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Tomcat Server.Unnamed" />
+      <item itemvalue="Application.test" />
+      <item itemvalue="Application.CommonUtils" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CommonUtils" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.CommonUtils" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.CommonUtils" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\yanlin\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3cb94eed-a298-4cd9-a9a3-8c35072f119c" name="Default Changelist" comment="" />
+      <created>1539264636385</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539264636385</updated>
+      <workItem from="1539264639168" duration="18964000" />
+      <workItem from="1539357868561" duration="4822000" />
+      <workItem from="1539412007657" duration="2714000" />
+      <workItem from="1539475562430" duration="7926000" />
+      <workItem from="1539491304137" duration="1141000" />
+      <workItem from="1539498952545" duration="564000" />
+      <workItem from="1539514897203" duration="4622000" />
+      <workItem from="1539615064040" duration="53000" />
+      <workItem from="1539677865050" duration="1118000" />
+      <workItem from="1539700123970" duration="1758000" />
+      <workItem from="1539782829484" duration="380000" />
+      <workItem from="1539786335994" duration="13819000" />
+      <workItem from="1539868983787" duration="3884000" />
+      <workItem from="1539879492913" duration="4920000" />
+      <workItem from="1539954065080" duration="16841000" />
+      <workItem from="1540207656251" duration="24000" />
+      <workItem from="1540209829724" duration="3995000" />
+      <workItem from="1540217092511" duration="3427000" />
+      <workItem from="1540269522687" duration="5250000" />
+      <workItem from="1540374307070" duration="1566000" />
+      <workItem from="1540557259258" duration="7615000" />
+      <workItem from="1540605603535" duration="34810000" />
+      <workItem from="1540659013372" duration="4158000" />
+    </task>
+    <task id="LOCAL-00001" summary="add">
+      <created>1540036969540</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1540036969540</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="144371000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26515764" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3617811" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.33951762" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32962963" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32962963" />
+      <window_info anchor="bottom" id="Database Console" order="8" weight="0.3580705" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32962963" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003903" side_tool="true" weight="0.3153989" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49960968" weight="0.3265306" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32962963" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.3283859" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32983023" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.26515764" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3617811" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.33951762" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32962963" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32962963" />
+      <window_info anchor="bottom" id="Database Console" order="8" weight="0.3580705" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32962963" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003903" side_tool="true" weight="0.3153989" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49960968" weight="0.3265306" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32962963" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" weight="0.3283859" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32983023" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="add" />
+    <option name="LAST_COMMIT_MESSAGE" value="add" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cashsale/controler/SearchServlet.java</url>
+          <line>38</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/9.0.2/tomcat-catalina-9.0.2.jar!/org/apache/catalina/valves/ErrorReportValve.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/9.0.2/tomcat-catalina-9.0.2.jar!/org/apache/catalina/core/StandardHostValve.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/9.0.2/tomcat-catalina-9.0.2.jar!/org/apache/catalina/authenticator/AuthenticatorBase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="182" column="16" selection-start-line="182" selection-start-column="16" selection-end-line="182" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/9.0.2/tomcat-catalina-9.0.2.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/eclipse-jee-photon-R-win32-x86_64/eclipse/eclipse.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="54" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/9.0.2/tomcat-catalina-9.0.2-sources.jar!/org/apache/catalina/core/ApplicationFilterChain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12">
+          <caret line="244" selection-start-line="244" selection-end-line="244" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/bean/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding>
+            <element signature="docComment;field#code#0;class#Result#0" />
+            <element signature="docComment;field#data#0;class#Result#0" />
+            <element signature="docComment;field#msg#0;class#Result#0" />
+            <element signature="method#Result#1;class#Result#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controller/InitServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/bean/Upload.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/9.0.2/tomcat-servlet-api-9.0.2-sources.jar!/javax/servlet/GenericServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="121" column="26" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/9.0.2/tomcat-servlet-api-9.0.2-sources.jar!/javax/servlet/ServletContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="496" column="18" selection-start-line="496" selection-start-column="18" selection-end-line="496" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/util/TestUtil.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/filter/UserFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="817">
+          <caret line="56" column="63" selection-start-line="56" selection-start-column="63" selection-end-line="56" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/filter/CommonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controler/InitServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controler/LoginServlet.java" />
+    <entry file="jar://E:/mysql-connector-java-5.1.41-bin.jar!/com/mysql/jdbc/ResultSetMetaData.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="100" column="18" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controler/PublicServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/bean/Pager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding>
+            <element signature="docComment;field#currentPage#0;class#Pager#0" />
+            <element signature="e#245#246#0" expanded="true" />
+            <element signature="e#272#273#0" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/bc63a0f1-c3bd-4c53-8847-ce6b1c4cc1b5/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="188" lean-forward="true" selection-start-line="1" selection-end-line="1" selection-end-column="188" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controler/SearchServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controler/SortServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/bean/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/util/UUIDUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/util/RSAUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1262">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/bean/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/mail/mail/1.5.0-b01/mail-1.5.0-b01-sources.jar!/javax/mail/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="225" column="24" selection-start-line="225" selection-start-column="24" selection-end-line="225" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/bean/CustomerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-798">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-152">
+          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controller/RegisterServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="41" selection-end-line="90" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/util/MailUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controller/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/verify.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/verify.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/util/TimeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="40" column="23" lean-forward="true" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controller/ActiveServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1920">
+          <caret line="110" column="17" lean-forward="true" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/register.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="82" column="1" lean-forward="true" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controller/UploadServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-570">
+          <caret line="6" column="67" lean-forward="true" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/register_1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="25" column="61" selection-start-line="25" selection-start-column="61" selection-end-line="25" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/upload_1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="32" column="21" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="32" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/conn/Conn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/upload.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1002">
+          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controller/PublicServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="22" column="36" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cashsale/controller/ScreenByLabelServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+          <folding>
+            <element signature="e#1188#1196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="70" column="48" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="214" lean-forward="true" selection-start-line="214" selection-end-line="214" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>thecashsale:war</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web (thecashsale)|Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>thecashsale</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: junit:junit:4.11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

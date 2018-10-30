@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>现卖-变闲为现的买卖|注册界面</title>
+	<meta charset="utf-8">
+	<meta http-equiv=Expires content="1s" />
+	<link rel="stylesheet" type="text/css" href="css/register.css">
+	<!-- <link rel="shortcut icon" type="image/x-icon"  href="img/favicon.png" /> -->
+</head>
+<body>
+	<div class="all">
+		<div class="form-div">
+			<form action="#" class="form" onblur="Ver()" oninput="Ver()" accept-charset="UTF-8">
+				<h2>Register</h2>
+				<div class="g-username">
+					<p>UserName:</p><br/><input type="text" id="username"><br/>
+				</div>
+				<div class="g-username">
+					<p>NickName:</p><br/><input type="text" id="nickname"><br/>
+				</div>
+				<div class="g-username">
+					<p>Password:</p><br/><input type="password" id="password"  onblur="Verification()" oninput="Verification()"><br/>
+				</div>
+				<div class="g-username">
+					<p>Confirm The Password:</p><br/><input type="password" id="Cpassword" onblur="Verification()" oninput="Verification()"><br/>
+				</div>
+				<div class="g-username">
+					<p>email:</p><br/><input type="email" id="email" onblur="Verification()" oninput="Verification()"><br/>
+				</div>
+				<div class="g-username">
+					<a href="login.html"><input type="button" value="login" id="login"></a>
+				</div>
+				<div class="g-username" id="myclick" onclick="register()">
+					<input type="button" value="register" id="register" onclick="register()">
+				</div>
+			</form>
+			<span id="passwordItem">两次密码不一致！</span>
+			<span id="passwordItem1">请您填写完信息！</span>
+		</div>
+		<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
+	</div>
+</body>
+<script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/register_1.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+</html>

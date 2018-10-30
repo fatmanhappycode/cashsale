@@ -3,6 +3,7 @@ package com.cashsale.bean;
 /**
  * @author 肥宅快乐码
  * @date 2018/10/11 - 22:27
+ * 存放返回的结果信息，包括状态码等
  */
 public class Result<T> {
     /**

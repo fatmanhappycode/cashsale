@@ -1,0 +1,117 @@
+
+/*全局样式*/
+*{
+	padding: 0;
+	margin: 0;
+}
+
+/* 网页整体大小*/
+.all{
+	width:100%;
+	/*height:615px;*/
+	height:103%;
+	position: absolute;
+	overflow-x: hidden;
+	background:rgb(249,249,248); 
+	/*条纹 */
+	/* background: linear-gradient(
+		
+		rgb(251,206,177),
+		#fac
+	); */ 
+	
+}
+.form-div{
+	position:absolute;
+	width:860px;
+	height:350px;
+	left:50%;
+	margin-top:100px;
+	margin-left:-430px;
+	/* border:1px solid #FAC; */
+}
+.form-div img{
+	display:block;
+	width:560px;
+	height:350px;
+	border-radius: 4px;
+	position:absolute;
+	/* border:1px solid #FAC; */
+}
+.form-div h2{
+	width:300px;
+	text-align:center;
+	font: italic 2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
+}
+
+.form p{
+	font-size:18px;
+	margin-left:25px;
+}
+
+.form {
+	position:absolute;
+	width:300px;
+	height:350px;
+	left:50%;
+	margin-left:130px;
+	background: rgb(249,249,248);
+	border-radius: 4px;
+    border: 1px solid #EEE;
+    transition: all .4s;
+}
+
+.g-username {
+    padding :15px;
+    transition: 0.4s;
+}
+
+#username,#password,#login,#register {
+	width:220px;
+	height: 30px;
+	font-size: 18px;
+	margin-left:25px;
+	border-radius: 4px;
+	border-color:rgba(251,206,177,0.5);
+	
+    border: 1px solid #ddd;
+    overflow: hidden;
+    transition: 0.4s;
+    &:focus {
+        border-color: hsl(199, 98%, 48%);
+    }
+}
+
+#login,#register{
+	float:left;
+	display:inline-block;
+	width:100px;
+	height: 40px;
+	background: rgb(255,255,255);
+	margin-top:12px;
+}
+#register{
+	margin-top:-18px;
+	background: rgb(14,143,251);
+}
+
+
+.form:focus-within {
+    transform: translateY(-3px);
+	/*阴影 */
+    box-shadow: 0 0 10px rgba(172,172,172,.8);
+    border-color: hsl(199, 98%, 48%);
+}
+
+.bottom{
+	whidth:200px;
+	position:absolute;
+	color:rgba(172,172,172,.9);
+	font-size:14px;
+	left:50%;
+	margin-left:-100px;
+	bottom:10px;
+	text-align: center;
+}
+
+

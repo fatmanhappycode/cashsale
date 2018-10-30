@@ -1,0 +1,257 @@
+
+/*全局样式*/
+*{
+	padding: 0;
+	margin: 0;
+}
+
+/* 网页整体大小*/
+.all{
+	width:100%;
+	/*height:615px;*/
+	height:1600px;;
+	position: absolute;
+	overflow-x: hidden;
+	background:rgb(249,249,248); 
+	/*条纹 */
+	/* background: linear-gradient(
+		135deg,
+		rgb(255,255,255) 25%,
+		rgb(77,189,253) 25%,
+		rgb(77,189,253) 50%,
+		rgb(255,255,255) 50%,
+		rgb(255,255,255) 75%,
+		rgb(77,189,253) 75%
+	);  */
+}
+
+
+/* 标题登录 */
+.form-div h2{
+	width:1000px;
+	height:60px;
+	margin-top:25px;
+	text-align:center;
+	font:2em;/* 字体为斜体的Georgia或者serif */
+}
+/* username等 */
+.form p{
+	font-size:18px;
+	margin-left:25px;
+}
+/* 登录框 */
+.form {
+	position:absolute;
+	width:1000px;
+	height:1400px;
+	left:50%;
+	padding-left:70px;
+	margin-left:-530px;
+	margin-top:50px;
+	background: rgb(249,249,247);
+	border-radius: 4px;
+	/*原始边框 */
+	border: 1px solid #eee;
+    transition: all .4s;
+}
+/* 所有input元素外套着的div */
+.g-username {
+	width:400px;
+	border: 1px solid #eee;
+	border-radius:4px;
+	margin:5px;
+	padding-bottom:10px;
+    transition: all .4s;
+	float:left;
+    padding :25px;
+}
+/* 所有input元素外套着的  个别   div ，第二个为Other-g，最后二个为Other-gg*/
+.Other-g,.Other-gg{
+	clear: left;
+	width:400px;
+}
+.Other-gg{
+	width:800px;
+}
+.Other-ggg{
+	width:800px;
+	border:none;
+	position: absolute;
+	bottom: 50px;
+}
+/* 获取焦点时 */
+.g-username:focus-within{
+	transform: translateY(-3px);
+	/*阴影 */
+    box-shadow: 0 0 10px rgba(172,172,172,.8);
+    border-color: hsl(199, 98%, 48%);
+}
+/* 获取焦点时 */
+.form:focus-within {
+    transform: translateY(-3px);
+	/*阴影 */
+    box-shadow: 0 0 10px rgba(172,172,172,.8);
+    border-color: hsl(199, 98%, 48%);
+}
+
+
+
+
+/* 所有输入框 */
+#commodity,#price,#place{
+	appearance: none;
+	width:320px;
+	height: 30px;
+	font-size: 18px;
+	margin-left:25px;
+	margin-top:-10px;
+	border-radius: 4px;
+	border-color:rgba(251,206,177,0.5);
+	
+    border: 1px solid #ddd;
+    overflow: hidden;
+    transition: 0.4s;
+    &:focus {
+        border-color: hsl(199, 98%, 48%);
+    }
+}
+/* 文本介绍 */
+#and{
+	font-size: 18px;
+	margin-left:25px;
+	margin-top:-10px;
+	border-radius: 4px;
+	border-color:rgba(251,206,177,0.5);
+	overflow-Y:auto;
+	resize:none;
+    border: 1px solid #ddd;
+    transition: 0.4s;
+    &:focus {
+        border-color: hsl(199, 98%, 48%);
+    }
+}
+/* 图片 */
+#myfile{
+	margin-left:30px;
+}
+/* 图片容器 */
+#container{
+	width:800px;
+}
+
+
+
+/* 选择框外面的div，内含复选框和文字 */
+#myBox{
+	float:left;
+	width:100px;
+	height: 30px;
+	margin-top:10px;
+    margin-left:25px;
+}
+/* span内的文字 */
+#myText{
+	font-size:14px;
+	width:78px;
+	height:23.5px;
+	padding-top:4.5px;
+	margin-top:10px;
+    margin-left:25px;
+	position:absolute;
+	text-align:center;
+	border:#999 solid 1px;
+	border-radius: 4px;
+}
+/* 选择框 */
+.myCheckBox{
+	position:absolute;
+/* 	除去原生样式 */
+    -webkit-appearance: none;
+    outline: none;
+    margin-top:10px;
+    margin-left:25px;
+    background:rgba(1,1,1,0);
+    border:#999 solid 1px;
+    border-radius: 3px;
+    opacity:0;
+/*===========================================设置复选框大小 */
+    min-height: 30px;
+    min-width: 80px;
+    border-radius: 4px;
+}
+/* 复选框选中时样式 */
+.myCheckBox:checked {
+    background: #3190e8;
+    opacity:.5;
+    border:#3190e8 solid 1px;
+    border-radius: 4px;
+}
+/* “对”符号 选中符号 */
+.myCheckBox:checked::after{
+    content: '';
+    top: 14px;
+    left: 62px;
+    position: absolute;
+    background: transparent;
+    border: #fff solid 2px;
+    border-top: none;
+    border-right: none;
+    height: 6px;
+    width: 10px;
+/*     勾股定理 */
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg); 
+    transform: rotate(-45deg);
+} 
+
+
+
+
+
+img{
+	width:100px;height:100px;
+}
+
+
+
+/* 按钮 */
+#submit,#reset{
+	display:inline-block;
+	width:100px;
+	height: 40px;
+	background: rgb(14,143,251);
+	margin-top:12px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	margin-top: 120px;
+	margin-left: 240px;
+}
+#submit{
+	background:rgb(249,249,248);
+}
+/* 提示语 */
+#passwordItem{
+	position:absolute;
+	width:196px;
+	height: 15px;
+	bottom:0px;
+	right:-100px;
+	opacity:.75;
+	font-size:12px;
+	color:red;
+	display: none;
+}
+
+
+/* 版权 */
+.bottom{
+	whidth:200px;
+	position:absolute;
+	color:rgba(172,172,172,.9);
+	font-size:14px;
+	left:50%;
+	margin-left:-100px;
+	bottom:10px;
+	text-align: center;
+}

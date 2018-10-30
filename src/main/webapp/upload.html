@@ -10,10 +10,13 @@
 <body>
 	<div class="all">
 		<div class="form-div">
-			<form action="" method="post" accept-charset="UTF-8" class="form" oninput="item()">
+			<form action="" method="post" accept-charset="UTF-8" class="form" oninput="item()" enctype="multipart/form-data">
 				<h2>商品发布</h2>
 				<div class="g-username">
 					<p>商品标题:</p><br/><input type="text" id="commodity" placeholder="" maxlength="40"><br/>
+				</div>
+				<div class="g-username">
+				<input type="file" name="uploadFile">
 				</div>
 				<div class="g-username Other-g">
 					<p>价格:</p><br/><input type="text" id="price" maxlength="40"><br/>
@@ -74,13 +77,7 @@
 						<input type="checkbox" value="7" class="myCheckBox" id="myCheckbox27">
 					</div>
 				</div>
-				<div class="g-username Other-gg">
-					<p>商品描述:</p><br/><textarea rows="12" cols="70" id="and" placeholder="最多输入400字"  maxlength="440"></textarea>
-				</div>
-				<div class="g-username Other-gg">
-					<p>商品图片:(最多6张，默认第一张为封面)</p><br/>
-					<input type="file" id="myfile" multiple="multiple" name="imgUrl" onchange="preview(this)" >
-					<div id="container"></div>
+				<div id="div1"  class="g-username">
 				</div>
 				<div class="Other-ggg">
 					<span id="passwordItem">请填写完信息，否则提交时将清空！</span>
@@ -90,7 +87,17 @@
 			</form>
 		</div>
 		<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
+		<br>
 	</div>
+
+	<script type="text/javascript" src="wangEditor-3.1.1/release/wangEditor.min.js"></script>
+	<script type="text/javascript">
+        var E = window.wangEditor
+        var editor = new E('#div1')
+        editor.customConfig.uploadImgServer = '/UploadImageServlet'
+        editor.customConfig.uploadImgMaxLength = 5
+        editor.create()
+	</script>
 </body>
 <script type="text/javascript" src="js/upload.js"></script>
 <script type="text/javascript" src="js/upload_1.js"></script>
