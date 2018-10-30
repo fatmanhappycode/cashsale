@@ -41,43 +41,64 @@ function f() {
 	*/
 //	复选框加入字符串label
 	if($("#myCheckbox21").prop('checked')){
-		label=label+";"+$("#myCheckbox21").val();
+		if(label!="")
+			label=label+";"+$("#myCheckbox21").val();
+		else
+            label=label+$("#myCheckbox21").val();
 	}
 	if($("#myCheckbox22").prop('checked')){
-		label=label+";"+$("#myCheckbox22").val();
+        if(label!="")
+            label=label+";"+$("#myCheckbox22").val();
+        else
+            label=label+$("#myCheckbox22").val();
 	}
 	if($("#myCheckbox23").prop('checked')){
-		label=label+";"+$("#myCheckbox23").val();
+        if(label!="")
+            label=label+";"+$("#myCheckbox23").val();
+        else
+            label=label+$("#myCheckbox23").val();
 	}
 	if($("#myCheckbox24").prop('checked')){
-		label=label+";"+$("#myCheckbox24").val();
+        if(label!="")
+            label=label+";"+$("#myCheckbox24").val();
+        else
+            label=label+$("#myCheckbox24").val();
 	}
 	
 	if($("#myCheckbox25").prop('checked')){
-		label=label+";"+$("#myCheckbox25").val();
+        if(label!="")
+            label=label+";"+$("#myCheckbox25").val();
+        else
+            label=label+$("#myCheckbox25").val();
 	}
 	if($("#myCheckbox26").prop('checked')){
-		label=label+";"+$("#myCheckbox26").val();
+        if(label!="")
+            label=label+";"+$("#myCheckbox26").val();
+        else
+            label=label+$("#myCheckbox26").val();
 	}
 	if($("#myCheckbox27").prop('checked')){
-		label=label+";"+$("#myCheckbox27").val();
+        if(label!="")
+            label=label+";"+$("#myCheckbox27").val();
+        else
+            label=label+$("#myCheckbox27").val();
 	}
 
 	//alert(label);
 	if(label=="" || myCheckbox0=="" || myCheckbox1=="" ||commodity==""||price==""|| place==""|| and==""){
 		alert("请填写完信息再提交，否则将清空！");
 	}else{
-        alert("123");
         document.getElementById("passwordItem");
 		var token=window.location.search.split('=')[1];
-		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":and,"imageUrl":imageUrl};
-		saveData=encodeURIComponent(encodeURIComponent(saveData));
+		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":and};
 		$.ajax({
 			url:"/publish?token="+token,
 			type:"post",
 			dataType:"json",
 			data:JSON.stringify(saveData),
-			contentType:"application/json;charset=UTF-8",
+			headers: {
+                contentType:"application/json;charset=UTF-8",
+			},
 			success:function(result,testStatus)
 			{
 				if(result.code==107)
