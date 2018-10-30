@@ -69,10 +69,10 @@ function f() {
 	}else{
 		document.getElementById("passwordItem").style.display="none";
 		var token=window.location.search.split('=')[1];
-		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":and,"imageUrl":imageUrl};
+		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":and};
 		saveData=encodeURIComponent(encodeURIComponent(saveData));
 		$.ajax({
-			url:"/publish?token="+token,
+			url:"/publish",
 			type:"post",
 			dataType:"json",
 			data:JSON.stringify(saveData),
@@ -83,7 +83,7 @@ function f() {
 				{
 					//发布成功，转跳到页面
 					alert(result.msg);
-					window.location.href="#.html?token="+token;
+//					window.location.href="#.html?token="+token;
 				}
 				else if(result.code==108){
 					//失败
@@ -91,7 +91,7 @@ function f() {
 				}else{
 					//请先登录
 					alert(result.msg);
-					window.location.href="login.html?token="+token;
+//					window.location.href="login.html?token="+token;
 				}
 			},
 			error:function(xhr,errrorMessage,e){

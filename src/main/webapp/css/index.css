@@ -125,51 +125,54 @@
 	width:140px;
 	height:135px;
 	margin-right:25px;
-	padding-top:-55px;
 	text-align:center;
 	list-style-type: none;
 	text-decoration:none;
 	cursor:pointer;
-	background:#fff  url("../img/badge_3.jpg") no-repeat;
-	background-size: 190px 135px;
-	background-position: -20px -15px;
+	background:#fff  url("../img/nav (2).gif") no-repeat;
+	background-size: 120px 120px;
+	background-position: center center;
 }
 
 .upload{
-	background:#fff  url("../img/badge_4.jpg") no-repeat;
-	background-size: 190px 135px;
-	background-position: -20px -15px;
+	background:#fff  url("../img/nav (2).png") no-repeat;
+	background-size: 120px 120px;
+	background-position: center center;
 }
 .youlike{
-	background:#fff url("../img/badge_5.jpg") no-repeat;
-	background-size: 190px 135px;
-	background-position: -20px 5px;
+	background:#fff url("../img/nav (1).gif") no-repeat;
+	background-size: 120px 120px;
+	background-position: center center;
 }
 .box{
-	background:#fff  url("../img/badge_1.jpg") no-repeat;
-	background-size: 190px 135px;
-	background-position: -20px -20px;
+	background:#fff  url("../img/nav (1).png") no-repeat;
+	background-size: 120px 120px;
+	background-position: center center;
 }
 .myself{
-	background:#fff  url("../img/badge_2.jpg") no-repeat;
-	background-size: 190px 135px;
-	background-position: -20px -20px;
+	background:#fff  url("../img/nav (3).gif") no-repeat;
+	background-size: 120px 120px;
+	background-position: center center;
 }
 .index a,.upload a,.youlike a,.box a,.myself a{
 	display:block;
-	width:125px;
-	height:100px;
-	padding:35px 0 0 15px;
+	width:140px;
+	height:80px;
+	padding:55px 0 0 0;
+	border-radius:8px;
 	text-decoration:none;
-	color: rgba(131,111,191,1);
-	font-size:18px;
-	background:rgba(131,111,191,0);
+	color: #000;
+	font-size:22px;
+	background:rgba(255,255,255,.6);
+	opacity: 0;
 /* 	border:1px solid #FAC; */
 	}
+.index a:hover,.upload a:hover,.youlike a:hover,.box a:hover,.myself a:hover{
+	opacity: 1;
+}
 .index:hover,.upload:hover,.youlike:hover,.box:hover,.myself:hover{
-	border:3px solid rgba(131,111,191,1);
-	box-shadow:0 0 30px rgba(172,172,172,.8);
-	transition:translataY(4px);
+/* 	border:3px solid rgba(131,111,191,1); */
+/* 	box-shadow:-10px 10px 10px rgba(0,0,0,.5) inset; */
 }
 
 /* ∑÷¿‡ */
@@ -195,7 +198,7 @@
 	text-align:center;
 	background: #FFF;
 }
-.species li:hover{
+.Ispecies:hover{
 	background:rgba(166,128,226,.5);
 	cursor: pointer;
 }
@@ -255,12 +258,32 @@
 	border-radius:15px;
 	background:#fff;
 	margin:15px;
+	overflow:hidden;
 	border:1px solid rgba(166,128,226,.5);
+	cursor: pointer;
 }
-.goods img{
-	border-radius:15px;
+.goods:hover{
+	margin-top:10px;
+	margin-bottom:20px;
+	box-shadow:0px 0px 10px rgba(0,0,0,.5);
+	border:1px solid rgba(166,128,226,1);
+}
+.imgSee{
+/* 	display:table-cell; */
 	width:200px;
 	height:200px;
+	overflow:hidden;
+	text-align:center;
+	border:1px solid #FAC;
+	background:#fac;
+	vertical-align: middle;
+}
+.goods img{
+	width:300px;
+	height:auto;
+	vertical-align: middle;
+	margin-left:-50px;
+	margin-top:calc(HEIGHT/2-100px);
 	border-bottom: 1.5px solid rgba(166,128,226,.5);
 }
 .myH{
@@ -277,6 +300,8 @@
 
 
 #test{
+	display:none;
+	z-index:100000000;
 	 position:fixed;
 	 right:50px;
 	 bottom:30px;
@@ -284,10 +309,7 @@
 	 width:60px;
 	 border:none;
 	 border-radius: 30px;
-	 background: rgba(166,128,226,.5);
-}
-#test:hover{
-	border-radius: 0;
+/* 	 background: rgba(166,128,226,.5); */
 }
 /* ∞Ê»® */
 .bottom{

@@ -1,5 +1,4 @@
-/*var myUrl=window.location.search.split('=')[1];
-alert(myUrl);*/
+/*var myUrl=window.location.search.split('=')[1];alert(myUrl);*/
 var token="";
 function loadXMLDoc()
 {
@@ -8,9 +7,12 @@ function loadXMLDoc()
 	var saveData={"username":username,"password":password};
 	
 	$.ajax({
-		url:"",
+		url:"/login",
 		type:"post",
 		dataType:"json",
+		headers{
+			contentType:"application/json;charset=UTF-8",
+		}
 		data:JSON.stringify(saveData),
 		contentType:"application/json",
 		success:function(result,testStatus)

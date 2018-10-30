@@ -6,11 +6,11 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
 </head>
-<body>
+<body  onmousewheel="goTop()">
 	<div class="ost">
 		<div class="slogan"><a href="index.html" target="_self">现卖-变闲为现的买卖<br>www.xianmai.com</a></div>
-		<div class="register"><a href="ligin.html" target="_self">注册</a></div>
-		<div class="login"><a href="register.html" target="_self">登录</a></div>
+		<div class="register"><a href="register.html" target="_self">注册</a></div>
+		<div class="login"><a href="ligin.html" target="_self">登录</a></div>
 	</div>
 	<div class="all">
 		<div class="back-head"><img src="img/background (2).jpg"></div>
@@ -35,12 +35,12 @@
 		<div class="species" id="species">
 			<ul>
 				<li>种类</li>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
+				<li class="Ispecies">1</li>
+				<li class="Ispecies">2</li>
+				<li class="Ispecies">3</li>
+				<li class="Ispecies">4</li>
+				<li class="Ispecies">5</li>
+				<li class="Ispecies">6</li>
 			</ul>
 		</div>
 		<div class="frame">
@@ -53,27 +53,29 @@
 		</div>
 		<div class="main">
 			<div class="goods">
-				<img src="img/badge_1.jpg">
+				<div class="imgSee">
+					<img src="img/nav (1).jpg">
+				</div>
 				<h4 class="myH">快充充电器</h4>
 				<p class="price">￥20</p>
 			</div>
 			<div class="goods">
-				<img src="img/badge_1.jpg">
+				<img src="img/nav (1).jpg">
 				<h4 class="myH">快充充电器</h4>
 				<p class="price">￥20</p>
 			</div>
 			<div class="goods">
-				<img src="img/badge_1.jpg">
+				<img src="img/nav (1).jpg">
 				<h4 class="myH">快充充电器</h4>
 				<p class="price">￥20</p>
 			</div>
 			<div class="goods">
-				<img src="img/badge_1.jpg">
+				<img src="img/nav (1).jpg">
 				<h4 class="myH">快充充电器</h4>
 				<p class="price">￥20</p>
 			</div>
 			<div class="goods">
-				<img src="img/badge_1.jpg">
+				<img src="img/nav (1).jpg">
 				<h4 class="myH">快充充电器</h4>
 				<p class="price">￥20</p>
 			</div>
@@ -188,7 +190,7 @@
 				<p class="price">￥20</p>
 			</div>
 		</div>
-		<button id="test">回到顶部</button>
+		<img id="test" title="回到顶部" src="img/top.gif">
 		
 		
 		
@@ -201,6 +203,7 @@
 		<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
 	</div>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/index_1.js"></script>
 	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 </body>
 
