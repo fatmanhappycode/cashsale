@@ -21,7 +21,7 @@ import java.sql.PreparedStatement;
  * @date 2018/10/17 - 22:30
  */
 @WebServlet(urlPatterns = {"/publish"})
-public class PublicServlet extends HttpServlet {
+public class PublishServlet extends HttpServlet {
    
 	private static final long serialVersionUID = 1L;
 
