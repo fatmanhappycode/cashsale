@@ -3,8 +3,6 @@ package com.cashsale.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
@@ -15,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.Result;
-import com.cashsale.util.SearchUtil;
+import com.cashsale.service.ScreenService;
 
 /**
  * 筛选
@@ -103,7 +101,10 @@ public class ScreenServlet extends HttpServlet{
         }
         //System.out.println(query);
         
-        Map<String, Object> map = new HashMap<String, Object>();
+        Result<Object> result = new ScreenService().screen(query, page);
+	    writer.println(JSONObject.toJSON(result));
+        
+        /*Map<String, Object> map = new HashMap<String, Object>();
         map = SearchUtil.search(query, page);
         int code = (int) map.get("code");
         String queryResult = (String) map.get("queryResult");
@@ -120,7 +121,7 @@ public class ScreenServlet extends HttpServlet{
         else
         {
         	writer.println(JSONObject.toJSON(queryResult));
-        }
+        }*/
 	}
 	
     @Override

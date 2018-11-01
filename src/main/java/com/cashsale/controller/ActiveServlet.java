@@ -2,9 +2,6 @@ package com.cashsale.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.Result;
+import com.cashsale.service.ActiveService;
 import com.cashsale.util.RSAUtil;
-import com.cashsale.util.TimeUtil;
 
 /**
  * 邮箱激活
@@ -41,17 +38,18 @@ public class ActiveServlet extends HttpServlet{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String currentTime = request.getParameter("currentTime");
+		System.out.println(username);
 		
 		// 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 		
 		PrintWriter writer = response.getWriter();
-        Connection conn = new com.cashsale.conn.Conn().getCon();
+        //Connection conn = new com.cashsale.conn.Conn().getCon();
         
         //获取密钥
         String privateKey = (String) this.getServletContext().getAttribute(username);
-        //System.out.println("密钥:"+privateKey);
+        System.out.println("密钥:"+privateKey);
         try
         {
         	//解密
@@ -62,12 +60,15 @@ public class ActiveServlet extends HttpServlet{
         }
         catch(Exception e )
         {
-        	//System.err.println("解密失败！");
-        	writer.println(JSONObject.toJSON(new Result<String>(114, null, "解密失败！")));
+        	System.err.println("解密失败！");
+        	//writer.println(JSONObject.toJSON(new Result<String>(114, null, "解密失败！")));
         	e.printStackTrace();
         }
         
-		try {
+        Result<String> result = new ActiveService().UserActive(code, currentTime, username, password);
+        writer.print(JSONObject.toJSON(result));
+		
+        /*try {
 			System.out.println(code);
 			//根据激活码查询用户
 			PreparedStatement pstmt = conn.prepareStatement("SELECT user_name FROM user_data WHERE code = ?");
@@ -119,6 +120,6 @@ public class ActiveServlet extends HttpServlet{
 		{
 			e.printStackTrace();
 			writer.println(JSONObject.toJSON(new Result<String>(112, null, "验证失败！")));
-		}
+		}*/
 	}
 }

@@ -3,9 +3,6 @@ package com.cashsale.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -17,9 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.CustomerData;
 import com.cashsale.bean.Result;
-import com.cashsale.util.MailUtil;
+import com.cashsale.service.RegisterService;
 import com.cashsale.util.RSAUtil;
-import com.cashsale.util.TimeUtil;
 import com.cashsale.util.UUIDUtil;
 import com.google.gson.Gson;
 
@@ -44,6 +40,8 @@ public class RegisterServlet extends HttpServlet {
     	// 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
+        //设置请求编码
+        request.setCharacterEncoding("utf-8");
 
         BufferedReader br = request.getReader();
         String str,user = "";
@@ -61,7 +59,37 @@ public class RegisterServlet extends HttpServlet {
         String code = UUIDUtil.getUUID() + UUIDUtil.getUUID();
 
         PrintWriter writer = response.getWriter();
-        Connection conn = new com.cashsale.conn.Conn().getCon();
+        
+        String encodedCode = "";
+        String encodedPass = "";
+        //System.out.println(code);
+    	//创建密钥对
+    	Map<String, String> keyMap = RSAUtil.createKeys(1024);
+    	//获取公钥
+        String  publicKey = keyMap.get("publicKey");
+        //获取密钥
+        String  privateKey = keyMap.get("privateKey");
+        //保存密钥
+        this.getServletContext().setAttribute(username, privateKey);
+        System.out.println(privateKey);
+        //公钥加密
+        try {
+			encodedCode = RSAUtil.publicEncrypt(code, RSAUtil.getPublicKey(publicKey)); 
+	        //System.out.println(encodedCode);
+	        encodedPass = RSAUtil.publicEncrypt(password, RSAUtil.getPublicKey(publicKey));
+	        //System.out.println(encodedPass);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("加密失败！");
+		}
+        
+        Result<String> result = new RegisterService().UserRegister(username, email, encodedPass, encodedCode, nickname,
+    		 code, password);
+        
+        writer.print(JSONObject.toJSON(result));
+        
+        /*Connection conn = new com.cashsale.conn.Conn().getCon();
         
         try {
         	//判断该用户名和邮箱是否已被注册
@@ -123,6 +151,6 @@ public class RegisterServlet extends HttpServlet {
         catch (Exception e) {
         	e.printStackTrace();
             writer.print(JSONObject.toJSON(new Result<String>(102,null,"注册失败！")));
-        }
+        }*/
     }
 }

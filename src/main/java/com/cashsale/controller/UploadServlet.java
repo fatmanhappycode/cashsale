@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -19,10 +17,11 @@ import org.apache.commons.io.FileUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.Result;
 import com.cashsale.bean.Upload;
+import com.cashsale.dao.UploadDAO;
 import com.google.gson.Gson;
 
 /**
- * 上传
+ * 上传图片
  * @author Sylvia
  * 2018年10月14日
  */
@@ -46,7 +45,7 @@ public class UploadServlet extends HttpServlet{
 		//设置请求编码
 		request.setCharacterEncoding("UTF-8");
 		
-        Connection conn = new com.cashsale.conn.Conn().getCon();
+        //Connection conn = new com.cashsale.conn.Conn().getCon();
 		
 		BufferedReader br = request.getReader();
 		String str, img = "";
@@ -87,13 +86,22 @@ public class UploadServlet extends HttpServlet{
 				returnUri.add("img\\" + newFileName);
 				imgUrl += "img\\" + newFileName +";";
 			}
+			int resultCode = new UploadDAO().upload(imgUrl, productId);
+			if(resultCode == 1){
+				writer.println(JSONObject.toJSON(new Upload(returnUri, productId)));
+			}
+			else{
+				writer.println(JSONObject.toJSON(new Result<Object>(104, null, "图片上传失败!")));
+			}
+			//writer.print(JSONObject.toJSON(result));
+			
 			//System.out.println(imgUrl);
-			PreparedStatement pstmt = conn.prepareStatement("UPDATE product_info SET image_url = ? WHERE "
+			/*PreparedStatement pstmt = conn.prepareStatement("UPDATE product_info SET image_url = ? WHERE "
 					+ "product_id = ?");
 			pstmt.setString(1, imgUrl);
 			pstmt.setString(2, productId);
 			pstmt.execute();
-			writer.println(JSONObject.toJSON(new Upload(returnUri, productId)));
+			writer.println(JSONObject.toJSON(new Upload(returnUri, productId)));*/
 		}
 		catch (Exception e) {
 			writer.println(JSONObject.toJSON(new Result<Object>(104, null, "图片上传失败!")));
