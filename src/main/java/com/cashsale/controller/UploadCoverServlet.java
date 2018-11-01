@@ -2,7 +2,6 @@ package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.Image;
-import com.cashsale.bean.Upload;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -24,8 +23,7 @@ import java.util.List;
 /**
  * Servlet implementation class UploadServlet
  */
-@WebServlet("/UploadImageServlet")
-public class UploadServlet extends HttpServlet {
+public class UploadCoverServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -42,10 +40,11 @@ public class UploadServlet extends HttpServlet {
                 //以byte为单位    不能超过10M  1024byte = 1kb  1024kb=1M 1024M = 1G
                 sfu.setSizeMax(10 * 1024 * 1024);
                 sfu.setHeaderEncoding("utf-8");
+
                 //3. 调用ServletFileUpload.parseRequest方法解析request对象，得到一个保存了所有上传内容的List对象。
                 List<FileItem> fileItemList = sfu.parseRequest(request);
                 Iterator<FileItem> fileItems = fileItemList.iterator();
-                System.out.println(fileItemList.isEmpty());
+
                 //4. 遍历list，每迭代一个FileItem对象，调用其isFormField方法判断是否是上传文件
                 ArrayList<String> data = new ArrayList<>();
                 while (fileItems.hasNext()) {

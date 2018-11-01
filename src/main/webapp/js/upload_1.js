@@ -4,8 +4,22 @@ var filter = {
     "gif": "R0lGOD",
     "png": "iVBORw"
 };
+function f() {
+    $.ajax({
+        url: "/UploadImageServlet",
+        type: 'POST',
+        cache: false,
+        data: new FormData($("#uploadForm")[0]),
+        processData: false,
+        contentType: false,
+        success: function (result) {
+        },
+        error: function (err) {
+        }
+    });
+}
 function preview(file) {
-	//获取展示图片的容器
+    //获取展示图片的容器
     var container = document.getElementById("container");
     //置空
     container.innerHTML = "";
