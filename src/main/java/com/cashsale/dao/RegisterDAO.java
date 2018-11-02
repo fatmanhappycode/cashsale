@@ -50,7 +50,7 @@ public class RegisterDAO {
             	pstmt.setString(3, email);
             	pstmt.setString(4, code);
             	
-            	pstmt2 = conn.prepareStatement("INSERT INTO all_user VALUES(?,?)");
+            	pstmt2 = conn.prepareStatement("INSERT INTO register_user VALUES(?,?)");
             	pstmt2.setString(1, username);
             	pstmt2.setString(2, password);
             	

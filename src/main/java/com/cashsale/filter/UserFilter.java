@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.Result;
+import com.cashsale.util.CommonUtils;
 
 /**
  * @author 肥宅快乐码

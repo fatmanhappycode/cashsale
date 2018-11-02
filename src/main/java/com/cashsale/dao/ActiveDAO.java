@@ -27,7 +27,7 @@ public class ActiveDAO {
 			pstmt.setString(1, code);
 			ResultSet result = pstmt.executeQuery();
 			//根据用户名查询密码
-			PreparedStatement pstmt2 = conn.prepareStatement("SELECT pass_word FROM all_user WHERE user_name = ? ");
+			PreparedStatement pstmt2 = conn.prepareStatement("SELECT pass_word FROM register_user WHERE user_name = ? ");
 			//result.next();
 			ResultSet result2 = null;
 		
@@ -50,7 +50,7 @@ public class ActiveDAO {
 				//判断验证时间是否超过五分钟，若超过则删除该用户的注册信息
 				if( !TimeUtil.emailTime(currentTime) )
 				{
-					pstmt = conn.prepareStatement("DELETE FROM all_user WHERE user_name = ?");
+					pstmt = conn.prepareStatement("DELETE FROM register_user WHERE user_name = ?");
 					pstmt.setString(1, username);
 					pstmt.execute();
 					pstmt2 = conn.prepareStatement("DELETE FROM user_data WHERE user_name = ?");
@@ -61,6 +61,14 @@ public class ActiveDAO {
 				}
 				else
 				{
+					// 删除注册表的信息
+					pstmt = conn.prepareStatement("DELETE FROM register_user WHERE user_name = ?");
+					pstmt.setString(1, username);
+					pstmt.execute();
+					pstmt2 = conn.prepareStatement("INSERT INTO all_user(user_name,pass_word) VALUES (?,?)");
+					pstmt2.setString(1, username);
+					pstmt2.setString(2,password);
+					pstmt2.execute();
 					//writer.println(JSONObject.toJSON(new Result<String>(101, null, "激活成功！")));
 					return ACTIVE_SUCCESSED;
 				}

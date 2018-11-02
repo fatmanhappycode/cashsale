@@ -3,11 +3,15 @@ package com.cashsale.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.Customer;
 import com.cashsale.bean.Result;
-import com.cashsale.filter.CommonUtils;
+import com.cashsale.util.CommonUtils;
 import com.google.gson.Gson;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import java.io.IOException;
 import java.sql.Connection;
 
 /**
@@ -28,5 +32,13 @@ public class InitServlet extends HttpServlet {
             e.printStackTrace();
         }
         JSONObject.toJSON(new Result<String>(0, null, ""));
+        CloseableHttpClient client = null;
+        HttpClients.createDefault();
+        HttpPost post = new HttpPost();
+        try {
+            client.execute(post);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

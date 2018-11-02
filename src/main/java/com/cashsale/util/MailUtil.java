@@ -61,7 +61,7 @@ public class MailUtil {
 		message.setContent("<h1>亲爱的"+nickname+"：</h1>"+"<br><h3>欢迎加入现卖！<br>" + 
 				"请点击下面的连接完成注册：<br></h3>" + "<a href='http://localhost:8080/active?code="+code
 				+"&username="+username+"&password="+password+"&currentTime="+currentTime+"'>"+"http://localhost:8080"
-				+ "/thecashsale/active?code="+code+"</a><br>"+"<h5>如以上连接无法点击，请将其复制到浏览器中打开（请于5"
+				+ "/active?code="+code+"</a><br>"+"<h5>如以上连接无法点击，请将其复制到浏览器中打开（请于5"
 				+ "分钟内完成验证，逾期需重新注册）</h5>",
 				"text/html;charset=UTF-8");
 		// 根据 Session 获取邮件传输对象
