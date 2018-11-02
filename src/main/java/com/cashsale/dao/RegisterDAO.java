@@ -63,7 +63,7 @@ public class RegisterDAO {
             	pstmt.execute();
             	pstmt2.execute();
             	return ACTIVATION_TIP;
-            	//writer.print(JSONObject.toJSON(new Result<String>(109, null, "请到邮箱进行账号激活！")));
+            	//writer.print(JSONObject.toJSON(new ResultDTO<String>(109, null, "请到邮箱进行账号激活！")));
             }
         } 
         catch (Exception e) {

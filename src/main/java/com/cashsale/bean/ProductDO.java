@@ -7,7 +7,7 @@ import java.util.Map;
  * @date 2018/10/17 - 22:52
  * 商品信息
  */
-public class Product {
+public class ProductDO {
     /**
      * 商品标题
      */
@@ -37,7 +37,7 @@ public class Product {
      */
     private String imageUrl;
 
-    public Product(Map<String, Object> map){
+    public ProductDO(Map<String, Object> map){
         this.title = (String) map.get("title");
         this.label = (String)map.get("label");
         this.price = (int)map.get("price");

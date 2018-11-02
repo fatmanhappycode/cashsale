@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.CustomerData;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.CustomerInfoDO;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.RegisterService;
 import com.cashsale.util.RSAUtil;
 import com.cashsale.util.UUIDUtil;
@@ -50,7 +50,7 @@ public class RegisterServlet extends HttpServlet {
             user += str;
         }
         
-        CustomerData c = new Gson().fromJson(user,CustomerData.class);
+        CustomerInfoDO c = new Gson().fromJson(user, CustomerInfoDO.class);
         String username = c.getUsername();
         String password = c.getPassword();
         String nickname = c.getNickname();
@@ -84,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
 			System.out.println("加密失败！");
 		}
         
-        Result<String> result = new RegisterService().UserRegister(username, email, encodedPass, encodedCode, nickname,
+        ResultDTO<String> result = new RegisterService().UserRegister(username, email, encodedPass, encodedCode, nickname,
     		 code, password);
         
         writer.print(JSONObject.toJSON(result));

@@ -1,8 +1,8 @@
 package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Customer;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.CustomerDO;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.util.CommonUtils;
 import com.google.gson.Gson;
 import org.apache.http.client.methods.HttpPost;
@@ -25,13 +25,13 @@ public class InitServlet extends HttpServlet {
     public void init() {
         // 将可能用到的包都在Tomcat运行时加载运行一次
         Connection conn = new com.cashsale.conn.Conn().getCon();
-        Customer c = new Gson().fromJson("{ \"username\":\"\",\"password\":\"\"}",Customer.class);
+        CustomerDO c = new Gson().fromJson("{ \"username\":\"\",\"password\":\"\"}", CustomerDO.class);
         try {
             CommonUtils.createJWT("",1);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        JSONObject.toJSON(new Result<String>(0, null, ""));
+        JSONObject.toJSON(new ResultDTO<String>(0, null, ""));
         CloseableHttpClient client = null;
         HttpClients.createDefault();
         HttpPost post = new HttpPost();

@@ -1,6 +1,6 @@
 package com.cashsale.dao;
 
-import com.cashsale.bean.Product;
+import com.cashsale.bean.ProductDO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class ListProductDAO {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
-    public List<Product> listProduct(String title, int offset) {
+    public List<ProductDO> listProduct(String title, int offset) {
         try {
             pstmt = conn.prepareStatement("SELECT * FROM product_info WHERE title LIKE ? LIMIT ?,8");
             pstmt.setString(1, title);
@@ -31,7 +31,7 @@ public class ListProductDAO {
 
             // 用于存放每一件商品的信息
             List<Map<String, Object>> list = new ArrayList<>();
-            List<Product> result = new ArrayList<>();
+            List<ProductDO> result = new ArrayList<>();
 
             while (rs.next()) {
                 // 存放列名和对应值
@@ -48,7 +48,7 @@ public class ListProductDAO {
             }
             if (list != null) {
                 for (Map<String, Object> map : list) {
-                    Product p = new Product(map);
+                    ProductDO p = new ProductDO(map);
                     result.add(p);
                 }
             }

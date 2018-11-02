@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.ScreenService;
 
 /**
@@ -54,7 +54,7 @@ public class ScreenByLabelServlet extends HttpServlet{
 	    	query += "'";
 	    }
 	    
-	    Result<Object> result = new ScreenService().screen(query, page);
+	    ResultDTO<Object> result = new ScreenService().screen(query, page);
 	    writer.println(JSONObject.toJSON(result));
 	   
         //System.out.println(query);
@@ -67,11 +67,11 @@ public class ScreenByLabelServlet extends HttpServlet{
         
         if( code == 115 )
         {
-        	writer.println(JSONObject.toJSON(new Result<Object>(115,null,"查询失败！")));
+        	writer.println(JSONObject.toJSON(new ResultDTO<Object>(115,null,"查询失败！")));
         }
         else if(queryResult == null || queryResult.equals("") || queryResult.equals("[]"))
         {
-        	writer.println(JSONObject.toJSON(new Result<Object>(116,null,"没有更多数据了……")));
+        	writer.println(JSONObject.toJSON(new ResultDTO<Object>(116,null,"没有更多数据了……")));
         }
         else
         {

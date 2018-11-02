@@ -1,6 +1,6 @@
 package com.cashsale.service;
 
-import com.cashsale.bean.Result;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.UserLoginDAO;
 import com.cashsale.util.SendPostUtil;
 import org.apache.http.NameValuePair;
@@ -16,18 +16,18 @@ public class UserService {
      * 判断登录成功与否，成功返回带token的Result
      * @param userName
      * @param password
-     * @return Result<String>
+     * @return ResultDTO<String>
      */
-    public Result<String> userLogin(String userName, String password) {
+    public ResultDTO<String> userLogin(String userName, String password) {
         String token = new UserLoginDAO().isLogin(userName,password);
         if (!token.equals("")) {
-            return new Result<String>(105, token, "登录成功");
+            return new ResultDTO<String>(105, token, "登录成功");
         } else {
-            return new Result<String>(106, null, "登录失败,用户名或密码错误");
+            return new ResultDTO<String>(106, null, "登录失败,用户名或密码错误");
         }
     }
 
-    public Result<String> userComfirm(String encoded) {
+    public ResultDTO<String> userComfirm(String encoded) {
         // 教务系统登录请求链接
         String url = "http://jwxt.gduf.edu.cn/jsxsd/xk/LoginToXk";
         Object[] params = new Object[]{"encoded"};
@@ -40,13 +40,13 @@ public class UserService {
             e.printStackTrace();
         }
         if (a == 302) {
-            return new Result<String>(121, null,"认证成功");
+            return new ResultDTO<String>(121, null,"认证成功");
         }
         else if (a == 200) {
-            return new Result<>(122, null,"认证失败");
+            return new ResultDTO<>(122, null,"认证失败");
         }
         else {
-            return new Result<>(123, null,"认证失败，系统异常");
+            return new ResultDTO<>(123, null,"认证失败，系统异常");
         }
     }
 }

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.ActiveService;
 import com.cashsale.util.RSAUtil;
 
@@ -61,11 +61,11 @@ public class ActiveServlet extends HttpServlet{
         catch(Exception e )
         {
         	System.err.println("解密失败！");
-        	//writer.println(JSONObject.toJSON(new Result<String>(114, null, "解密失败！")));
+        	//writer.println(JSONObject.toJSON(new ResultDTO<String>(114, null, "解密失败！")));
         	e.printStackTrace();
         }
         
-        Result<String> result = new ActiveService().UserActive(code, currentTime, username, password);
+        ResultDTO<String> result = new ActiveService().UserActive(code, currentTime, username, password);
         writer.print(JSONObject.toJSON(result));
 		
         /*try {
@@ -104,22 +104,22 @@ public class ActiveServlet extends HttpServlet{
 					pstmt2 = conn.prepareStatement("DELETE FROM user_data WHERE user_name = ?");
 					pstmt2.setString(1, username);
 					pstmt2.execute();
-					writer.println(JSONObject.toJSON(new Result<String>(113, null, "验证码已过期，请重新注册！")));
+					writer.println(JSONObject.toJSON(new ResultDTO<String>(113, null, "验证码已过期，请重新注册！")));
 				}
 				else
 				{
-					writer.println(JSONObject.toJSON(new Result<String>(101, null, "激活成功！")));
+					writer.println(JSONObject.toJSON(new ResultDTO<String>(101, null, "激活成功！")));
 				}
 			}
 			else
 			{
-				writer.println(JSONObject.toJSON(new Result<String>(111, null, "验证码有误，请重新激活！")));
+				writer.println(JSONObject.toJSON(new ResultDTO<String>(111, null, "验证码有误，请重新激活！")));
 			}
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			writer.println(JSONObject.toJSON(new Result<String>(112, null, "验证失败！")));
+			writer.println(JSONObject.toJSON(new ResultDTO<String>(112, null, "验证失败！")));
 		}*/
 	}
 }

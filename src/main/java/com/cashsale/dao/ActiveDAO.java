@@ -56,7 +56,7 @@ public class ActiveDAO {
 					pstmt2 = conn.prepareStatement("DELETE FROM user_data WHERE user_name = ?");
 					pstmt2.setString(1, username);
 					pstmt2.execute();
-					//writer.println(JSONObject.toJSON(new Result<String>(113, null, "验证码已过期，请重新注册！")));
+					//writer.println(JSONObject.toJSON(new ResultDTO<String>(113, null, "验证码已过期，请重新注册！")));
 					return CODE_IS_EXPIRE;
 				}
 				else
@@ -69,20 +69,20 @@ public class ActiveDAO {
 					pstmt2.setString(1, username);
 					pstmt2.setString(2,password);
 					pstmt2.execute();
-					//writer.println(JSONObject.toJSON(new Result<String>(101, null, "激活成功！")));
+					//writer.println(JSONObject.toJSON(new ResultDTO<String>(101, null, "激活成功！")));
 					return ACTIVE_SUCCESSED;
 				}
 			}
 			else
 			{
-				//writer.println(JSONObject.toJSON(new Result<String>(111, null, "验证码有误，请重新激活！")));
+				//writer.println(JSONObject.toJSON(new ResultDTO<String>(111, null, "验证码有误，请重新激活！")));
 				return CODE_IS_WRONG;
 			}
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			//writer.println(JSONObject.toJSON(new Result<String>(112, null, "验证失败！")));
+			//writer.println(JSONObject.toJSON(new ResultDTO<String>(112, null, "验证失败！")));
 			return VERTIFY_FAILED;
 		}
 	}

@@ -5,7 +5,7 @@ package com.cashsale.bean;
  * 2018年10月16日
  * 用户的个人信息
  */
-public class CustomerData {
+public class CustomerInfoDO {
 	/**
 	 * 用户名
 	 * */
@@ -51,7 +51,7 @@ public class CustomerData {
 	 */
 	private String code;
 	
-	public CustomerData(String username) {
+	public CustomerInfoDO(String username) {
 		super();
 		this.username = username;
 	}

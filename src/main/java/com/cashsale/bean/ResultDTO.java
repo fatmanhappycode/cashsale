@@ -5,7 +5,7 @@ package com.cashsale.bean;
  * @date 2018/10/11 - 22:27
  * 存放返回的结果信息，包括状态码等
  */
-public class Result<T> {
+public class ResultDTO<T> {
     /**
      * 返回状态码
      */
@@ -19,11 +19,11 @@ public class Result<T> {
      */
     private String msg;
 
-    public Result() {
+    public ResultDTO() {
         super();
     }
 
-    public Result(int code, T data, String msg) {
+    public ResultDTO(int code, T data, String msg) {
 
         this.code = code;
         this.data = data;
@@ -56,7 +56,7 @@ public class Result<T> {
 
     @Override
     public String toString() {
-        return "Result [code=" + code + ", data=" + data + ", msg=" + msg + "]";
+        return "ResultDTO [code=" + code + ", data=" + data + ", msg=" + msg + "]";
     }
 }
 

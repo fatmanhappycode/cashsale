@@ -1,8 +1,8 @@
 package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Customer;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.CustomerDO;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.UserService;
 import com.google.gson.Gson;
 
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
 
 //        String user = req.getParameter("user");
-//        Customer c = new Gson().fromJson(user,Customer.class);
+//        CustomerDO c = new Gson().fromJson(user,CustomerDO.class);
 //        String userName = c.getUsername();
 //        String password = c.getPassword();
 
@@ -41,14 +41,14 @@ public class LoginServlet extends HttpServlet {
         while((str = br.readLine()) != null){
             user += str;
         }
-        Customer c = new Gson().fromJson(user,Customer.class);
+        CustomerDO c = new Gson().fromJson(user, CustomerDO.class);
 
         String userName = c.getUsername();
         String password = c.getPassword();
 
         PrintWriter writer = resp.getWriter();
 
-        Result<String> result = new UserService().userLogin(userName,password);
+        ResultDTO<String> result = new UserService().userLogin(userName,password);
         writer.print(JSONObject.toJSON(result));
     }
 }

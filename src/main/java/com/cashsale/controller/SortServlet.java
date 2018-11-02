@@ -1,12 +1,11 @@
 package com.cashsale.controler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Pager;
-import com.cashsale.bean.Product;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.PagerDTO;
+import com.cashsale.bean.ProductDO;
+import com.cashsale.bean.ResultDTO;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,7 +66,7 @@ public class SortServlet extends HttpServlet {
 
             // 用于存放每一件商品的信息
             List<Map<String, Object>> list = new ArrayList<>();
-            List<Product> result = new ArrayList<>();
+            List<ProductDO> result = new ArrayList<>();
 
             while (rs.next()) {
                 // 存放列名和对应值
@@ -84,14 +83,14 @@ public class SortServlet extends HttpServlet {
             }
             if (list != null) {
                 for (Map<String, Object> map : list) {
-                    Product p = new Product(map);
+                    ProductDO p = new ProductDO(map);
                     result.add(p);
                 }
             }
-            Pager<Product> product = new Pager<>(currentPage+1,result);
-            writer.print(JSONObject.toJSON(new Result<>(107, product,"查询成功")));
+            PagerDTO<ProductDO> product = new PagerDTO<>(currentPage+1,result);
+            writer.print(JSONObject.toJSON(new ResultDTO<>(107, product,"查询成功")));
         } catch (Exception e) {
-            writer.print(JSONObject.toJSON(new Result<String>(108,null,"查询失败")));
+            writer.print(JSONObject.toJSON(new ResultDTO<String>(108,null,"查询失败")));
             e.printStackTrace();
         }
     }

@@ -5,7 +5,7 @@ package com.cashsale.bean;
  * @date 2018/10/10 - 22:39
  * 存放用户账号密码
  */
-public class Customer {
+public class CustomerDO {
     /**
      * 用户名
      */

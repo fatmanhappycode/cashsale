@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author 肥宅快乐码
  * @date 2018/10/29 - 23:54
  */
-public class Image {
+public class ImageDTO {
     private int errno;
     private ArrayList<String> data;
 

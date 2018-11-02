@@ -1,9 +1,8 @@
 package com.cashsale.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Pager;
-import com.cashsale.bean.Product;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.PagerDTO;
+import com.cashsale.bean.ProductDO;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ListProductDAO;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -15,7 +14,7 @@ import java.util.List;
  * @date 2018/11/2 - 11:27
  */
 public class SearchService {
-    public Result<Pager> searchByTitle(String searchByTitle) {
+    public ResultDTO<PagerDTO> searchByTitle(String searchByTitle) {
         // 构建jsonObject对象后解析参数
         JsonObject jsonObject = (JsonObject) new JsonParser().parse(searchByTitle);
         String title = jsonObject.get("title").getAsString();
@@ -24,8 +23,8 @@ public class SearchService {
         title = "%" + title + "%";
         // 根据页数计算出从第几条开始查询的offset
         int offset = (currentPage - 1) * 8;
-        List<Product> products = new ListProductDAO().listProduct(title, offset);
-        Pager<Product> product = new Pager<>(currentPage+1,products);
-        return  new Result<>(107, product,"查询成功");
+        List<ProductDO> products = new ListProductDAO().listProduct(title, offset);
+        PagerDTO<ProductDO> product = new PagerDTO<>(currentPage+1,products);
+        return  new ResultDTO<>(107, product,"查询成功");
     }
 }
