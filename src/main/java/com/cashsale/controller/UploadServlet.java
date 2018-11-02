@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+/*package com.cashsale.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,11 +20,11 @@ import com.cashsale.bean.Upload;
 import com.cashsale.dao.UploadDAO;
 import com.google.gson.Gson;
 
-/**
+*//**
  * 上传图片
  * @author Sylvia
  * 2018年10月14日
- */
+ *//*
 @WebServlet("/upload")
 public class UploadServlet extends HttpServlet{
 
@@ -96,16 +96,16 @@ public class UploadServlet extends HttpServlet{
 			//writer.print(JSONObject.toJSON(result));
 			
 			//System.out.println(imgUrl);
-			/*PreparedStatement pstmt = conn.prepareStatement("UPDATE product_info SET image_url = ? WHERE "
+			PreparedStatement pstmt = conn.prepareStatement("UPDATE product_info SET image_url = ? WHERE "
 					+ "product_id = ?");
 			pstmt.setString(1, imgUrl);
 			pstmt.setString(2, productId);
 			pstmt.execute();
-			writer.println(JSONObject.toJSON(new Upload(returnUri, productId)));*/
+			writer.println(JSONObject.toJSON(new Upload(returnUri, productId)));
 		}
 		catch (Exception e) {
 			writer.println(JSONObject.toJSON(new Result<Object>(104, null, "图片上传失败!")));
 		}
 	}
 	
-}
+}*/

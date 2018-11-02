@@ -1,12 +1,12 @@
-package com.cashsale.dao;
+/*package com.cashsale.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class UploadDAO {
-	/** 上传成功的标志 */
+	*//** 上传成功的标志 *//*
 	private static final int UPLOAD_SUCCESSED = 1;
-	/** 上传失败的code */
+	*//** 上传失败的code *//*
 	private static final int UPLOAD_FAILED = 104;
 	
 	public int upload(String imgUrl, String productId) {
@@ -29,3 +29,4 @@ public class UploadDAO {
 		}
 	}
 }
+*/

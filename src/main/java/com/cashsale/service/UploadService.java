@@ -1,4 +1,4 @@
-package com.cashsale.service;
+/*package com.cashsale.service;
 
 import com.cashsale.dao.UploadDAO;
 
@@ -9,3 +9,4 @@ public class UploadService {
         return code;
     }
 }
+*/
