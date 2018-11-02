@@ -1,5 +1,6 @@
 package com.cashsale.util;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -48,5 +49,15 @@ public class TimeUtil {
 			return true;
 		}
 
+	}
+	
+	/**
+	 * 获取当前系统时间
+	 * @return
+	 */
+	public String getCurrentTime() {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		String date = df.format(System.currentTimeMillis());             //获取当前系统时间
+		return date;
 	}
 }

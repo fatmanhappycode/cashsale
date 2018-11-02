@@ -38,7 +38,6 @@ public class ActiveServlet extends HttpServlet{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String currentTime = request.getParameter("currentTime");
-		System.out.println(username);
 		
 		// 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
@@ -49,7 +48,7 @@ public class ActiveServlet extends HttpServlet{
         
         //获取密钥
         String privateKey = (String) this.getServletContext().getAttribute(username);
-        System.out.println("密钥:"+privateKey);
+        //System.out.println("密钥:"+privateKey);
         try
         {
         	//解密
