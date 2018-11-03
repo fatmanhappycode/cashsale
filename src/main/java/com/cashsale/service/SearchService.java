@@ -4,8 +4,6 @@ import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ListProductDAO;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import java.util.List;
 
@@ -27,6 +25,6 @@ public class SearchService {
         int offset = (page - 1) * 8;
         List<ProductDO> products = new ListProductDAO().listProduct(title, offset);
         PagerDTO<ProductDO> product = new PagerDTO<>(page+1,products);
-        return  new ResultDTO<>(107, product,"查询成功");
+        return  new ResultDTO<PagerDTO>(107, product,"查询成功");
     }
 }

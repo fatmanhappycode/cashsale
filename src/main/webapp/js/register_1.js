@@ -1,6 +1,5 @@
 
-$(".register").one("click",
-function register() {
+$("#register").one("click", function register() {
 	//获取节点、值
 	sp=document.getElementById("passwordItem1");
 	var username = $("#username").val();

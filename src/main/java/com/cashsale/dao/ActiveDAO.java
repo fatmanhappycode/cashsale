@@ -18,12 +18,11 @@ public class ActiveDAO {
 	private static final int VERTIFY_FAILED = 112;
 	
 	public int active(String code, String currentTime, String username, String password) {
-		
 		try {
 			Connection conn = new com.cashsale.conn.Conn().getCon();
 			//System.out.println(code);
 			//根据激活码查询用户
-			PreparedStatement pstmt = conn.prepareStatement("SELECT user_name FROM user_data WHERE code = ?");
+			PreparedStatement pstmt = conn.prepareStatement("SELECT user_name FROM register_user WHERE code = ?");
 			pstmt.setString(1, code);
 			ResultSet result = pstmt.executeQuery();
 			//根据用户名查询密码
@@ -41,46 +40,42 @@ public class ActiveDAO {
 			//若根据验证码找得到该用户，且密码正确，时间未超过五分钟，则验证通过
 			if( result2.next() || result2.getString(1).equals(password) )
 			{
-				pstmt = conn.prepareStatement("UPDATE user_data SET code = ?,state = ? 	WHERE user_name=?");
-				pstmt.setString(1, null);
-				pstmt.setBoolean(2, true);
-				pstmt.setString(3, username);
-				pstmt.execute();
-				
 				//判断验证时间是否超过五分钟，若超过则删除该用户的注册信息
-				if( !TimeUtil.emailTime(currentTime) )
+				if( TimeUtil.emailTime(currentTime) )
 				{
-					pstmt = conn.prepareStatement("DELETE FROM register_user WHERE user_name = ?");
-					pstmt.setString(1, username);
-					pstmt.execute();
-					pstmt2 = conn.prepareStatement("DELETE FROM user_data WHERE user_name = ?");
+					pstmt = conn.prepareStatement("SELECT user_name FROM register_user WHERE code = ?");
+					pstmt.setString(1, code);
+					result = pstmt.executeQuery();
+
+					pstmt2 = conn.prepareStatement("INSERT INTO user_data(user_name, credit, nick_name, email) VALUES (?,600,?,?)");
+					PreparedStatement pstmt3 = conn.prepareStatement("INSERT INTO all_user(user_name,pass_word) VALUES (?,?)");
+					if (result.next()) {
+						pstmt2.setString(1,result.getString(1));
+						pstmt2.setString(2,result.getString(3));
+						pstmt2.setString(3,result.getString(4));
+						pstmt3.setString(1,result.getString(1));
+						pstmt3.setString(2,result.getString(2));
+						pstmt2.executeUpdate();
+						pstmt3.executeUpdate();
+					}
+
+					pstmt2 = conn.prepareStatement("DELETE FROM register_user WHERE user_name = ?");
 					pstmt2.setString(1, username);
 					pstmt2.execute();
-					//writer.println(JSONObject.toJSON(new ResultDTO<String>(113, null, "验证码已过期，请重新注册！")));
-					return CODE_IS_EXPIRE;
-				}
-				else
+					return ACTIVE_SUCCESSED;
+				} else
 				{
 					// 删除注册表的信息
 					pstmt = conn.prepareStatement("DELETE FROM register_user WHERE user_name = ?");
 					pstmt.setString(1, username);
 					pstmt.execute();
-					pstmt2 = conn.prepareStatement("INSERT INTO all_user(user_name,pass_word) VALUES (?,?)");
-					pstmt2.setString(1, username);
-					pstmt2.setString(2,password);
-					pstmt2.execute();
-					//writer.println(JSONObject.toJSON(new ResultDTO<String>(101, null, "激活成功！")));
-					return ACTIVE_SUCCESSED;
+					return CODE_IS_EXPIRE;
 				}
-			}
-			else
-			{
+			} else {
 				//writer.println(JSONObject.toJSON(new ResultDTO<String>(111, null, "验证码有误，请重新激活！")));
 				return CODE_IS_WRONG;
 			}
-		}
-		catch(Exception e)
-		{
+		} catch(Exception e) {
 			e.printStackTrace();
 			//writer.println(JSONObject.toJSON(new ResultDTO<String>(112, null, "验证失败！")));
 			return VERTIFY_FAILED;

@@ -44,24 +44,21 @@ public class RegisterDAO {
             }
             else{
             	//将用户信息存进数据库中
-            	pstmt = conn.prepareStatement("INSERT INTO user_data(user_name, nick_name,email,code) VALUES(?,?,?,?)");
-            	pstmt.setString(1, username);
-            	pstmt.setString(2, nickname);
-            	pstmt.setString(3, email);
-            	pstmt.setString(4, code);
-            	
-            	pstmt2 = conn.prepareStatement("INSERT INTO register_user VALUES(?,?)");
+            	pstmt2 = conn.prepareStatement("INSERT INTO register_user(user_name,pass_word,nick_name,email,code) VALUES(?,?,?,?,?)");
             	pstmt2.setString(1, username);
             	pstmt2.setString(2, password);
-            	
-            	//获取当前时间
+				pstmt2.setString(3, nickname);
+				pstmt2.setString(4, email);
+				pstmt2.setString(5, code);
+
+				//获取当前时间
             	String currentTime = TimeUtil.getTime();
                 
             	//发送邮件
             	MailUtil.sendMail(email, encodedCode, username, encodedPass, nickname, currentTime);
             	
             	pstmt.execute();
-            	pstmt2.execute();
+            	pstmt2.executeUpdate();
             	return ACTIVATION_TIP;
             	//writer.print(JSONObject.toJSON(new ResultDTO<String>(109, null, "请到邮箱进行账号激活！")));
             }
