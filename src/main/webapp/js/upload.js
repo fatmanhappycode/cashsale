@@ -6,6 +6,7 @@ function f() {
 	var price = $("#price").val();
 	var place = $("#place").val();
 	var and = $("#and").val();
+	var image = $("#image").val();
 	//alert(commodity+"\n"+price +"\n"+ place +"\n"+ and);
 	//是否自提myCheckbox0
 	//是否可议价myCheckbox1
@@ -90,7 +91,7 @@ function f() {
 	}else{
         document.getElementById("passwordItem");
 		var token=window.location.search.split('=')[1];
-		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":and};
+		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":editor.txt.html(), "imageUrl":image};
 		$.ajax({
 			url:"/publish?token="+token,
 			type:"post",

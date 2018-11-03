@@ -19,7 +19,7 @@ import com.cashsale.util.CommonUtils;
  * @author 肥宅快乐码
  * @date 2018/10/11 - 22:29
  */
-@WebFilter(urlPatterns = {"/public"})
+@WebFilter(urlPatterns = {})
 public class UserFilter implements Filter {
 
     /**
@@ -39,7 +39,6 @@ public class UserFilter implements Filter {
         /*
          * 设置响应的编码
          */
-        long startTime = System.currentTimeMillis();
         response.setContentType("text/json;charset=UTF-8");
         response.setCharacterEncoding("utf-8");
         //获取请求头token
@@ -54,8 +53,7 @@ public class UserFilter implements Filter {
             writer.flush();
             writer.close();
         }
-        long endTime = System.currentTimeMillis();
-        System.out.println("程序运行时间："+(endTime-startTime)+"ms");
+
         //允许请求通过
         chain.doFilter(request, response);
     }

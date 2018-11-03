@@ -4,7 +4,7 @@ var filter = {
     "gif": "R0lGOD",
     "png": "iVBORw"
 };
-function f() {
+function fU() {
     $.ajax({
         url: "/UploadImageServlet",
         type: 'POST',
@@ -12,9 +12,9 @@ function f() {
         data: new FormData($("#uploadForm")[0]),
         processData: false,
         contentType: false,
+        dataType:"json",
         success: function (result) {
-            result.data;
-
+            document.getElementById('image').value = result.data;
         },
         error: function (err) {
         }

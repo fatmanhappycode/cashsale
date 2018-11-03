@@ -36,6 +36,7 @@ public class PublishServlet extends HttpServlet {
         while ((str = br.readLine()) != null) {
             product += str;
         }
+        System.out.println(product);
         ProductDO p = new Gson().fromJson(product, ProductDO.class);
 
         String title = p.getTitle();

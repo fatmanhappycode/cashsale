@@ -39,7 +39,7 @@ function loadXMLDoc()
 		success:function(result,testStatus)
 		{
 			currentPage=result.currentPage;
-			data=result.data;
+			data=result.data.data;
 			if(result.code== "107"){
 				alert("查询！");
 				innerGoods(data);
