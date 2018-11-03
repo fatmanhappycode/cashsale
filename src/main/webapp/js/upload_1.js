@@ -13,6 +13,8 @@ function f() {
         processData: false,
         contentType: false,
         success: function (result) {
+            result.data;
+
         },
         error: function (err) {
         }

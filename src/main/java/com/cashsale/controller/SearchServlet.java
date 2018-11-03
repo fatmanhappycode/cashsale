@@ -1,4 +1,4 @@
-package com.cashsale.controler;
+package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.PagerDTO;
@@ -26,8 +26,9 @@ public class SearchServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
 
         // 获取参数
-        String searchByTitle = req.getParameter("searchByTitle");
-        ResultDTO<PagerDTO> result = new SearchService().searchByTitle(searchByTitle);
+        String title = req.getParameter("title");
+        String currentPage = req.getParameter("currentPage");
+        ResultDTO<PagerDTO> result = new SearchService().searchByTitle(title, currentPage);
 
         PrintWriter writer = resp.getWriter();
         writer.print(JSONObject.toJSON(result));

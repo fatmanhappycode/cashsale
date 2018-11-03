@@ -1,5 +1,5 @@
 
-
+$(".register").one("click",
 function register() {
 	//获取节点、值
 	sp=document.getElementById("passwordItem1");
@@ -48,4 +48,4 @@ function register() {
 			}
 		});
 	}
-}
+});
