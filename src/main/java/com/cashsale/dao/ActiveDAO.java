@@ -43,16 +43,16 @@ public class ActiveDAO {
 				//判断验证时间是否超过五分钟，若超过则删除该用户的注册信息
 				if( TimeUtil.emailTime(currentTime) )
 				{
-					pstmt = conn.prepareStatement("SELECT user_name FROM register_user WHERE code = ?");
+					pstmt = conn.prepareStatement("SELECT * FROM register_user WHERE code = ?");
 					pstmt.setString(1, code);
 					result = pstmt.executeQuery();
 
 					pstmt2 = conn.prepareStatement("INSERT INTO user_data(user_name, credit, nick_name, email) VALUES (?,600,?,?)");
 					PreparedStatement pstmt3 = conn.prepareStatement("INSERT INTO all_user(user_name,pass_word) VALUES (?,?)");
 					if (result.next()) {
-						pstmt2.setString(1,result.getString(1));
-						pstmt2.setString(2,result.getString(3));
-						pstmt2.setString(3,result.getString(4));
+						pstmt2.setString(1,result.getString("user_name"));
+						pstmt2.setString(2,result.getString("nick_name"));
+						pstmt2.setString(3,result.getString("email"));
 						pstmt3.setString(1,result.getString(1));
 						pstmt3.setString(2,result.getString(2));
 						pstmt2.executeUpdate();
