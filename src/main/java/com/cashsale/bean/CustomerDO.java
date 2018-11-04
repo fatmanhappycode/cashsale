@@ -4,7 +4,7 @@ package com.cashsale.bean;
  * @author 肥宅快乐码
  * @date 2018/10/10 - 22:39
  */
-public class Customer {
+public class CustomerDO {
     private String username;
     private String password;
 

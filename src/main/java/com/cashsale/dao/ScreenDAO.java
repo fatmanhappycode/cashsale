@@ -10,6 +10,10 @@ import java.util.Map;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+/**
+ * @author Sylvia
+ * 2018年11月3日
+ */
 public class ScreenDAO {
 	
 	/** 每页显示的数据数目 */

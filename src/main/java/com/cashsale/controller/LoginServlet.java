@@ -1,8 +1,8 @@
 package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Customer;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.CustomerDO;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.filter.CommonUtils;
 import com.google.gson.Gson;
 
@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         while((str = br.readLine()) != null){
             user += str;
         }
-        Customer c = new Gson().fromJson(user,Customer.class);
+        CustomerDO c = new Gson().fromJson(user,CustomerDO.class);
 
         String userName = c.getUsername();
         String password = c.getPassword();
@@ -58,9 +58,9 @@ public class LoginServlet extends HttpServlet {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 String token = CommonUtils.createJWT(userName,30*60*1000);
-                writer.print(JSONObject.toJSON(new Result<String>(105, token, "登录成功")));
+                writer.print(JSONObject.toJSON(new ResultDTO<String>(105, token, "登录成功")));
             } else {
-                writer.print(JSONObject.toJSON(new Result<String>(106, null, "登录失败,用户名或密码错误")));
+                writer.print(JSONObject.toJSON(new ResultDTO<String>(106, null, "登录失败,用户名或密码错误")));
             }
         } catch (Exception e) {
             e.printStackTrace();

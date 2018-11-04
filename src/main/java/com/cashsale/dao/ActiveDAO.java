@@ -6,6 +6,10 @@ import java.sql.ResultSet;
 
 import com.cashsale.util.TimeUtil;
 
+/**
+ * @author Sylvia
+ * 2018年11月3日
+ */
 public class ActiveDAO {
 
 	/** 验证码过期的code */

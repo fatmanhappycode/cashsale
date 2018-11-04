@@ -9,8 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.cashsale.bean.Message;
+import com.cashsale.bean.MessageDTO;
 
+/**
+ * @author Sylvia
+ * 2018年11月3日
+ */
 public class SocketDAO {
 	
 	/** 暂无更多消息的code */
@@ -21,22 +25,29 @@ public class SocketDAO {
 	private static final int QUERY_SUCCESSED = 200;
 	
 	/** 判断是否存在该表，不存在则创建 
-	 * @param tableName
+	 * @param sender
+	 * @param receiver
+	 * @return tableName
+	 * 			返回表名
 	 */
-	public void creatTable(String tableName) {
+	public String createTable(String sender, String receiver) {
 		Connection conn = new com.cashsale.conn.Conn().getCon();
 		ResultSet rs = null;
 		Statement stmt = null;
+		String tableName = "";
 		try {
-			stmt = conn.createStatement();
+			stmt = conn.createStatement();tableName = sender + "_and_" + receiver;
 			rs = conn.getMetaData().getTables(null, null, tableName, null);
-	        if (rs.next()) {
-	             
-	        }
-	        else {
+	    
+	        if( !rs.next() ) {
+	        	tableName = receiver + "_and_" + sender;
+	        	rs = conn.getMetaData().getTables(null, null, tableName, null);
+	        	
+	        	if( !rs.next()) {
 	        	stmt.execute("CREATE TABLE "+ tableName + "(sender VARCHAR(20) NOT NULL PRIMARY KEY, receiver "
 	        		+ "VARCHAR(20) NOT NULL, content VARCHAR(255), date CHAR(20) NOT NULL, img_url VARCHAR(255),"
-	        		+ " is_read BOOLEAN DEFAULT false, is_offline BOOLEAN DEFAULT true)");
+	        		+ " is_read BOOLEAN DEFAULT false)");
+	        	}
 	        }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -44,6 +55,7 @@ public class SocketDAO {
 			System.err.println("数据库创建失败！");
 		}
 		new com.cashsale.conn.Conn().closeConn(rs, stmt, conn);
+		return tableName;
 	}
 	
 	/**
@@ -52,11 +64,11 @@ public class SocketDAO {
 	 * 			谁和谁的聊天记录
 	 * @return
 	 */
-	public Map<String, Object> getOfflineMsg(String tableName, String strPage) {
-		ArrayList<Message> array = new ArrayList<Message>();
+/*	public Map<String, Object> getOfflineMsg(String tableName, String strPage) {
+		ArrayList<MessageDTO> array = new ArrayList<MessageDTO>();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("code", NO_MORE_MESSAGE);
 		Connection conn = new com.cashsale.conn.Conn().getCon();
+		map.put("code", NO_MORE_MESSAGE);
 		PreparedStatement pstmt = null;
 		ResultSet result = null;
 		int page = 1 ;
@@ -69,12 +81,14 @@ public class SocketDAO {
 					+((page-1)*MESSAGE_NUMBER)+","+MESSAGE_NUMBER;;
 			pstmt = conn.prepareStatement(query);
 			result = pstmt.executeQuery();
+			String sender = "";
 			while(result.next()) {
-				String sender = result.getString("sender");
+				sender = result.getString("sender");
+				String receiver = result.getString("receiver");
 				String content = result.getString("content");
 				String date = result.getString("date");
 				String imgUrl = result.getString("img_url");
-				Message msg = new Message(sender,null,content,date,imgUrl);
+				MessageDTO msg = new MessageDTO(sender,receiver,content,date,imgUrl);
 				array.add(msg);
 			}
 			map.put("messageRow", array.size());
@@ -85,7 +99,7 @@ public class SocketDAO {
 		}
 		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
 		return map;
-	}
+	}*/
 	
 	/** 获取历史记录
 	 * @param tableName
@@ -94,9 +108,10 @@ public class SocketDAO {
 	 */
 	public Map<String, Object> getMessage(String tableName, String strPage){
 		Map<String, Object> map = new HashMap<String, Object>();
-		ArrayList<Message> array = new ArrayList<Message>();
+		ArrayList<MessageDTO> array = new ArrayList<MessageDTO>();
 		PreparedStatement pstmt = null;
 		ResultSet result = null;
+		int noRead = 0;
 		int page = 1 ;
 		map.put("code", NO_MORE_MESSAGE);
 		Connection conn = new com.cashsale.conn.Conn().getCon();
@@ -108,15 +123,26 @@ public class SocketDAO {
 			String query = "SELECT * FROM " + tableName + "LIMIT "+((page-1)*MESSAGE_NUMBER)+","+MESSAGE_NUMBER;
 			pstmt = conn.prepareStatement(query);
 			result = pstmt.executeQuery();
+			String sender = "";
 			while(result.next()) {
-				String sender = result.getString("sender");
+				sender = result.getString("sender");
+				String receiver = result.getString("receiver");
 				String content = result.getString("content");
 				String date = result.getString("date");
 				String imgUrl = result.getString("img_url");
-				Message msg = new Message(sender,null,content,date,imgUrl);
+				MessageDTO msg = new MessageDTO(sender,receiver,content,date,imgUrl);
 				array.add(msg);
 			}
-			map.put("message", array);
+			//获取未读消息的数目
+			query = "SELECT COUNT(*) FROME " + tableName + " WHERE is_read=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setBoolean(1, false);
+			result = pstmt.executeQuery();
+			if(result.next()) {
+				noRead = result.getInt(1);
+			}
+			map.put("noRead", noRead);
+			map.put(sender, array);
 			map.put("code",QUERY_SUCCESSED);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -129,15 +155,15 @@ public class SocketDAO {
 	 * @param message
 	 * @param isOffline
 	 */
-	public void saveMessage(String tableName, Message message,boolean isOffline) {
+	public void saveMessage(MessageDTO message,boolean isOffline) {
 		Connection conn = new com.cashsale.conn.Conn().getCon();
-		String sender = message.getSender();
 		String receiver = message.getReceiver();
-		String date = message.getDate();
+		String sender = message.getSender();
 		String imgUrl = message.getImgUrl();
+		String date = message.getDate();
+		String tableName = createTable(sender, receiver);
 		PreparedStatement ptmt = null;
 		ResultSet rs = null;
-		creatTable(tableName);
 		try {
 			ptmt = conn.prepareStatement("INSERT INTO "+tableName+"(sender,receiver,date,imgurl,"
 				+ "is_offline) VALUES(?,?,?,?,?)");
@@ -152,5 +178,35 @@ public class SocketDAO {
 			System.err.println("数据保存失败！");
 		}
 		new com.cashsale.conn.Conn().closeConn(rs, ptmt, conn);
+	}
+	
+	/** 获取与该用户相关的历史记录的表名
+	 * @param name
+	 * 			用户名
+	 * @return
+	 */
+	public ArrayList<String> getTable(String name){
+		Connection conn = new com.cashsale.conn.Conn().getCon();
+		ArrayList<String> array = new ArrayList<String>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "SHOW tables";
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			//遍历数据库中的所有表名，并判断表名中是否包含name字段
+			while(rs.next()) {
+				String tableName = rs.getString(1);
+				int is = tableName.indexOf(name);
+				if(is != -1) {
+					array.add(tableName);
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.err.println("获取表名失败！");
+		}
+		return array;
 	}
 }

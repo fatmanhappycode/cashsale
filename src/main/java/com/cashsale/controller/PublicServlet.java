@@ -1,8 +1,8 @@
 package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Product;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.ProductDO;
+import com.cashsale.bean.ResultDTO;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -36,7 +36,7 @@ public class PublicServlet extends HttpServlet {
         while ((str = br.readLine()) != null) {
             product += str;
         }
-        Product p = new Gson().fromJson(product,Product.class);
+        ProductDO p = new Gson().fromJson(product,ProductDO.class);
 
         String title = p.getTitle();
         String label = p.getLabel();
@@ -59,9 +59,9 @@ public class PublicServlet extends HttpServlet {
             pstmt.setString(6,pdDescription);
             pstmt.setString(7,imageUrl);
             pstmt.executeUpdate();
-            writer.print(JSONObject.toJSON(new Result<String>(107,null,"发布成功")));
+            writer.print(JSONObject.toJSON(new ResultDTO<String>(107,null,"发布成功")));
         } catch (Exception e) {
-            writer.print(JSONObject.toJSON(new Result<String>(108,null,"发布失败")));
+            writer.print(JSONObject.toJSON(new ResultDTO<String>(108,null,"发布失败")));
             e.printStackTrace();
         }
     }

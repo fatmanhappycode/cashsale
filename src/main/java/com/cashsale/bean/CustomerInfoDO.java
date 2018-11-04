@@ -4,7 +4,7 @@ package com.cashsale.bean;
  * @author Sylvia
  * 2018年10月16日
  */
-public class CustomerData {
+public class CustomerInfoDO {
 	/**  用户名 */
 	private String username;
 	/** 信用值 */
@@ -28,7 +28,7 @@ public class CustomerData {
 	/** 验证码 */
 	private String code;
 	
-	public CustomerData(String username) {
+	public CustomerInfoDO(String username) {
 		super();
 		this.username = username;
 	}

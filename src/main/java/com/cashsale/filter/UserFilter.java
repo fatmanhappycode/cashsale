@@ -12,7 +12,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.Result;
+import com.cashsale.bean.ResultDTO;
 
 /**
  * @author 肥宅快乐码
@@ -48,7 +48,7 @@ public class UserFilter implements Filter {
         } catch (Exception e) {
             PrintWriter writer=response.getWriter();
             // 返回状态信息
-            writer.println(JSONObject.toJSON(new Result<Object>(1001, null, "请先登录")));
+            writer.println(JSONObject.toJSON(new ResultDTO<Object>(1001, null, "请先登录")));
             writer.flush();
             writer.close();
         }

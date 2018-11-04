@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import com.cashsale.util.MailUtil;
 import com.cashsale.util.TimeUtil;
 
+/**
+ * @author Sylvia
+ * 2018年11月3日
+ */
 public class RegisterDAO {
 	
 	/** 提示进行邮箱激活的code */
@@ -61,6 +65,9 @@ public class RegisterDAO {
             	pstmt2.setString(1, username);
             	pstmt2.setString(2, password);
             	
+            	String sql = "ALTER TABLE commodity_score ADD a"+username+" VARCHAR(10) DEFAULT 0";
+            	pstmt3 = conn.prepareStatement(sql);
+            	
             	//获取当前时间
             	String currentTime = TimeUtil.getTime();
                 
@@ -69,6 +76,7 @@ public class RegisterDAO {
             	
             	pstmt.execute();
             	pstmt2.execute();
+            	pstmt3.executeUpdate();
             	
             	closeConn();
             	return ACTIVATION_TIP;

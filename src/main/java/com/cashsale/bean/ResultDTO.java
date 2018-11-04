@@ -4,7 +4,7 @@ package com.cashsale.bean;
  * @author 肥宅快乐码
  * @date 2018/10/11 - 22:27
  */
-public class Result<T> {
+public class ResultDTO<T> {
     /**
      * 返回状态码
      */
@@ -18,11 +18,11 @@ public class Result<T> {
      */
     private String msg;
 
-    public Result() {
+    public ResultDTO() {
         super();
     }
 
-    public Result(int code, T data, String msg) {
+    public ResultDTO(int code, T data, String msg) {
 
         this.code = code;
         this.data = data;

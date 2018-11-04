@@ -4,7 +4,7 @@ package com.cashsale.bean;
  * @author 肥宅快乐码
  * @date 2018/10/17 - 22:52
  */
-public class Product {
+public class ProductDO {
     private String title;
     private String label;
     private int price;

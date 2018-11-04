@@ -1,6 +1,6 @@
 package com.cashsale.bean;
 
-public class Message {
+public class MessageDTO {
 	/** 消息发送者 */
 	private String sender;
 	
@@ -16,12 +16,12 @@ public class Message {
 	/** 发送的图片 */
 	private String imgUrl;
 
-	public Message() {
+	public MessageDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Message(String sender, String receiver, String content, String date, String imgUrl) {
+	public MessageDTO(String sender, String receiver, String content, String date, String imgUrl) {
 		super();
 		this.sender = sender;
 		this.receiver = receiver;
@@ -69,5 +69,4 @@ public class Message {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	
 }

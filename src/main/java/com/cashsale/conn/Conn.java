@@ -38,8 +38,12 @@ public class Conn {
      */
     public void closeConn(ResultSet rs, PreparedStatement pstmt, Connection conn) {
     	try {
-			rs.close();
-	    	pstmt.close();
+    		if(rs != null) {
+    			rs.close();
+    		}
+			if(pstmt != null) {
+				pstmt.close();
+			}
 	    	if(!conn.isClosed()) {
 	    		conn.close();
 	    	}
@@ -58,8 +62,12 @@ public class Conn {
      */
     public void closeConn(ResultSet rs, Statement stmt, Connection conn) {
     	try {
-			rs.close();
-	    	stmt.close();
+    		if(rs != null) {
+    			rs.close();
+    		}
+			if(stmt != null) {
+				stmt.close();
+			}
 	    	if(!conn.isClosed()) {
 	    		conn.close();
 	    	}
