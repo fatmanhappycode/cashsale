@@ -55,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
         String password = c.getPassword();
         String nickname = c.getNickname();
         String email = c.getEmail();
-        
+
         //生成一个64位的随机验证码
         String code = UUIDUtil.getUUID() + UUIDUtil.getUUID();
 
@@ -83,10 +83,10 @@ public class RegisterServlet extends HttpServlet {
 			e.printStackTrace();
 			System.out.println("加密失败！");
 		}
-        
+
         ResultDTO<String> result = new RegisterService().UserRegister(username, email, encodedPass, encodedCode, nickname,
     		 code, password);
-        
+
         writer.print(JSONObject.toJSON(result));
     }
 }

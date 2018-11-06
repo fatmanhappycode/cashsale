@@ -18,8 +18,8 @@ import javax.mail.internet.MimeMessage;
  */
 public class MailUtil {
 	
-	public static final String sendEmailAccount = "916061509@qq.com";
-	public static final String sendEmailPassword = "dkmteeoetvlgbaij";
+	public static final String sendEmailAccount = "1943279276@qq.com";
+	public static final String sendEmailPassword = "xhknzcomvgywbcif";
 	
 	public static void sendMail(String to, String code, String username, String password, String nickname, String currentTime) throws Exception
 	{

@@ -20,7 +20,7 @@ public class ListProductDAO {
 
     public List<ProductDO> listProductByTitle(String title, int offset) {
         try {
-            pstmt = conn.prepareStatement("SELECT * FROM product_info WHERE title LIKE ? LIMIT ?,8");
+            pstmt = conn.prepareStatement("SELECT * FROM product_info WHERE title LIKE ? LIMIT ?,9");
             pstmt.setString(1, title);
             pstmt.setInt(2, offset);
             rs = pstmt.executeQuery();
@@ -71,9 +71,9 @@ public class ListProductDAO {
     public List<ProductDO> listProductByTime(String time, int offset) {
         try {
             if (time.equals("asc")) {
-                pstmt = conn.prepareStatement("SELECT * FROM product_info ORDER BY publish_time LIMIT ?,8");
+                pstmt = conn.prepareStatement("SELECT * FROM product_info ORDER BY publish_time LIMIT ?,9");
             } else if (time.equals("desc")) {
-                pstmt = conn.prepareStatement("SELECT * FROM product_info ORDER BY publish_time DESC LIMIT ?,8");
+                pstmt = conn.prepareStatement("SELECT * FROM product_info ORDER BY publish_time DESC LIMIT ?,9");
             }
             pstmt.setInt(1,offset);
             rs = pstmt.executeQuery();
