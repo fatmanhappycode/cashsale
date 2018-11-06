@@ -23,17 +23,14 @@ function innerGoods(data) {
 	    goods.appendChild(p);
 	    main.appendChild(goods);
 	});
-    isLoading=false;
 }
+
 function loadXMLDoc()
 {
 	var title = $(".mySearch").val();
-	setCookie("title",title);
 	currentPage='';
 	token='';
-    currentPage=getCookie("currentPage");
 	var saveData={"title":title,"currentPage":currentPage};
-    token=getCookie("token");
 	$("#main").html("");
 	$.ajax({
 		url:"/search",
@@ -46,8 +43,7 @@ function loadXMLDoc()
 		contentType:"application/json",
 		success:function(result,testStatus)
 		{
-			currentPage=result.data.currentPage;
-			setCookie("currentPage",currentPage);
+			currentPage=result.currentPage;
 			data=result.data.data;
 			if(result.code== "107"){
 				/*alert("查询！");*/
@@ -64,9 +60,9 @@ function loadXMLDoc()
 }
 
 window.onload =function init() {
+	alert("123");
     currentPage='';
     token='';
-    currentPage=getCookie("currentPage");
     var saveData={"time":"asc","currentPage":currentPage};
     $("#main").html("");
     $.ajax({
@@ -101,5 +97,6 @@ $(window).scroll(function(){
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
     console.log(winScrollHeight);
     if(docHeight-30<=winHeight+winScrollHeight){
+        innerGoods();
     }
 });

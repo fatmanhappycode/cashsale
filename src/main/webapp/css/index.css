@@ -381,8 +381,10 @@
 	cursor: pointer;
 }
 .goods:hover{
+	margin-top:10px;
+	margin-bottom:20px;
 	box-shadow:0px 0px 10px rgba(0,0,0,.5);
-	border:2px solid rgba(166,128,226,1);
+	border:1px solid rgba(166,128,226,1);
 }
 .imgSee{
 /* 	display:table-cell; */

@@ -53,9 +53,10 @@ public class RegisterDAO {
 
 				//获取当前时间
             	String currentTime = TimeUtil.getTime();
+                
             	//发送邮件
             	MailUtil.sendMail(email, encodedCode, username, encodedPass, nickname, currentTime);
-
+            	
             	pstmt.execute();
             	pstmt2.executeUpdate();
             	return ACTIVATION_TIP;
