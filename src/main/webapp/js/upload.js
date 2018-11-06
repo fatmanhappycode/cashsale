@@ -90,7 +90,7 @@ function f() {
 		alert("请填写完信息再提交，否则将清空！");
 	}else{
         document.getElementById("passwordItem");
-		var token=window.location.search.split('=')[1];
+		var token=getCookie("token");
 		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":editor.txt.html(), "imageUrl":image};
 		$.ajax({
 			url:"/publish?token="+token,
@@ -98,7 +98,8 @@ function f() {
 			dataType:"json",
 			data:JSON.stringify(saveData),
 			headers: {
-                contentType:"application/json;charset=UTF-8",
+				"token":token,
+                contentType:"application/json;charset=UTF-8"
 			},
 			success:function(result,testStatus)
 			{

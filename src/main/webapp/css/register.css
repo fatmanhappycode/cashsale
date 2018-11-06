@@ -38,7 +38,7 @@
 .form-div h2{
 	width:600px;
 	text-align:center;
-	font: italic 2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
+	font:2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
 }
 /* username等 */
 .form p{
@@ -49,7 +49,7 @@
 .form {
 	position:absolute;
 	width:600px;
-	height:350px;
+	height:450px;
 	left:50%;
 	margin-left:-300px;
 	background: rgb(249,249,247);
@@ -63,9 +63,13 @@
 	float:left;
     padding :15px;
     transition: 0.4s;
+/*     border: 1px solid #fac; */
+}
+.Other-g{
+	width:500px;
 }
 /* 所有输入框 */
-#username,#password,#login,#register,#nickname,#Cpassword {
+#username,#password,#login,#register,#nickname,#Cpassword,#email{
 	width:220px;
 	height: 30px;
 	font-size: 18px;
@@ -80,6 +84,9 @@
     &:focus {
         border-color: hsl(199, 98%, 48%);
     }
+}
+#email{
+	width:500px;
 }
 /* 按钮 */
 #login,#register{
@@ -105,19 +112,24 @@
     border-color: hsl(199, 98%, 48%);
 }
 /* 提示语 */
-#passwordItem,#passwordItem1{
+#Item{
 	position:absolute;
-	width:96px;
+	width:150px;
+	height:110px;
+	margin-top:260px;
+	margin-left:450px;
+}
+#passwordItem,#passwordItem1,#passwordItem2,#passwordItem3{
+	float:left;
+	width:240px;
 	height: 15px;
-	margin-top:240px;
-	margin-left:580px;
 	opacity:.75;
 	font-size:12px;
+	padding:6px;
 	color:red;
 	display: none;
 }
 #passwordItem1{
-	margin-top:260px;
 }
 /* 版权 */
 .bottom{
