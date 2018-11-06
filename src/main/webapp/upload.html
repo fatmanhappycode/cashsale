@@ -8,19 +8,14 @@
 	<link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
 </head>
 <body>
-
 	<div class="all">
 		<div class="form-div">
-			<form action="" method="post" accept-charset="UTF-8" class="form" oninput="item()" id="uploadForm" enctype="multipart/form-data">
+			<form action="" method="post" accept-charset="UTF-8" class="form" oninput="item()" enctype="multipart/form-data">
 				<h2>商品发布</h2>
 				<div class="g-username">
 					<p>商品标题:</p><br/><input type="text" id="commodity" placeholder="" maxlength="40"><br/>
 				</div>
-				<div class="g-username">
-				<input id="file" type="file" name="file" onchange="fU(),preview(this)">
-				<div id="container"></div>
-				</div>
-				<input id="image" style="display:none">
+				
 				<div class="g-username Other-g">
 					<p>价格:</p><br/><input type="text" id="price" maxlength="40"><br/>
 				</div>
@@ -49,7 +44,7 @@
 						<input type="radio" name="aaa" value="不可议价" class="myCheckBox" id="myCheckbox12">
 					</div>
 				</div>
-				<div class="g-username">
+				<div class="g-username Other-gggg">
 					<p>选择商品标签:</p>
 					<div id="myBox">
 						<span id="myText">标签1</span>
@@ -80,8 +75,14 @@
 						<input type="checkbox" value="7" class="myCheckBox" id="myCheckbox27">
 					</div>
 				</div>
-				<div id="div1"  class="g-username">
+				<div class="g-username">
+					<p>选择封面:</p><br/>
+					<input type="file" id="myfile" name="uploadFile" onchange="fU();preview(this)" >
+					<div id="container"></div>
 				</div>
+				<input id="image" style="display:none">
+<!-- 				富文本编辑器 -->
+				<div id="div1"  class="g-username Other-gg"></div>
 				<div class="Other-ggg">
 					<span id="passwordItem">请填写完信息，否则提交时将清空！</span>
 					<input type="submit" id="submit" value="提交"  onclick="f()">
@@ -102,8 +103,8 @@
         editor.create()
 	</script>
 </body>
-
-<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/upload.js"></script>
 <script type="text/javascript" src="js/upload_1.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 </html>
