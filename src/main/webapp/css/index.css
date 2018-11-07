@@ -7,11 +7,11 @@
 /* 头栏 */
 .ost{
 	position:absolute;
-	width:83%;
+	width:86%;
 	z-index:1000;
 	top:0;
 	height:55px;
-	padding:0 7% 0 10%;
+	padding:0 4% 0 10%;
 	background: rgba(231,238,254,.9);
 }
 
@@ -20,28 +20,41 @@
 	padding-top:14px;
 	width:180px;
 	height:41px;
-	text-align:center;
 }
 .slogan{
 	padding-top:4px;
+	text-align:center;
 }
-.login,.register{
+.login{
 	float:right;
-	width:80px;
+	width:140px;
 	border:none;
+	padding-top:7px;
+/* 	border:1px solid #fac; */
+}
+.login img{
+	width:40px;
+	height:40px;
+	border-radius: 25px;
 }
 /* 鼠标滑过 login register 的样式 */
-.login:hover,.register:hover{
-	background: linear-gradient(
-		rgba(0,0,0,0),
-		rgba(166,128,226,.6)
-	);
+.login:hover{
 	cursor: pointer;
 }
-.slogan a,.login a,.register a{
+.slogan a,.login a{
 	color: rgba(131,111,191,1);;
 	text-decoration: none;
 	font-size:18px;
+}
+.login span{
+	position:absolute;
+	width:90px;
+	margin-top:7px;
+	margin-left:5px;
+	text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+/* 	border:1px solid #fac; */
 }
 
 
@@ -58,7 +71,7 @@
 .back-head img{
 	width:100%;
 	height:400px;
-	opacity: 0.85;
+/* 	opacity: 0.85; */
 	border-radius: 14px;
 }
   
@@ -87,11 +100,12 @@
  	float:right;
  	width:300px;
  	height: 40px;
-/*  	border-radius: 20px; */
  	border:3px solid #fff;
  	background: rgba(231,238,254,.6);
  	font-size: 22px;
  	color:#000;
+ 	font-weight: 600;
+ 	cursor:text;
  }
 /*  放大镜 */
  .mySearch-img{
@@ -190,17 +204,28 @@
 
 /* 分类栏的li */
 .species li{
-/* 	height:35px; */
-	padding-top:15px;
-	margin-bottom:2px;
 	list-style-type: none;	
 	text-align:center;
 	background: #FFF;
 }
+.species p{
+	padding-top:15px;
+}
+.Ispecies{
+	border-bottom:2px solid rgba(172,172,172,.5);
+}
 /* 第一个li */
-.OtherIspecies{border-radius:10px 10px 0 0;}
+.OtherIspecies{
+	border-radius:10px 10px 0 0;
+	border-bottom:2px solid rgba(172,172,172,.5);
+}
 /* 最后一个li */
-.OtherIspecies1{border-radius: 0 0 5px 5px;padding-bottom:4px;}
+.OtherIspecies1{
+	padding-top:15px;
+	border-radius: 0 0 8px 8px;
+	padding-bottom:4px;
+	border-bottom:0;
+}
 /* 每个li的字 */
 .species p{height:35px;}
 /* li滑过样式 */
@@ -211,6 +236,13 @@
 /* li滑过样式 下拉子框显示*/
 .Ispecies:hover .g-username{
 	display:block;
+	box-shadow:0px 0px 10px rgba(0,0,0,.5);
+	 autofocus:autofocus;
+}
+.Ispecies:hover .g-username input{
+	display:block;
+	box-shadow:0px 0px 10px rgba(0,0,0,.5);
+	 autofocus:autofocus;
 }
 
 /* li下拉子框显示 */
@@ -382,9 +414,10 @@
 }
 .goods:hover{
 	margin-top:10px;
-	margin-bottom:20px;
-	box-shadow:0px 0px 10px rgba(0,0,0,.5);
-	border:1px solid rgba(166,128,226,1);
+/* 	border-radius:15px; */
+	margin-bottom:22px;
+	box-shadow:0px 0px 10px rgba(0,0,0,.4);
+	border:1px solid rgba(166,128,226,.8);
 }
 .imgSee{
 /* 	display:table-cell; */

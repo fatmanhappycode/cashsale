@@ -60,7 +60,8 @@ function loadXMLDoc()
 }
 
 window.onload =function init() {
-	alert("123");
+    var username = window.location.search.split('=')[2];
+    $("#username").text(username);
     currentPage='';
     token='';
     var saveData={"time":"asc","currentPage":currentPage};

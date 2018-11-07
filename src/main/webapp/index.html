@@ -6,11 +6,15 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
 </head>
-<body onload="init()">
+<body>
 	<div class="ost">
 		<div class="slogan"><a href="index.html" target="_self">现卖-变闲为现的买卖<br>www.xianmai.com</a></div>
-		<div class="register"><a href="register.html" target="_self">注册</a></div>
-		<div class="login"><a href="ligin.html" target="_self">登录</a></div>
+		<div class="login">
+			<a href="" target="_self">
+				<img src="img/icon.jpg">
+				<span id="username"></span>
+			</a>
+		</div>
 	</div>
 	<div class="all">
 		<div class="back-head"><img src="img/background (2).jpg"></div>
@@ -29,14 +33,12 @@
 				<li class="upload"><a href="upload.html" target="_blank">发布商品</a></li>
 				<li class="youlike"><a href="" target="">猜你喜欢</a></li>
 				<li class="box"><a href="" target="">购物车</a></li>
-				<li class="myself"><a href="" target="">我的主页</a></li>
+				<li class="myself"><a href="myself.html" target="_blank">我的主页</a></li>
 			</ul>
 		</div>
 		<div class="species" id="species">
-			
 			<ul>
 				<li class="OtherIspecies"><p>筛选</p></li>
-				
 				<li class="Ispecies">
 					<p>可否议价:</p>
 					<div class="g-username">
@@ -110,15 +112,15 @@
 				</div>
 				</li>
 				<li class="Ispecies">
-					<p>价格:</p>
+					<p onmouseover="setFocus1()">价格:</p>
 					<div class="g-username">
-						<div id="myBox">
+						<div id="myBox" onmouseover="setFocus1()">
 							<span id="OthermyText">最低价格(元):</span>
-							<input type="text" autofocus="autofocus" id="price1" maxlength="8" autocomplete="off">
+							<input type="text" autofocus="autofocus" id="price1" maxlength="8" autocomplete="off" onmouseover="setFocus1()">
 						</div>
-						<div id="myBox">
+						<div id="myBox" onmouseover="setFocus2()">
 							<span id="OthermyText">最高价格(元):</span>
-							<input type="text" id="price2" maxlength="8" autocomplete="off">
+							<input type="text" id="price2" maxlength="8" autocomplete="off" onmouseover="setFocus2()">
 						</div>
 					</div>
 				</li>

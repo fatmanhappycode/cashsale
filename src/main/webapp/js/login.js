@@ -18,7 +18,7 @@ function loadXMLDoc()
             token=result.data;
             //alert(result.msg);
             if(result.code== "105"&& token!=""){
-                window.location.href="index.html?token="+token;
+                window.location.href="index.html?token="+token+"?username="+username;
             }else if(result.code== "106"){
                 alert(result.msg);
             }

@@ -112,14 +112,16 @@ function f() {
 				else if(result.code==108){
 					//失败
 					alert(result.msg);
-				}else{
+				}else if (result.code==109) {
+					alert(result.msg);
+				} else{
 					//请先登录
 					alert(result.msg);
 					window.location.href="login.html?token="+token;
 				}
 			},
 			error:function(xhr,errrorMessage,e){
-				alert("系统异常！");
+				console.log(e);
 			}
 		});
 	}

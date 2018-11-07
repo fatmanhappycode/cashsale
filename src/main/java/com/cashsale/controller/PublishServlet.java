@@ -3,6 +3,8 @@ package com.cashsale.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.util.SensitiveWordInitUtil;
+import com.cashsale.util.SensitivewordFilterUtil;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -15,6 +17,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author 肥宅快乐码
@@ -39,7 +43,13 @@ public class PublishServlet extends HttpServlet {
         System.out.println(product);
         ProductDO p = new Gson().fromJson(product, ProductDO.class);
 
+        PrintWriter writer = resp.getWriter();
+
         String title = p.getTitle();
+        Set<String> filterTitle = new SensitivewordFilterUtil().getSensitiveWord(title,1);
+        if (!filterTitle.isEmpty()) {
+            writer.print(JSONObject.toJSON(new ResultDTO<String>(109,null,"发布失败，含有非法字符")));
+        }
         String label = p.getLabel();
         int price = p.getPrice();
         int tradeMethod = p.getTradeMethod();
@@ -47,7 +57,6 @@ public class PublishServlet extends HttpServlet {
         String pdDescription = p.getPdDescription();
         String imageUrl = p.getImageUrl();
 
-        PrintWriter writer = resp.getWriter();
         Connection conn = new com.cashsale.conn.Conn().getCon();
 
         try{
