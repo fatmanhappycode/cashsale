@@ -39,7 +39,7 @@ function loadXMLDoc()
 		{
 			currentPage=result.data.currentPage;//是否需要加一
 			data=result.data.data;
-			if(result.code== "117"){
+			if(result.code== "107"){
 				innerGoods(data);
 			}else{
 				console.log("查询失败！");
@@ -71,13 +71,7 @@ window.onload =function init() {
         {
             currentPage=result.currentPage;
             data=result.data.data;
-            if(result.code== "107"){
-                /*alert("查询！");*/
-                innerGoods(data);
-            }else{
-                console.log("查询失败！");
-                alert("查询失败！");
-            }
+            innerGoods(data);
         },
         error:function(xhr,errrorMessage,e){
             alert("系统异常！");
