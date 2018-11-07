@@ -50,6 +50,10 @@ public class PublishServlet extends HttpServlet {
         if (!filterTitle.isEmpty()) {
             writer.print(JSONObject.toJSON(new ResultDTO<String>(109,null,"发布失败，含有非法字符")));
         }
+        if (!filterTitle.isEmpty()) {
+            return;
+        }
+        System.out.println("123");
         String label = p.getLabel();
         int price = p.getPrice();
         int tradeMethod = p.getTradeMethod();

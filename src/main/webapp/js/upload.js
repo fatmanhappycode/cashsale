@@ -121,7 +121,7 @@ function f() {
 				}
 			},
 			error:function(xhr,errrorMessage,e){
-				console.log(e);
+				console.log(errrorMessage);
 			}
 		});
 	}
