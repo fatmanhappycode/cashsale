@@ -38,7 +38,7 @@
 .form-div h2{
 	width:600px;
 	text-align:center;
-	font: italic 2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
+	font:2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
 }
 /* username等 */
 .form p{
@@ -85,6 +85,9 @@
         border-color: hsl(199, 98%, 48%);
     }
 }
+#email{
+	width:500px;
+}
 /* 按钮 */
 #login,#register{
 	display:inline-block;
@@ -109,19 +112,46 @@
     border-color: hsl(199, 98%, 48%);
 }
 /* 提示语 */
-#passwordItem,#passwordItem1{
+#Item{
 	position:absolute;
-	width:96px;
+	/* width:600px;
+	height:400px; */
+/* 	margin-top:260px; */
+	margin-left:130px;
+/* 	border: 1px solid #fac; */
+}
+#passwordItem,#passwordItem1,#passwordItem2,#passwordItem3,#passwordItem4,#passwordItem5{
+	position:absolute;
+	width:240px;
 	height: 15px;
-	margin-top:140px;
-	margin-left:580px;
 	opacity:.75;
 	font-size:12px;
+	padding:6px;
 	color:red;
+	margin-top:220px;
+	margin-left:310px;
 	display: none;
+/* 	border: 1px solid #fac; */
 }
 #passwordItem1{
-	margin-top:260px;
+	margin-top:370px;
+	margin-left:433px;
+}
+#passwordItem2{
+	margin-top:320px;
+	margin-left:33px;
+}
+#passwordItem3{
+	margin-top:220px;
+	margin-left:33px;
+}
+#passwordItem4{
+	margin-top:120px;
+	margin-left:33px;
+}
+#passwordItem5{
+	margin-top:120px;
+	margin-left:310px;
 }
 /* 版权 */
 .bottom{

@@ -15,9 +15,7 @@
 				<div class="g-username">
 					<p>商品标题:</p><br/><input type="text" id="commodity" placeholder="" maxlength="40"><br/>
 				</div>
-				<div class="g-username">
-				<input type="file" name="uploadFile">
-				</div>
+				
 				<div class="g-username Other-g">
 					<p>价格:</p><br/><input type="text" id="price" maxlength="40"><br/>
 				</div>
@@ -46,7 +44,7 @@
 						<input type="radio" name="aaa" value="不可议价" class="myCheckBox" id="myCheckbox12">
 					</div>
 				</div>
-				<div class="g-username">
+				<div class="g-username Other-gggg">
 					<p>选择商品标签:</p>
 					<div id="myBox">
 						<span id="myText">标签1</span>
@@ -77,8 +75,13 @@
 						<input type="checkbox" value="7" class="myCheckBox" id="myCheckbox27">
 					</div>
 				</div>
-				<div id="div1"  class="g-username">
+				<div class="g-username">
+					<p>选择封面:</p><br/>
+					<input type="file" id="myfile" name="uploadFile" onchange="fun();preview(this)" >
+					<div id="container"></div>
 				</div>
+<!-- 				富文本编辑器 -->
+				<div id="div1"  class="g-username Other-gg"></div>
 				<div class="Other-ggg">
 					<span id="passwordItem">请填写完信息，否则提交时将清空！</span>
 					<input type="submit" id="submit" value="提交"  onclick="f()">
@@ -94,11 +97,12 @@
 	<script type="text/javascript">
         var E = window.wangEditor
         var editor = new E('#div1')
-        editor.customConfig.uploadImgServer = '/UploadImageServlet'
+        editor.customConfig.uploadImgServer = 'thecashsale/UploadImageServlet'
         editor.customConfig.uploadImgMaxLength = 5
         editor.create()
 	</script>
 </body>
+<script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/upload.js"></script>
 <script type="text/javascript" src="js/upload_1.js"></script>
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>

@@ -71,13 +71,16 @@
 	width:400px;
 }
 .Other-gg{
-	width:800px;
+	width:860px;
 }
 .Other-ggg{
 	width:800px;
 	border:none;
 	position: absolute;
 	bottom: 50px;
+}
+.Other-gggg{
+	padding-bottom: 60px;
 }
 /* 获取焦点时 */
 .g-username:focus-within{
@@ -205,15 +208,28 @@
     transform: rotate(-45deg);
 } 
 
-
-
-
-
-img{
-	width:100px;height:100px;
+.myfile_img{
+	width:100px;
+	height:100px;
+	padding-top:10px;
+	margin-left:40px;
 }
-
-
+#imgDelete{
+	position:absolute;
+	z-index:10000;
+	width:100px;
+	height:60px;
+	padding-top:40px;
+	border:1px solid #FAC;
+	margin-left:40px;
+	margin-top:-105px;
+	background:#FFF;
+	cursor:pointer;
+	opacity: 0;
+}
+#imgDelete:hover{
+	opacity: 0.5;
+}
 
 /* 按钮 */
 #submit,#reset{

@@ -5,40 +5,43 @@
 	<meta charset="utf-8">
 	<meta http-equiv=Expires content="1s" />
 	<link rel="stylesheet" type="text/css" href="css/register.css">
-	<!-- <link rel="shortcut icon" type="image/x-icon"  href="img/favicon.png" /> -->
+	<link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
 </head>
 <body>
-	<div class="all">
+	<div class="all" onclick="clearItem()">
 		<div class="form-div">
-			<form action="#" class="form" onblur="Ver()" oninput="Ver()" accept-charset="UTF-8">
-				<h2>Register</h2>
+			<form action="#" class="form" accept-charset="UTF-8">
+				<h2>注册</h2>
 				<div class="g-username">
-					<p>UserName:</p><br/><input type="text" id="username"><br/>
+					<p>用户名:</p><br/><input type="text" id="username" onchange="Verusername()"><br/>
 				</div>
 				<div class="g-username">
-					<p>NickName:</p><br/><input type="text" id="nickname"><br/>
+					<p>昵称:</p><br/><input type="text" id="nickname"><br/>
 				</div>
 				<div class="g-username">
-					<p>Password:</p><br/><input type="password" id="password"  onblur="Verification()" oninput="Verification()"><br/>
+					<p>密码:</p><br/><input type="password" id="password" oninput="Verpassword();Verification()"><br/>
 				</div>
 				<div class="g-username">
-					<p>Confirm The Password:</p><br/><input type="password" id="Cpassword" onblur="Verification()" oninput="Verification()"><br/>
+					<p>确认密码:</p><br/><input type="password" id="Cpassword" oninput="Verification()"><br/>
 				</div>
 				<div class="g-username Other-g">
-					<p>E-mail:</p><br/><input type="text" id="email" onblur="Verification()" oninput="Verification()"><br/>
+					<p>E-mail:</p><br/><input type="text" id="email" oninput="E_mail()"><br/>
 				</div>
 				<div class="g-username">
-					<p>email:</p><br/><input type="email" id="email" onblur="Verification()" oninput="Verification()"><br/>
+					<a href="login.html"><input type="button" value="登录" id="login"></a>
 				</div>
-				<div class="g-username">
-					<a href="login.html"><input type="button" value="login" id="login"></a>
-				</div>
-				<div class="g-username" id="myclick" onclick="register()">
-					<input type="button" value="register" id="register" onclick="register()">
+				<div class="g-username" id="myclick">
+					<input type="button" value="注册" id="register" onmouseout="Ver_1()" onmouseover="Ver()" onclick="clickregister()"/>
 				</div>
 			</form>
-			<span id="passwordItem">两次密码不一致！</span>
-			<span id="passwordItem1">请您填写完信息！</span>
+			<div id="Item">
+				<span id="passwordItem">两次密码不一致！</span>
+				<span id="passwordItem1">请您填写完信息！</span>
+				<span id="passwordItem2">请您填写正确的邮箱！</span>
+				<span id="passwordItem3">密码必须包含数字、字母和字符,长度为6-16</span>
+				<span id="passwordItem4">请您填写正确的手机号码！</span>
+				<span id="passwordItem5">请不要填写敏感词！</span>
+			</div>
 		</div>
 		<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
 	</div>

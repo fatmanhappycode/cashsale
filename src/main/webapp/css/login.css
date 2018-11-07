@@ -41,7 +41,7 @@
 .form-div h2{
 	width:300px;
 	text-align:center;
-	font: italic 2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
+	font: 2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
 }
 
 .form p{

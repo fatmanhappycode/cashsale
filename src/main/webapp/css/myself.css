@@ -1,0 +1,372 @@
+/*全局样式*/
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background: rgba(87, 129, 250,.5);
+}
+
+
+
+/* 网页整体大小*/
+.all{
+	width:1140px;
+	margin-left:-570px;
+	margin-top:50px;
+	position: absolute;
+	left:50%;
+	padding-bottom:70px;
+	margin-bottom:60px;
+	background:#FFF; 
+/* 	box-shadow: 0 0 50px rgba(172,172,172,1); */
+/* 	border:1px solid #fac; */
+}
+.back-head img{
+	width:100%;
+	height:300px;
+}
+#myself_back2{
+	float:left;
+	margin-top:-304px;
+}
+#myself_back3{
+	float:left;
+	margin-top:-304px;
+}
+.back-head ul{
+	float:left;
+	margin-top:-300px;
+}
+#myself_li1,#myself_li2,#myself_li3{
+	float:left;
+	margin:10px;
+	margin-left:20px;
+	width:16px;
+	height:16px;
+	background:red;
+	border-radius:8px;
+	list-style-type:none;
+	opacity: .7;
+	cursor: pointer;
+}
+#myself_li2{
+	background:yellow;
+}
+#myself_li3{
+	background:green;
+}
+#myself_li1:hover,#myself_li2:hover,#myself_li3:hover{
+	opacity: .9;
+}
+
+/* 个人介绍 */
+.left{
+	display:inline-block;
+	width:400px;
+	border-right:2px solid rgba(166,128,226,.5);
+}
+.left-head{
+/* 	border:1px solid #fac; */
+}
+/* 头像 */
+.headP{
+	display:block;
+	width:100px;
+	height:100px;
+	border-radius: 50px;
+	margin-top:-57px;
+	margin-left:155px;
+}
+/* 名字 */
+#nickname{
+	display:block;
+	text-align:center;
+	padding:0 128px 0 128px;
+	text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+/* 	border:1px solid #fac; */
+}
+  
+/* 介绍文字 */
+.left-center{
+	width:100%
+	height:120px;
+	padding-left:24px;
+	padding-top:50px;
+/* 	border:1px solid #fac; */
+}
+/* 三个数据 */
+#dataOne,#dataTow,#dataThree{
+	width:120px;
+	height:60px;
+	float:left;
+	list-style-type:none;
+	color:rgba(74, 69, 122,.9);
+	text-align:center;
+	border-bottom:1px solid rgba(166,128,226,.5);
+}
+#dataOne a,#dataTow a,#dataThree a{
+	display:inline-block;
+	width:80px;
+	font-size:22px;
+	text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+/* 	border:1px solid #fac; */
+}
+
+
+/* 文字介绍 */
+.myText{
+	display:block;
+	padding:45px 17px 0 10px;
+}
+.myText p{
+	text-indent: 2em;
+	color:rgba(159, 165, 178,1);
+}
+/* 轮播图 */
+.frame{
+	margin:20px;
+	width:330px;
+	height:180px
+	border-radius:10px;
+	overflow: hidden;
+	border:2px solid rgba(166,128,226,.5);
+}
+.play{
+	width:1320px;
+	height:180px;
+	animation:man 35s infinite;
+}
+
+.play img{
+	float:left;
+	width:330px;
+	height:180px;
+	
+}
+@keyframes man{
+	0%,14%{margin-left:0px;}
+	18%,28%{margin-left:-330px;}
+	32%,42%{margin-left:-660px;}
+	46%,56%{margin-left:-990px;}
+	60%,70%{margin-left:-660px;}
+	74%,84%{margin-left:-330px;}
+	88%,100%{margin-left:0px;}
+}
+
+  
+  
+  
+  
+  
+/* 右边选项卡  */
+.right{
+	width:724px;
+	float:right;
+}
+.card{
+	height:42px;
+/* 	padding-left:20px; */
+	border:2px solid rgba(166,128,226,.5);
+	border-right:0;
+	border-bottom:0;
+}
+.card li{
+	float:left;
+	width:178.5px;
+	height:32px;
+	padding-top:8px;
+	cursor:pointer;
+	text-align:center;
+	list-style-type:none;
+	border-right:2px solid rgba(166,128,226,.5);
+	border-bottom:2px solid rgba(166,128,226,.5);
+}
+#card1{
+	color:#fff;
+	background:rgba(166,128,226,.5);
+}
+
+
+
+
+/* 主要内容 */
+#main1,#main2,#main3,#main4{
+	clear:left;
+	width:100%;
+/* 	border:1px solid rgba(166,128,226,.5); */
+}
+#main2,#main3,#main4{
+	display:none;
+}
+
+/* 商品 */
+.goods{
+	float:left;
+	width:200px;
+	height:280px;
+	background:#fff;
+	margin:15px;
+	overflow:hidden;
+	border:2px solid rgba(166,128,226,.5);
+	cursor: pointer;
+	transition: 0.2s;
+}
+.goods:hover{
+	box-shadow:0px 0px 10px rgba(0,0,0,.4);
+	border:2px solid rgba(166,128,226,.8);
+}
+.imgSee{
+/* 	display:table-cell; */
+	width:200px;
+	height:200px;
+	overflow:hidden;
+	text-align:center;
+	border:1px solid #FAC;
+	background:#fac;
+	vertical-align: middle;
+}
+.goods img{
+	width:200px;
+	height:200px;
+	border-bottom: 1.5px solid rgba(166,128,226,.5);
+}
+.myH{
+	width:200px;
+	margin-top:15px;
+	text-align:center;
+/* 	border-bottom:1px solid rgba(166,128,226,.5); */
+}
+.price{
+	color:red;
+	text-align:center;
+/* 	border-bottom:1px solid rgba(166,128,226,.5); */
+}
+
+/* 关注的人 */
+#people{
+	padding:10px;
+	margin:20px 0 20px 0;
+	margin-left:55px;
+	cursor:pointer;
+	width:600px;
+	height:50px;
+	border-radius:5px;
+	transition: 0.2s;
+	border:1px solid rgba(166,128,226,.5);
+}
+#people:hover{
+	box-shadow:0px 0px 10px rgba(0,0,0,.4);
+}
+#people img{
+	float:left;
+	width:50px;
+	height:50px;
+	border-radius: 25px;
+}
+#people span{
+	float:left;
+	width:140px;
+	font-size:18px;
+	margin-top:11px;
+	text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+/* 	border:1px solid #FAC; */
+/* 	margin-top:-20px; */
+}
+#people a{
+	float:right;
+	width:80px;
+	font-size:16px;
+	margin-top:14px;
+	color:rgba(222, 57, 64,.6);
+/* 	border:1px solid #FAC; */
+}
+#people a:hover{
+	color:red;
+}
+  
+/* 消息 */
+#message{
+	padding:10px;
+	margin:20px 0 20px 0;
+	margin-left:55px;
+	cursor:pointer;
+	width:600px;
+	height:50px;
+	border-radius:5px;
+	transition: 0.2s;
+	border:1px solid rgba(166,128,226,.5);
+}
+#message:hover{
+	box-shadow:0px 0px 10px rgba(0,0,0,.4);
+}
+#message img{
+	float:left;
+	width:50px;
+	height:50px;
+	border-radius: 25px;
+}
+#message span{
+	float:left;
+	width:140px;
+	font-size:18px;
+	text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+/* 	border:1px solid #FAC; */
+}
+#message p{
+	width:340px;
+	margin-top:30px;
+	font-size:14px;
+	color:rgb(159, 165, 178);
+	text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+/* 	border:1px solid #FAC; */
+}
+#message a{
+	float:right;
+	width:90px;
+	font-size:14px;
+	margin-top:-50px;
+	text-align:right;
+	color:rgb(159, 165, 178);
+/* 	border:1px solid #FAC; */
+}
+  
+  
+  
+  
+  
+  
+/* 回到顶部 */
+#test{
+	display:none;
+	z-index:100000000;
+	 position:fixed;
+	 right:20px;
+	 bottom:30px;
+	 height:60px;
+	 width:60px;
+	 border:none;
+	 border-radius: 30px;
+/* 	 background: rgba(166,128,226,.5); */
+}
+/* 版权 */
+.bottom{
+	whidth:200px;
+	position:absolute;
+	color:rgba(172,172,172,.9);
+	font-size:14px;
+	left:50%;
+	margin-left:-100px;
+	bottom:10px;
+	text-align: center;
+}

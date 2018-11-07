@@ -7,11 +7,11 @@
 /* 头栏 */
 .ost{
 	position:absolute;
-	width:83%;
+	width:86%;
 	z-index:1000;
 	top:0;
 	height:55px;
-	padding:0 7% 0 10%;
+	padding:0 4% 0 10%;
 	background: rgba(231,238,254,.9);
 }
 
@@ -20,45 +20,58 @@
 	padding-top:14px;
 	width:180px;
 	height:41px;
-	text-align:center;
 }
 .slogan{
 	padding-top:4px;
+	text-align:center;
 }
-.login,.register{
+.login{
 	float:right;
-	width:80px;
+	width:140px;
 	border:none;
+	padding-top:7px;
+/* 	border:1px solid #fac; */
+}
+.login img{
+	width:40px;
+	height:40px;
+	border-radius: 25px;
 }
 /* 鼠标滑过 login register 的样式 */
-.login:hover,.register:hover{
-	background: linear-gradient(
-		rgba(0,0,0,0),
-		rgba(166,128,226,.6)
-	);
+.login:hover{
 	cursor: pointer;
 }
-.slogan a,.login a,.register a{
+.slogan a,.login a{
 	color: rgba(131,111,191,1);;
 	text-decoration: none;
 	font-size:18px;
+}
+.login span{
+	position:absolute;
+	width:90px;
+	margin-top:7px;
+	margin-left:5px;
+	text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+/* 	border:1px solid #fac; */
 }
 
 
 /* 网页整体大小*/
 .all{
 	width:1040px;
-	height:3600px;
 	margin-left:-520px;
 	position: absolute;
 	left:50%;
-	background:rgba(172,172,172,.3); 
+	margin-bottom:60px;
+	background:#FFF; 
 	box-shadow: 0 0 50px rgba(172,172,172,1);
 }
 .back-head img{
 	width:100%;
 	height:400px;
-	opacity: 0.85;
+/* 	opacity: 0.85; */
 	border-radius: 14px;
 }
   
@@ -87,11 +100,12 @@
  	float:right;
  	width:300px;
  	height: 40px;
-/*  	border-radius: 20px; */
  	border:3px solid #fff;
  	background: rgba(231,238,254,.6);
  	font-size: 22px;
  	color:#000;
+ 	font-weight: 600;
+ 	cursor:text;
  }
 /*  放大镜 */
  .mySearch-img{
@@ -176,42 +190,173 @@
 }
 
 /* 分类 */
+/* 整个分类栏的样式 */
 .species{
-/* 	position:fixed; */
 	margin-top:110px;
 	margin-left:30px;
-	height:360px;
 	width:160px;
 	border-radius:10px;
-	overflow:hidden;
 	transition:1s;
 	border:2px solid rgba(131,111,191,.5);
+/* 	border:1px solid #FAC; */
 }
 
 
-
+/* 分类栏的li */
 .species li{
-	height:35px;
-	padding-top:15px;
-	margin-bottom:2px;
 	list-style-type: none;	
 	text-align:center;
 	background: #FFF;
 }
+.species p{
+	padding-top:15px;
+}
+.Ispecies{
+	border-bottom:2px solid rgba(172,172,172,.5);
+}
+/* 第一个li */
+.OtherIspecies{
+	border-radius:10px 10px 0 0;
+	border-bottom:2px solid rgba(172,172,172,.5);
+}
+/* 最后一个li */
+.OtherIspecies1{
+	padding-top:15px;
+	border-radius: 0 0 8px 8px;
+	padding-bottom:4px;
+	border-bottom:0;
+}
+/* 每个li的字 */
+.species p{height:35px;}
+/* li滑过样式 */
 .Ispecies:hover{
 	background:rgba(166,128,226,.5);
 	cursor: pointer;
 }
-.species a{
-	border:1px solid #FAC;
-	text-align:center;
+/* li滑过样式 下拉子框显示*/
+.Ispecies:hover .g-username{
+	display:block;
+	box-shadow:0px 0px 10px rgba(0,0,0,.5);
+	 autofocus:autofocus;
+}
+.Ispecies:hover .g-username input{
+	display:block;
+	box-shadow:0px 0px 10px rgba(0,0,0,.5);
+	 autofocus:autofocus;
 }
 
-
+/* li下拉子框显示 */
+.g-username {
+	position:absolute;
+	height:100px;
+	width:200px;
+	margin-top:-50px;
+	margin-left:160px;
+	list-style-type: none;	
+	text-align:center;
+	background: #FFF;
+	display:none;
+	border-radius:0 10px 10px 10px;
+	border:2px solid rgba(131,111,191,.5);
+}
+/* 标签子框大小 */
+.Other-gggg{
+	height:130px;
+	width:400px;
+}
+/*含复选框和文字div */
+#myBox{
+	float:left;
+	width:105px;
+	height: 30px;
+	margin-top:10px;
+/* 	border:1px solid #FAC;  */
+}
+/* span内的文字 */
+#myText{
+	font-size:14px;
+	width:78px;
+	height:23.5px;
+	padding-top:4.5px;
+	position:absolute;
+	text-align:center;
+	border:#999 solid 1px;
+	border-radius: 4px;
+}
+/* 选择框 */
+.myCheckBox{
+	position:absolute;
+/* 	除去原生样式 */
+    -webkit-appearance: none;
+    outline: none;
+    background:rgba(1,1,1,0);
+    border:#999 solid 1px;
+    border-radius: 3px;
+    opacity:0;
+/*===========================================设置复选框大小 */
+    min-height: 30px;
+    min-width: 80px;
+    border-radius: 4px;
+}
+/* 复选框选中时样式 */
+.myCheckBox:checked {
+    background:rgba(166,128,226,1);
+    opacity:.5;
+    border:#3190e8 solid 1px;
+    border-radius: 4px;
+}
+/* “对”符号 选中符号 */
+.myCheckBox:checked::after{
+    content: '';
+    top: 14px;
+    left: 62px;
+    position: absolute;
+    background: transparent;
+    border: #fff solid 2px;
+    border-top: none;
+    border-right: none;
+    height: 6px;
+    width: 10px;
+/*     勾股定理 */
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg); 
+    transform: rotate(-45deg);
+} 
+/* 价格 */
+#OthermyText{
+	font-size:14px;
+	width:78px;
+	height:23.5px;
+}
+#price1,#price2{
+	appearance: none;float:left;
+	width:60px;
+	height: 30px;
+	font-size: 18px;
+	margin-left:105px;
+	margin-top:-20px;
+	border-radius: 4px;
+	border-color:rgba(251,206,177,0.5);
+    border: 1px solid #ddd;
+}
+#Ispeciesbutton{
+	display:inline-block;
+	width:100px;
+	height: 40px;
+	background:rgb(249,249,248);
+	margin-top:-10px;
+	border-radius: 4px;
+	font-size:16px;
+	border: 1px solid #ddd;
+}
+#Ispeciesbutton:hover{
+	background:rgba(166,128,226,.5);
+}
 
 /* 轮播图 */
 .frame{
-	margin-top:-363px;
+	margin-top:-420px;
 	margin-left:250px;
 	width:700px;
 	height:360px;
@@ -245,28 +390,34 @@
 .main{
 	float:right;
 	width:720px;
-	height:2280px;
 	margin-right:80px;
 	padding-left:23px;
-/* 	border:1px solid #FAC; */
+	padding-bottom:60px;
+	border:1px solid #FAC;
+}
+.goodsmain{
+	width:720px;
+	height:auto;
+	border:1px solid #FAC;
 }
 /* 商品 */
 .goods{
 	float:left;
 	width:200px;
 	height:280px;
-	border-radius:15px;
+/* 	border-radius:15px; */
 	background:#fff;
 	margin:15px;
 	overflow:hidden;
-	border:1px solid rgba(166,128,226,.5);
+	border:2px solid rgba(166,128,226,.5);
 	cursor: pointer;
 }
 .goods:hover{
 	margin-top:10px;
-	margin-bottom:20px;
-	box-shadow:0px 0px 10px rgba(0,0,0,.5);
-	border:1px solid rgba(166,128,226,1);
+/* 	border-radius:15px; */
+	margin-bottom:22px;
+	box-shadow:0px 0px 10px rgba(0,0,0,.4);
+	border:1px solid rgba(166,128,226,.8);
 }
 .imgSee{
 /* 	display:table-cell; */
@@ -279,11 +430,8 @@
 	vertical-align: middle;
 }
 .goods img{
-	width:300px;
-	height:auto;
-	vertical-align: middle;
-	margin-left:-50px;
-	margin-top:calc(HEIGHT/2-100px);
+	width:200px;
+	height:200px;
 	border-bottom: 1.5px solid rgba(166,128,226,.5);
 }
 .myH{
