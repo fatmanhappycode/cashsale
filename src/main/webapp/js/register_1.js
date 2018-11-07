@@ -1,7 +1,8 @@
-
+var isLoading=false;
 $("#register").one("click", function register() {
 	//获取节点、值
 	sp=document.getElementById("passwordItem1");
+	/*
 	var username = $("#username").val();
 	var nickname = $("#nickname").val();
 	var password = $("#password").val();
@@ -9,11 +10,19 @@ $("#register").one("click", function register() {
 	var Cpassword = $("#Cpassword").val();
 	if(username==""||username==null||nickname==""||nickname==null||password==""||password==null||Cpassword==""||Cpassword==null)
 	{
+	*/
+	if(!Verusername()||!E_mail()||!Verpassword()||!Verification()||!Ver())
+	{
 		//如果没填完数据，则弹出指示
 		sp.style.display='block';
 	}
 	else
 	{
+		if(isLoading){
+			return;
+		}else{
+			isLoading=true;
+		}
 		//定义json串
 		var saveData={"username":username,"nickname":nickname,"password":password,"email":email};
 		$.ajax({
@@ -26,25 +35,18 @@ $("#register").one("click", function register() {
             },
 			success:function(result,testStatus)
 			{
-				if(result.code==110)
+				if(result.code==101)
 				{
-					//转跳到页面
-					alert("该邮箱已被注册！");
+					alert("激活成功，请登录！")
 					window.location.href="login.html";
-				} else if (result.code == 102) {
-					alert("注册失败");
-				} else if(result.code==103){
-					alert("该手机号已被注册！");
-				} else if(result.code==109) {
-					alert("请到邮箱进行账号激活")
-				}
-				else{
-					alert("注册失败！");
+				}else{
+					alert(result.msg);
 				}
 			},
 			error:function(xhr,errrorMessage,e){
 				alert("系统异常！请稍后重试。");
 			}
 		});
+		isLoading=false;
 	}
 });

@@ -114,22 +114,44 @@
 /* Ã· æ”Ô */
 #Item{
 	position:absolute;
-	width:150px;
-	height:110px;
-	margin-top:260px;
-	margin-left:450px;
+	/* width:600px;
+	height:400px; */
+/* 	margin-top:260px; */
+	margin-left:130px;
+/* 	border: 1px solid #fac; */
 }
-#passwordItem,#passwordItem1,#passwordItem2,#passwordItem3{
-	float:left;
+#passwordItem,#passwordItem1,#passwordItem2,#passwordItem3,#passwordItem4,#passwordItem5{
+	position:absolute;
 	width:240px;
 	height: 15px;
 	opacity:.75;
 	font-size:12px;
 	padding:6px;
 	color:red;
+	margin-top:220px;
+	margin-left:310px;
 	display: none;
+/* 	border: 1px solid #fac; */
 }
 #passwordItem1{
+	margin-top:370px;
+	margin-left:433px;
+}
+#passwordItem2{
+	margin-top:320px;
+	margin-left:33px;
+}
+#passwordItem3{
+	margin-top:220px;
+	margin-left:33px;
+}
+#passwordItem4{
+	margin-top:120px;
+	margin-left:33px;
+}
+#passwordItem5{
+	margin-top:120px;
+	margin-left:310px;
 }
 /* ∞Ê»® */
 .bottom{

@@ -1,6 +1,3 @@
-/*var myUrl=window.location.search.split('=')[1];
-alert(myUrl);*/
-var token="";
 function loadXMLDoc()
 {
     var username = $("#username").val();
@@ -27,5 +24,4 @@ function loadXMLDoc()
             alert("系统异常！");
         }
     });
-
 }

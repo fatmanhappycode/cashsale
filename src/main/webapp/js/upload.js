@@ -1,6 +1,4 @@
 var label="";
-
-var token=window.location.search.split('=')[1];
 function f() {
 	var commodity = $("#commodity").val();
 	var price = $("#price").val();
@@ -26,20 +24,7 @@ function f() {
 		myCheckbox1 = "0";
 	//alert(myCheckbox0);
 	//alert(myCheckbox1);
-	
-	
-			
-	/*
-	var checkboxArray=document.getElementsByName("myCheckbox");
-	alert(checkboxArray.length);
-	for(var i=0;i<checkboxArray.length;i++)
-	{
-		//alert(checkboxArray[i].val()+"   nnn");
-		if(checkboxArray[i].prop('checked')){
-			label=label+","+checkboxArray[i].val();
-		}
-	}
-	*/
+
 //	复选框加入字符串label
 	if($("#myCheckbox21").prop('checked')){
 		if(label!="")
@@ -93,7 +78,7 @@ function f() {
 		var token=getCookie("token");
 		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":editor.txt.html(), "imageUrl":image};
 		$.ajax({
-			url:"/publish?token="+token,
+			url:"/publish",
 			type:"post",
 			dataType:"json",
 			data:JSON.stringify(saveData),
@@ -107,7 +92,7 @@ function f() {
 				{
 					//发布成功，转跳到页面
 					alert(result.msg);
-					window.location.href="#.html?token="+token;
+					window.location.href="";
 				}
 				else if(result.code==108){
 					//失败
@@ -117,7 +102,7 @@ function f() {
 				} else{
 					//请先登录
 					alert(result.msg);
-					window.location.href="login.html?token="+token;
+					window.location.href="login.html";
 				}
 			},
 			error:function(xhr,errrorMessage,e){
@@ -127,7 +112,7 @@ function f() {
 	}
 	
 }
-
+//提示语
 function item() {
 	var commodity = $("#commodity").val();
 	var price = $("#price").val();
@@ -171,6 +156,7 @@ function item() {
 	if($("#myCheckbox27").prop('checked')){
 		label=label+";"+$("#myCheckbox27").val();
 	}
+	
 	if(label=="" || myCheckbox0=="" || myCheckbox1=="" ||commodity==""||price==""|| place==""|| and=="" ||document.getElementById("myfile").files.length==0){
 		document.getElementById("passwordItem").style.display="block";
 	}else{

@@ -1,13 +1,8 @@
 //data=[{"price": 23,"imageUrl": "www.abc.com","isBargain": 1,"label": "23","title": "bc"},{"price": 223,"imageUrl": "www.abc.com","isBargain": 12,"label": "223","title": "b2c"}];
-var isLoading=false;
+var currentPage="";
 function innerGoods(data) {
-    if(isLoading){
-        return;
-    }else{
-        isLoading=true;
-    }
 	$.each(data,function(index,obj){
-		var main = document.getElementById("main");
+		var goodsmain = document.getElementById("goodsmain");
 		var goods= document.createElement('div');
 		var img = document.createElement('img');
 		var h4= document.createElement('h4');
@@ -21,42 +16,39 @@ function innerGoods(data) {
 	    goods.appendChild(img);
 	    goods.appendChild(h4);
 	    goods.appendChild(p);
-	    main.appendChild(goods);
+	    goodsmain.appendChild(goods);
 	});
 }
-
 function loadXMLDoc()
 {
 	var title = $(".mySearch").val();
-	currentPage='';
-	token='';
+	token=getCookie("token");
 	var saveData={"title":title,"currentPage":currentPage};
-	$("#main").html("");
+	$("#goodsmain").html("");
 	$.ajax({
 		url:"/search",
 		type:"get",
+		dataType:"json",
 		headers:{
 			"token":token,
             contentType:"application/json;charset=UTF-8"
 		},
-		data:saveData,
+        data:saveData,
 		contentType:"application/json",
 		success:function(result,testStatus)
 		{
-			currentPage=result.currentPage;
+			currentPage=result.data.currentPage;//是否需要加一
 			data=result.data.data;
-			if(result.code== "107"){
-				/*alert("查询！");*/
+			if(result.code== "117"){
 				innerGoods(data);
 			}else{
 				console.log("查询失败！");
-				alert("查询失败！");
 			}
 		},
 		error:function(xhr,errrorMessage,e){
 			alert("系统异常！");
 		}
-	}); 
+	});
 }
 
 window.onload =function init() {
@@ -101,3 +93,4 @@ $(window).scroll(function(){
         innerGoods();
     }
 });
+

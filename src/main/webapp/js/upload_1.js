@@ -27,24 +27,17 @@ function preview(file) {
     container.innerHTML = "";
     if (window.FileReader) 
     {
-    	//如果上传图片图片超过6张，直接清理
-    	if(file.files.length>=7){
+    	//如果上传图片图片超过1张，直接清理
+    	if(file.files.length>1){
     		var obj=document.getElementById('myfile');
     		obj.outerHTML=obj.outerHTML;
-    		alert("对不起，最多上传六张图片!");
+    		alert("对不起，最多上传一张封面!");
     		return;
     	}
     	//file为input对象
         for (var index=0, f; f = file.files[index]; index++) 
         {
             var filereader = new FileReader();
-            filereader.onloadstart = function (e){
-            	var num=e.target.files.length ;
-            	alert(num);
-            	if(num=6){
-            		alert();
-            	}
-            }
             //文件读取完成时执行
             filereader.onload = function (event) {
             	//把源对象的
@@ -86,12 +79,21 @@ function validateImg(data) {
 
 function showPreviewImage(src) {
     console.log(src);
-
-    /*var div = document.createElement('div');
-    div.style = "width:400px;height:auto;border:1px solid #FAC;";
-    container.appendChild(div);*/
     var img = document.createElement('img');
+    var div = document.createElement('div');
+    img.setAttribute("class", "myfile_img");
+    div.setAttribute("id", "imgDelete");
     img.src = src;
-    img.style = "width:100px;height:100px;padding:10px;"
+//    div.html("点击删除图片");
+    div.innerHTML="点击删除图片";
     container.appendChild(img);
+    container.appendChild(div);
+}
+
+//删除图片
+document.getElementById("container").onclick = function(){
+	var obj=document.getElementById('myfile');
+	obj.outerHTML=obj.outerHTML;
+	container.innerHTML = "";
+	//alert(document.getElementById('myfile').files.length);
 }
