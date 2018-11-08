@@ -1,16 +1,12 @@
 var isLoading=false;
-$("#register").one("click", function register() {
+function clickregister() {
 	//获取节点、值
 	sp=document.getElementById("passwordItem1");
-	/*
+
 	var username = $("#username").val();
 	var nickname = $("#nickname").val();
 	var password = $("#password").val();
 	var email = $("#email").val();
-	var Cpassword = $("#Cpassword").val();
-	if(username==""||username==null||nickname==""||nickname==null||password==""||password==null||Cpassword==""||Cpassword==null)
-	{
-	*/
 	if(!Verusername()||!E_mail()||!Verpassword()||!Verification()||!Ver())
 	{
 		//如果没填完数据，则弹出指示
@@ -49,4 +45,4 @@ $("#register").one("click", function register() {
 		});
 		isLoading=false;
 	}
-});
+};

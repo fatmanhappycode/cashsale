@@ -10,6 +10,7 @@ function innerGoods(data) {
 		goods.setAttribute("class", "goods");
 		h4.setAttribute("class", "myH");
 		p.setAttribute("class", "price");
+		alert(obj.imageUrl);
 	    img.src = obj.imageUrl;
 	    h4.innerHTML=obj.title;
 	    p.innerHTML=obj.price;
