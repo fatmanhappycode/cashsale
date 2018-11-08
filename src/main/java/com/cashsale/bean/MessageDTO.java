@@ -16,11 +16,6 @@ public class MessageDTO {
 	/** 发送的图片 */
 	private String imgUrl;
 
-	public MessageDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public MessageDTO(String sender, String receiver, String content, String date, String imgUrl) {
 		super();
 		this.sender = sender;

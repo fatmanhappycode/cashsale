@@ -8,7 +8,6 @@ import com.cashsale.dao.UpdateScoreDAO;
  * 2018年11月3日
  */
 public class UpdateScoreService {
-	
 	public ResultDTO<String> updateScore(String username, String strProductId, String strCode){
 		int code = new UpdateScoreDAO().updateScore(username, strProductId, strCode);
 		if( code == 404 )

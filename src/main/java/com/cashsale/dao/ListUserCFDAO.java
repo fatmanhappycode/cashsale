@@ -20,7 +20,9 @@ public class ListUserCFDAO {
 	/**
 	 * 获得用户和商品评分的矩阵
 	 * @param username
+	 * 			用户名
 	 * @return
+	 * 			用户和商品评分的矩阵
 	 */
 	public Map<String, Map<String, Integer>> getUserScore(String username){
 		ResultSet result = null;

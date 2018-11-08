@@ -92,7 +92,7 @@ public class SocketServlet {
 	}
 	
 	/** 返回错误信息 */
-	public void sendMessage(int code, String message){
+	private void sendMessage(int code, String message){
 		//this.session.getAsyncRemote().sendText(message);
 		ResultDTO<Object> result = new ResultDTO<Object>(code, null, message);
 		this.session.getAsyncRemote().sendText(JSONObject.toJSONString(result)); 

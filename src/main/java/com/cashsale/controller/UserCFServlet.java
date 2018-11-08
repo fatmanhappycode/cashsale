@@ -22,7 +22,7 @@ import com.cashsale.service.ListUserService;
 public class UserCFServlet extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws   ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -35,7 +35,7 @@ public class UserCFServlet extends HttpServlet {
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws   ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		doGet(request,response);
 	}
 }

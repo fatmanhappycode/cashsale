@@ -50,7 +50,6 @@ public class UpdateScoreDAO {
 	/**
 	 * 更新某用户对商品的评分 and 信用
 	 * @param username
-	 * @param productId
 	 * @param strCode
 	 * 			判断用户是浏览/收藏/分享……了该商品
 	 */

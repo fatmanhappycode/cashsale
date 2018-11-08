@@ -21,7 +21,7 @@ public class GetHistoryServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -39,7 +39,7 @@ public class GetHistoryServlet extends HttpServlet{
         write.println(JSONObject.toJSON(map));
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		doGet(request, response);
 	}
 }

@@ -20,13 +20,15 @@ public class SocketDAO {
 	/** 暂无更多消息的code */
 	private static final int NO_MORE_MESSAGE = 403;
 	/** 每页显示的数据数目 */
-	static int MESSAGE_NUMBER = 8;
+	private static final int MESSAGE_NUMBER = 8;
 	/** 查询成功 */
 	private static final int QUERY_SUCCESSED = 200;
 	
 	/** 判断是否存在该表，不存在则创建 
 	 * @param sender
+     *          发送者
 	 * @param receiver
+     *          接收者
 	 * @return tableName
 	 * 			返回表名
 	 */
@@ -57,7 +59,8 @@ public class SocketDAO {
 		new com.cashsale.conn.Conn().closeConn(rs, stmt, conn);
 		return tableName;
 	}
-	
+
+
 	/**
 	 * 获取离线消息
 	 * @param tableName
@@ -151,7 +154,6 @@ public class SocketDAO {
 	}
 	/**
 	 * 把聊天记录保存到数据库中
-	 * @param tableName
 	 * @param message
 	 * @param isOffline
 	 */

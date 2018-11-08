@@ -29,7 +29,7 @@ public class SocketConfig implements ServerApplicationConfig {
 	}
 
 	/**
-	 * 获取所有以接口方式配置的webSocket类
+	 * 获取所有以接口方式配置的webSocket的类
 	 * @param arg0
 	 * @return
 	 */

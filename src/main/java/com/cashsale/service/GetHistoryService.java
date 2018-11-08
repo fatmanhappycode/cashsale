@@ -15,6 +15,7 @@ public class GetHistoryService {
 	 * @param strPage
 	 * 			聊天记录的页数
 	 * @return
+	 * 			聊天记录
 	 */
 	public Map<String, Object> getHistory(String name, String strPage){
 		Map<String, Object> mapSum = new HashMap<String, Object>();

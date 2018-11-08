@@ -19,7 +19,9 @@ public class ListUserService {
 	/**
 	 * 返回推荐结果
 	 * @param username
+     *        被推荐用户
 	 * @return
+     *        推荐结果
 	 */
 	public String getList(String username){
 		Map<String, Double> simUserSimMap = new HashMap<String, Double>();
@@ -44,10 +46,13 @@ public class ListUserService {
 	/**
 	 * 计算皮尔逊相关系数
 	 * @param pm1
+     *      被推荐用户的map
 	 * @param pm2
+     *      其它用户的map
 	 * @return
+     *      其它用户和被推荐用户的皮尔逊系数
 	 */
-    public static double getUserSimilar(Map<String, Integer> pm1, Map<String, Integer> pm2) {
+    private static double getUserSimilar(Map<String, Integer> pm1, Map<String, Integer> pm2) {
         // 数量n
     	int n = 0;
         // Σxy=x1*y1+x2*y2+....xn*yn
@@ -83,10 +88,13 @@ public class ListUserService {
     /**
      * 加权排序推荐，获取推荐结果
      * @param simUserObjMap
+     *          相似用户和他的浏览过的商品
      * @param simUserSimMap
+     *          相似用户和他的皮尔逊系数
      * @return
+     *        推荐结果
      */
-    public static String getRecommend(Map<String, Map<String, Integer>> simUserObjMap,
+    private static String getRecommend(Map<String, Map<String, Integer>> simUserObjMap,
             Map<String, Double> simUserSimMap) {
         Map<String, Double> objScoreMap = new HashMap<String, Double>();
         for (Entry<String, Map<String, Integer>> simUserEn : simUserObjMap.entrySet()) {
@@ -118,9 +126,11 @@ public class ListUserService {
     /**
      * 从小到大排序
      * @param objScoreMap
+     *          需排序的map
      * @return
+     *      排序后的map
      */
-    public static List<Entry<String, Double>> getSort(Map<String, Double> objScoreMap){
+    private static List<Entry<String, Double>> getSort(Map<String, Double> objScoreMap){
     	List<Entry<String, Double>> enList = new ArrayList<Entry<String, Double>>(objScoreMap.entrySet());
          
          
