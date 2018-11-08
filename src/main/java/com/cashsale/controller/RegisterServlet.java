@@ -49,7 +49,6 @@ public class RegisterServlet extends HttpServlet {
         while((str = br.readLine()) != null){
             user += str;
         }
-        
         CustomerInfoDO c = new Gson().fromJson(user, CustomerInfoDO.class);
         String username = c.getUsername();
         String password = c.getPassword();
@@ -63,7 +62,6 @@ public class RegisterServlet extends HttpServlet {
         
         String encodedCode = "";
         String encodedPass = "";
-        //System.out.println(code);
     	//创建密钥对
     	Map<String, String> keyMap = RSAUtil.createKeys(1024);
     	//获取公钥
@@ -76,9 +74,7 @@ public class RegisterServlet extends HttpServlet {
         //公钥加密
         try {
 			encodedCode = RSAUtil.publicEncrypt(code, RSAUtil.getPublicKey(publicKey)); 
-	        //System.out.println(encodedCode);
 	        encodedPass = RSAUtil.publicEncrypt(password, RSAUtil.getPublicKey(publicKey));
-	        //System.out.println(encodedPass);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("加密失败！");

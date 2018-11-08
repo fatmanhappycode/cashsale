@@ -10,6 +10,10 @@ import java.util.Map;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+/**
+ * @author Sylvia
+ * 2018年11月3日
+ */
 public class ScreenDAO {
 	
 	/** 每页显示的数据数目 */
@@ -32,6 +36,8 @@ public class ScreenDAO {
 	public Map<String, Object> search(String queryInfo, String strPage)
 	{
 		Map<String, Object> map = new HashMap<String, Object>();
+		PreparedStatement pstmt = null;
+		ResultSet result = null;
 		int page = 1 ;
 		map.put("code", NO_MORE_DATA);
 		Connection conn = new com.cashsale.conn.Conn().getCon();
@@ -40,17 +46,17 @@ public class ScreenDAO {
 			page = Integer.parseInt( strPage );
 		}
 		
-		String query = "SELECT * FROM product_info LIMIT "+((page-1)*8)+","+8;
+		String query = "SELECT * FROM product_info LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
 		if(queryInfo != null && !queryInfo.equals(""))
 		{
-			query = "SELECT * FROM product_info WHERE "+queryInfo+"LIMIT "+((page-1)*8)+","+8;
+			query = "SELECT * FROM product_info WHERE "+queryInfo+"LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
 		}
 		
 		//System.out.println(query);
 		
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(query);
-			ResultSet result = pstmt.executeQuery();
+			pstmt = conn.prepareStatement(query);
+			result = pstmt.executeQuery();
 			ResultSetMetaData metaData = result.getMetaData();
 			int columnCount = metaData.getColumnCount();
 			JSONArray array = new JSONArray();
@@ -74,7 +80,7 @@ public class ScreenDAO {
 			//查询失败
 			map.put("code", SCREEN_FAILED);
 		}
-		
+		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
 		return map;
 	}
 }
