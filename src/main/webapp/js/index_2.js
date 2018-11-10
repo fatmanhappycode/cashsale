@@ -270,7 +270,7 @@ function Selectspecies() {
 	var myCheckbox1="";
 	var myCheckbox2="";
 	var myCheckbox5="";
-
+	var label="";
 	//可否议价
 	if($("#myCheckbox01").prop('checked'))
 		myCheckbox0 ="1";
@@ -291,15 +291,89 @@ function Selectspecies() {
 	else if($("#myCheckbox22").prop('checked'))
 		myCheckbox2 = "0";
 
-	//交易地点
+	//价格排序
 	if($("#myCheckbox51").prop('checked'))
 		myCheckbox5 ="1";
 	else if($("#myCheckbox52").prop('checked'))
 		myCheckbox5 = "0";
-
+	//获取价格
 	var price1 = $("#price1").val();
 	var price2 = $("#price2").val();
 
-	alert(myCheckbox0+"\n"+myCheckbox1+"\n"+myCheckbox2+"\n"+myCheckbox5+"\n"+price1+"\n"+price1);
+    //	复选框加入字符串label
+    if($("#myCheckbox31").prop('checked')){
+        if(label!="")
+            label=label+";"+$("#myCheckbox31").val();
+        else
+            label=label+$("#myCheckbox31").val();
+    }
+    if($("#myCheckbox32").prop('checked')){
+        if(label!="")
+            label=label+";"+$("#myCheckbox32").val();
+        else
+            label=label+$("#myCheckbox32").val();
+    }
+    if($("#myCheckbox33").prop('checked')){
+        if(label!="")
+            label=label+";"+$("#myCheckbox33").val();
+        else
+            label=label+$("#myCheckbox33").val();
+    }
+    if($("#myCheckbox34").prop('checked')){
+        if(label!="")
+            label=label+";"+$("#myCheckbox34").val();
+        else
+            label=label+$("#myCheckbox34").val();
+    }
+
+    if($("#myCheckbox35").prop('checked')){
+        if(label!="")
+            label=label+";"+$("#myCheckbox35").val();
+        else
+            label=label+$("#myCheckbox35").val();
+    }
+    if($("#myCheckbox36").prop('checked')){
+        if(label!="")
+            label=label+";"+$("#myCheckbox36").val();
+        else
+            label=label+$("#myCheckbox36").val();
+    }
+    if($("#myCheckbox37").prop('checked')){
+        if(label!="")
+            label=label+";"+$("#myCheckbox37").val();
+        else
+            label=label+$("#myCheckbox37").val();
+    }
+
+    alert(myCheckbox0+"\n"+myCheckbox1+"\n"+myCheckbox2+"\n"+myCheckbox5+"\n"+price1+"\n"+price2+"\n"+label);
+
+    flag="/Screen";
+    token=getCookie("token");
+    var saveData={"label":title,"currentPage":currentPage};
+    $("#goodsmain").html("");
+    $.ajax({
+        url:"/screen",
+        type:"get",
+        dataType:"json",
+        headers:{
+            "token":token,
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            currentPage=result.data.currentPage;
+            data=result.data.data;
+            if(result.code== "107"){
+                innerGoods(data);
+            }else{
+                console.log("查询失败！");
+            }
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！");
+        }
+    });
 }
 

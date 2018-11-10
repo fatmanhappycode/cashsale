@@ -2,7 +2,7 @@
 var currentPage="";
 function innerGoods(data) {
 	$.each(data,function(index,obj){
-		var goodsmain = document.getElementById("goodsmain");
+		var main = document.getElementById("main");
 		var goods= document.createElement('div');
 		var img = document.createElement('img');
 		var h4= document.createElement('h4');
@@ -10,14 +10,13 @@ function innerGoods(data) {
 		goods.setAttribute("class", "goods");
 		h4.setAttribute("class", "myH");
 		p.setAttribute("class", "price");
-		alert(obj.imageUrl);
 	    img.src = obj.imageUrl;
 	    h4.innerHTML=obj.title;
 	    p.innerHTML=obj.price;
 	    goods.appendChild(img);
 	    goods.appendChild(h4);
 	    goods.appendChild(p);
-	    goodsmain.appendChild(goods);
+	    main.appendChild(goods);
 	});
 }
 function loadXMLDoc()
@@ -53,8 +52,8 @@ function loadXMLDoc()
 }
 
 window.onload =function init() {
-    var username = window.location.search.split('=')[2];
-    $("#username").text(username);
+    //var username = window.location.search.split('=')[2];
+    //$("#username").text(username);
     currentPage='';
     token='';
     var saveData={"time":"asc","currentPage":currentPage};
@@ -83,9 +82,9 @@ $(window).scroll(function(){
     var docHeight=$(document).height();//整个窗体的高度
     var winHeight=$(window).height();//当前窗体高度
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
-    console.log(winScrollHeight);
+    //console.log(winScrollHeight);
     if(docHeight-30<=winHeight+winScrollHeight){
-        innerGoods();
+        //innerGoods();
     }
 });
 
