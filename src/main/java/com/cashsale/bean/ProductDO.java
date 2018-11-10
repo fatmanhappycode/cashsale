@@ -1,5 +1,6 @@
 package com.cashsale.bean;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -36,6 +37,28 @@ public class ProductDO {
      * 商品图片地址
      */
     private String imageUrl;
+    /**
+     * 上传的用户名
+     */
+    private String username;
+    /**
+     * 发布时间
+     */
+    private Date publishTime;
+    /**
+     * id
+     */
+    private String productId;
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public ProductDO() {}
 
     public ProductDO(Map<String, Object> map){
         this.title = (String) map.get("title");
@@ -45,6 +68,8 @@ public class ProductDO {
         this.isBargain = (int)map.get("is_bargain");
         this.pdDescription = (String)map.get("product_description");
         this.imageUrl = (String)map.get("image_url");
+        this.username = (String)map.get("user_name");
+        this.publishTime = (Date) map.get("publish_time");
     }
     public String getTitle() {
         return title;
@@ -100,5 +125,20 @@ public class ProductDO {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Date getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
     }
 }

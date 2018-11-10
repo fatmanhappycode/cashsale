@@ -16,7 +16,7 @@ function loadXMLDoc()
             //alert(result.msg);
             if(result.code== "105"&& token!=""){
                 setCookie("token",token);
-                window.location.href="index.html";
+                window.location.href="index.html"+"?username="+username;
             }else if(result.code== "106"){
                 alert(result.msg);
             }

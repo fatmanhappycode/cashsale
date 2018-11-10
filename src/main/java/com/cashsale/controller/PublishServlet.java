@@ -3,12 +3,15 @@ package com.cashsale.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.util.CommonUtils;
 import com.cashsale.util.SensitiveWordInitUtil;
 import com.cashsale.util.SensitivewordFilterUtil;
 import com.google.gson.Gson;
+import io.jsonwebtoken.Claims;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +38,26 @@ public class PublishServlet extends HttpServlet {
         resp.setContentType("application/json;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
+        //获取请求头token
+        Cookie[] cookies = req.getCookies();
+        String token = "";
+        for (Cookie cookie : cookies) {
+            switch(cookie.getName()){
+                case "token":
+                    token = cookie.getValue();
+                    break;
+                default:
+                    break;
+            }
+        }
+        Claims claims = null;
+        try {
+            claims = CommonUtils.parseJWT(token);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String username = claims.getSubject();
+
         BufferedReader br = req.getReader();
         String str,product = "";
         while ((str = br.readLine()) != null) {
@@ -53,7 +76,6 @@ public class PublishServlet extends HttpServlet {
         if (!filterTitle.isEmpty()) {
             return;
         }
-        System.out.println("123");
         String label = p.getLabel();
         int price = p.getPrice();
         int tradeMethod = p.getTradeMethod();
@@ -64,7 +86,7 @@ public class PublishServlet extends HttpServlet {
         Connection conn = new com.cashsale.conn.Conn().getCon();
 
         try{
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO product_info(title, label, price, trade_method, is_bargain, product_description, image_url) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO product_info(title, label, price, trade_method, is_bargain, product_description, image_url,user_name) VALUES (?,?,?,?,?,?,?,?)");
             pstmt.setString(1,title);
             pstmt.setString(2,label);
             pstmt.setInt(3,price);
@@ -72,6 +94,7 @@ public class PublishServlet extends HttpServlet {
             pstmt.setInt(5,isBargain);
             pstmt.setString(6,pdDescription);
             pstmt.setString(7,imageUrl);
+            pstmt.setString(8,username);
             pstmt.executeUpdate();
             writer.print(JSONObject.toJSON(new ResultDTO<String>(107,null,"发布成功")));
         } catch (Exception e) {

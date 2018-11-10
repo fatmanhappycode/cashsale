@@ -7,9 +7,13 @@ function innerGoods(data) {
 		var img = document.createElement('img');
 		var h4= document.createElement('h4');
 		var p= document.createElement('p');
+        var id= document.createElement('input');
+        id.setAttribute("class","id");
 		goods.setAttribute("class", "goods");
 		h4.setAttribute("class", "myH");
 		p.setAttribute("class", "price");
+		id.setAttribute("style","display:none");
+		id.setAttribute("value",obj.product_id)
 	    img.src = obj.imageUrl;
 	    h4.innerHTML=obj.title;
 	    p.innerHTML=obj.price;
@@ -28,10 +32,8 @@ function loadXMLDoc()
 	$.ajax({
 		url:"/search",
 		type:"get",
-		dataType:"json",
 		headers:{
-			"token":token,
-            contentType:"application/json;charset=UTF-8"
+			"token":token
 		},
         data:saveData,
 		contentType:"application/json",

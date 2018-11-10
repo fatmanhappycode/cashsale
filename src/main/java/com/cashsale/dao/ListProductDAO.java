@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
 
 /**
  * @author 肥宅快乐码
@@ -41,6 +42,10 @@ public class ListProductDAO {
                     Object cols_value = rs.getObject(cols_name);
                     if (cols_value == null) {
                         cols_value = "";
+                    }
+                    if (cols_name.equals("publish_time")) {
+                        Timestamp t = (Timestamp)cols_value;
+                        t.getTime();
                     }
                     map.put(cols_name, cols_value);
                 }
