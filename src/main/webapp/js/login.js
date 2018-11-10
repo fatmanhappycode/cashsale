@@ -9,13 +9,14 @@ function loadXMLDoc()
         type:"post",
         dataType:"json",
         data:JSON.stringify(saveData),
-        contentType:"application/json",
+        contentType:"application/json;charset=UTF-8",
         success:function(result,testStatus)
         {
             token=result.data;
             //alert(result.msg);
             if(result.code== "105"&& token!=""){
-                window.location.href="index.html?token="+token+"?username="+username;
+                setCookie("token",token);
+                window.location.href="index.html"+"?username="+username;
             }else if(result.code== "106"){
                 alert(result.msg);
             }

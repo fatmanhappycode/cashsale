@@ -15,9 +15,9 @@ function f() {
         success:function(result,testStatus)
         {
             if(result.code== "121"){
-                alert(result.msg);
+                window.location.href="verifysuccess.html";
             }else if(result.code== "122"){
-                alert(result.msg);
+                window.location.href="verifyfailure.html";
             }
         },
         error:function(xhr,errrorMessage,e){

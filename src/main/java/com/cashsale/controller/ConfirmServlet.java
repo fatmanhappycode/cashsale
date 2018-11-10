@@ -2,12 +2,16 @@ package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.dao.ConfirmDAO;
 import com.cashsale.service.UserService;
+import com.cashsale.util.CommonUtils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import io.jsonwebtoken.Claims;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +39,25 @@ public class ConfirmServlet extends HttpServlet {
             user += str;
         }
 
+        //获取请求头token
+        Cookie[] cookies = req.getCookies();
+        String token = "";
+        for (Cookie cookie : cookies) {
+            switch(cookie.getName()){
+                case "token":
+                    token = cookie.getValue();
+                    break;
+                default:
+                    break;
+            }
+        }
+        Claims claims = null;
+        try {
+            claims = CommonUtils.parseJWT(token);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String username = claims.getSubject();
 
         // 解析json串
         JsonObject jsonObject = (JsonObject) new JsonParser().parse(user);
@@ -42,6 +65,11 @@ public class ConfirmServlet extends HttpServlet {
 
         UserService comfirmUser = new UserService();
         ResultDTO result = comfirmUser.userComfirm(encoded);
+
+        if (result.getMsg().equals("认证成功")) {
+            new ConfirmDAO().Comfirm(username);
+        }
+
         PrintWriter writer = resp.getWriter();
 
         writer.print(JSONObject.toJSON(result));
