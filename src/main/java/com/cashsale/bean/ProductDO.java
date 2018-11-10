@@ -11,6 +11,7 @@ public class ProductDO {
     /**
      * 商品标题
      */
+
     private String title;
     /**
      * 商品标签

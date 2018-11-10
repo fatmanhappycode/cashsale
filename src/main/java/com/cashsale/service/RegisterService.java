@@ -4,8 +4,8 @@ import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.RegisterDAO;
 
 public class RegisterService {
-	public ResultDTO<String> UserRegister(String username, String email, String encodedPass, String encodedCode, String nickname,
-                                          String vertifyCode, String password) {
+	public ResultDTO<String> UserRegister(String username, String email, String encodedPass, String encodedCode, String nickname, String vertifyCode,
+                                          String password) {
         int code = new RegisterDAO().register(username, email, encodedPass, encodedCode, nickname, vertifyCode, password);
         if (code == 102) {
             return new ResultDTO<String>(102, null, "注册失败！");

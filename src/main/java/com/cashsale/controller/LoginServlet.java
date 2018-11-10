@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
         while((str = br.readLine()) != null){
             user += str;
         }
+
         CustomerDO c = new Gson().fromJson(user, CustomerDO.class);
 
         String userName = c.getUsername();

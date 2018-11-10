@@ -8,11 +8,10 @@
 /* 网页整体大小*/
 .all{
 	width:100%;
-	/*height:615px;*/
-	height:103%;
+	height:100%;
 	position: absolute;
 	overflow-x: hidden;
-	background:rgb(249,249,248); 
+	background:rgb(249,249,248);
 	/*条纹 */
 	/* background: linear-gradient(
 		135deg,
@@ -24,46 +23,90 @@
 		rgb(77,189,253) 75%
 	);  */
 }
+/* 背景 */
+.bg{
+	float: left;
+	width: 100%;
+	height: 100%;
+	background-color: #d9ecf9;
+	-webkit-filter: opacity(80%);
+	-moz-filter: opacity(80%);
+	-o-filter:  opacity(80%);
+	-ms-filter: opacity(80%);
+	filter:opacity(80%);
+}
+.bg img{
+	width: 680px;
+	height: 572px;
+	position:absolute;
+	top:4.8%;
+	margin-left: -6%;
+	/* 阴影 */
+	-webkit-box-shadow:0 0 10px rgba(172,172,172,.8);
+	-moz-box-shadow:0 0 10px rgba(172,172,172,.8);
+	box-shadow:0 0 10px rgba(172,172,172,.8);
+}
+/* 网站名 */
+.webName{
+	width: 210px;
+	height: 30px;
+	position: absolute;
+	left: 28%;
+	top: 86%;
+	font-size: 32px;
+	color: #edeff0;
+	font-family: STXinwei;
+}
 /*整个main（图片和登录框）*/
 .form-div{
 	position:absolute;
-	width:860px;
-	height:355px;
-	left:50%;
-	margin-top:100px;
-	margin-left:-430px;
+	width:972px;
+	height:572px;
+	/*left:50%;
+	 margin-top:100px; */
+	margin-top:2.5%;
+	/* margin-left:-34%; */
 }
 
 /* 标题登录 */
 .form-div h2{
-	width:600px;
+	/* width:600px; */
+	width:370px;
 	text-align:center;
-	font:2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
+	/* font:2em Georgia, serif;字体为斜体的Georgia或者serif */
+	font: 2.0em SimHei;
+	color: #da7370;
+	margin-top: 21px;
+	/* margin-left: 16px; */
+	margin-left: 8px;
 }
 /* username等 */
 .form p{
-	font-size:18px;
+	font-size:16px;
 	margin-left:25px;
+	margin-bottom: -9px;
 }
 /* 登录框 */
 .form {
 	position:absolute;
-	width:600px;
-	height:450px;
-	left:50%;
-	margin-left:-300px;
-	background: rgb(249,249,247);
-	border-radius: 4px;
-	/*原始边框 */
-	border: 1px solid #eee;
-    transition: all .4s;
+	width:370px;
+	height: 572px;
+	left:62%;
+	background: #fff;
+	transition: all .4s;
+	/* 阴影 */
+	-webkit-box-shadow:0 0 10px rgba(172,172,172,.8);
+	-moz-box-shadow:0 0 10px rgba(172,172,172,.8);
+	box-shadow:0 0 10px rgba(172,172,172,.8);
 }
 /* 所有input元素外套着的div */
 .g-username {
 	float:left;
-    padding :15px;
-    transition: 0.4s;
-/*     border: 1px solid #fac; */
+	/* padding :15px; */
+	padding :13px;
+	transition: 0.4s;
+	/*     border: 1px solid #fac; */
+	margin-left: 35px;
 }
 .Other-g{
 	width:500px;
@@ -71,22 +114,21 @@
 /* 所有输入框 */
 #username,#password,#login,#register,#nickname,#Cpassword,#email{
 	width:220px;
-	height: 30px;
-	font-size: 18px;
+	/* height: 30px;
+	font-size: 18px; */
+	height: 26px;
+	font-size: 16px;
 	margin-left:25px;
 	margin-top:-10px;
 	border-radius: 4px;
 	border-color:rgba(251,206,177,0.5);
-	
-    border: 1px solid #ddd;
-    overflow: hidden;
-    transition: 0.4s;
-    &:focus {
-        border-color: hsl(199, 98%, 48%);
-    }
-}
-#email{
-	width:500px;
+
+	border: 1px solid #ddd;
+	overflow: hidden;
+	transition: 0.4s;
+&:focus {
+	 border-color: hsl(199, 98%, 48%);
+ }
 }
 /* 按钮 */
 #login,#register{
@@ -94,73 +136,87 @@
 	width:100px;
 	height: 40px;
 	background: rgb(255,255,255);
-	margin-top:12px;
+	/* 鼠标样式 */
+	cursor:pointer;
 }
 #login{
-	margin-left:147px;
+	/* margin-left:147px; */
+	position: absolute;
+	left: 12px;
+	bottom: 23px;
 }
 #register{
-	background: rgb(14,143,251);
+	/* background: rgb(14,143,251); */
+	background: #da7370;
+	color:#fff;
+	/* 阴影 */
+	-webkit-box-shadow:3px 3px 3px #ffdcdb;
+	-moz-box-shadow:3px 3px 3px #ffdcdb;
+	box-shadow:3px 3px 3px #ffdcdb;
+	position: absolute;
+	right: 36px;
+	bottom: 23px;
 }
 
 
 
 .form:focus-within {
-    transform: translateY(-3px);
-	/*阴影 */
-    box-shadow: 0 0 10px rgba(172,172,172,.8);
-    border-color: hsl(199, 98%, 48%);
+	transform: translateY(-3px);
+	border-color: hsl(199, 98%, 48%);
+	/* 阴影 */
+	-webkit-box-shadow:3px 3px 11px #969696;
+	-moz-box-shadow:3px 3px 11px #969696;
+	box-shadow:3px 3px 11px #969696;
 }
 /* 提示语 */
 #Item{
 	position:absolute;
-	/* width:600px;
-	height:400px; */
-/* 	margin-top:260px; */
-	margin-left:130px;
-/* 	border: 1px solid #fac; */
+	margin-top: 2%;
+	margin-left: 73%;
 }
-#passwordItem,#passwordItem1,#passwordItem2,#passwordItem3,#passwordItem4,#passwordItem5{
+#passwordItem,#passwordItem2,#passwordItem3,#passwordItem4,#passwordItem5{
 	position:absolute;
 	width:240px;
 	height: 15px;
 	opacity:.75;
 	font-size:12px;
-	padding:6px;
+	padding-top: 4px;
 	color:red;
-	margin-top:220px;
-	margin-left:310px;
+	margin-top:358px;
+	margin-left:37px;
 	display: none;
-/* 	border: 1px solid #fac; */
 }
-#passwordItem1{
+/* #passwordItem1{
 	margin-top:370px;
 	margin-left:433px;
-}
+} */
 #passwordItem2{
-	margin-top:320px;
-	margin-left:33px;
+	/* margin-top:320px;
+	margin-left:33px; */
+	margin-top: 442px;
+	margin-left: 25px;
 }
 #passwordItem3{
-	margin-top:220px;
-	margin-left:33px;
+	/* margin-top:220px;
+	margin-left:33px; */
+	margin-top: 274px;
+	margin-left: -38px;
 }
 #passwordItem4{
-	margin-top:120px;
-	margin-left:33px;
+	margin-top:108px;
+	margin-left:12px;
 }
 #passwordItem5{
-	margin-top:120px;
-	margin-left:310px;
+	margin-top: 191px;
+	margin-left: 30px;
 }
 /* 版权 */
 .bottom{
-	whidth:200px;
 	position:absolute;
-	color:rgba(172,172,172,.9);
+	color:#908380;
 	font-size:14px;
 	left:50%;
-	margin-left:-100px;
-	bottom:10px;
+	margin-left: -140.4px;
+	bottom:2%;
 	text-align: center;
 }

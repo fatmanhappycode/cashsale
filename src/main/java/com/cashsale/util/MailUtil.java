@@ -47,12 +47,12 @@ public class MailUtil {
         
 		//System.out.println("MailUtil下的密码："+password);
 		//System.out.println("MailUtil下的验证码："+code);
+        
 		//创建邮件对象
 		Message message = new MimeMessage(session);
 		//设置发件人
 		String nick = javax.mail.internet.MimeUtility.encodeText("“现卖”邮箱管理员");
 		message.setFrom(new InternetAddress(nick + " <"+sendEmailAccount+">"));
-		System.out.println(nickname);
 		//设置收件人
 		message.setRecipient(RecipientType.TO, new InternetAddress(to));
 		//设置邮件的主题

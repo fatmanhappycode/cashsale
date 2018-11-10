@@ -9,77 +9,124 @@
 .all{
 	width:100%;
 	/*height:615px;*/
-	height:103%;
+	height:100%;
 	position: absolute;
 	overflow-x: hidden;
-	background:rgb(249,249,248); 
-	/*条纹 */
+	/*条纹*/
 	/* background: linear-gradient(
-		
+
 		rgb(251,206,177),
 		#fac
-	); */ 
-	
+	); */
+
+}
+
+/* 背景 */
+.bg{
+	float: left;
+	width: 100%;
+	height: 100%;
+	background-color: #d8f3f3;
+	-webkit-filter: opacity(80%);
+	-moz-filter: opacity(80%);
+	-o-filter:  opacity(80%);
+	-ms-filter: opacity(80%);
+	filter:opacity(80%);
+}
+.webName{
+	width: 210px;
+	height: 100px;
+	position: absolute;
+	left: 44%;
+	top: 4%;
+	font-size: 32px;
+	color: #edeff0;
+	font-family: STXinwei;
 }
 .form-div{
 	position:absolute;
-	width:860px;
-	height:350px;
+	/* width:860px;
+	height:350px; */
+	width:1010px;
+	height:440px;
 	left:50%;
 	margin-top:100px;
-	margin-left:-430px;
+	margin-left:-505px;
 	/* border:1px solid #FAC; */
 }
 .form-div img{
 	display:block;
-	width:560px;
-	height:350px;
-	border-radius: 4px;
+	/* width:560px;
+	height:350px; */
+	width: 680px;
+	height: 440px;
+	/* border-radius: 4px; */
 	position:absolute;
 	/* border:1px solid #FAC; */
+	/* 阴影 */
+	-webkit-box-shadow:0 2px 10px rgba(172,172,172,.8);
+	-moz-box-shadow:0 2px 10px rgba(172,172,172,.8);
+	box-shadow:0 2px 10px rgba(172,172,172,.8);
 }
 .form-div h2{
 	width:300px;
 	text-align:center;
-	font: 2em Georgia, serif;/* 字体为斜体的Georgia或者serif */
+	/* font: 2em Georgia, serif;字体为斜体的Georgia或者serif */
+	font: 2.0em SimHei;
+	color: #da7370;
+	margin-top: 45px;
+	margin-left: 16px;
 }
 
 .form p{
 	font-size:18px;
 	margin-left:25px;
+	color: #464745;
 }
 
 .form {
 	position:absolute;
-	width:300px;
+	/* width:300px;
 	height:350px;
 	left:50%;
-	margin-left:130px;
-	background: rgb(249,249,248);
-	border-radius: 4px;
-    border: 1px solid #EEE;
-    transition: all .4s;
+	margin-left:130px; */
+	width:330px;
+	height:440px;
+	left:67%;
+	margin-left:3px;
+	background: #fdfdfd;
+	/* border-radius: 4px;
+	    border: 1px solid #EEE; */
+	transition: all .4s;
+	/* 阴影 */
+	-webkit-box-shadow:0 0 10px rgba(172,172,172,.8);
+	-moz-box-shadow:0 0 10px rgba(172,172,172,.8);
+	box-shadow:0 0 10px rgba(172,172,172,.8);
 }
 
 .g-username {
-    padding :15px;
-    transition: 0.4s;
+	/* padding :15px; */
+	padding :4.5%;
+	transition: 0.4s;
 }
 
 #username,#password,#login,#register {
 	width:220px;
 	height: 30px;
 	font-size: 18px;
-	margin-left:25px;
+	/* margin-left:25px; */
+	margin-left:33px;
 	border-radius: 4px;
 	border-color:rgba(251,206,177,0.5);
-	
-    border: 1px solid #ddd;
-    overflow: hidden;
-    transition: 0.4s;
-    &:focus {
-        border-color: hsl(199, 98%, 48%);
-    }
+	color: #464745;
+
+	border: 1px solid #ddd;
+	overflow: hidden;
+	transition: 0.4s;
+&:focus {
+	 /* border-color: hsl(199, 98%, 48%); */
+	 border-color:hsl(203, 69%, 76%);
+ }
 }
 
 #login,#register{
@@ -88,29 +135,43 @@
 	width:100px;
 	height: 40px;
 	background: rgb(255,255,255);
-	margin-top:12px;
+	/* margin-top:12px; */
+	/* 鼠标样式 */
+	cursor:pointer;
+}
+#login{
+	color: #da7370;
+	margin-top:4%;
 }
 #register{
-	margin-top:-18px;
-	background: rgb(14,143,251);
+	margin-top:-6%;
+	/* background: rgb(14,143,251); */
+	background: #da7370;
+	color:#fff;
+	/* 阴影 */
+	-webkit-box-shadow:3px 3px 3px #ffdcdb;
+	-moz-box-shadow:3px 3px 3px #ffdcdb;
+	box-shadow:3px 3px 3px #ffdcdb;
 }
 
 
 .form:focus-within {
-    transform: translateY(-3px);
-	/*阴影 */
-    box-shadow: 0 0 10px rgba(172,172,172,.8);
-    border-color: hsl(199, 98%, 48%);
+	transform: translateY(-3px);
+	/* 阴影 */
+	-webkit-box-shadow:3px 3px 11px #969696;
+	-moz-box-shadow:3px 3px 11px #969696;
+	box-shadow:3px 3px 11px #969696;
+	border-color: hsl(199, 98%, 48%);
 }
 
 .bottom{
-	whidth:200px;
 	position:absolute;
-	color:rgba(172,172,172,.9);
+	color:#908380;
 	font-size:14px;
 	left:50%;
-	margin-left:-100px;
-	bottom:10px;
+	/* margin-left: -140.4px; */
+	margin-left: -11%;
+	bottom:15px;
 	text-align: center;
 }
 

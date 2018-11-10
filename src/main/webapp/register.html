@@ -8,45 +8,49 @@
 	<link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
 </head>
 <body>
-	<div class="all" onclick="clearItem()">
-		<div class="form-div">
-			<form action="#" class="form" accept-charset="UTF-8">
-				<h2>注册</h2>
-				<div class="g-username">
-					<p>用户名:</p><br/><input type="text" id="username" onchange="Verusername()"><br/>
-				</div>
-				<div class="g-username">
-					<p>昵称:</p><br/><input type="text" id="nickname"><br/>
-				</div>
-				<div class="g-username">
-					<p>密码:</p><br/><input type="password" id="password" oninput="Verpassword();Verification()"><br/>
-				</div>
-				<div class="g-username">
-					<p>确认密码:</p><br/><input type="password" id="Cpassword" oninput="Verification()"><br/>
-				</div>
-				<div class="g-username Other-g">
-					<p>E-mail:</p><br/><input type="text" id="email" oninput="E_mail()"><br/>
-				</div>
-				<div class="g-username">
-					<a href="login.html"><input type="button" value="登录" id="login"></a>
-				</div>
-				<div class="g-username" id="myclick">
-					<input type="button" value="注册" id="register" onmouseout="Ver_1()" onmouseover="Ver()" onclick="clickregister()"/>
-				</div>
-			</form>
-			<div id="Item">
-				<span id="passwordItem">两次密码不一致！</span>
-				<span id="passwordItem1">请您填写完信息！</span>
-				<span id="passwordItem2">请您填写正确的邮箱！</span>
-				<span id="passwordItem3">密码必须包含数字、字母和字符,长度为6-16</span>
-				<span id="passwordItem4">请您填写正确的手机号码！</span>
-				<span id="passwordItem5">请不要填写敏感词！</span>
-			</div>
-		</div>
-		<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
+<div class="all" onclick="clearItem()">
+	<div class="bg">
+		<img src="img/register.jpg">
+		<div class="webName">C A S H S A L E</div>
 	</div>
+	<div class="form-div">
+		<form action="#" class="form" accept-charset="UTF-8">
+			<h2>注册</h2>
+			<div class="g-username">
+				<p>用户名:</p><br/><input type="text" id="username" onchange="Verusername()"><br/>
+			</div>
+			<div class="g-username">
+				<p>昵称:</p><br/><input type="text" id="nickname"><br/>
+			</div>
+			<div class="g-username">
+				<p>密码:</p><br/><input type="password" id="password" oninput="Verpassword();Verification()"><br/>
+			</div>
+			<div class="g-username">
+				<p>确认密码:</p><br/><input type="password" id="Cpassword" oninput="Verification()"><br/>
+			</div>
+			<div class="g-username Other-g">
+				<p>E-mail:</p><br/><input type="text" id="email" oninput="E_mail()"><br/>
+			</div>
+			<div class="g-username">
+				<a href="login.html"><input type="button" value="登录" id="login"></a>
+			</div>
+			<div class="g-username" id="myclick">
+				<input type="button" value="注册" id="register" onmouseout="Ver_1()" onmouseover="Ver()" onclick="clickregister()"/>
+			</div>
+		</form>
+		<div id="Item">
+			<span id="passwordItem">两次密码不一致！</span>
+			<!-- <span id="passwordItem1">请您填写完信息！</span> -->
+			<span id="passwordItem2">请您填写正确的邮箱！</span>
+			<span id="passwordItem3">密码必须包含数字、字母和字符,长度为6-16</span>
+			<span id="passwordItem4">请您填写正确的手机号码！</span>
+			<span id="passwordItem5">请不要填写敏感词！</span>
+		</div>
+	</div>
+	<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
+</div>
 </body>
-<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="js/register.js"></script>
 <script type="text/javascript" src="js/register_1.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 </html>

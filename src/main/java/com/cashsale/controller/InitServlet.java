@@ -35,10 +35,5 @@ public class InitServlet extends HttpServlet {
         CloseableHttpClient client = null;
         HttpClients.createDefault();
         HttpPost post = new HttpPost();
-        try {
-            client.execute(post);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
