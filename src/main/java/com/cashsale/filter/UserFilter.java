@@ -21,7 +21,7 @@ import com.cashsale.util.CommonUtils;
  * @author 肥宅快乐码
  * @date 2018/10/11 - 22:29
  */
-@WebFilter(urlPatterns = {})
+@WebFilter(urlPatterns = {"/index.html"})
 public class UserFilter extends HttpServlet implements Filter {
 
     /**
@@ -41,12 +41,11 @@ public class UserFilter extends HttpServlet implements Filter {
         /*
          * 设置响应的编码
          */
-        resp.setContentType("text/json;charset=UTF-8");
-        resp.setCharacterEncoding("utf-8");
+        req.setCharacterEncoding("UTF-8");
 
         //对request进行强制转型以调用其中的方法
         HttpServletRequest request = (HttpServletRequest) req;
-        req.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("UTF-8");
 
         //获取请求头token
         Cookie[] cookies = request.getCookies();
