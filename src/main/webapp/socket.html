@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>websocket</title>
+    <link rel="stylesheet" type="text/css" href="css/socket.css">
+</head>
+<body>
+<div id="all">
+    <!-- 背景 -->
+    <div class="bg"></div>
+    <div id="main">
+        <!-- 侧边导航栏 -->
+        <div class="direct">
+        </div>
+        <!-- 用户列表 -->
+        <div class="userlist">
+            <input id="search" type="text"/>
+        </div>
+        <!-- 聊天主窗口 -->
+        <div class="chat">
+            <!-- 信息显示窗口 -->
+            <div id="messageView"></div>
+            <!-- 信息输入窗口 -->
+            <div class="messageInput">
+                <input id="message"  type="text"></input>
+                <button id="send" onclick="doSend()">send</button>
+                <button id="clean" onclick="clean()">clean</button>
+            </div>
+        </div>
+        <!-- 用户个人 -->
+        <div class="myself">
+            <!-- 用户头像 -->
+            <img src="">
+            <!-- 用户昵称 -->
+            <div class="username"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/webSocket.js"></script>
+</body>
+</html>

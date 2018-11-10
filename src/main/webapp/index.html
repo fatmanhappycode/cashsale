@@ -7,80 +7,91 @@
 	<link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
 </head>
 <body>
-	<div class="ost">
-		<div class="slogan"><a href="index.html" target="_self">现卖-变闲为现的买卖<br>www.xianmai.com</a></div>
-		<div class="login">
-			<a href="" target="_self">
-				<img src="img/icon.jpg">
-				<span id="username"></span>
-			</a>
-		</div>
+<div class="ost">
+	<div class="webImg">
+		<img src="img/icon.jpg">
 	</div>
-	<div class="all">
-		<div class="back-head"><img src="img/background (2).jpg"></div>
-		<div class="search">
-			<div class="heading">
-				<h1>Turn idle products into cash</h1>
-				<h2>现卖网</h2>
-			</div>
-			<div class="mySearch-img" onclick="loadXMLDoc()"></div>
-			<input type="text" class="mySearch">
-			
-		</div>
-		<div class="header">
-			<ul class="header-inner">
-				<li class="index"><a href="index.html" target="_self">首页</a></li>
-				<li class="upload"><a href="upload.html" target="_blank">发布商品</a></li>
-				<li class="youlike"><a href="" target="">猜你喜欢</a></li>
-				<li class="box"><a href="" target="">购物车</a></li>
-				<li class="myself"><a href="myself.html" target="_blank">我的主页</a></li>
-			</ul>
-		</div>
-		<div class="species" id="species">
-			<ul>
-				<li class="OtherIspecies"><p>筛选</p></li>
-				<li class="Ispecies">
-					<p>可否议价:</p>
-					<div class="g-username">
-						<div id="myBox">
-							<span id="myText">可议价</span>
-							<input type="radio" name="aaa" value="可议价" class="myCheckBox" id="myCheckbox01">
-						</div>
-						<div id="myBox">
-							<span id="myText">不可议价</span>
-							<input type="radio" name="aaa" value="不可议价" class="myCheckBox" id="myCheckbox02">
-						</div>
+	<div class="slogan">
+		<a href="index.html" target="_self">CASHASALE</a>
+	</div>
+	<div class="userimg">
+		<img src="img/index/background.jpg">
+	</div>
+	<div class="login">
+		<a href="login.html" target="_self">登录</a>
+	</div>
+	<div class="depart"> / </div>
+	<div class="register">
+		<a href="" target="">注册</a>
+	</div>
+</div>
+<div class="all">
+	<div class="back-head"><img src="img/index/background2.png"></div>
+	<div class="search">
+		<!-- <div class="heading">
+            <h1>Turn idle products into cash</h1>
+            <h2>现卖网</h2>
+        </div> -->
+		<div class="mySearch-img" onclick="loadXMLDoc()">搜索</div>
+		<input type="text" class="mySearch">
+
+	</div>
+	<div class="header">
+		<ul class="header-inner">
+			<li class="index"><a href="index.html" target="_self">首页</a></li>
+			<li class="upload"><a href="upload.html" target="_blank">发布</a></li>
+			<li class="youlike"><a href="" target="">收藏</a></li>
+			<li class="box"><a href="socket.html" target="">消息</a></li>
+			<li class="myself"><a href="" target="">个人中心</a></li>
+		</ul>
+	</div>
+	<div class="species" id="species">
+
+		<ul>
+			<li class="OtherIspecies"><p>筛选</p></li>
+
+			<li class="Ispecies">
+				<p>可否议价:</p>
+				<div class="g-username">
+					<div id="myBox">
+						<span id="myText">可议价</span>
+						<input type="radio" name="aaa" value="可议价" class="myCheckBox" id="myCheckbox01">
 					</div>
-				</li>
-				<li class="Ispecies">
-					<p>是否自提:</p>
-					<div class="g-username">
-						<div id="myBox">
-							<span id="myText">自提</span>
-							<input type="radio" name="bbb" value="自提" class="myCheckBox" id="myCheckbox11">
-						</div>
-						<div id="myBox">
-							<span id="myText">不自提</span>
-							<input type="radio" name="bbb" value="不自提" class="myCheckBox" id="myCheckbox12">
-						</div>
+					<div id="myBox">
+						<span id="myText">不可议价</span>
+						<input type="radio" name="aaa" value="不可议价" class="myCheckBox" id="myCheckbox02">
 					</div>
-				</li>
-				<li class="Ispecies">
-					<p>交易地点:</p>
-					<div class="g-username">
-						<div id="myBox">
-							<span id="myText">南苑</span>
-							<input type="radio" name="ccc" value="南苑" class="myCheckBox" id="myCheckbox21">
-						</div>
-						<div id="myBox">
-							<span id="myText">北苑</span>
-							<input type="radio" name="ccc" value="北苑" class="myCheckBox" id="myCheckbox22">
-						</div>
+				</div>
+			</li>
+			<li class="Ispecies">
+				<p>是否自提:</p>
+				<div class="g-username">
+					<div id="myBox">
+						<span id="myText">自提</span>
+						<input type="radio" name="bbb" value="自提" class="myCheckBox" id="myCheckbox11">
 					</div>
-				</li>
-				<li class="Ispecies">
-					<p>标签:</p>
-					<div class="g-username Other-gggg">
+					<div id="myBox">
+						<span id="myText">不自提</span>
+						<input type="radio" name="bbb" value="不自提" class="myCheckBox" id="myCheckbox12">
+					</div>
+				</div>
+			</li>
+			<li class="Ispecies">
+				<p>交易地点:</p>
+				<div class="g-username">
+					<div id="myBox">
+						<span id="myText">南苑</span>
+						<input type="radio" name="ccc" value="南苑" class="myCheckBox" id="myCheckbox21">
+					</div>
+					<div id="myBox">
+						<span id="myText">北苑</span>
+						<input type="radio" name="ccc" value="北苑" class="myCheckBox" id="myCheckbox22">
+					</div>
+				</div>
+			</li>
+			<li class="Ispecies">
+				<p>标签:</p>
+				<div class="g-username Other-gggg">
 					<div id="myBox">
 						<span id="myText">标签1</span>
 						<input type="checkbox" value="1" class="myCheckBox" id="myCheckbox21">
@@ -110,71 +121,64 @@
 						<input type="checkbox" value="7" class="myCheckBox" id="myCheckbox27">
 					</div>
 				</div>
-				</li>
-				<li class="Ispecies">
-					<p onmouseover="setFocus1()">价格:</p>
-					<div class="g-username">
-						<div id="myBox" onmouseover="setFocus1()">
-							<span id="OthermyText">最低价格(元):</span>
-							<input type="text" autofocus="autofocus" id="price1" maxlength="8" autocomplete="off" onmouseover="setFocus1()">
-						</div>
-						<div id="myBox" onmouseover="setFocus2()">
-							<span id="OthermyText">最高价格(元):</span>
-							<input type="text" id="price2" maxlength="8" autocomplete="off" onmouseover="setFocus2()">
-						</div>
+			</li>
+			<li class="Ispecies">
+				<p>价格:</p>
+				<div class="g-username">
+					<div id="myBox">
+						<span id="OthermyText">最低价格(元):</span>
+						<input type="text" autofocus="autofocus" id="price1" maxlength="8" autocomplete="off">
 					</div>
-				</li>
-				<li class="Ispecies">
-					<p>价格排序:</p>
-					<div class="g-username">
-						<div id="myBox">
-							<span id="myText">由小到大</span>
-							<input type="radio" name="fff" value="可议价" class="myCheckBox" id="myCheckbox51">
-						</div>
-						<div id="myBox">
-							<span id="myText">由大到小</span>
-							<input type="radio" name="fff" value="不可议价" class="myCheckBox" id="myCheckbox52">
-						</div>
+					<div id="myBox">
+						<span id="OthermyText">最高价格(元):</span>
+						<input type="text" id="price2" maxlength="8" autocomplete="off">
 					</div>
-				</li>
-				<li class="OtherIspecies1">
-					<input type="button" value="确定" id="Ispeciesbutton" onclick="Selectspecies()">
-				</li>
-			</ul>
-		</div>
-		<div class="frame">
-			<div class="play">
-				 <img src="img/play (1).jpg">
-				 <img src="img/play (2).jpg">
-				 <img src="img/play (3).jpg">
-				 <img src="img/play (4).jpg">
-			</div>
-		</div>
-		<div class="main" id="main">
-			<h2>最新发布</h2>
-			<div class="goodsmain" id="goodsmain">
-				
-				
-			</div>
-		</div>
-		<img id="test" title="回到顶部" src="img/top.gif">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
+				</div>
+			</li>
+			<li class="Ispecies">
+				<p>价格排序:</p>
+				<div class="g-username">
+					<div id="myBox">
+						<span id="myText">由小到大</span>
+						<input type="radio" name="fff" value="可议价" class="myCheckBox" id="myCheckbox51">
+					</div>
+					<div id="myBox">
+						<span id="myText">由大到小</span>
+						<input type="radio" name="fff" value="不可议价" class="myCheckBox" id="myCheckbox52">
+					</div>
+				</div>
+			</li>
+			<li class="OtherIspecies1">
+				<input type="button" value="确定" id="Ispeciesbutton" onclick="Selectspecies()">
+			</li>
+		</ul>
 	</div>
-	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-	<script type="text/javascript" src="js/cookie.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="js/index_1.js"></script>
-	<script type="text/javascript" src="js/index_2.js"></script>
-	
+	<!-- <div class="frame">
+        <div class="play">
+             <img src="img/play (1).jpg">
+             <img src="img/play (2).jpg">
+             <img src="img/play (3).jpg">
+             <img src="img/play (4).jpg">
+        </div>
+    </div> -->
+	<div class="main" id="main">
+		<div class="title">猜你喜欢</div>
+		<div class="goodsmain" id="goodsmain">
+
+
+		</div>
+	</div>
+	<img id="test" title="回到顶部" src="img/index/up.png">
+
+
+	<p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
+</div>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/index_1.js"></script>
+<script type="text/javascript" src="js/index_2.js"></script>
+
 </body>
 
 </html>
