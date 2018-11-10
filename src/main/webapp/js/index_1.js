@@ -10,14 +10,13 @@ function innerGoods(data) {
 		goods.setAttribute("class", "goods");
 		h4.setAttribute("class", "myH");
 		p.setAttribute("class", "price");
-		alert(obj.imageUrl);
 	    img.src = obj.imageUrl;
 	    h4.innerHTML=obj.title;
 	    p.innerHTML=obj.price;
 	    goods.appendChild(img);
 	    goods.appendChild(h4);
 	    goods.appendChild(p);
-	    goodsmain.appendChild(goods);
+	    main.appendChild(goods);
 	});
 }
 function loadXMLDoc()
@@ -53,7 +52,7 @@ function loadXMLDoc()
 }
 
 window.onload =function init() {
-    var username = window.location.search.split('=')[2];
+    var username = window.location.search.split('=')[1];
     $("#username").text(username);
     currentPage='';
     token='';
@@ -85,7 +84,7 @@ $(window).scroll(function(){
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
     console.log(winScrollHeight);
     if(docHeight-30<=winHeight+winScrollHeight){
-        innerGoods();
+        //innerGoods();
     }
 });
 

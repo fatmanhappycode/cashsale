@@ -15,7 +15,7 @@ public class ScreenService {
 			return new ResultDTO<Object>(115, null, "查询失败！");
 		} else if (code == 200) {
 			String queryResult = (String) map.get("queryResult");
-			return new ResultDTO<Object>(200, null, queryResult);
+			return new ResultDTO<Object>(200, queryResult, "查询成功");
 		} else {
 			return new ResultDTO<Object>(116, null, "没有更多数据了……");
 		}

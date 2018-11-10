@@ -35,9 +35,9 @@ public class ScreenServlet extends HttpServlet{
         PrintWriter writer = response.getWriter();
         String label = request.getParameter("label");
         String price = request.getParameter("price");
-        String tradeMethod = request.getParameter("tradMethod");
+		String tradeMethod = request.getParameter("tradMethod");
         String isBargain = request.getParameter("isBargain");
-        String page = request.getParameter("page");
+        String page = request.getParameter("currentPage");
         ArrayList<String> tapGroup = new ArrayList<String>();
         ArrayList<String> priceGroup = new ArrayList<String>();
         ArrayList<String> queryList = new ArrayList<String>();

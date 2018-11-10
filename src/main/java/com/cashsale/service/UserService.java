@@ -40,6 +40,7 @@ public class UserService {
             e.printStackTrace();
         }
         if (a == 302) {
+
             return new ResultDTO<String>(121, null,"认证成功");
         }
         else if (a == 200) {

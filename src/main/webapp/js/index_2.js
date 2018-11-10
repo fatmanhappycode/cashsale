@@ -253,6 +253,25 @@ function onMouseScroll(e){
 }*/
 
 //价格输入框自动获取焦点
+function innerGoods(data) {
+    $.each(data,function(index,obj){
+        var goodsmain = document.getElementById("goodsmain");
+        var goods= document.createElement('div');
+        var img = document.createElement('img');
+        var h4= document.createElement('h4');
+        var p= document.createElement('p');
+        goods.setAttribute("class", "goods");
+        h4.setAttribute("class", "myH");
+        p.setAttribute("class", "price");
+        img.src = obj.imageUrl;
+        h4.innerHTML=obj.title;
+        p.innerHTML=obj.price;
+        goods.appendChild(img);
+        goods.appendChild(h4);
+        goods.appendChild(p);
+        main.appendChild(goods);
+    });
+}
 function setFocus1()
 {
     document.getElementById('price1').focus();
@@ -262,14 +281,19 @@ function setFocus2()
     document.getElementById('price2').focus();
 }
 
-
+var currentPage="";
 function Selectspecies() {
-	//是否自提myCheckbox0
-	//是否可议价myCheckbox1
+	//是否议价
 	var myCheckbox0="";
+	//是否自提
 	var myCheckbox1="";
+	// 交易地点
 	var myCheckbox2="";
+    //label
+    var myCheckbox3="";
+    //价格排序
 	var myCheckbox5="";
+
 
 	//可否议价
 	if($("#myCheckbox01").prop('checked'))
@@ -291,15 +315,52 @@ function Selectspecies() {
 	else if($("#myCheckbox22").prop('checked'))
 		myCheckbox2 = "0";
 
-	//交易地点
+	//标签
+    if($("#myCheckbox31").prop('checked'))
+        myCheckbox3 = myCheckbox3 + "1;";
+    if($("#myCheckbox32").prop('checked'))
+        myCheckbox3 = myCheckbox3 + "2;";
+    if($("#myCheckbox33").prop('checked'))
+        myCheckbox3 = myCheckbox3 + "3;";
+    if($("#myCheckbox34").prop('checked'))
+        myCheckbox3 = myCheckbox3 + "4;";
+    if($("#myCheckbox35").prop('checked'))
+        myCheckbox3 = myCheckbox3 + "5;";
+    if($("#myCheckbox36").prop('checked'))
+        myCheckbox3 = myCheckbox3 + "6;";
+    if($("#myCheckbox37").prop('checked'))
+        myCheckbox3 = myCheckbox3 + "7;";
+
+	//价格排序
 	if($("#myCheckbox51").prop('checked'))
 		myCheckbox5 ="1";
 	else if($("#myCheckbox52").prop('checked'))
 		myCheckbox5 = "0";
 
+	//价格区间
 	var price1 = $("#price1").val();
 	var price2 = $("#price2").val();
 
-	alert(myCheckbox0+"\n"+myCheckbox1+"\n"+myCheckbox2+"\n"+myCheckbox5+"\n"+price1+"\n"+price1);
+	alert(myCheckbox0+"\n"+myCheckbox1+"\n"+myCheckbox2+"\n"+myCheckbox5+"\n"+price1+"\n"+price2);
+    var saveData = {"label":myCheckbox3,"price":price1+";"+price2,"tradMethod":myCheckbox1,"isBargain":myCheckbox0,"currentPage":currentPage};
+	$.ajax({
+        url:"/screen",
+        type:"get",
+        headers:{
+            "token":token,
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            currentPage=result.currentPage;
+            data=result.data;
+            innerGoods(data);
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！");
+        }
+    });
 }
 
