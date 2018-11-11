@@ -29,6 +29,7 @@ public class SearchByTimeServlet  extends HttpServlet {
         String time = req.getParameter("time");
         String currentPage = req.getParameter("currentPage");
         ResultDTO<PagerDTO> result = new SearchService().searchByTime(time, currentPage);
+        System.out.println(result.getData().getData().size());
 
         PrintWriter writer = resp.getWriter();
         writer.print(JSONObject.toJSON(result));

@@ -2,6 +2,7 @@
 
 var flag="";
 isLoading=false;
+var currentPage='';
 function innerGoods(data) {
 	$.each(data,function(index,obj){
 		var main = document.getElementById("main");
@@ -66,7 +67,8 @@ window.onload =function init() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            currentPage=result.currentPage;
+            currentPage=result.data.currentPage;
+            console.log("%%%%%"+currentPage);
             data=result.data.data;
             //渲染
             innerGoods(data);
@@ -90,10 +92,10 @@ function IsInload() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            currentPage=result.currentPage;
+            currentPage=result.data.currentPage;
             data=result.data.data;
             //渲染
-            innerGoods(data);
+            innerGoods_1(data);
         },
         error:function(xhr,errrorMessage,e){
             alert("系统异常！");
@@ -177,7 +179,7 @@ $(window).scroll(function(){
     var winHeight=$(window).height();//当前窗体高度
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
     console.log(winScrollHeight);
-    if(docHeight==winHeight+winScrollHeight||docHeight-3==winHeight+winScrollHeight) {
+    if(docHeight==winHeight+winScrollHeight||docHeight-0.8<=winHeight+winScrollHeight) {
         if (flag == "") {
             IsInload();
         } else if (flag == "search") {
