@@ -14,7 +14,6 @@ function setFocus2()
 if(getCookie("username")!=""&&getCookie("username")!=null) {
     $("#username").html(getCookie("username"));
 }
-alert("token:"+"\n"+getCookie("token"));
 
 
 //回车事件

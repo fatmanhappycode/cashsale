@@ -92,7 +92,7 @@ window.onload =function init() {
     {
         var s = document.body.scrollTop || document.documentElement.scrollTop
         if(s+280>H) {
-            oDiv.style = "position:fixed;top:50px;"
+            oDiv.style = "position:fixed;top:17px;"
         } else {
             oDiv.style = ""
         }
@@ -155,7 +155,7 @@ function loadXMLDoc()
 			currentPage=result.data.currentPage;
 			data=result.data.data;
 			if(result.code== "107"){
-                $("body,html").scrollTop(600);
+                $(window).scrollTop(500);
 				innerGoods(data);
 			}else{
 				console.log("查询失败！");
