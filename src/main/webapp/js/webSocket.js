@@ -1,7 +1,9 @@
 var url = "localhost:8080";
 var websocket = null;
+var username = this.getCookie("username");
+document.getElementById("messageView").innerHTML = "getCookie(username)="+username+"<br/>";
 if ('WebSocket' in window) {
-    websocket = new WebSocket("ws://" + url + "/socket?username='123'");
+    websocket = new WebSocket("ws://" + url + "/socket?username="+username);
 } else {
     alert("该浏览器不支持websocket!");
 }
@@ -11,16 +13,18 @@ websocket.onerror = onError;
 websocket.onclose = onClose;
 
 function onOpen(openEvent) {
-
     document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + "OPEN<br/>";
 
 }
 
 function onMessage(event) {
-    document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+"event="+ event+"<br/>";
+    /*document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+"event="+ event+"<br/>";
     element.innerHTML=event.data;
-    document.getElementById("messageView").appendChild(element);
-
+    document.getElementById("messageView").appendChild(element);*/
+    eval("var message="+event.data+";");
+    var date = message.getDate;
+    var content = message.getContent;
+    document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+date+"<br/>"+ content+"<br/>";
 }
 function onError() {
     alert("链接失败，请重新链接！")
@@ -46,7 +50,7 @@ function doSend() {
         var time=year+'-'+mon+'-'+da+' '+h+':'+m+':'+s;
         if(msg && to !=null){
             /* 定义json字符串 */
-            var messageData={"sender":"123",
+            var messageData={"sender":username,
                 "receiver":to,
                 "content":msg,
                 "date":time

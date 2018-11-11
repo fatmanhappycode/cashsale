@@ -64,14 +64,14 @@ import com.cashsale.util.CommonUtils;
                 }
             }
         }else{
-            response.sendRedirect("error.html");
+            request.getRequestDispatcher("error.html");
         }
 
         try {
             // 解析JWTtoken，错误则抛出异常
             CommonUtils.parseJWT(token);
         } catch (Exception e) {
-            response.sendRedirect("error.html");
+            request.getRequestDispatcher("error.html");
         }
 
         //允许请求通过

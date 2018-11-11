@@ -74,13 +74,13 @@ public class ActiveDAO {
 
 					//writer.println(JSONObject.toJSON(new Result<String>(113, null, "验证码已过期，请重新注册！")));
 					closeConn();
-					return CODE_IS_EXPIRE;
+					return ACTIVE_SUCCESSED;
 				}
 				else
 				{
 					//writer.println(JSONObject.toJSON(new Result<String>(101, null, "激活成功！")));
 					closeConn();
-					return ACTIVE_SUCCESSED;
+					return CODE_IS_EXPIRE;
 				}
 			}
 			else

@@ -1,8 +1,7 @@
 package com.cashsale.controller;
 
 import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.websocket.OnClose;
@@ -34,6 +33,9 @@ public class SocketServlet {
 	private static Map<String, Session> map = new HashMap<String, Session>();
 	static Gson gson = new Gson();
 
+	public static List<Session> sessions = new ArrayList<Session>();
+	public static List<String> names = new ArrayList<String>();
+
 	@OnOpen
 	public void open(Session session) throws Exception {
 		System.out.println("启动成功:");
@@ -48,14 +50,18 @@ public class SocketServlet {
 
 		map.put(username, session);
 		webSocketSet.add(map);
+
+		this.names.add(username);
+		this.sessions.add(session);
+		System.out.println("username="+username);
+		System.out.println("queryString="+queryString);
 	}
 
 	@OnMessage
 	public void message(Session session, String json){
-		MessageDTO msg = gson.fromJson(json, MessageDTO.class);
+		/*MessageDTO msg = gson.fromJson(json, MessageDTO.class);
 		//System.out.println("从前台获取的msg="+msg);
-		//设置发送时间
-		//msg.setDate(new TimeUtil().getCurrentTime());
+
 		//获取接收者
 		System.out.println("接收者="+msg.getReceiver());
 		String to = msg.getReceiver();
@@ -79,13 +85,19 @@ public class SocketServlet {
 		} catch (Exception e) {
 			sendMessage(402,"消息发送失败！");
 			e.printStackTrace();
-		}
-
+		}*/
+        MessageDTO msg = gson.fromJson(json, MessageDTO.class);
+		//获取系统当前时间
+		String date = TimeUtil.getTime();
+		msg.setDate(date);
+		broadcast(sessions, JSONObject.toJSONString(msg));
 	}
 
 	@OnClose
 	public void close(Session session) {
-		SocketServlet.map.clear();
+
+	    SocketServlet.map.clear();
+	    sessions.remove(session);
 	}
 
 	@OnError
@@ -102,4 +114,14 @@ public class SocketServlet {
 		this.session.getAsyncRemote().sendText(JSONObject.toJSONString(result));
 	}
 
+	public void broadcast(List<Session> ss, String msg){
+		for(Iterator iterator = ss.iterator(); iterator.hasNext();){
+			Session session = (Session)iterator.next();
+			try{
+				session.getBasicRemote().sendText(msg);
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
 }

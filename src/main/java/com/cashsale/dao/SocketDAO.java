@@ -151,9 +151,8 @@ public class SocketDAO {
 	}
 	/**
 	 * 把聊天记录保存到数据库中
-	 * @param tableName
 	 * @param message
-	 * @param isOffline
+	 * @param isRead
 	 */
 	public void saveMessage(MessageDTO message,boolean isRead) {
 		//System.out.println("进入保存");
