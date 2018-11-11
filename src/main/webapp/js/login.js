@@ -2,6 +2,7 @@ function loadXMLDoc()
 {
     var username = $("#username").val();
     var password = $("#password").val();
+    setCookie("username",username);
     var saveData={"username":username,"password":password};
 
     $.ajax({
@@ -13,6 +14,7 @@ function loadXMLDoc()
         success:function(result,testStatus)
         {
             token=result.data;
+            setCookie("token",token);
             //alert(result.msg);
             if(result.code== "105"&& token!=""){
                 setCookie("token",token);
@@ -25,4 +27,11 @@ function loadXMLDoc()
             alert("系统异常！");
         }
     });
+}
+function enterSubmit(obj) {
+    var button = document.getElementById('login');
+    //enter按键的keyCode编码为13
+    if (obj.keyCode == 13) {
+        button.click();
+    }
 }

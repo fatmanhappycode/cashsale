@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.util.CommonUtils;
-import com.cashsale.util.SensitiveWordInitUtil;
+
 import com.cashsale.util.SensitivewordFilterUtil;
 import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Map;
 import java.util.Set;
 
 /**

@@ -41,7 +41,6 @@ public class ScreenServlet extends HttpServlet{
         ArrayList<String> tapGroup = new ArrayList<String>();
         ArrayList<String> priceGroup = new ArrayList<String>();
         ArrayList<String> queryList = new ArrayList<String>();
-        //String query = "SELECT * FROM product_info WHERE ";
         String query = "";
         
 	    StringTokenizer tapToken = new StringTokenizer(label, ";");
@@ -81,12 +80,10 @@ public class ScreenServlet extends HttpServlet{
         	if ( i == queryList.size() - 1 )
         	{
         		query += queryList.get(i);
-        		//System.out.println( "i==queryList:"+query);
         	}
         	else
         	{
         		query += queryList.get(i) + " AND ";
-        		//System.out.println( "i!=queryList:"+query);
         	}
         }
         if ( !priceGroup.isEmpty() )
@@ -99,29 +96,9 @@ public class ScreenServlet extends HttpServlet{
         		query += "price>"+priceGroup.get(0)+" AND "+"price<"+priceGroup.get(1);
         	}
         }
-        //System.out.println(query);
         
         ResultDTO<Object> result = new ScreenService().screen(query, page);
 	    writer.println(JSONObject.toJSON(result));
-        
-        /*Map<String, Object> map = new HashMap<String, Object>();
-        map = SearchUtil.search(query, page);
-        int code = (int) map.get("code");
-        String queryResult = (String) map.get("queryResult");
-        //System.out.println(queryResult);
-        
-        if( code == 115 )
-        {
-        	writer.println(JSONObject.toJSON(new ResultDTO<Object>(115,null,"查询失败！")));
-        }
-        else if(queryResult == null || queryResult.equals("") || queryResult.equals("[]"))
-        {
-        	writer.println(JSONObject.toJSON(new ResultDTO<Object>(116,null,"没有更多数据了……")));
-        }
-        else
-        {
-        	writer.println(JSONObject.toJSON(queryResult));
-        }*/
 	}
 	
     @Override

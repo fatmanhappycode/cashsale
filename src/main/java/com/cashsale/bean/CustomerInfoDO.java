@@ -6,9 +6,7 @@ package com.cashsale.bean;
  * 用户的个人信息
  */
 public class CustomerInfoDO {
-	/**
-	 * 用户名
-	 * */
+	/**  用户名 */
 	private String username;
 	/**
 	 * 信用值
