@@ -42,19 +42,15 @@ public class ProductDO {
      */
     private String username;
     /**
-     * 发布时间
-     */
-    private Date publishTime;
-    /**
      * id
      */
-    private String productId;
+    private int productId;
 
-    public String getProductId() {
+    public int getProductId() {
         return productId;
     }
 
-    public void setProductId(String productId) {
+    public void setProductId(int productId) {
         this.productId = productId;
     }
 
@@ -69,7 +65,7 @@ public class ProductDO {
         this.pdDescription = (String)map.get("product_description");
         this.imageUrl = (String)map.get("image_url");
         this.username = (String)map.get("user_name");
-        this.publishTime = (Date) map.get("publish_time");
+        this.productId = (int)map.get("product_id");
     }
     public String getTitle() {
         return title;
@@ -132,13 +128,5 @@ public class ProductDO {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public Date getPublishTime() {
-        return publishTime;
-    }
-
-    public void setPublishTime(Date publishTime) {
-        this.publishTime = publishTime;
     }
 }

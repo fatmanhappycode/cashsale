@@ -260,15 +260,20 @@ function innerGoods(data) {
         var img = document.createElement('img');
         var h4= document.createElement('h4');
         var p= document.createElement('p');
+        var id= document.createElement('input');
+        id.setAttribute("class","id");
         goods.setAttribute("class", "goods");
         h4.setAttribute("class", "myH");
         p.setAttribute("class", "price");
+        id.setAttribute("style","display:none");
+        id.setAttribute("value",obj.productId);
         img.src = obj.imageUrl;
         h4.innerHTML=obj.title;
         p.innerHTML=obj.price;
         goods.appendChild(img);
         goods.appendChild(h4);
         goods.appendChild(p);
+        goods.appendChild(id);
         main.appendChild(goods);
     });
 }

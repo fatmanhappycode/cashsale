@@ -43,10 +43,6 @@ public class ListProductDAO {
                     if (cols_value == null) {
                         cols_value = "";
                     }
-                    if (cols_name.equals("publish_time")) {
-                        Timestamp t = (Timestamp)cols_value;
-                        t.getTime();
-                    }
                     map.put(cols_name, cols_value);
                 }
                 list.add(map);

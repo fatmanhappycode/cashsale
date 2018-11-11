@@ -34,7 +34,6 @@ public class DetailProductInfoDAO {
                 product.setPdDescription(rs.getString("product_description"));
                 product.setImageUrl(rs.getString("image_url"));
                 product.setUsername(rs.getString("user_name"));
-                product.setPublishTime((Date)rs.getTime("publish_time"));
             }
             return new ResultDTO<ProductDO>(124,product,"查询成功");
         } catch (Exception e) {
