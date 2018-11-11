@@ -7,14 +7,18 @@ function clickregister() {
 	var nickname = $("#nickname").val();
 	var password = $("#password").val();
 	var email = $("#email").val();
-	if(!Verusername()||!E_mail()||!Verpassword()||!Verification()||!Ver())
+	if(!Verusername()||!E_mail()||!Verpassword()||!Verification())
 	{
+        alert("wufa");
 		//如果没填完数据，则弹出指示
-		sp.style.display='block';
+		// sp.style.display='block';
 	}
 	else
 	{
+		alert("请到邮箱进行验证");
+        $("#register").html("注册中…");
 		if(isLoading){
+			alert("请不要重复点击");
 			return;
 		}else{
 			isLoading=true;

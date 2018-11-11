@@ -1,7 +1,7 @@
 //表单有空提示语
 //移入提示
 function Ver(){
-	sp=document.getElementById("passwordItem1");
+	var sp=document.getElementById("passwordItem1");
 	var username = $("#username").val();
 	var nickname = $("#nickname").val();
 	var password = $("#password").val();
@@ -17,13 +17,13 @@ function Ver(){
 }
 //移出消失
 function Ver_1(){
-	sp=document.getElementById("passwordItem1");
+	var sp=document.getElementById("passwordItem1");
 	sp.style.display='none';
 }
 //密码不同提示语
 function Verification() {
 	if($("#Cpassword").val()!=""){
-		sp=document.getElementById("passwordItem");
+		var sp=document.getElementById("passwordItem");
 		var password = $("#password").val();
 		var Cpassword = $("#Cpassword").val();
 		if(password!=Cpassword){

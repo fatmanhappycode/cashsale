@@ -30,7 +30,7 @@
 	-webkit-filter: opacity(80%);
 	-moz-filter: opacity(80%);
 	-o-filter:  opacity(80%);
-	-ms-filter: opacity(80%);
+	/*-ms-filter: opacity(80%);*/
 	filter:opacity(80%);
 }
 .webName{
@@ -98,10 +98,7 @@
 	/* border-radius: 4px;
 	    border: 1px solid #EEE; */
 	transition: all .4s;
-	/* “ı”∞ */
-	-webkit-box-shadow:0 0 10px rgba(172,172,172,.8);
-	-moz-box-shadow:0 0 10px rgba(172,172,172,.8);
-	box-shadow:0 0 10px rgba(172,172,172,.8);
+    border:1px solid #eee;
 }
 
 .g-username {
@@ -123,10 +120,10 @@
 	border: 1px solid #ddd;
 	overflow: hidden;
 	transition: 0.4s;
-&:focus {
-	 /* border-color: hsl(199, 98%, 48%); */
-	 border-color:hsl(203, 69%, 76%);
- }
+	&:focus {
+		 /* border-color: hsl(199, 98%, 48%); */
+		 border-color:hsl(203, 69%, 76%);
+	 }
 }
 
 #login,#register{
@@ -156,12 +153,13 @@
 
 
 .form:focus-within {
-	transform: translateY(-3px);
+	transform: translateY(-4px);
 	/* “ı”∞ */
 	-webkit-box-shadow:3px 3px 11px #969696;
 	-moz-box-shadow:3px 3px 11px #969696;
 	box-shadow:3px 3px 11px #969696;
-	border-color: hsl(199, 98%, 48%);
+	border-color:hsl(199, 98%, 48%);
+    border-radius: 5px;
 }
 
 .bottom{
