@@ -11,3 +11,5 @@ thecashsale.iml
 .idea/dataSources.local.xml
 .idea/compiler.xml
 .idea/workspace.xml___jb_tmp___
+src/main/java/com/cashsale/conn/Conn.java
+src/main/java/com/cashsale/controller/InitServlet.java
