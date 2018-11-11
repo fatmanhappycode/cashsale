@@ -11,7 +11,17 @@ function setFocus2()
 
 
 //
+if(getCookie("username")!=""&&getCookie("username")!=null) {
+    $("#username").html(getCookie("username"));
+}
+alert("token:"+"\n"+getCookie("token"));
 
-$("#username").html(getCookie("username"));
 
-alert(getCookie("token"));
+//回车事件
+function enterSubmit(obj) {
+    var button = document.getElementById('mySearch_img');
+    //enter按键的keyCode编码为13
+    if (obj.keyCode == 13) {
+        button.click();
+    }
+}

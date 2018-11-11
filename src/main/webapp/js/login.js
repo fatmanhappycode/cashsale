@@ -27,6 +27,7 @@ function loadXMLDoc()
         }
     });
 }
+//回车事件
 function enterSubmit(obj) {
     var button = document.getElementById('login');
     //enter按键的keyCode编码为13

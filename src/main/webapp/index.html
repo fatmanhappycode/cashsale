@@ -6,13 +6,13 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
 </head>
-<body>
+<body onkeydown="enterSubmit(event)">
 	<div class="ost">
 		<div class="slogan"><a href="index.html" target="_self">现卖-变闲为现的买卖<br>www.xianmai.com</a></div>
 		<div class="login">
-			<a href="" target="_self">
+			<a href="login.html" target="_self">
 				<img src="img/icon.jpg">
-				<span id="username"></span>
+				<span id="username">点击登录</span>
 			</a>
 		</div>
 	</div>
@@ -23,7 +23,7 @@
 				<h1>Turn idle products into cash</h1>
 				<h2>现卖网</h2>
 			</div>
-			<div class="mySearch-img" onclick="loadXMLDoc()"></div>
+			<div class="mySearch-img" id="mySearch_img" onclick="loadXMLDoc()"></div>
 			<input type="text" class="mySearch">
 			
 		</div>
