@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.ScreenService;
 
@@ -97,7 +98,7 @@ public class ScreenServlet extends HttpServlet{
         	}
         }
         
-        ResultDTO<Object> result = new ScreenService().screen(query, page);
+        ResultDTO<PagerDTO> result = new ScreenService().screen(query, page);
 	    writer.println(JSONObject.toJSON(result));
 	}
 	
