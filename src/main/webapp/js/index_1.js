@@ -68,7 +68,6 @@ window.onload =function init() {
         success:function(result,testStatus)
         {
             currentPage=result.data.currentPage;
-            console.log("%%%%%"+currentPage);
             data=result.data.data;
             //渲染
             innerGoods(data);
@@ -77,6 +76,32 @@ window.onload =function init() {
             alert("系统异常！");
         }
     });
+
+
+
+    var oDiv = document.getElementById("species"),
+        H = 0,
+        Y = oDiv
+    i=0;
+    while (Y) {
+        H += Y.offsetTop;
+        if(i==0){
+            H=H+200;
+        }
+        Y = Y.offsetParent;
+        i++;
+    }
+    window.onscroll = function()
+    {
+        var s = document.body.scrollTop || document.documentElement.scrollTop
+        if(s+280>H) {
+            oDiv.style = "position:fixed;top:50px;"
+        } else {
+            oDiv.style = ""
+        }
+    }
+
+
 }
 function IsInload() {
     token='';
@@ -132,6 +157,7 @@ function loadXMLDoc()
 			currentPage=result.data.currentPage;
 			data=result.data.data;
 			if(result.code== "107"){
+                $("body,html").scrollTop(600);
 				innerGoods(data);
 			}else{
 				console.log("查询失败！");
@@ -178,8 +204,8 @@ $(window).scroll(function(){
     var docHeight=$(document).height();//整个窗体的高度
     var winHeight=$(window).height();//当前窗体高度
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
-    console.log(winScrollHeight);
-    if(docHeight==winHeight+winScrollHeight||docHeight-0.8<=winHeight+winScrollHeight) {
+    console.log(docHeight+"  "+winHeight+"  "+winScrollHeight);
+    if(docHeight==winHeight+winScrollHeight||docHeight-0.7<=winHeight+winScrollHeight) {
         if (flag == "") {
             IsInload();
         } else if (flag == "search") {
@@ -300,7 +326,7 @@ function Selectspecies() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            currentPage=result.data.currentPage;
+            currentPage=result.data.page;
             data=result.data.data;
             if(result.code== "107"){
                 innerGoods(data);

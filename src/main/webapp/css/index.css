@@ -80,7 +80,6 @@
 .search{
 	position:absolute;
 	width:855px;
-	z-index:100;
 	height:200px;
 	padding:120px 115px 0 70px;
 	margin-top:-400px;
@@ -109,13 +108,14 @@
  }
 /*  放大镜 */
  .mySearch-img{
- float:right;
+ 	float:right;
  	width:70px;
  	height: 40px;
  	border:3px solid #fff;
  	border-left: none;
  	cursor: pointer;
  	-webkit-appearance: none;
+	 background: url("../img/mySearch-img.png");
  }
   
   
@@ -124,13 +124,12 @@
   
 /* 导航条 */
 .header{
-	position:absolute;
+	position:relative;
 	z-index:10000;
 	height:135px;
 	margin-left:110px;
 	margin-top:-55px;
-	margin-bottom: 100px;
-/* 	border:1px solid #FAC; */
+ 	/*border:2px solid #FAC;*/
 }
 .index,.upload,.youlike,.box,.myself{
 	float:left;
@@ -192,13 +191,12 @@
 /* 分类 */
 /* 整个分类栏的样式 */
 .species{
-	margin-top:110px;
+	margin-top:40px;
 	margin-left:30px;
 	width:160px;
 	border-radius:10px;
-	transition:1s;
 	border:2px solid rgba(131,111,191,.5);
-/* 	border:1px solid #FAC; */
+ 	/*border:1px solid #FAC;*/
 }
 
 
@@ -357,8 +355,8 @@
 
 /* 轮播图 */
 .frame{
-	margin-top:-420px;
-	margin-left:250px;
+	margin-left: 238px;
+	margin-top: -418px;
 	width:700px;
 	height:360px;
 	border-radius:10px;
