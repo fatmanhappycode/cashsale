@@ -43,7 +43,7 @@ public class ListUserCFDAO {
 				int score = getScore(result.getString(username));
 				pref.put(productId, score);
 				
-				String sql2 = "SELECT * FROM commodity WHERE product_id = ?";
+				String sql2 = "SELECT * FROM commodity_score WHERE product_id = ?";
 				pstmt2 = conn.prepareStatement(sql2);
 				pstmt2.setString(1, productId);
 				result2 = pstmt2.executeQuery();

@@ -60,13 +60,13 @@ public class ProductDO {
     public ProductDO(Map<String, Object> map){
         this.title = (String) map.get("title");
         this.label = (String)map.get("label");
-        this.price = (int)map.get("price");
-        this.tradeMethod = (int)map.get("trade_method");
-        this.isBargain = (int)map.get("is_bargain");
+        this.price = Integer.parseInt(map.get("price").toString());
+        this.tradeMethod = Integer.parseInt(map.get("trade_method").toString());
+        this.isBargain = Integer.parseInt(map.get("is_bargain").toString());
         this.pdDescription = (String)map.get("product_description");
         this.imageUrl = (String)map.get("image_url");
         this.username = (String)map.get("user_name");
-        this.productId = (int)map.get("product_id");
+        this.productId = Integer.parseInt(map.get("product_id").toString());
     }
     public String getTitle() {
         return title;
