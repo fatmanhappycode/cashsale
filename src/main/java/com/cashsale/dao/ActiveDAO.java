@@ -20,30 +20,30 @@ public class ActiveDAO {
 	private static final int CODE_IS_WRONG = 111;
 	/** 验证失败 */
 	private static final int VERTIFY_FAILED = 112;
-	
+
 	private Connection conn = new com.cashsale.conn.Conn().getCon();
 	private PreparedStatement pstmt = null;
 	private PreparedStatement pstmt2 = null;
 	private ResultSet result = null;
 	private ResultSet result2 = null;
-	
+
 	public int active(String code, String currentTime, String username, String password) {
 		try {
 			//System.out.println(code);
 			//根据激活码查询用户
-			pstmt = conn.prepareStatement("SELECT user_name FROM user_data WHERE code = ?");
+			pstmt = conn.prepareStatement("SELECT user_name FROM register_user WHERE code = ?");
 			pstmt.setString(1, code);
 			result = pstmt.executeQuery();
 			//根据用户名查询密码
-			pstmt2 = conn.prepareStatement("SELECT pass_word FROM all_user WHERE user_name = ? ");
+			pstmt2 = conn.prepareStatement("SELECT pass_word FROM register_user WHERE user_name = ? ");
 			result2 = null;
-		
+
 			if( result.next() )
 			{
 				pstmt2.setString(1, result.getString(1));
 				result2 = pstmt2.executeQuery();
 			}
-			
+
 			//result2.next();
 			//若根据验证码找得到该用户，且密码正确，时间未超过五分钟，则验证通过
 			if( result2.next() || result2.getString(1).equals(password) )
@@ -96,10 +96,10 @@ public class ActiveDAO {
 			return VERTIFY_FAILED;
 		}
 	}
-	
+
 	/** 关闭所有链接 */
 	public void closeConn() {
 		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
-    	new com.cashsale.conn.Conn().closeConn(result2, pstmt2, conn);
+		new com.cashsale.conn.Conn().closeConn(result2, pstmt2, conn);
 	}
 }
