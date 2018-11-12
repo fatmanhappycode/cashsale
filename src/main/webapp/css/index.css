@@ -37,7 +37,7 @@
 	height:40px;
 	border-radius: 25px;
 }
-/* 鼠标滑过 login register 的样式 */
+/* 鼠标滑过 login register 的样�? */
 .login:hover{
 	cursor: pointer;
 }
@@ -51,8 +51,8 @@
 	width:90px;
 	margin-top:7px;
 	margin-left:5px;
-	text-overflow: ellipsis;/*文本超出提示三个点*/
-	white-space: nowrap;/*一行显示*/
+	text-overflow: ellipsis;/*文本超出提示三个�?*/
+	white-space: nowrap;/*�?行显�?*/
 	overflow: hidden;/*超出隐藏*/
 	/* 	border:1px solid #fac; */
 }
@@ -76,7 +76,7 @@
 }
 
 
-/* 图片上面的  */
+/* 图片上面�?  */
 .search{
 	position:absolute;
 	width:855px;
@@ -94,35 +94,37 @@
 	color: #fff;
 	font-size: 38px;
 }
-/* 搜索框 */
-.mySearch{
-	float:right;
-	width:300px;
-	height: 40px;
-	border:3px solid #fff;
-	background: rgba(231,238,254,.6);
-	font-size: 22px;
-	color:#000;
-	font-weight: 600;
-	cursor:text;
-}
-/*  放大镜 */
-.mySearch-img{
-	float:right;
-	width:70px;
-	height: 40px;
-	border:3px solid #fff;
-	border-left: none;
-	cursor: pointer;
-	-webkit-appearance: none;
-	background: url("../img/mySearch-img.png");
-}
-
-
-
-
-
-/* 导航条 */
+/* ������ */
+ .mySearch{
+ 	float:right;
+ 	width:300px;
+ 	height: 40px;
+ 	border:3px solid #fff;
+ 	background: rgba(231,238,254,.6);
+ 	font-size: 22px;
+ 	color:#000;
+ 	font-weight: 600;
+ 	cursor:text;
+ }
+/*  �Ŵ� */
+ .mySearch-img{
+	 -webkit-appearance: none;
+ 	float:right;
+ 	width:70px;
+ 	height: 40px;
+ 	border:3px solid #fff;
+ 	border-left: none;
+ 	cursor: pointer;
+ 	-webkit-appearance: none;
+	 background:#fff url("../img/mySearch-img.png") no-repeat center;
+	 background-size: 40px 40px;
+ }
+  
+  
+  
+  
+  
+/* ������ */
 .header{
 	position:relative;
 	z-index:10000;
@@ -219,7 +221,7 @@
 	border-radius:10px 10px 0 0;
 	border-bottom:2px solid rgba(172,172,172,.5);
 }
-/* 最后一个li */
+/* �?后一个li */
 .OtherIspecies1{
 	padding-top:15px;
 	border-radius: 0 0 8px 8px;
@@ -283,7 +285,7 @@
 	border:#999 solid 1px;
 	border-radius: 4px;
 }
-/* 选择框 */
+/* 选择�? */
 .myCheckBox{
 	position:absolute;
 	/* 	除去原生样式 */
@@ -294,19 +296,19 @@
 	border:#999 solid 1px;
 	border-radius: 3px;
 	opacity:0;
-	/*===========================================设置复选框大小 */
+	/*===========================================设置复�?�框大小 */
 	min-height: 30px;
 	min-width: 80px;
 	border-radius: 4px;
 }
-/* 复选框选中时样式 */
+/* 复�?�框选中时样�? */
 .myCheckBox:checked {
 	background:rgba(166,128,226,1);
 	opacity:.5;
 	border:#3190e8 solid 1px;
 	border-radius: 4px;
 }
-/* “对”符号 选中符号 */
+/* “对”符�? 选中符号 */
 .myCheckBox:checked::after{
 	content: '';
 	top: 14px;
@@ -355,7 +357,7 @@
 	background:rgba(166,128,226,.5);
 }
 
-/* 轮播图 */
+/* 轮播�? */
 .frame{
 	margin-left: 238px;
 	margin-top: -418px;
