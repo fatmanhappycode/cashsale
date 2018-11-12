@@ -313,7 +313,7 @@ function Selectspecies() {
     flag="screen";
     token=getCookie("token");
     currentPage="";
-    var saveData={"label":label,"page":currentPage,"price":price1,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
+    var saveData={"label":label,"currentPage":currentPage,"price":price1+";"+price2,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
     $("#main").html("");
     $.ajax({
         url:"/screen",

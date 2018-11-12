@@ -9,7 +9,7 @@ import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ScreenDAO;
 
 public class ScreenService {
-	
+
 	public ResultDTO<PagerDTO> screen(String queryInfo, String strPage){
 		Map<String, Object> map = new ScreenDAO().search(queryInfo, strPage);
 		int code = (int) map.get("code");

@@ -64,14 +64,17 @@ import com.cashsale.util.CommonUtils;
                 }
             }
         }else{
-            request.getRequestDispatcher("error.html");
+            System.out.println("123");
+            response.sendRedirect("error.html");
+            return;
         }
 
         try {
             // 解析JWTtoken，错误则抛出异常
             CommonUtils.parseJWT(token);
         } catch (Exception e) {
-            request.getRequestDispatcher("error.html");
+            System.out.println("234");
+            response.sendRedirect("error.html");
         }
 
         //允许请求通过

@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ProductDO;
 
@@ -17,7 +16,7 @@ import com.cashsale.bean.ProductDO;
  * 2018年11月3日
  */
 public class ScreenDAO {
-	
+
 	/** 每页显示的数据数目 */
 	static int DATA_NUMBER = 8;
 	/** 查询成功的code */
@@ -26,7 +25,7 @@ public class ScreenDAO {
 	private static final int NO_MORE_DATA = 116;
 	/** 查询失败 */
 	private static final int SCREEN_FAILED = 115;
-	
+
 	/**
 	 * 查询
 	 * @param queryInfo
@@ -34,6 +33,7 @@ public class ScreenDAO {
 	 * @param strPage
 	 * 			要查询的页码
 	 * @return
+	 * 		map(code：状态码；page：下一页;queryResult:查询结果）
 	 */
 	public Map<String, Object> search(String queryInfo, String strPage)
 	{
@@ -47,15 +47,15 @@ public class ScreenDAO {
 		{
 			page = Integer.parseInt( strPage );
 		}
-		
+
 		String query = "SELECT * FROM product_info LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
 		if(queryInfo != null && !queryInfo.equals(""))
 		{
 			query = "SELECT * FROM product_info WHERE "+queryInfo+"LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
 		}
-		
+
 		//System.out.println(query);
-		
+
 		try {
 			pstmt = conn.prepareStatement(query);
 			result = pstmt.executeQuery();
@@ -67,7 +67,7 @@ public class ScreenDAO {
 				map.put("page",page+1);
 			}
 			else {
-			    result.previous();
+				result.previous();
 				// 遍历每一行数据
 				while (result.next()) {
 					JSONObject jsonObj = new JSONObject();
@@ -82,9 +82,9 @@ public class ScreenDAO {
 				}
 				map.put("queryResult", array);
 				map.put("code", SCREEN_SUCCESSED);
-				map.put("code",page+1);
+				map.put("page",page+1);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			//查询失败
