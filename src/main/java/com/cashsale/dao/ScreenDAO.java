@@ -5,10 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.cashsale.bean.ProductDO;
 
 /**
  * @author Sylvia
@@ -27,7 +29,7 @@ public class ScreenDAO {
 	
 	/**
 	 * 查询
-	 * @param query
+	 * @param queryInfo
 	 * 			查询语句
 	 * @param strPage
 	 * 			要查询的页码
@@ -59,21 +61,29 @@ public class ScreenDAO {
 			result = pstmt.executeQuery();
 			ResultSetMetaData metaData = result.getMetaData();
 			int columnCount = metaData.getColumnCount();
-			JSONArray array = new JSONArray();
-			// 遍历每一行数据
-			while (result.next()) {
-				JSONObject jsonObj = new JSONObject();
-
-				// 遍历每一列
-				for (int j = 1; j <= columnCount; j++) {
-					String columnName = metaData.getColumnLabel(j);
-					String value = result.getString(columnName);
-					jsonObj.put(columnName, value);
-				}
-				array.add(jsonObj);
+			List<ProductDO> array = null;
+			if(!result.next()){
+				map.put("code",NO_MORE_DATA);
+				map.put("page",page+1);
 			}
-			map.put("queryResult", array.toJSONString());
-			map.put("code", SCREEN_SUCCESSED);
+			else {
+			    result.previous();
+				// 遍历每一行数据
+				while (result.next()) {
+					JSONObject jsonObj = new JSONObject();
+
+					// 遍历每一列
+					for (int j = 1; j <= columnCount; j++) {
+						String columnName = metaData.getColumnLabel(j);
+						String value = result.getString(columnName);
+						jsonObj.put(columnName, value);
+					}
+					array.add(jsonObj.toJavaObject(ProductDO.class));
+				}
+				map.put("queryResult", array);
+				map.put("code", SCREEN_SUCCESSED);
+				map.put("code",page+1);
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

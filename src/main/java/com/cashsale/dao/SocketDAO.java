@@ -16,19 +16,17 @@ import com.cashsale.bean.MessageDTO;
  * 2018年11月3日
  */
 public class SocketDAO {
-	
+
 	/** 暂无更多消息的code */
 	private static final int NO_MORE_MESSAGE = 403;
 	/** 每页显示的数据数目 */
-	private static final int MESSAGE_NUMBER = 8;
+	static int MESSAGE_NUMBER = 8;
 	/** 查询成功 */
 	private static final int QUERY_SUCCESSED = 200;
-	
-	/** 判断是否存在该表，不存在则创建 
+
+	/** 判断是否存在该表，不存在则创建
 	 * @param sender
-     *          发送者
 	 * @param receiver
-     *          接收者
 	 * @return tableName
 	 * 			返回表名
 	 */
@@ -40,17 +38,17 @@ public class SocketDAO {
 		try {
 			stmt = conn.createStatement();tableName = sender + "_and_" + receiver;
 			rs = conn.getMetaData().getTables(null, null, tableName, null);
-	    
-	        if( !rs.next() ) {
-	        	tableName = receiver + "_and_" + sender;
-	        	rs = conn.getMetaData().getTables(null, null, tableName, null);
-	        	
-	        	if( !rs.next()) {
-	        	stmt.execute("CREATE TABLE "+ tableName + "(sender VARCHAR(20) NOT NULL PRIMARY KEY, receiver "
-	        		+ "VARCHAR(20) NOT NULL, content VARCHAR(255), date CHAR(20) NOT NULL, img_url VARCHAR(255),"
-	        		+ " is_read BOOLEAN DEFAULT false)");
-	        	}
-	        }
+
+			if( !rs.next() ) {
+				tableName = receiver + "_and_" + sender;
+				rs = conn.getMetaData().getTables(null, null, tableName, null);
+
+				if( !rs.next()) {
+					stmt.execute("CREATE TABLE "+ tableName + "(sender VARCHAR(20) NOT NULL, receiver "
+							+ "VARCHAR(20) NOT NULL, content VARCHAR(255), date CHAR(20) NOT NULL, img_url VARCHAR(255),"
+							+ " is_read BOOLEAN DEFAULT false) CHARACTER SET utf8 COLLATE utf8_general_ci;");
+				}
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +57,6 @@ public class SocketDAO {
 		new com.cashsale.conn.Conn().closeConn(rs, stmt, conn);
 		return tableName;
 	}
-
 
 	/**
 	 * 获取离线消息
@@ -103,7 +100,7 @@ public class SocketDAO {
 		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
 		return map;
 	}*/
-	
+
 	/** 获取历史记录
 	 * @param tableName
 	 * @param strPage
@@ -155,25 +152,29 @@ public class SocketDAO {
 	/**
 	 * 把聊天记录保存到数据库中
 	 * @param message
-	 * @param isOffline
+	 * @param isRead
 	 */
-	public void saveMessage(MessageDTO message,boolean isOffline) {
+	public void saveMessage(MessageDTO message,boolean isRead) {
+		//System.out.println("进入保存");
 		Connection conn = new com.cashsale.conn.Conn().getCon();
 		String receiver = message.getReceiver();
 		String sender = message.getSender();
+		String content = message.getContent();
 		String imgUrl = message.getImgUrl();
 		String date = message.getDate();
 		String tableName = createTable(sender, receiver);
 		PreparedStatement ptmt = null;
 		ResultSet rs = null;
 		try {
-			ptmt = conn.prepareStatement("INSERT INTO "+tableName+"(sender,receiver,date,imgurl,"
-				+ "is_offline) VALUES(?,?,?,?,?)");
+			ptmt = conn.prepareStatement("INSERT INTO "+tableName+"(sender,receiver,content,date,img_url,"
+					+ "is_read) VALUES(?,?,?,?,?,?)");
 			ptmt.setString(1, sender);
 			ptmt.setString(2, receiver);
-			ptmt.setString(3, date);
-			ptmt.setString(4, imgUrl);
-			ptmt.setBoolean(5, isOffline);
+			ptmt.setString(3, content);
+			ptmt.setString(4, date);
+			ptmt.setString(5, imgUrl);
+			ptmt.setBoolean(6, isRead);
+			ptmt.execute();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -181,7 +182,7 @@ public class SocketDAO {
 		}
 		new com.cashsale.conn.Conn().closeConn(rs, ptmt, conn);
 	}
-	
+
 	/** 获取与该用户相关的历史记录的表名
 	 * @param name
 	 * 			用户名
@@ -196,7 +197,7 @@ public class SocketDAO {
 			String sql = "SHOW tables";
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
-			
+
 			//遍历数据库中的所有表名，并判断表名中是否包含name字段
 			while(rs.next()) {
 				String tableName = rs.getString(1);

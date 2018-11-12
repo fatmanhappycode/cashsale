@@ -108,13 +108,13 @@
 }
 
 #username,#password,#login,#register {
-	width:220px;
+	width: 220px;
 	height: 30px;
 	font-size: 18px;
 	/* margin-left:25px; */
-	margin-left:33px;
+	margin-left: 33px;
 	border-radius: 4px;
-	border-color:rgba(251,206,177,0.5);
+	border-color: rgba(251, 206, 177, 0.5);
 	color: #464745;
 
 	border: 1px solid #ddd;
