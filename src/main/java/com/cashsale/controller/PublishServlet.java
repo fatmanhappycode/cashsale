@@ -66,15 +66,19 @@ public class PublishServlet extends HttpServlet {
         ProductDO p = new Gson().fromJson(product, ProductDO.class);
 
         PrintWriter writer = resp.getWriter();
-
+        System.out.println("3");
         String title = p.getTitle();
         Set<String> filterTitle = new SensitivewordFilterUtil().getSensitiveWord(title,1);
+        System.out.println("4");
         if (!filterTitle.isEmpty()) {
+            System.out.println("5");
             writer.print(JSONObject.toJSON(new ResultDTO<String>(109,null,"发布失败，含有非法字符")));
         }
         if (!filterTitle.isEmpty()) {
+            System.out.println("6");
             return;
         }
+        System.out.println("7");
         String label = p.getLabel();
         int price = p.getPrice();
         int tradeMethod = p.getTradeMethod();
@@ -95,6 +99,7 @@ public class PublishServlet extends HttpServlet {
             pstmt.setString(7,imageUrl);
             pstmt.setString(8,username);
             pstmt.executeUpdate();
+            System.out.println("8");
             writer.print(JSONObject.toJSON(new ResultDTO<String>(107,null,"发布成功")));
         } catch (Exception e) {
             writer.print(JSONObject.toJSON(new ResultDTO<String>(108,null,"发布失败")));
