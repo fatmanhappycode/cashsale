@@ -62,7 +62,11 @@ public class SensitivewordFilterUtil {
         Map nowMap = sensitiveWordMap;
         for (int i = beginIndex; i < txt.length(); i++) {
             word = txt.charAt(i);
-            nowMap = (Map) nowMap.get(word);     //获取指定key
+            if (word == ' ' || word == '!' || word == '@') {
+                continue;
+            }
+            //获取指定key
+            nowMap = (Map) nowMap.get(word);
             if (nowMap != null) {     //存在，则判断是否为最后一个
                 matchFlag++;     //找到相应key，匹配标识+1
                 if ("1".equals(nowMap.get("isEnd"))) {       //如果为最后一个匹配规则,结束循环，返回匹配标识数
