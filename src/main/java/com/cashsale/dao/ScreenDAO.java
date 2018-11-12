@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +19,7 @@ import com.cashsale.bean.ProductDO;
 public class ScreenDAO {
 
 	/** 每页显示的数据数目 */
-	static int DATA_NUMBER = 8;
+	static int DATA_NUMBER = 9;
 	/** 查询成功的code */
 	private static final int SCREEN_SUCCESSED = 200;
 	/** 没有更多数据了 */
@@ -30,23 +31,19 @@ public class ScreenDAO {
 	 * 查询
 	 * @param queryInfo
 	 * 			查询语句
-	 * @param strPage
+	 * @param page
 	 * 			要查询的页码
 	 * @return
 	 * 		map(code：状态码；page：下一页;queryResult:查询结果）
 	 */
-	public Map<String, Object> search(String queryInfo, String strPage)
+	public List<ProductDO> search(String queryInfo, int page)
 	{
-		Map<String, Object> map = new HashMap<String, Object>();
+		// 用于存放每一件商品的信息
+		List<Map<String, Object>> list = new ArrayList<>();
+		List<ProductDO> rs = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet result = null;
-		int page = 1 ;
-		map.put("code", NO_MORE_DATA);
 		Connection conn = new com.cashsale.conn.Conn().getCon();
-		if( strPage != null && !strPage.equals("") )
-		{
-			page = Integer.parseInt( strPage );
-		}
 
 		String query = "SELECT * FROM product_info LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
 		if(queryInfo != null && !queryInfo.equals(""))
@@ -62,35 +59,32 @@ public class ScreenDAO {
 			ResultSetMetaData metaData = result.getMetaData();
 			int columnCount = metaData.getColumnCount();
 			List<ProductDO> array = null;
-			if(!result.next()){
-				map.put("code",NO_MORE_DATA);
-				map.put("page",page+1);
-			}
-			else {
-				result.previous();
-				// 遍历每一行数据
-				while (result.next()) {
-					JSONObject jsonObj = new JSONObject();
 
-					// 遍历每一列
-					for (int j = 1; j <= columnCount; j++) {
-						String columnName = metaData.getColumnLabel(j);
-						String value = result.getString(columnName);
-						jsonObj.put(columnName, value);
-					}
-					array.add(jsonObj.toJavaObject(ProductDO.class));
+			// 遍历每一行数据
+			while (result.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+
+				// 遍历每一列
+				for (int j = 1; j <= columnCount; j++) {
+					String columnName = metaData.getColumnLabel(j);
+					String value = result.getString(columnName);
+					map.put(columnName, value);
+					System.out.println("map.columnName="+columnName+"  map.value="+value);
 				}
-				map.put("queryResult", array);
-				map.put("code", SCREEN_SUCCESSED);
-				map.put("page",page+1);
+				list.add(map);
 			}
-
+			if (list != null) {
+				for (Map<String, Object> map : list) {
+					ProductDO p = new ProductDO(map);
+					rs.add(p);
+				}
+			}
+			new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
+			return rs;
 		} catch (Exception e) {
 			e.printStackTrace();
-			//查询失败
-			map.put("code", SCREEN_FAILED);
 		}
 		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
-		return map;
+		return null;
 	}
 }
