@@ -2,18 +2,18 @@
 
 var flag="";
 isLoading=false;
-var currentPage='';
+currentPage='';
 function innerGoods(data) {
 	$.each(data,function(index,obj){
-		var main = document.getElementById("main");
 		var main = document.getElementById("main");
 		var goods= document.createElement('div');
 		var img = document.createElement('img');
 		var h4= document.createElement('h4');
 		var p= document.createElement('p');
-        var id= document.createElement('input');
-        id.setAttribute("class","id");
+
 		goods.setAttribute("class", "goods");
+        goods.setAttribute("onclick", "goodsclick(this)");
+
 		h4.setAttribute("class", "myH");
 		p.setAttribute("class", "price");
 	    img.src = obj.imageUrl;
@@ -23,18 +23,23 @@ function innerGoods(data) {
 	    goods.appendChild(h4);
 	    goods.appendChild(p);
 	    main.appendChild(goods);
+        //商品id
+        var goodsId= document.createElement('input');
+        goodsId.setAttribute("id","goodsId");
+        goodsId.setAttribute("value",obj.productId);
+        goods.appendChild(goodsId);
 	});
 }
 
 function innerGoods_1(data) {
     $.each(data,function(index,obj){
         var main = document.getElementById("main");
-        var main = document.getElementById("main");
         var goods= document.createElement('div');
         var img = document.createElement('img');
         var h4= document.createElement('h4');
         var p= document.createElement('p');
         goods.setAttribute("class", "goods");
+        goods.setAttribute("onclick", "goodsclick(this)");
         h4.setAttribute("class", "myH");
         p.setAttribute("class", "price");
         img.src = obj.imageUrl;
@@ -44,14 +49,17 @@ function innerGoods_1(data) {
         goods.appendChild(h4);
         goods.appendChild(p);
         main.appendChild(goods);
+        //商品id
+        var goodsId= document.createElement('input');
+        goodsId.setAttribute("id","goodsId");
+        goodsId.setAttribute("value",obj.productId);
+        goods.appendChild(goodsId);
     });
 }
 
 //加载时返回最新商品
 window.onload =function init() {
-    //var username = window.location.search.split('=')[2];
-    //$("#username").text(username);
-    currentPage="";
+    currentPage='';
     token='';
     flag="";
     var saveData={"time":"asc","currentPage":currentPage};
@@ -73,7 +81,7 @@ window.onload =function init() {
             innerGoods(data);
         },
         error:function(xhr,errrorMessage,e){
-            alert("系统异常！");
+            alert("系统异常！"+e+"\n"+errrorMessage);
         }
     });
 
@@ -120,7 +128,7 @@ function IsInload() {
             currentPage=result.data.currentPage;
             data=result.data.data;
             //渲染
-            innerGoods_1(data);
+            innerGoods(data);
         },
         error:function(xhr,errrorMessage,e){
             alert("系统异常！");
@@ -136,6 +144,8 @@ function loadXMLDoc()
 {
     title = $(".mySearch").val();
     if(title==""){
+        //无内容时刷新页面
+        location.reload();
     	return;
 	}
     //将flag赋值为search
@@ -205,7 +215,7 @@ $(window).scroll(function(){
     var winHeight=$(window).height();//当前窗体高度
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
     console.log(docHeight+"  "+winHeight+"  "+winScrollHeight);
-    if(docHeight==winHeight+winScrollHeight||docHeight-0.7<=winHeight+winScrollHeight) {
+    if(docHeight==winHeight+winScrollHeight|docHeight<=winHeight+winScrollHeight|docHeight-0.5<=winHeight+winScrollHeight) {
         if (flag == "") {
             IsInload();
         } else if (flag == "search") {

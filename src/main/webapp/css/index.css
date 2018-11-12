@@ -108,6 +108,7 @@
  }
 /*  ·Å´ó¾µ */
  .mySearch-img{
+	 -webkit-appearance: none;
  	float:right;
  	width:70px;
  	height: 40px;
@@ -115,7 +116,8 @@
  	border-left: none;
  	cursor: pointer;
  	-webkit-appearance: none;
-	 background: url("../img/mySearch-img.png");
+	 background:#fff url("../img/mySearch-img.png") no-repeat center;
+	 background-size: 40px 40px;
  }
   
   
