@@ -7,8 +7,8 @@ var price2 = document.getElementById("price2");
 var getGoods = document.getElementById("getGoods");
 var Description = document.getElementById("Description");
 // 加入内容
-smallImg.innerHTML=getCookie("imageUrl");
-bigImg.innerHTML=getCookie("imageUrl");
+smallImg.setAttribute("src",getCookie("imageUrl"))
+bigImg.setAttribute("src",getCookie("imageUrl"));
 title.innerHTML=getCookie("title");
 price1.innerHTML="价格：￥"+getCookie("price");
 if(getCookie("isBargain")=="1"){
@@ -25,7 +25,7 @@ if(getCookie("tradeMethod")=="1"){
 Description.innerHTML+="更多内容："+"<br>"+getCookie("pdDescription");
 
 // 用户名 发布者
-if(getCookie("goodsUsername")=="undefined"){
+if(getCookie("goodsUsername")!="undefined"){
     $("#username").html(getCookie("goodsUsername"));
 }else{
     $("#username").html("匿名");

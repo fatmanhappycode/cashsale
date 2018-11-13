@@ -1,8 +1,7 @@
 var url = "localhost:8080";
 var websocket = null;
 var to = "";
-/*var username = "123";*/
-var username = "123";
+var username = getCookie("username");
 document.getElementById("messageView").innerHTML = "getCookie(name)="+username+"<br/>";
 if ('WebSocket' in window) {
     websocket = new WebSocket("ws://" + url + "/socket?username="+username);
@@ -15,29 +14,16 @@ websocket.onerror = onError;
 websocket.onclose = onClose;
 
 $(function(){
-    /*to = $('input:radio[name="users"]:checked').val();*/
-    to = "12";
+    //to = $('input:radio[name="users"]:checked').val();
+    to = getCookie("goodsUsername");
 });
 
 
 function onOpen(openEvent) {
     document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + "OPEN<br/>";
-    /*document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + openEvent;*/
-    /*var person = eval('('+openEvent.data+')');
-    if(undefined != person){
-        var contact = person.data;
-        for(var i = 0; i < contact.length; i++){
-            document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + username;
-            if(contact[i] != username) {
-                document.getElementById("users").innerHTML =
-                    "<input type=radio name='users' value='" + contact[i] + "' />" + i + ":" + contact[i] + "<br/>";
-            }
-        }
-    }*/
 }
 
 function onMessage(event) {
-    /*eval("var message="+event.data+";");*/
     var message = eval('(' + event.data + ')');
     var date = message.date;
     var content = message.content;
