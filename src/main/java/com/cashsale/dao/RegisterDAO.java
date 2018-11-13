@@ -45,11 +45,11 @@ public class RegisterDAO {
 			pstmt3.setString(1, email);
 			rs3 = pstmt3.executeQuery();
 
-			if (rs.next() || rs2.next())  {
+			if (rs != null || rs2 != null)  {
 				closeConn();
 				return NUMBER_IS_REGISTER;
 			}
-			else if(rs3.next()){
+			else if(rs3 != null){
 				closeConn();
 				return EMAIL_IS_REGISTER;
 			}
