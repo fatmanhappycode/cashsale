@@ -20,3 +20,17 @@ function enterSubmit(obj) {
         button.click();
     }
 }
+
+//回到顶部函数
+$(window).scroll(function(){
+    var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
+    if(winScrollHeight>=100){
+        document.getElementById("test").style.display="block";
+    }else{
+        document.getElementById("test").style.display="none";
+    }
+});
+//id名加事件直接调用函数
+test.onclick = function(){
+    document.documentElement.scrollTop = 0;
+}

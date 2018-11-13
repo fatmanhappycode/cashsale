@@ -37,3 +37,9 @@ function enterSubmit(obj) {
         button.click();
     }
 }
+
+//获取焦点
+window.onload=function setFocus()
+{
+    document.getElementById('username').focus();
+}
