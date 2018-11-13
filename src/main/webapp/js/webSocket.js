@@ -1,7 +1,9 @@
 var url = "localhost:8080";
 var websocket = null;
-var username = this.getCookie("username");
-document.getElementById("messageView").innerHTML = "getCookie(username)="+username+"<br/>";
+var to = "";
+/*var username = "123";*/
+var username = "123";
+document.getElementById("messageView").innerHTML = "getCookie(name)="+username+"<br/>";
 if ('WebSocket' in window) {
     websocket = new WebSocket("ws://" + url + "/socket?username="+username);
 } else {
@@ -12,19 +14,46 @@ websocket.onmessage = onMessage;
 websocket.onerror = onError;
 websocket.onclose = onClose;
 
+$(function(){
+    /*to = $('input:radio[name="users"]:checked').val();*/
+    to = "12";
+});
+
+
 function onOpen(openEvent) {
     document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + "OPEN<br/>";
-
+    /*document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + openEvent;*/
+    /*var person = eval('('+openEvent.data+')');
+    if(undefined != person){
+        var contact = person.data;
+        for(var i = 0; i < contact.length; i++){
+            document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + username;
+            if(contact[i] != username) {
+                document.getElementById("users").innerHTML =
+                    "<input type=radio name='users' value='" + contact[i] + "' />" + i + ":" + contact[i] + "<br/>";
+            }
+        }
+    }*/
 }
 
 function onMessage(event) {
-    /*document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+"event="+ event+"<br/>";
-    element.innerHTML=event.data;
-    document.getElementById("messageView").appendChild(element);*/
-    eval("var message="+event.data+";");
-    var date = message.getDate;
-    var content = message.getContent;
-    document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+date+"<br/>"+ content+"<br/>";
+    /*eval("var message="+event.data+";");*/
+    var message = eval('(' + event.data + ')');
+    var date = message.date;
+    var content = message.content;
+    var contact = message.data;
+    if (undefined != contact){
+        for(var i = 0; i < contact.length; i++){
+            if(contact[i] != username) {
+                document.getElementById("users").innerHTML =
+                    "<input type=radio name='users' value='"+ contact[i] + "' />" + i + ":" + contact[i] + "<br/>";
+            }
+        }
+    }
+    if (undefined != content) {
+        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +
+            "<p class='time'>"+date+"<br/></p><p class='receiver'>"+content+"<br/>"+"</p>";
+    }
 }
 function onError() {
     alert("链接失败，请重新链接！")
@@ -37,32 +66,38 @@ function onClose(event) {
 function doSend() {
     if (websocket.readyState == 1) {
         var msg = document.getElementById("message").value;
-        /* 获取消息的接收者 */
-        var to = "12";
         var date=new Date();
-        var year=date.getFullYear(); //获取当前年份
-        var mon=date.getMonth()+1; //获取当前月份
-        var da=date.getDate(); //获取当前日
-        var h=date.getHours(); //获取小时
-        var m=date.getMinutes(); //获取分钟
-        var s=date.getSeconds(); //获取秒
+        //获取当前年份
+        var year=date.getFullYear();
+        //获取当前月份
+        var mon=date.getMonth()+1;
+        //获取当前日
+        var da=date.getDate();
+        //获取小时
+        var h=date.getHours();
+        //获取分钟
+        var m=date.getMinutes();
+        //获取秒
+        var s=date.getSeconds();
         var d=document.getElementById('Date');
         var time=year+'-'+mon+'-'+da+' '+h+':'+m+':'+s;
+        /* 定义json字符串 */
+        var messageData={"sender":username,
+            "receiver":to,
+            "content":msg,
+            "date":time
+        }
+        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+to;
+        var messageJson = JSON.stringify(messageData);
         if(msg && to !=null){
-            /* 定义json字符串 */
-            var messageData={"sender":username,
-                "receiver":to,
-                "content":msg,
-                "date":time
-            }
-            var messageJson = JSON.stringify(messageData);
-            document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+time + "<br/>";
-            document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+msg + "<br/>";
+            document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+
+                "<p class='time'>"+time+"<br/></p><p class='send'>"+msg+"<br/>"+"</p>";
             websocket.send(messageJson);
         }
         else if(to == null && msg){
-            document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+time + "<br/>";
-            document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+msg + "<br/>";
+            document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+
+                "<p class='time'>"+time+"<br/></p><p class='send'>"+msg+"<br/>"+"</p>";
+            websocket.send(messageJson);
         }else{
             alert("消息输入不能为空！");
         }
@@ -70,4 +105,22 @@ function doSend() {
     } else {
         alert("链接断开，消息发送失败，请重新链接！");
     }
+}
+
+function reConnect() {
+    if (websocket != null) {
+        websocket.close();
+        websocket = null;
+    }
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://" + url + "/socket?username="+12);
+        to = "123";
+        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+"username=12<br/>";
+    } else {
+        alert("该浏览器不支持websocket!");
+    }
+    websocket.onopen = onOpen;
+    websocket.onmessage = onMessage;
+    websocket.onerror = onError;
+    websocket.onclose = onClose;
 }

@@ -12,7 +12,7 @@
 	top:0;
 	height:55px;
 	padding:0 4% 0 10%;
-	background: rgba(231,238,254,.9);
+	background: rgba(255,168,0,0.92);
 }
 
 .slogan,.login,.register{
@@ -42,7 +42,7 @@
 	cursor: pointer;
 }
 .slogan a,.login a{
-	color: rgba(131,111,191,1);;
+	color: white;;
 	text-decoration: none;
 	font-size:18px;
 }

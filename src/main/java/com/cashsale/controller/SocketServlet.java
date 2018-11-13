@@ -33,8 +33,8 @@ public class SocketServlet {
 	private static Map<String, Session> map = new HashMap<String, Session>();
 	static Gson gson = new Gson();
 
-	public static List<Session> sessions = new ArrayList<Session>();
-	public static List<String> names = new ArrayList<String>();
+	/*public static List<Session> sessions = new ArrayList<Session>();
+	public static List<String> names = new ArrayList<String>();*/
 
 	@OnOpen
 	public void open(Session session) throws Exception {
@@ -51,21 +51,25 @@ public class SocketServlet {
 		map.put(username, session);
 		webSocketSet.add(map);
 
-		this.names.add(username);
+		getPerson();
+		/*this.names.add("1:"+username);
 		this.sessions.add(session);
-		System.out.println("username="+username);
-		System.out.println("queryString="+queryString);
+
+		MessageDTO messageDTO = new MessageDTO();
+		messageDTO.setUsers(names);
+		ResultDTO<ArrayList> result = getPerson(username,"12");
+		broadcast(sessions,JSONObject.toJSONString(result));*/
 	}
 
 	@OnMessage
 	public void message(Session session, String json){
-		/*MessageDTO msg = gson.fromJson(json, MessageDTO.class);
-		//System.out.println("从前台获取的msg="+msg);
+		MessageDTO msg = gson.fromJson(json, MessageDTO.class);
+		System.out.println("从前台获取的msg="+msg);
 
 		//获取接收者
-		System.out.println("接收者="+msg.getReceiver());
+		System.out.println("msg.getReceiver="+msg.getReceiver());
 		String to = msg.getReceiver();
-		//System.out.println("msg.getSender="+msg.getSender());
+		System.out.println("msg.getSender="+msg.getSender());
 		//System.out.println("this.username="+this.username);
 		Session toSession = SocketServlet.map.get(to);
 		String tableName = msg.getSender() + " and " + to;
@@ -85,19 +89,20 @@ public class SocketServlet {
 		} catch (Exception e) {
 			sendMessage(402,"消息发送失败！");
 			e.printStackTrace();
-		}*/
-        MessageDTO msg = gson.fromJson(json, MessageDTO.class);
+		}
+
+        /*MessageDTO msg = gson.fromJson(json, MessageDTO.class);
 		//获取系统当前时间
 		String date = TimeUtil.getTime();
 		msg.setDate(date);
-		broadcast(sessions, JSONObject.toJSONString(msg));
+		broadcast(sessions, JSONObject.toJSONString(msg));*/
 	}
 
 	@OnClose
 	public void close(Session session) {
 
-	    SocketServlet.map.clear();
-	    sessions.remove(session);
+		SocketServlet.map.clear();
+		/*sessions.remove(session);*/
 	}
 
 	@OnError
@@ -114,14 +119,34 @@ public class SocketServlet {
 		this.session.getAsyncRemote().sendText(JSONObject.toJSONString(result));
 	}
 
-	public void broadcast(List<Session> ss, String msg){
+	/** 群聊 */
+	/*public void broadcast(List<Session> ss, String msg){
 		for(Iterator iterator = ss.iterator(); iterator.hasNext();){
 			Session session = (Session)iterator.next();
-			try{
-				session.getBasicRemote().sendText(msg);
-			}catch (Exception e){
-				e.printStackTrace();
-			}
+			if(session != this.session) {
+                try {
+                    session.getBasicRemote().sendText(msg);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+		}
+	}*/
+
+	/** 获取历史联系人 */
+	public void getPerson(){
+		System.out.println("获取联系人时username="+username);
+		ArrayList<String> array = new SocketDAO().getPerson(username);
+		System.out.print(username+"的联系人：   ");
+		for(int i = 0; i < array.size(); i++){
+			System.out.println(array.get(i)+"  ");
+		}
+		if(array.size() > 0){
+			this.session.getAsyncRemote().sendText(JSONObject.toJSONString(new ResultDTO<ArrayList>(200,array,"成功获取历史联系人")));
+		}
+		else{
+			this.session.getAsyncRemote().sendText(JSONObject.toJSONString(new ResultDTO<ArrayList>(400,null,"历史联系人获取失败")));
 		}
 	}
+
 }

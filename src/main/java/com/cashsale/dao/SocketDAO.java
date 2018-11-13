@@ -1,12 +1,9 @@
 package com.cashsale.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.cashsale.bean.MessageDTO;
@@ -20,107 +17,29 @@ public class SocketDAO {
 	/** 暂无更多消息的code */
 	private static final int NO_MORE_MESSAGE = 403;
 	/** 每页显示的数据数目 */
-	static int MESSAGE_NUMBER = 8;
+	private static final int MESSAGE_NUMBER = 8;
 	/** 查询成功 */
-	private static final int QUERY_SUCCESSED = 200;
-
-	/** 判断是否存在该表，不存在则创建
-	 * @param sender
-	 * @param receiver
-	 * @return tableName
-	 * 			返回表名
-	 */
-	public String createTable(String sender, String receiver) {
-		Connection conn = new com.cashsale.conn.Conn().getCon();
-		ResultSet rs = null;
-		Statement stmt = null;
-		String tableName = "";
-		try {
-			stmt = conn.createStatement();tableName = sender + "_and_" + receiver;
-			rs = conn.getMetaData().getTables(null, null, tableName, null);
-
-			if( !rs.next() ) {
-				tableName = receiver + "_and_" + sender;
-				rs = conn.getMetaData().getTables(null, null, tableName, null);
-
-				if( !rs.next()) {
-					stmt.execute("CREATE TABLE "+ tableName + "(sender VARCHAR(20) NOT NULL, receiver "
-							+ "VARCHAR(20) NOT NULL, content VARCHAR(255), date CHAR(20) NOT NULL, img_url VARCHAR(255),"
-							+ " is_read BOOLEAN DEFAULT false) CHARACTER SET utf8 COLLATE utf8_general_ci;");
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.err.println("数据库创建失败！");
-		}
-		new com.cashsale.conn.Conn().closeConn(rs, stmt, conn);
-		return tableName;
-	}
+	//private static final int QUERY_SUCCESSED = 200;
 
 	/**
-	 * 获取离线消息
-	 * @param tableName
-	 * 			谁和谁的聊天记录
+	 * 获取历史记录
+	 * @param senderName
+	 * @param receiverName
+	 * @param page
 	 * @return
 	 */
-/*	public Map<String, Object> getOfflineMsg(String tableName, String strPage) {
-		ArrayList<MessageDTO> array = new ArrayList<MessageDTO>();
-		Map<String, Object> map = new HashMap<String, Object>();
+	public Map<String, Object> getMessage(String senderName, String receiverName, int page){
+		List<MessageDTO> array = new ArrayList<MessageDTO>();
+		Map<String,Object> map = new HashMap<>();
 		Connection conn = new com.cashsale.conn.Conn().getCon();
-		map.put("code", NO_MORE_MESSAGE);
-		PreparedStatement pstmt = null;
-		ResultSet result = null;
-		int page = 1 ;
-		if( strPage != null && !strPage.equals("") )
-		{
-			page = Integer.parseInt( strPage );
-		}
-		try {
-			String query = "SELECT * FROM " + tableName +" WHERE is_offline = true ORDER BY date LIMIT "
-					+((page-1)*MESSAGE_NUMBER)+","+MESSAGE_NUMBER;;
-			pstmt = conn.prepareStatement(query);
-			result = pstmt.executeQuery();
-			String sender = "";
-			while(result.next()) {
-				sender = result.getString("sender");
-				String receiver = result.getString("receiver");
-				String content = result.getString("content");
-				String date = result.getString("date");
-				String imgUrl = result.getString("img_url");
-				MessageDTO msg = new MessageDTO(sender,receiver,content,date,imgUrl);
-				array.add(msg);
-			}
-			map.put("messageRow", array.size());
-			map.put("message", array);
-			map.put("code", QUERY_SUCCESSED);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
-		return map;
-	}*/
-
-	/** 获取历史记录
-	 * @param tableName
-	 * @param strPage
-	 * @return
-	 */
-	public Map<String, Object> getMessage(String tableName, String strPage){
-		Map<String, Object> map = new HashMap<String, Object>();
-		ArrayList<MessageDTO> array = new ArrayList<MessageDTO>();
 		PreparedStatement pstmt = null;
 		ResultSet result = null;
 		int noRead = 0;
-		int page = 1 ;
-		map.put("code", NO_MORE_MESSAGE);
-		Connection conn = new com.cashsale.conn.Conn().getCon();
-		if( strPage != null && !strPage.equals("") )
-		{
-			page = Integer.parseInt( strPage );
-		}
+
 		try {
-			String query = "SELECT * FROM " + tableName + "LIMIT "+((page-1)*MESSAGE_NUMBER)+","+MESSAGE_NUMBER;
+			String query = "SELECT * FROM chat_history WHERE sender=? AND receiver=? ORDER BY date DESC LIMIT "+((page-1)*MESSAGE_NUMBER)+","+MESSAGE_NUMBER;
+			pstmt.setString(1,senderName);
+			pstmt.setString(2,receiverName);
 			pstmt = conn.prepareStatement(query);
 			result = pstmt.executeQuery();
 			String sender = "";
@@ -134,19 +53,20 @@ public class SocketDAO {
 				array.add(msg);
 			}
 			//获取未读消息的数目
-			query = "SELECT COUNT(*) FROME " + tableName + " WHERE is_read=?";
+			query = "SELECT COUNT(*) FROME chat_history WHERE is_read=? AND receiver=?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setBoolean(1, false);
+			pstmt.setString(2,receiverName);
 			result = pstmt.executeQuery();
 			if(result.next()) {
 				noRead = result.getInt(1);
 			}
 			map.put("noRead", noRead);
 			map.put(sender, array);
-			map.put("code",QUERY_SUCCESSED);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
 		return map;
 	}
 	/**
@@ -162,11 +82,10 @@ public class SocketDAO {
 		String content = message.getContent();
 		String imgUrl = message.getImgUrl();
 		String date = message.getDate();
-		String tableName = createTable(sender, receiver);
 		PreparedStatement ptmt = null;
 		ResultSet rs = null;
 		try {
-			ptmt = conn.prepareStatement("INSERT INTO "+tableName+"(sender,receiver,content,date,img_url,"
+			ptmt = conn.prepareStatement("INSERT INTO chat_history (sender,receiver,content,date,img_url,"
 					+ "is_read) VALUES(?,?,?,?,?,?)");
 			ptmt.setString(1, sender);
 			ptmt.setString(2, receiver);
@@ -183,33 +102,39 @@ public class SocketDAO {
 		new com.cashsale.conn.Conn().closeConn(rs, ptmt, conn);
 	}
 
-	/** 获取与该用户相关的历史记录的表名
-	 * @param name
-	 * 			用户名
+	/**
+	 * 获取与该用户聊过天的人
+	 * @param username
+	 *      用户名
 	 * @return
+	 *      其它用户名列表
 	 */
-	public ArrayList<String> getTable(String name){
+	public ArrayList<String> getPerson(String username){
 		Connection conn = new com.cashsale.conn.Conn().getCon();
-		ArrayList<String> array = new ArrayList<String>();
-		Statement stmt = null;
+		ArrayList<String> array = new ArrayList<>();
+		PreparedStatement ptmt = null;
 		ResultSet rs = null;
+		System.out.println("查询联系人时username="+username);
 		try {
-			String sql = "SHOW tables";
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
+			ptmt = conn.prepareStatement("SELECT sender, receiver FROM chat_history WHERE sender=? OR receiver=?");
+			ptmt.setString(1,username);
+			ptmt.setString(2,username);
+			rs = ptmt.executeQuery();
 
-			//遍历数据库中的所有表名，并判断表名中是否包含name字段
 			while(rs.next()) {
-				String tableName = rs.getString(1);
-				int is = tableName.indexOf(name);
-				if(is != -1) {
-					array.add(tableName);
+				String sender = rs.getString("sender");
+				String receiver = rs.getString("receiver");
+				if(!sender.equals(username) && array.indexOf(sender) == -1){
+					array.add(sender);
+				}else if(!receiver.equals(username) && array.indexOf(receiver) == -1){
+					array.add(receiver);
 				}
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.err.println("获取表名失败！");
+			System.err.println("获取联系人失败！");
 		}
+		new com.cashsale.conn.Conn().closeConn(rs, ptmt, conn);
 		return array;
 	}
 }

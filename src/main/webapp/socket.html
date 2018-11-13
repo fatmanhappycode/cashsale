@@ -14,8 +14,9 @@
         <div class="direct">
         </div>
         <!-- 用户列表 -->
-        <div class="userlist">
+        <div id="userlist">
             <input id="search" type="text"/>
+            <div id="users"></div>
         </div>
         <!-- 聊天主窗口 -->
         <div class="chat">
@@ -25,6 +26,7 @@
             <div class="messageInput">
                 <input id="message"  type="text"></input>
                 <button id="send" onclick="doSend()">send</button>
+                <button id="reConnect" onclick="reConnect()">reconnect</button>
             </div>
         </div>
         <!-- 用户个人 -->
@@ -36,6 +38,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/webSocket.js"></script>
 </body>

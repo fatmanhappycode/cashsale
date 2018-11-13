@@ -2,28 +2,37 @@ package com.cashsale.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import com.cashsale.bean.MessageDTO;
+import com.cashsale.bean.PagerDTO;
+import com.cashsale.bean.ProductDO;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.SocketDAO;
+import sun.plugin2.message.Message;
 
 public class GetHistoryService {
-	
+
 	/**
 	 * 返回与name用户相关的聊天记录
-	 * @param name
-	 * 			用户名
+	 * @param senderName
+	 * @param receiverName
 	 * @param strPage
-	 * 			聊天记录的页数
 	 * @return
-	 * 			聊天记录
 	 */
-	public Map<String, Object> getHistory(String name, String strPage){
-		Map<String, Object> mapSum = new HashMap<String, Object>();
-		ArrayList<String> array = new SocketDAO().getTable(name);
-		for(int i = 0; i < array.size(); i++) {
-			Map<String, Object> map = new SocketDAO().getMessage(array.get(i), strPage);
-			mapSum.putAll(map);
+	public ResultDTO<PagerDTO> getHistory(String senderName, String receiverName, String strPage){
+		int page = 1;
+		if( strPage != null && !strPage.equals("") )
+		{
+			page = Integer.parseInt( strPage );
 		}
-		return mapSum;
+		Map<String, Object> mapSum = new SocketDAO().getMessage(senderName, receiverName,page);
+		List<MessageDTO> list = (List<MessageDTO>)mapSum.get(senderName);
+		PagerDTO<MessageDTO> message = new PagerDTO<>(page+1,list);
+		if(mapSum.get("sender") == null){
+			return  new ResultDTO<PagerDTO>(116, null,"没有更多数据了……");
+		}
+		return new ResultDTO<PagerDTO>(107, message,"查询成功");
 	}
 }
