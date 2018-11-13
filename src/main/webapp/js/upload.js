@@ -26,6 +26,7 @@ function f() {
 	//alert(myCheckbox1);
 
 //	复选框加入字符串label
+	var label="";
 	if($("#myCheckbox21").prop('checked')){
 		if(label!="")
 			label=label+";"+$("#myCheckbox21").val();
@@ -76,6 +77,7 @@ function f() {
 	}else{
         document.getElementById("passwordItem");
 		var token=getCookie("token");
+		alert(label);
 		var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":editor.txt.html(), "imageUrl":image};
 		$.ajax({
 			url:"/publish",

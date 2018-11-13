@@ -16,7 +16,7 @@ body{
 	margin-top:50px;
 	position: absolute;
 	left:50%;
-	padding-bottom:70px;
+	padding-bottom:20px;
 	margin-bottom:60px;
 	background:#FFF; 
 /* 	box-shadow: 0 0 50px rgba(172,172,172,1); */
@@ -348,16 +348,23 @@ body{
   
 /* 回到顶部 */
 #test{
-	display:none;
 	z-index:100000000;
-	 position:fixed;
-	 right:20px;
-	 bottom:30px;
-	 height:60px;
-	 width:60px;
-	 border:none;
-	 border-radius: 30px;
-/* 	 background: rgba(166,128,226,.5); */
+	position:fixed;
+	right:15px;
+	bottom:50px;
+	height:70px;
+	width:70px;
+	border:none;
+	border-radius: 35px;
+	border:1px solid #000;
+	opacity: .4;
+	display: none;
+}
+#test img{
+	width: 50px;
+	height: 50px;
+	margin-top: 10px;
+	margin-left: 10px;
 }
 /* 版权 */
 .bottom{

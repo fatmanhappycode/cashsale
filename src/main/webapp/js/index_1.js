@@ -2,7 +2,10 @@
 
 var flag="";
 isLoading=false;
+//定义全局变量currentPage，方便下拉时使用
 currentPage='';
+//定义全局变量title，方便下拉时使用
+var title;
 function innerGoods(data) {
 	$.each(data,function(index,obj){
 		var main = document.getElementById("main");
@@ -18,7 +21,7 @@ function innerGoods(data) {
 		p.setAttribute("class", "price");
 	    img.src = obj.imageUrl;
 	    h4.innerHTML=obj.title;
-	    p.innerHTML=obj.price;
+	    p.innerHTML="￥"+obj.price;
 	    goods.appendChild(img);
 	    goods.appendChild(h4);
 	    goods.appendChild(p);
@@ -26,6 +29,7 @@ function innerGoods(data) {
         //商品id
         var goodsId= document.createElement('input');
         goodsId.setAttribute("id","goodsId");
+        goodsId.setAttribute("type","hidden");
         goodsId.setAttribute("value",obj.productId);
         goods.appendChild(goodsId);
 	});
@@ -44,7 +48,7 @@ function innerGoods_1(data) {
         p.setAttribute("class", "price");
         img.src = obj.imageUrl;
         h4.innerHTML=obj.title;
-        p.innerHTML=obj.price;
+        p.innerHTML="￥"+obj.price;
         goods.appendChild(img);
         goods.appendChild(h4);
         goods.appendChild(p);
@@ -113,6 +117,9 @@ window.onload =function init() {
 }
 function IsInload() {
     token='';
+    if(currentPage==""){
+        return;
+    }
     var saveData={"time":"asc","currentPage":currentPage};
     $.ajax({
         url:"/searchByTime",
@@ -139,7 +146,6 @@ function IsInload() {
 
 
 //搜索时调用
-var title;
 function loadXMLDoc()
 {
     title = $(".mySearch").val();
@@ -167,7 +173,7 @@ function loadXMLDoc()
 			currentPage=result.data.currentPage;
 			data=result.data.data;
 			if(result.code== "107"){
-                $(window).scrollTop(500);
+                $(window).scrollTop(250);
 				innerGoods(data);
 			}else{
 				console.log("查询失败！");
@@ -182,7 +188,7 @@ function loadXMLDoc()
 function loadXMLDoc_1()
 {
     token=getCookie("token");
-    alert(currentPage);
+    console.log(currentPage);
     var saveData={"title":title,"currentPage":currentPage};
     $.ajax({
         url:"/search",
@@ -323,7 +329,8 @@ function Selectspecies() {
     flag="screen";
     token=getCookie("token");
     currentPage="";
-    var saveData={"label":label,"currentPage":currentPage,"price":price1+";"+price2,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
+    //定义全局变量saveData，方便下拉时使用
+    saveData={"label":label,"currentPage":currentPage,"price":price1+";"+price2,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
     $("#main").html("");
     $.ajax({
         url:"/screen",
@@ -352,8 +359,9 @@ function Selectspecies() {
 
 function Selectspecies_1() {
     token=getCookie("token");
-    var saveData={"label":label,"page":currentPage,"price":price1,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
+    //var saveData={"label":label,"page":currentPage,"price":price1,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
     alert(currentPage);
+    saveData.currentPage=currentPage;
     $.ajax({
         url:"/screen",
         type:"get",

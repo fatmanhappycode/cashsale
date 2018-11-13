@@ -1,16 +1,41 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>现卖-变闲为现的买卖|商品详情界面</title>
+    <title>现卖-变闲为现的买卖|商品详情</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" type="text/css" href="css/goods.css">
     <link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
-
 </head>
 <body>
-<div class="all">
-    <p>vvvv</p>
+<div class="all" id="all">
+    <div class="people">
+        <a href="login.html" target="_self">
+            <img src="img/icon.jpg">
+            <span id="username"></span>
+        </a>
+        <input type="button" value="+关注" id="city">
+    </div>
+    <div id="box">
+        <div id="smallBox">
+            <img src="img/icon.jpg" id="smallImg">
+            <span id="mask"></span>
+        </div>
+        <div id="bigBox">
+            <img src="img/icon.jpg" id="bigImg">
+        </div>
+    </div>
+    <ul id="mytitle">
+        <li id="title">充电器</li>
+        <li id="price1">价格：￥12</li>
+        <li id="price2">是否议价：否</li>
+        <li id="getGoods">是否自提：买家上门自提</li>
+        <li id="lichat"><a href=""><input type="button" value="联系卖家" id="chat"></a></li>
+        <li id="liJOshopping"><a href=""><input type="button" value="加入购物车" id="JOshopping"></a></li>
+    </ul>
+    <div id="Description">
+
+    </div>
     <p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
 
 
@@ -18,8 +43,8 @@
 </div>
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/goods_1.js"></script>
 <script type="text/javascript" src="js/goods.js"></script>
-
 </body>
 
 </html>

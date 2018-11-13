@@ -1,28 +1,182 @@
-/*全局样式*/
-*{
-    padding: 0;
-    margin: 0;
-}
-
 /* 网页整体大小*/
 .all{
     width:1040px;
     margin-left:-520px;
     position: absolute;
     left:50%;
-    margin-bottom:60px;
-    background:#fff;
+    padding-bottom:100px;
+    margin-bottom:70px;
+    margin-top:40px;
+    background:#FFF;
     box-shadow: 0 0 50px rgba(172,172,172,1);
 }
 
+/*头像*/
+.people{
+    display:block;
+    padding-top:14px;
+    margin-left:30px;
+    width:210px;
+    height:41px;
+    /*border:1px solid #fac;*/
+}
+.people a{
+    width:150px;
+    height:41px;
+    display: inline-block;
+    color: rgba(131,111,191,1);;
+    text-decoration: none;
+    font-size:18px;
+    /*border:1px solid #fac;*/
+}
+/*头像图片*/
+.people img{
+    width:40px;
+    height:40px;
+    border-radius: 20px;
+    /*border:1px solid #fac;*/
+}
+/*头像用户名*/
+.people span{
+    position:absolute;
+    width:90px;
+    margin-top:7px;
+    margin-left:5px;
+    text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+    /*border:1px solid #fac;*/
+}
+
+/*封面*/
+#box {
+    margin: 50px 0 0 70px;
+    width:400px;
+    position: relative;
+    /*border:1px solid #fac;*/
+}
+/*放大镜*/
+#mask {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    opacity: 0.3;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: none;
+    /*border:1px solid #fac;*/
+}
+#smallBox {
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    border: 1px solid #d0d0d0;
+    /*border:1px solid #fac;*/
+    overflow: hidden;
+}
+#bigBox {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    position: absolute;
+    z-index: 10;
+    left: 350px;
+    top: 0;
+    display: none;
+    /*border:1px solid #fac;*/
+}
+#bigBox img{
+    width:800px;
+    position: absolute;
+    /*border:1px solid #fac;*/
+}
 
 
+/*ul*/
+#mytitle{
+    float:right;
+    width:450px;
+    height: 500px;
+    margin-right:80px;
+    margin-top: -3px;
+    /*border:1px solid #fac;*/
+}
+#mytitle li{
+    list-style-type: none;
+    margin: 10px;
+    /*border:1px solid #fac;*/
+}
+#title,#price1,#price2,#getGoods{
+    padding: 18px;
+}
+/*标题*/
+#title{
+    font-size: 24px;
+    font-weight: 600;
+}
+/*聊天*/
+#lichat{
+    padding-top: 18px;
+    border:0;
+}
+/*加入购物车*/
+#liJOshopping{
+    position: relative;
+    top: -50px;
+}
+/*价格*/
+#price1{
+    color:red;
+    font-size: 18px;
+}
+/*按钮*/
+#chat,#JOshopping,#city{
+    display:inline-block;
+    width:150px;
+    height: 40px;
+    border-radius:5px;
+    border:1px solid rgba(172,172,172,.8);
+    background: rgb(255,255,255);
+    cursor:pointer;
+}
+/*关注*/
+#city{
+    float: right;
+    width: 53px;
+    height: 25px;
+    margin-top:8px;
+    color: #da7370;
+}
+#city:hover{
+    color:red;
+    border-color:#da7370;
+}
+/*聊天按钮*/
+#chat{
+    color: #da7370;
+}
+/*加入购物车按钮*/
+#JOshopping{
+    margin-left: 200px;
+    background: #da7370;
+    color:#fff;
+}
 
 
-
-
-
-
+/*富文本编辑器*/
+#Description{
+    padding: 30px;
+    width: 830px;
+    margin-top: 450px;
+    margin-left: 70px;
+    border:1px solid #eec;
+    border-radius: 20px;
+}
+#Description img{
+    width: 200px;
+}
 
 /* 版权 */
 .bottom{
