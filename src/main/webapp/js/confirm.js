@@ -1,9 +1,8 @@
 function f() {
-    var username = $("#username").val();
-    var password = $("#password").val();
+    var username = $("#Xusername").val();
+    var password = $("#Xpassword").val();
     username = encodeInp(username);
     password = encodeInp(password);
-
     var saveData={"encode": username+"%%%"+password};
 
     $.ajax({
@@ -50,4 +49,19 @@ function encodeInp(input) {
         enc1 = enc2 = enc3 = enc4 = ""
     } while (i < input.length);
     return output
+}
+
+//回车事件
+function enterSubmit(obj) {
+    var button = document.getElementById('confirm');
+    //enter按键的keyCode编码为13
+    if (obj.keyCode == 13) {
+        button.click();
+    }
+}
+
+//获取焦点
+window.onload=function setFocus()
+{
+    document.getElementById('username').focus();
 }

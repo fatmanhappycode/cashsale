@@ -110,7 +110,7 @@
     transition: 0.4s;
 }
 
-#username,#password,#confirm {
+#Xusername,#Xpassword,#confirm {
     width: 220px;
     height: 30px;
     font-size: 18px;
