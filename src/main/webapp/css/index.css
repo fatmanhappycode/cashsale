@@ -168,6 +168,7 @@
  	background: rgba(231,238,254,.6);
  	font-size: 22px;
  	color:#000;
+     padding-left: 8px;
  	font-weight: 600;
  	cursor:text;
  }

@@ -81,6 +81,7 @@
     overflow: hidden;
     border: 1px solid #ddd;
     position: absolute;
+    background:#eee;
     z-index: 10;
     left: 350px;
     top: 0;
