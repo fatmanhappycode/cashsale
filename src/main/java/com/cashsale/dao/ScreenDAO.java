@@ -48,10 +48,10 @@ public class ScreenDAO {
 		String query = "SELECT * FROM product_info LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
 		if(queryInfo != null && !queryInfo.equals(""))
 		{
-			query = "SELECT * FROM product_info WHERE "+queryInfo+"LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
+			query = "SELECT * FROM product_info WHERE "+queryInfo+" LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
 		}
 
-		//System.out.println(query);
+		System.out.println(query);
 
 		try {
 			pstmt = conn.prepareStatement(query);

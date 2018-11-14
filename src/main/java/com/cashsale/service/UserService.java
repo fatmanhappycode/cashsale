@@ -1,6 +1,7 @@
 package com.cashsale.service;
 
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.dao.IsConfirmDAO;
 import com.cashsale.dao.UserLoginDAO;
 import com.cashsale.util.SendPostUtil;
 import org.apache.http.NameValuePair;
@@ -48,6 +49,14 @@ public class UserService {
         }
         else {
             return new ResultDTO<>(123, null,"认证失败，系统异常");
+        }
+    }
+    public ResultDTO<String> isConfirm(String userName) {
+        Boolean isConfirm = new IsConfirmDAO().isConfirm(userName);
+        if (isConfirm) {
+            return new ResultDTO<String>(105, "1", "已认证");
+        } else {
+            return new ResultDTO<String>(106, "0", "未认证");
         }
     }
 }
