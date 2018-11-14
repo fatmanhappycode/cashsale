@@ -61,6 +61,19 @@ function innerGoods_1(data) {
     });
 }
 
+function innerConfirm(data) {
+    var isConfirm = document.getElementById("Confirm");
+    if (data == "1") {
+        isConfirm.innerHTML = "已认证";
+        var img = document.createElement('img');
+        img.src = "";
+        var confirm = document.getElementById("isConfirm");
+        confirm.appendChild(img);
+    } else {
+        isConfirm.innerHTML = "未认证";
+    }
+}
+
 //加载时返回最新商品
 window.onload =function init() {
     currentPage='';
@@ -89,6 +102,26 @@ window.onload =function init() {
         }
     });
 
+    var saveData2 = {"username":getCookie("username")}
+    $.ajax({
+        url:"/GetUserData",
+        type:"get",
+        headers:{
+            "token":token,
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData2,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            var username=result.data;
+            //渲染
+            innerConfirm(username);
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
 
 
     var oDiv = document.getElementById("species"),
