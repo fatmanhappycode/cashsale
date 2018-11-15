@@ -23,7 +23,7 @@ public class CommonUtils {
     private static final String JWT_SECRET = "fnarip*fudsgf_pbwei_65fa9sdf_jcewdiudsad56161bfof_1564d16";
     /**
      * 创建jwt
-     * @param id
+     * @param subject
      * @param ttlMillis 过期的时间长度
      * @return
      * @throws Exception

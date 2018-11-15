@@ -14,22 +14,31 @@ import com.cashsale.conn.Conn;
 public class UpdateScoreDAO {
 
     /** 浏览商品  A */
+    //private static final int SCAN_SCORE = 1;
     private static final String SCAN_CODE = "A";
     /** 询问商家 B */
+    //private static final int INQUIRE_SELLER_SCORE = 2;
     private static final String INQUIRE_SELLER_CODE = "B";
     /** 收藏商品 C */
+    //private static final int COLLECTION_SCORE = 3;
     private static final String COLLECTION_CODE = "C";
     /** 分享商品 D */
+    //private static final int SHARE_SCORE = 4;
     private static final String SHARE_CODE = "D";
     /** 购买商品 E */
+    //private static final int PURCHASE_SCORE = 5;
     private static final String PURCHASE_CODE = "E";
     /** 评价商品 F */
+    //private static final int EVALUATE_SCORE = 6;
     private static final String EVALUATE_CODE = "F";
     /** 好评 G */
+    //private static final int GOOD_EVALUATE_SCORE = 7;
     private static final String GOOD_EVALUATE_CODE = "G";
     /** 差评 H */
+    //private static final int BAD_EVALUATE_SCORE = -3;
     private static final String BAD_EVALUATE_CODE = "H";
     /** 中评 I */
+    //private static final int MIDDLE_EVALUATE_SCORE = 0;
     private static final String MIDDLE_EVALUATE_CODE = "I";
     /** 分割符 */
     private static final String SEPARATOR= ";";
@@ -46,7 +55,6 @@ public class UpdateScoreDAO {
      * 			判断用户是浏览/收藏/分享……了该商品
      */
     public int updateScore(String username, int productId, String strCode) {
-        /** 评价商品传值为 6;7 or 6;-3 or 6;0 */
         String second = "";
 
         System.out.println(1);
@@ -143,6 +151,8 @@ public class UpdateScoreDAO {
                         changeScore(username,5);
                     }
                 }
+            }else{
+                insertUser(username,productId);
             }
             new Conn().closeConn(result, pstmt, conn);
             new Conn().closeConn(resutl2, pstmt2, conn);
@@ -235,5 +245,32 @@ public class UpdateScoreDAO {
             new Conn().closeConn(result, pstmt, conn);
             return UPDATE_WRONG;
         }
+    }
+
+    /**
+     * 用户第一次该商品，插入记录
+     * @param newUsername
+     * 			用户名
+     * @param productId
+     * 			商品id
+     */
+    private void insertUser(String newUsername, int productId){
+        Connection conn = new com.cashsale.conn.Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        try{
+            sql = "INSERT INTO commodity_score(user_name,product_id,score,is_scan) VALUE(?,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,newUsername);
+            pstmt.setInt(2,productId);
+            pstmt.setInt(3,1);
+            pstmt.setBoolean(4,true);
+            result = pstmt.executeQuery();
+        }catch(Exception e){
+            e.printStackTrace();
+            System.err.println("用户浏览商品失败！");
+        }
+        new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
     }
 }

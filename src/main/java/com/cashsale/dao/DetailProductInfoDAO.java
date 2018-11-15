@@ -28,7 +28,7 @@ public class DetailProductInfoDAO {
             if (rs.next()) {
                 product.setTitle(rs.getString("title"));
                 product.setLabel(rs.getString("label"));
-                product.setPrice(rs.getInt("price"));
+                product.setPrice(rs.getDouble("price"));
                 product.setTradeMethod(rs.getInt("trade_method"));
                 product.setIsBargain(rs.getInt("is_bargain"));
                 product.setPdDescription(rs.getString("product_description"));

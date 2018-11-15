@@ -58,7 +58,6 @@ public class ScreenDAO {
 			result = pstmt.executeQuery();
 			ResultSetMetaData metaData = result.getMetaData();
 			int columnCount = metaData.getColumnCount();
-			List<ProductDO> array = null;
 
 			// 遍历每一行数据
 			while (result.next()) {
@@ -69,7 +68,7 @@ public class ScreenDAO {
 					String columnName = metaData.getColumnLabel(j);
 					String value = result.getString(columnName);
 					map.put(columnName, value);
-					System.out.println("map.columnName="+columnName+"  map.value="+value);
+					//System.out.println("map.columnName="+columnName+"  map.value="+value);
 				}
 				list.add(map);
 			}
