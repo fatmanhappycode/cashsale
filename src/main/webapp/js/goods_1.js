@@ -30,6 +30,7 @@ if(getCookie("goodsUsername")!="undefined"){
 }else{
     $("#username").html("匿名");
 }
+isInTrolley();
 var allimg=document.getElementsByTagName("img");
 for(var i=0;i<allimg.length;i++){
     /*
@@ -48,28 +49,53 @@ city.onclick= function(){
 }
 // 加入购物车
 JOshopping.onclick=function () {
-    var saveData = {}
+    var productId = getCookie("productId");
+    var saveData = {"productId":productId};
     $.ajax({
         url:"/AddShoppingTrolley",
         type:"post",
+        dataType:"json",
+        data:JSON.stringify(saveData),
+        contentType:"application/json;charset=UTF-8",
         headers:{
-            "token":token,
+            contentType:"application/json;charset=UTF-8"
+        },
+        success:function(result,testStatus)
+        {
+          if (result.code == "101") {
+              $("#JOshopping").val("已加入购物车");
+              var JOshopping = document.getElementById("JOshopping");
+              JOshopping.setAttribute("style","background-color:#da7370ad");
+          } else if (result.code == "102") {
+              alert("加入失败");
+          }
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
+}
+
+function isInTrolley() {
+    var saveData = {"productId":getCookie("productId")};
+    $.ajax({
+        url:"/isInTrolley",
+        type:"get",
+        headers:{
             contentType:"application/json;charset=UTF-8"
         },
         data:saveData,
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            currentPage=result.data.currentPage;
-            data=result.data.data;
-            //渲染
-            innerGoods(data);
+            if (result.code == "101") {
+                $("#JOshopping").val("已加入购物车");
+                var JOshopping = document.getElementById("JOshopping");
+                JOshopping.setAttribute("style","background-color:#da7370ad");
+            }
         },
         error:function(xhr,errrorMessage,e){
             alert("系统异常！"+e+"\n"+errrorMessage);
         }
     });
-    $("#JOshopping").val("已加入购物车");
-    var JOshopping = document.getElementById("JOshopping");
-    JOshopping.setAttribute("style","background-color:#da7370ad");
 }

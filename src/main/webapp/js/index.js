@@ -1,6 +1,7 @@
 function goodsclick(str) {
     var goods=str.childNodes;
     var productId=goods[3].value;
+    setCookie("productId",productId);
     var saveData={"productId":productId};
     // alert(productId);
     $.ajax({
