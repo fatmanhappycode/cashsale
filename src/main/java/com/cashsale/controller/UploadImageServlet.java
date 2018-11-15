@@ -34,6 +34,8 @@ public class UploadImageServlet extends HttpServlet {
 				File fileUrl = new File("e:");
 				factory.setRepository(fileUrl);
 				//System.out.println(System.getProperty("java.io.tmpdir"));//默认临时文件夹
+				/*File fileUrl = new File("C:\\Study");
+				factory.setRepository(fileUrl);*/
 
 				//2. 创建ServletFileUpload对象，并设置上传文件的大小限制。
 				ServletFileUpload sfu = new ServletFileUpload(factory);
