@@ -1,22 +1,28 @@
 package com.cashsale.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.cashsale.bean.ResultDTO;
+import com.cashsale.service.AddShoppingTrolleyService;
 import com.cashsale.util.CommonUtils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import io.jsonwebtoken.Claims;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @author 肥宅快乐码
  * @date 2018/11/15 - 15:38
  */
+@WebServlet("/AddShoppingTrolley")
 public class AddShoppingTrolleyServlet extends HttpServlet {
     @Override
     protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -54,6 +60,9 @@ public class AddShoppingTrolleyServlet extends HttpServlet {
         JsonObject jsonObject = (JsonObject) new JsonParser().parse(product);
         String productId = jsonObject.get("productId").getAsString();
 
+        PrintWriter writer = resp.getWriter();
 
+        ResultDTO<String> result = new AddShoppingTrolleyService().addShoppingTrolley(username,productId);
+        writer.print(JSONObject.toJSON(result));
     }
 }

@@ -46,3 +46,30 @@ for(var i=0;i<allimg.length;i++){
 city.onclick= function(){
     $("#city").val("已关注");
 }
+// 加入购物车
+JOshopping.onclick=function () {
+    var saveData = {}
+    $.ajax({
+        url:"/AddShoppingTrolley",
+        type:"post",
+        headers:{
+            "token":token,
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            currentPage=result.data.currentPage;
+            data=result.data.data;
+            //渲染
+            innerGoods(data);
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
+    $("#JOshopping").val("已加入购物车");
+    var JOshopping = document.getElementById("JOshopping");
+    JOshopping.setAttribute("style","background-color:#da7370ad");
+}

@@ -62,12 +62,13 @@ public class ConfirmServlet extends HttpServlet {
         // 解析json串
         JsonObject jsonObject = (JsonObject) new JsonParser().parse(user);
         String encoded = jsonObject.get("encode").getAsString();
+        String sno = jsonObject.get("sno").getAsString();
 
         UserService comfirmUser = new UserService();
         ResultDTO result = comfirmUser.userComfirm(encoded);
 
         if (result.getMsg().equals("认证成功")) {
-            new ConfirmDAO().Comfirm(username);
+            new ConfirmDAO().Comfirm(username,sno);
         }
 
         PrintWriter writer = resp.getWriter();

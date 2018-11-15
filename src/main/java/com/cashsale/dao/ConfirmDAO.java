@@ -15,10 +15,11 @@ public class ConfirmDAO {
     Connection conn = new com.cashsale.conn.Conn().getCon();
     PreparedStatement pstmt = null;
 
-    public boolean Comfirm(String username) {
+    public boolean Comfirm(String username,String sno) {
         try {
-            pstmt = conn.prepareStatement("UPDATE user_data SET is_certificate = 1 WHERE user_name=?");
-            pstmt.setString(1, username);
+            pstmt = conn.prepareStatement("UPDATE user_data SET is_certificate = 1,sno = ? WHERE user_name=?");
+            pstmt.setString(1,sno);
+            pstmt.setString(2, username);
             pstmt.executeUpdate();
             return true;
         } catch (Exception e) {
