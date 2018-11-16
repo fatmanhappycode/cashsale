@@ -21,3 +21,10 @@ src/main/java/com/cashsale/util/SensitiveWordInitUtil.java
 .idea/smartfox_info.xml
 bin/.settings/org.eclipse.core.resources.prefs
 *.prefs
+bin/.settings/.jsdtscope
+bin/.idea/workspace.xml
+.settings/org.eclipse.wst.common.component
+bin/.settings/org.eclipse.wst.common.component
+bin/.settings/org.eclipse.wst.common.project.facet.core.xml
+bin/.settings/org.eclipse.wst.jsdt.ui.superType.container
+bin/.settings/org.eclipse.wst.jsdt.ui.superType.name
