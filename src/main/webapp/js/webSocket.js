@@ -16,7 +16,7 @@ websocket.onclose = onClose;
 $(function(){
     //to = $('input:radio[name="users"]:checked').val();
     to = getCookie("goodsUsername");
-    alert(to);
+    alert(to+"a");
 });
 
 
@@ -33,21 +33,26 @@ function onMessage(event) {
     document.getElementById("users").innerHTML =
         "<input type=radio name='users' value='" + message.sender + "' />" + ":" + message.sender + "<br/>";
 
-    if (undefined != contact) {
-        to=message.sender;
-        for (var i = 0; i < contact.length; i++) {
-            if (contact[i] != username) {
-                document.getElementById("users").innerHTML =
-                    "<input type=radio name='users' value='" + contact[i] + "' />" + i + ":" + contact[i] + "<br/>";
-            }
-        }
-
+    // if (undefined == content) {
+    //     to=message.sender;
+    // }
+    if (undefined == content) {
         if (getCookie("goodsUsername") != null) {
             document.getElementById("users").innerHTML =
                 "<input type=radio name='users' value='" + getCookie("goodsUsername") + "' />" + ":" + getCookie("goodsUsername") + "<br/>";
         } else {
             document.getElementById("users").innerHTML ="<p></p><br>";
         }
+    }
+    if (undefined != content) {
+        to=message.sender;
+        // for (var i = 0; i < contact.length; i++) {
+        //     if (contact[i] != username) {
+        //         document.getElementById("users").innerHTML =
+        //             "<input type=radio name='users' value='" + contact[i] + "' />" + i + ":" + contact[i] + "<br/>";
+        //     }
+        // }
+
     }
     if (undefined != content) {
         document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +
@@ -122,4 +127,7 @@ function reConnect() {
     websocket.onmessage = onMessage;
     websocket.onerror = onError;
     websocket.onclose = onClose;
+}
+window.onload = function () {
+
 }
