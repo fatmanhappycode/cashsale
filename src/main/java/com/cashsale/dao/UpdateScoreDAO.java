@@ -14,31 +14,22 @@ import com.cashsale.conn.Conn;
 public class UpdateScoreDAO {
 
     /** 浏览商品  A */
-    //private static final int SCAN_SCORE = 1;
     private static final String SCAN_CODE = "A";
     /** 询问商家 B */
-    //private static final int INQUIRE_SELLER_SCORE = 2;
     private static final String INQUIRE_SELLER_CODE = "B";
     /** 收藏商品 C */
-    //private static final int COLLECTION_SCORE = 3;
     private static final String COLLECTION_CODE = "C";
     /** 分享商品 D */
-    //private static final int SHARE_SCORE = 4;
     private static final String SHARE_CODE = "D";
     /** 购买商品 E */
-    //private static final int PURCHASE_SCORE = 5;
     private static final String PURCHASE_CODE = "E";
     /** 评价商品 F */
-    //private static final int EVALUATE_SCORE = 6;
     private static final String EVALUATE_CODE = "F";
     /** 好评 G */
-    //private static final int GOOD_EVALUATE_SCORE = 7;
     private static final String GOOD_EVALUATE_CODE = "G";
     /** 差评 H */
-    //private static final int BAD_EVALUATE_SCORE = -3;
     private static final String BAD_EVALUATE_CODE = "H";
     /** 中评 I */
-    //private static final int MIDDLE_EVALUATE_SCORE = 0;
     private static final String MIDDLE_EVALUATE_CODE = "I";
     /** 分割符 */
     private static final String SEPARATOR= ";";
@@ -80,7 +71,6 @@ public class UpdateScoreDAO {
             return changeScore(username, productId, 4, "is_share");
         }
         else if(strCode.equals(PURCHASE_CODE)) {
-            System.out.println(2);
             return changeScore(username, productId, 5, "is_purchase");
         }
         else if(strCode.equals(EVALUATE_CODE)) {
