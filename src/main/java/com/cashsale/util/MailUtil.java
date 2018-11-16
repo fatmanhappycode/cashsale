@@ -17,7 +17,7 @@ import javax.mail.internet.MimeMessage;
  * 2018年10月20日
  */
 public class MailUtil {
-	
+
 	public static final String sendEmailAccount = "916061509@qq.com";
 	public static final String sendEmailPassword = "dkmteeoetvlgbaij";
 	
@@ -25,7 +25,7 @@ public class MailUtil {
 	{
 		//创建连接对象，连接到邮箱服务器
 		Properties props = new Properties();
-		
+
 		// 参数配置
         props.setProperty("mail.transport.protocol", "smtp");
         props.setProperty("mail.smtp.host", "smtp.qq.com");
@@ -33,7 +33,7 @@ public class MailUtil {
         props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.setProperty("mail.smtp.port", "465");
         props.setProperty("mail.smtp.socketFactory.port", "465");
-		
+
         Session session = Session.getInstance(props, new Authenticator() {
 			@Override
 			//设置发送方的邮箱地址和密码   dkmteeoetvlgbaij
@@ -41,13 +41,13 @@ public class MailUtil {
 				return new PasswordAuthentication(sendEmailAccount,sendEmailPassword);
 			}
 		});
-        
+
         // 设置为debug模式, 可以查看详细的发送 log
         //session.setDebug(true);
-        
+
 		//System.out.println("MailUtil下的密码："+password);
 		//System.out.println("MailUtil下的验证码："+code);
-        
+
 		//创建邮件对象
 		Message message = new MimeMessage(session);
 		//设置发件人

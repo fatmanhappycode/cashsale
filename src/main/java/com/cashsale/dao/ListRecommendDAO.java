@@ -153,13 +153,6 @@ public class ListRecommendDAO {
 			System.err.println();
 		}
 		// 关闭连接
-		try {
-			pstmt.close();
-			result.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		return simUserObjMap;
 	}
 
