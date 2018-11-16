@@ -16,6 +16,7 @@ websocket.onclose = onClose;
 $(function(){
     //to = $('input:radio[name="users"]:checked').val();
     to = getCookie("goodsUsername");
+    alert(to);
 });
 
 
