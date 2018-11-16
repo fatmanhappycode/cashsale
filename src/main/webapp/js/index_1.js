@@ -66,11 +66,15 @@ function innerConfirm(data) {
     if (data == "1") {
         isConfirm.innerHTML = "已认证";
         var img = document.createElement('img');
-        img.src = "";
+        img.src = "../img/confirm.png";
         var confirm = document.getElementById("isConfirm");
         confirm.appendChild(img);
     } else {
         isConfirm.innerHTML = "未认证";
+        var img = document.createElement('img');
+        img.src = "../img/noconfirm.png";
+        var confirm = document.getElementById("isConfirm");
+        confirm.appendChild(img);
     }
 }
 

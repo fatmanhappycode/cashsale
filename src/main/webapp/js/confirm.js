@@ -63,5 +63,5 @@ function enterSubmit(obj) {
 //获取焦点
 window.onload=function setFocus()
 {
-    document.getElementById('username').focus();
+    document.getElementById('Xusername').focus();
 }

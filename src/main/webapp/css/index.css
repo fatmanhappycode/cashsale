@@ -56,7 +56,6 @@
     height: auto;
     color: #fff;
     font-size: 18px;
-	margin-top:2px;
 	margin-left:5px;
 	text-overflow: ellipsis;/*文本超出提示三个�?*/
 	white-space: nowrap;/*�?行显�?*/
@@ -67,16 +66,19 @@
     display: inline-block;
     font-size: 12px;
     margin-left: 5px;
+	margin-top: -3px;
     color: #fff;
     /*border:1px solid #fac;*/
 }
 #isConfirm{
+	margin-left: -22px;
 	width: 15px;
 	height: 15px;
 	/*border:1px solid #fac;*/
 	display: inline-block;
 }
 #isConfirm img{
+	margin-top: 7px;
 	width: 15px;
 	height: 15px;
 }

@@ -8,12 +8,18 @@
 <body>
 <div style="text-align: center; margin-top: 10% ">
 	<img src="img/verifysuccess.JPG" height="95" width="100"><br>
-	验证成功
+	验证成功<br><h3 id="time">3</h3>秒后自动跳转
 </div>
 <script>
     function move() {
         window.location.href="index.html";
     }
+    function setTime(str) {
+        document.getElementById("time").innerHTML=str;
+    }
+    setTimeout("setTime('1')","3000");
+    setTimeout("setTime('2')","2000");
+    setTimeout("setTime('3')","1000");
     setTimeout("move()","4000");
 </script>
 </body>
