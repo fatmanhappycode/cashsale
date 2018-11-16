@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ListRecommendDAO;
 
 /**
@@ -28,7 +30,7 @@ public class RecommendService {
      * @return
      *        推荐结果
      */
-    public List<ProductDO> getList(String username){
+    public ResultDTO<PagerDTO> getList(String username){
         this.username = username;
         Map<String, Double> simUserSimMap = new HashMap<String, Double>();
         Map<String, Map<String, Integer>> userPerfMap = new ListRecommendDAO().getUserScore(username);
@@ -49,7 +51,9 @@ public class RecommendService {
         List<Entry<String, Double>> enList = getSort(simUserSimMap);
         Map<String, Map<String, Integer>> simUserObjMap = new ListRecommendDAO().getSimUserObjMap(username, enList);
         //System.out.println("推荐结果:" + getRecommend(simUserObjMap, simUserSimMap));
-        return getRecommend(simUserObjMap, simUserSimMap);
+        List<ProductDO> list =  getRecommend(simUserObjMap, simUserSimMap);
+        PagerDTO<ProductDO> product = new PagerDTO<>(0,list);
+        return new ResultDTO<PagerDTO>(200, product,"推荐成功！");
     }
 
     /**
