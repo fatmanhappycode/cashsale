@@ -468,6 +468,7 @@
 	float:left;
 	width:700px;
 	height:360px;
+    margin-top: 6px;
 	/*border:1px solid #fac;*/
 }
 
@@ -495,28 +496,11 @@
     padding: 18px;
     /*border:1px solid #fac;*/
 }
-#title,#price1,#price2,#getGoods{
-    padding: 18px;
-}
 /*标题*/
-#title{
+#liketitle{
     font-size: 24px;
     font-weight: 600;
 }
-/*价格*/
-#price1{
-    color:red;
-    font-size: 18px;
-}
-
-
-
-
-
-
-
-
-
 @keyframes ma{
 	0%,14%{margin-left:0px;}
 	18%,28%{margin-left:-700px;}
@@ -526,6 +510,7 @@
 	74%,84%{margin-left:-700px;}
 	88%,100%{margin-left:0px;}
 }
+
 
 
 .main{
