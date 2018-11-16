@@ -178,7 +178,7 @@ public class RecommendService {
         for (Entry<String, Double> entry : enList) {
             System.out.println(entry.getKey()+"的加权推荐值:"+entry.getValue());
         }
-        for(int i = 0; i < 6 && i < enList.size(); i++){
+        for(int i = 0; i < 4 && i < enList.size(); i++){
             result.add(enList.get(i).getKey());
         }
 
