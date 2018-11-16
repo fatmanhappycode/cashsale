@@ -33,11 +33,8 @@ function onMessage(event) {
     document.getElementById("users").innerHTML =
         "<input type=radio name='users' value='" + message.sender + "' />" + ":" + message.sender + "<br/>";
 
-    if (undefined == contact) {
-        to=message.sender;
-    }
     if (undefined != contact) {
-        //to=message.sender;
+        to=message.sender;
         for (var i = 0; i < contact.length; i++) {
             if (contact[i] != username) {
                 document.getElementById("users").innerHTML =
@@ -125,7 +122,4 @@ function reConnect() {
     websocket.onmessage = onMessage;
     websocket.onerror = onError;
     websocket.onclose = onClose;
-}
-window.onload = function () {
-
 }
