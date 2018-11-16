@@ -86,6 +86,12 @@ public class RecommendService {
                 Integer y = pm2.get(key);
                 //System.out.println("key="+key);
                 //System.out.println("y="+pm2.get(key));
+                if(x == null){
+                    x = 0;
+                }
+                if(y == null){
+                    y = 0;
+                }
                 if (x != null && y != null) {
                     n++;
                     sxy += x * y;
@@ -150,7 +156,7 @@ public class RecommendService {
 
         List<Entry<String, Double>> enList = getSort(objScoreMap);
 
-        for (Entry<String, Double> entry : enList) {
+       /* for (Entry<String, Double> entry : enList) {
             System.out.println(entry.getKey()+"的加权推荐值:"+entry.getValue());
             if(entry.getValue() > 0){
                 result.add(entry.getKey());
@@ -168,7 +174,14 @@ public class RecommendService {
                     result.add(random.get(i));
                 }
             }
+        }*/
+        for (Entry<String, Double> entry : enList) {
+            System.out.println(entry.getKey()+"的加权推荐值:"+entry.getValue());
         }
+        for(int i = 0; i < 6 && i < enList.size(); i++){
+            result.add(enList.get(i).getKey());
+        }
+
 
         //返回推荐结果
         return new ListRecommendDAO().getProductData(result);
