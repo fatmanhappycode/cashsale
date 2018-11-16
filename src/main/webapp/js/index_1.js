@@ -6,6 +6,8 @@ isLoading=false;
 currentPage="1";
 //定义全局变量title，方便下拉时使用
 var title;
+
+//猜你喜欢
 function whatULike() {
     var saveData={"username":getCookie("username")};
     var play = document.getElementById("play");
@@ -20,19 +22,64 @@ function whatULike() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
+            data1=result.data;
             whatlike(data);
+            if(data1==""||data1==null||data1==undefined){
+                whatlike(data);
+            }
         },
         error:function(xhr,errrorMessage,e){
             alert("系统异常！"+e+"\n"+errrorMessage);
         }
     });
 }
+//渲染猜你喜欢
 function whatlike(data) {
     $.each(data,function(index,obj){
+        //获取容器
         var play = document.getElementById("play");
-        var img = document.createElement('img');
-        img.src = obj.imageUrl;
-        play.appendChild(img);
+        //生成盒子
+        var likeGoods= document.createElement('div');
+        var smallImg = document.createElement('img');
+        var mytitle= document.createElement('ul');
+        var li1= document.createElement('li');
+        var li2= document.createElement('li');
+        var li3= document.createElement('li');
+        var li4= document.createElement('li');
+
+        //设置属性
+        likeGoods.setAttribute("class", "likeGoods");
+        likeGoods.setAttribute("onclick", "goodsclick(this)");
+        smallImg.setAttribute("id", "smallImg");
+        mytitle.setAttribute("id", "mytitle");
+        li1.setAttribute("id", "liketitle");
+        li2.setAttribute("id", "likeprice1");
+        li3.setAttribute("id", "likeprice2");
+        li4.setAttribute("id", "likegetGoods");
+
+
+        // 加入内容
+        smallImg.src = obj.imageUrl;
+        li1.innerHTML=data.title;
+        li2.innerHTML="价格：￥"+data.price;
+        if(data.isBargain=="1"){
+            li3.innerHTML="可否议价：可议价";
+        }else if(data.isBargain=="0"){
+            li3.innerHTML="可否议价：不可议价";
+        }
+        if(data.tradeMethod=="1"){
+            li4.innerHTML="交货方式：上门自提";
+        }else if(data.tradeMethod=="0"){
+            li4.innerHTML="交货方式：送货上门";
+        }
+
+        mytitle.appendChild(li1);
+        mytitle.appendChild(li2);
+        mytitle.appendChild(li3);
+        mytitle.appendChild(li4);
+        likeGoods.appendChild(smallImg);
+        likeGoods.appendChild(mytitle);
+        play.appendChild(likeGoods);
     });
 }
 function innerGoods(data) {
@@ -64,32 +111,7 @@ function innerGoods(data) {
 	});
 }
 
-function innerGoods_1(data) {
-    $.each(data,function(index,obj){
-        var main = document.getElementById("main");
-        var goods= document.createElement('div');
-        var img = document.createElement('img');
-        var h4= document.createElement('h4');
-        var p= document.createElement('p');
-        goods.setAttribute("class", "goods");
-        goods.setAttribute("onclick", "goodsclick(this)");
-        h4.setAttribute("class", "myH");
-        p.setAttribute("class", "price");
-        img.src = obj.imageUrl;
-        h4.innerHTML=obj.title;
-        p.innerHTML="￥"+obj.price;
-        goods.appendChild(img);
-        goods.appendChild(h4);
-        goods.appendChild(p);
-        main.appendChild(goods);
-        //商品id
-        var goodsId= document.createElement('input');
-        goodsId.setAttribute("id","goodsId");
-        goodsId.setAttribute("value",obj.productId);
-        goods.appendChild(goodsId);
-    });
-}
-
+//是否验证
 function innerConfirm(data) {
     var isConfirm = document.getElementById("Confirm");
     if (data == "1") {
