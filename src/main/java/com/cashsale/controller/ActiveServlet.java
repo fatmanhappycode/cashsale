@@ -63,7 +63,7 @@ public class ActiveServlet extends HttpServlet{
         if (result.getMsg().equals("激活成功")) {
         	response.sendRedirect("/activesuccess.html");
 		} else {
-        	response.sendRedirect("/activefailure.html");
+        	response.sendRedirect("/activesuccess.html");
 		}
 	}
 }
