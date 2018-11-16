@@ -19,3 +19,5 @@ src/main/java/com/cashsale/util/SensitiveWordInitUtil.java
 src/main/java/com/cashsale/dao/RegisterDAO.java
 src/main/java/com/cashsale/util/SensitiveWordInitUtil.java
 .idea/smartfox_info.xml
+bin/.settings/org.eclipse.core.resources.prefs
+*.prefs
