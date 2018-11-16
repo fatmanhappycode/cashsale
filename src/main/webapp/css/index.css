@@ -22,20 +22,20 @@
 	height:41px;
 }
 .slogan{
-    color: #fff;
+	color: #fff;
 	padding-top:4px;
 	text-align:center;
 }
 .slogan a{
-    color: #fff;
+	color: #fff;
 }
 .login{
-    margin-right: 20px;
+	margin-right: 20px;
 	float:right;
 	width:140px;
 	border:none;
 	padding-top:7px;
-    /*border:1px solid #fac;*/
+	/*border:1px solid #fac;*/
 }
 .login img{
 	width:40px;
@@ -53,22 +53,22 @@
 .login span{
 	position:absolute;
 	width:90px;
-    height: auto;
-    color: #fff;
-    font-size: 18px;
+	height: auto;
+	color: #fff;
+	font-size: 18px;
 	margin-left:5px;
 	text-overflow: ellipsis;/*文本超出提示三个�?*/
 	white-space: nowrap;/*�?行显�?*/
 	overflow: hidden;/*超出隐藏*/
-    /*border:1px solid #fac;*/
+	/*border:1px solid #fac;*/
 }
 .login p{
-    display: inline-block;
-    font-size: 12px;
-    margin-left: 5px;
+	display: inline-block;
+	font-size: 12px;
+	margin-left: 5px;
 	margin-top: -3px;
-    color: #fff;
-    /*border:1px solid #fac;*/
+	color: #fff;
+	/*border:1px solid #fac;*/
 }
 #isConfirm{
 	margin-left: -22px;
@@ -86,64 +86,74 @@
 
 
 #deploy{
-    padding-top: 14px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 8px;
-    margin-right: 30px;
-    float: right;
-    width:30px;
-    height: 33px;
+	padding-top: 14px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 8px;
+	margin-right: 30px;
+	float: right;
+	width:30px;
+	height: 33px;
 	cursor: pointer;
-    /*border:1px solid #fac;*/
+	/*border:1px solid #fac;*/
 }
 #deploy:hover{
-    background:#fff;
+	background:#fff;
 }
 #deploy:hover #Townav{
-    display: block;
+	display: block;
 }
 #deploy img{
-    width:30px;
-    opacity: .6;
+	width:30px;
+	opacity: .6;
 }
 #Townav{
-    width: 126px;
-    margin-left:-70px;
-    margin-top: 5px;
-    background:#fff;
-    display: none;
-    border-radius: 4px;
-    border: 1px solid #dddddd;
+	width: 126px;
+	margin-left:-70px;
+	margin-top: 5px;
+	background:#fff;
+	display: none;
+	border-radius: 4px;
+	border: 1px solid #dddddd;
 }
 #Townav li{
-    width: 120px;
-    height: 30px;
-    text-align: center;
-    color: #000;
-    margin: 2px;
-    padding-top: 10px;
-    list-style-type: none;
-    cursor: pointer;
-    border: 1px solid #dddddd;
-    /*border:1px solid #fac;*/
+	width: 120px;
+	height: 30px;
+	text-align: center;
+	color: #000;
+	margin: 2px;
+	padding-top: 10px;
+	list-style-type: none;
+	cursor: pointer;
+	border: 1px solid #dddddd;
+	/*border:1px solid #fac;*/
 }
 #Townav li:hover{
-    background: #dddddd;
+	background: #dddddd;
 }
+#exit{
+	padding-top: 14px;
+	float: right;
+	width: 30px;
+	height: 30px;
+	opacity: .6;
+	display: none;
+}
+
+
 
 /* 网页整体大小*/
 .all{
 	width:1040px;
 	margin-left:-520px;
 	position: absolute;
-    z-index: 2;
-    margin-bottom: 60px;
-    padding-bottom: 60px;
+	z-index: 2;
+	margin-bottom: 60px;
+	padding-bottom: 60px;
 	left:50%;
 	background:#FFF;
 	box-shadow: 0 0 50px rgba(172,172,172,1);
-    /*border:1px solid #FAC;*/
+	/*border:1px solid #FAC;*/
 }
 .back-head img{
 	width:100%;
@@ -155,7 +165,7 @@
 
 /* 图片上面�?  */
 .search{
-    position: relative;
+	position: relative;
 	width:855px;
 	height:200px;
 	padding:120px 115px 0 70px;
@@ -172,36 +182,36 @@
 	font-size: 38px;
 }
 /* ������ */
- .mySearch{
- 	float:right;
- 	width:300px;
- 	height: 40px;
- 	border:3px solid #fff;
- 	background: rgba(231,238,254,.6);
- 	font-size: 22px;
- 	color:#000;
-     padding-left: 8px;
- 	font-weight: 600;
- 	cursor:text;
- }
+.mySearch{
+	float:right;
+	width:300px;
+	height: 40px;
+	border:3px solid #fff;
+	background: rgba(231,238,254,.6);
+	font-size: 22px;
+	color:#000;
+	padding-left: 8px;
+	font-weight: 600;
+	cursor:text;
+}
 /*  �Ŵ� */
- .mySearch-img{
-	 -webkit-appearance: none;
- 	float:right;
- 	width:70px;
- 	height: 40px;
- 	border:3px solid #fff;
- 	border-left: none;
- 	cursor: pointer;
- 	-webkit-appearance: none;
-	 background:#fff url("../img/mySearch-img.png") no-repeat center;
-	 background-size: 40px 40px;
- }
-  
-  
-  
-  
-  
+.mySearch-img{
+	-webkit-appearance: none;
+	float:right;
+	width:70px;
+	height: 40px;
+	border:3px solid #fff;
+	border-left: none;
+	cursor: pointer;
+	-webkit-appearance: none;
+	background:#fff url("../img/mySearch-img.png") no-repeat center;
+	background-size: 40px 40px;
+}
+
+
+
+
+
 /* ������ */
 .header{
 	position:relative;
@@ -460,7 +470,7 @@
 	font-size: 18px;
 	color: #da7370;
 	text-align: center;
-	background: url("../img/nav (1)1.gif") no-repeat;
+	background: url("../img/like.gif") no-repeat;
 	background-size: 19px 19px;
 	background-position: 280px 13px;
 	border-bottom: 1px solid #eee;
@@ -469,7 +479,7 @@
 	float:left;
 	width:700px;
 	height:360px;
-    margin-top: 6px;
+	margin-top: 6px;
 	/*border:1px solid #fac;*/
 }
 
@@ -478,29 +488,29 @@
 
 .likeGoods img{
 	margin-left: 10px;
-    width: 350px;
-    height: 350px;
+	width: 350px;
+	height: 350px;
 }
 /*ul*/
 #mytitle{
 	float: right;
-    width:240px;
-    height: 300px;
-    margin-right:80px;
-    margin-top: -3px;
-    /*border:1px solid #fac;*/
+	width:240px;
+	height: 300px;
+	margin-right:80px;
+	margin-top: -3px;
+	/*border:1px solid #fac;*/
 }
 #mytitle li{
 	display: block;
-    list-style-type: none;
-    margin: 10px;
-    padding: 18px;
-    /*border:1px solid #fac;*/
+	list-style-type: none;
+	margin: 10px;
+	padding: 18px;
+	/*border:1px solid #fac;*/
 }
 /*标题*/
 #liketitle{
-    font-size: 24px;
-    font-weight: 600;
+	font-size: 24px;
+	font-weight: 600;
 }
 @keyframes ma{
 	0%,14%{margin-left:0px;}
@@ -516,7 +526,7 @@
 
 .main{
 	width:720px;
-    height: auto;
+	height: auto;
 	margin-right:80px;
 	margin-left:240px;
 	padding-bottom:60px;
@@ -579,27 +589,27 @@
 	width:70px;
 	border:none;
 	border-radius: 35px;
-    border:1px solid #000;
-    opacity: .4;
+	border:1px solid #000;
+	opacity: .4;
 	display: none;
 	cursor: pointer;
 }
 #test img{
-    width: 50px;
-    height: 50px;
-    margin-top: 10px;
-    margin-left: 10px;
+	width: 50px;
+	height: 50px;
+	margin-top: 10px;
+	margin-left: 10px;
 }
 /* 版权 */
 .bottom{
 	whidth:200px;
 	color:rgba(172,172,172,.9);
 	font-size:14px;
-    position: absolute;
+	position: absolute;
 	left:50%;
 	margin-left:-100px;
-    z-index: 3;
-    bottom: 10px;
+	z-index: 3;
+	bottom: 10px;
 	text-align: center;
 	/*border:1px solid #FAC;*/
 }

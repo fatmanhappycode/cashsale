@@ -123,11 +123,13 @@
 }
 /*聊天*/
 #lichat{
+    width: 0px;
     padding-top: 18px;
     border:0;
 }
 /*加入购物车*/
 #liJOshopping{
+    width: 0px;
     position: relative;
     top: -50px;
 }

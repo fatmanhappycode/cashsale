@@ -44,8 +44,12 @@ window.onload =function loadgoods() {
                 }else if(data.tradeMethod=="0"){
                     getGoods.innerHTML="交货方式：送货上门";
                 }
-                // 富文本编辑器加入内容
-                Description.innerHTML+="更多内容："+"<br>"+data.pdDescription;
+                if(data.pdDescription!=undefined&&data.pdDescription!=null){
+                    // 富文本编辑器加入内容
+                    Description.innerHTML+="更多内容："+"<br>"+data.pdDescription;
+                }else{
+                    Description.innerHTML+="更多内容："+"<br>"+"该卖家很佛系，没有发布更多内容";
+                }
 
                 // 用户名 发布者
                 if(data.username!="undefined"||data.username!=""||data.username!=null){

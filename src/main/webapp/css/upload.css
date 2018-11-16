@@ -12,7 +12,7 @@
 	height:1600px;;
 	position: absolute;
 	overflow-x: hidden;
-	background:rgb(249,249,248); 
+	background:rgb(249,249,248);
 	/*条纹 */
 	/* background: linear-gradient(
 		135deg,
@@ -52,7 +52,7 @@
 	border-radius: 4px;
 	/*原始边框 */
 	border: 1px solid #eee;
-    transition: all .4s;
+	transition: all .4s;
 }
 /* 所有input元素外套着的div */
 .g-username {
@@ -61,9 +61,9 @@
 	border-radius:4px;
 	margin:5px;
 	padding-bottom:10px;
-    transition: all .4s;
+	transition: all .4s;
 	float:left;
-    padding :25px;
+	padding :25px;
 }
 /* 所有input元素外套着的  个别   div ，第二个为Other-g，最后二个为Other-gg*/
 .Other-g,.Other-gg{
@@ -82,19 +82,23 @@
 .Other-gggg{
 	padding-bottom: 60px;
 }
+.Other-ggggg{
+	height: 182px;
+}
+
 /* 获取焦点时 */
 .g-username:focus-within{
 	transform: translateY(-3px);
 	/*阴影 */
-    box-shadow: 0 0 10px rgba(172,172,172,.8);
-    border-color: hsl(199, 98%, 48%);
+	box-shadow: 0 0 10px rgba(172,172,172,.8);
+	border-color: hsl(199, 98%, 48%);
 }
 /* 获取焦点时 */
 .form:focus-within {
-    transform: translateY(-3px);
+	transform: translateY(-3px);
 	/*阴影 */
-    box-shadow: 0 0 10px rgba(172,172,172,.8);
-    border-color: hsl(199, 98%, 48%);
+	box-shadow: 0 0 10px rgba(172,172,172,.8);
+	border-color: hsl(199, 98%, 48%);
 }
 
 
@@ -110,13 +114,13 @@
 	margin-top:-10px;
 	border-radius: 4px;
 	border-color:rgba(251,206,177,0.5);
-	
-    border: 1px solid #ddd;
-    overflow: hidden;
-    transition: 0.4s;
-    &:focus {
-        border-color: hsl(199, 98%, 48%);
-    }
+
+	border: 1px solid #ddd;
+	overflow: hidden;
+	transition: 0.4s;
+&:focus {
+	 border-color: hsl(199, 98%, 48%);
+ }
 }
 /* 文本介绍 */
 #and{
@@ -127,11 +131,11 @@
 	border-color:rgba(251,206,177,0.5);
 	overflow-Y:auto;
 	resize:none;
-    border: 1px solid #ddd;
-    transition: 0.4s;
-    &:focus {
-        border-color: hsl(199, 98%, 48%);
-    }
+	border: 1px solid #ddd;
+	transition: 0.4s;
+&:focus {
+	 border-color: hsl(199, 98%, 48%);
+ }
 }
 /* 图片 */
 #myfile{
@@ -139,89 +143,23 @@
 }
 /* 图片容器 */
 #container{
-	width:800px;
-}
-
-
-
-/* 选择框外面的div，内含复选框和文字 */
-#myBox{
-	float:left;
 	width:100px;
-	height: 30px;
-	margin-top:10px;
-    margin-left:25px;
+	height: 100px;
+	padding: 0;
+	margin-top: 10px;
+	margin-left:40px;
 }
-/* span内的文字 */
-#myText{
-	font-size:14px;
-	width:78px;
-	height:23.5px;
-	padding-top:4.5px;
-	margin-top:10px;
-    margin-left:25px;
-	position:absolute;
-	text-align:center;
-	border:#999 solid 1px;
-	border-radius: 4px;
-}
-/* 选择框 */
-.myCheckBox{
-	position:absolute;
-/* 	除去原生样式 */
-    -webkit-appearance: none;
-    outline: none;
-    margin-top:10px;
-    margin-left:25px;
-    background:rgba(1,1,1,0);
-    border:#999 solid 1px;
-    border-radius: 3px;
-    opacity:0;
-/*===========================================设置复选框大小 */
-    min-height: 30px;
-    min-width: 80px;
-    border-radius: 4px;
-}
-/* 复选框选中时样式 */
-.myCheckBox:checked {
-    background: #3190e8;
-    opacity:.5;
-    border:#3190e8 solid 1px;
-    border-radius: 4px;
-}
-/* “对”符号 选中符号 */
-.myCheckBox:checked::after{
-    content: '';
-    top: 14px;
-    left: 62px;
-    position: absolute;
-    background: transparent;
-    border: #fff solid 2px;
-    border-top: none;
-    border-right: none;
-    height: 6px;
-    width: 10px;
-/*     勾股定理 */
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg); 
-    transform: rotate(-45deg);
-} 
-
 .myfile_img{
 	width:100px;
 	height:100px;
-	padding-top:10px;
-	margin-left:40px;
 }
 #imgDelete{
 	position:absolute;
 	z-index:10000;
 	width:100px;
-	height:60px;
+	height:62px;
 	padding-top:40px;
-	border:1px solid #FAC;
-	margin-left:40px;
+	/*border:1px solid #FAC;*/
 	margin-top:-105px;
 	background:#FFF;
 	cursor:pointer;
@@ -230,6 +168,73 @@
 #imgDelete:hover{
 	opacity: 0.5;
 }
+
+
+/* 选择框外面的div，内含复选框和文字 */
+#myBox{
+	float:left;
+	width:100px;
+	height: 30px;
+	margin-top:10px;
+	margin-left:25px;
+}
+/* span内的文字 */
+#myText{
+	font-size:14px;
+	width:78px;
+	height:23.5px;
+	padding-top:4.5px;
+	margin-top:10px;
+	margin-left:25px;
+	position:absolute;
+	text-align:center;
+	border:#999 solid 1px;
+	border-radius: 4px;
+}
+/* 选择框 */
+.myCheckBox{
+	position:absolute;
+	/* 	除去原生样式 */
+	-webkit-appearance: none;
+	outline: none;
+	margin-top:10px;
+	margin-left:25px;
+	background:rgba(1,1,1,0);
+	border:#999 solid 1px;
+	border-radius: 3px;
+	opacity:0;
+	/*===========================================设置复选框大小 */
+	min-height: 30px;
+	min-width: 80px;
+	border-radius: 4px;
+}
+/* 复选框选中时样式 */
+.myCheckBox:checked {
+	background: #3190e8;
+	opacity:.5;
+	border:#3190e8 solid 1px;
+	border-radius: 4px;
+}
+/* “对”符号 选中符号 */
+.myCheckBox:checked::after{
+	content: '';
+	top: 14px;
+	left: 62px;
+	position: absolute;
+	background: transparent;
+	border: #fff solid 2px;
+	border-top: none;
+	border-right: none;
+	height: 6px;
+	width: 10px;
+	/*     勾股定理 */
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+
 
 /* 按钮 */
 #submit,#reset{

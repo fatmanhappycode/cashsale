@@ -22,10 +22,10 @@ function whatULike() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            data1=result.data;
-            whatlike(data);
+            data1=result.data.data;
+            whatlike(data1);
             if(data1==""||data1==null||data1==undefined){
-                whatlike(data);
+                whatlike(data1);
             }
         },
         error:function(xhr,errrorMessage,e){
@@ -60,16 +60,16 @@ function whatlike(data) {
 
         // 加入内容
         smallImg.src = obj.imageUrl;
-        li1.innerHTML=data.title;
-        li2.innerHTML="价格：￥"+data.price;
-        if(data.isBargain=="1"){
+        li1.innerHTML=obj.title;
+        li2.innerHTML="价格：￥"+obj.price;
+        if(obj.isBargain=="1"){
             li3.innerHTML="可否议价：可议价";
-        }else if(data.isBargain=="0"){
+        }else if(obj.isBargain=="0"){
             li3.innerHTML="可否议价：不可议价";
         }
-        if(data.tradeMethod=="1"){
+        if(obj.tradeMethod=="1"){
             li4.innerHTML="交货方式：上门自提";
-        }else if(data.tradeMethod=="0"){
+        }else if(obj.tradeMethod=="0"){
             li4.innerHTML="交货方式：送货上门";
         }
 
@@ -80,35 +80,44 @@ function whatlike(data) {
         likeGoods.appendChild(smallImg);
         likeGoods.appendChild(mytitle);
         play.appendChild(likeGoods);
+
+        //商品id
+        var goodsId= document.createElement('input');
+        var goodsId1= document.createElement('input');
+        goodsId.setAttribute("id","goodsId");
+        // goodsId.setAttribute("type","hidden");
+        goodsId.setAttribute("value",obj.productId);
+        likeGoods.appendChild(goodsId1);
+        likeGoods.appendChild(goodsId);
     });
 }
 function innerGoods(data) {
-	$.each(data,function(index,obj){
-		var main = document.getElementById("main");
-		var goods= document.createElement('div');
-		var img = document.createElement('img');
-		var h4= document.createElement('h4');
-		var p= document.createElement('p');
+    $.each(data,function(index,obj){
+        var main = document.getElementById("main");
+        var goods= document.createElement('div');
+        var img = document.createElement('img');
+        var h4= document.createElement('h4');
+        var p= document.createElement('p');
 
-		goods.setAttribute("class", "goods");
+        goods.setAttribute("class", "goods");
         goods.setAttribute("onclick", "goodsclick(this)");
 
-		h4.setAttribute("class", "myH");
-		p.setAttribute("class", "price");
-	    img.src = obj.imageUrl;
-	    h4.innerHTML=obj.title;
-	    p.innerHTML="￥"+obj.price;
-	    goods.appendChild(img);
-	    goods.appendChild(h4);
-	    goods.appendChild(p);
-	    main.appendChild(goods);
+        h4.setAttribute("class", "myH");
+        p.setAttribute("class", "price");
+        img.src = obj.imageUrl;
+        h4.innerHTML=obj.title;
+        p.innerHTML="￥"+obj.price;
+        goods.appendChild(img);
+        goods.appendChild(h4);
+        goods.appendChild(p);
+        main.appendChild(goods);
         //商品id
         var goodsId= document.createElement('input');
         goodsId.setAttribute("id","goodsId");
         goodsId.setAttribute("type","hidden");
         goodsId.setAttribute("value",obj.productId);
         goods.appendChild(goodsId);
-	});
+    });
 }
 
 //是否验证
@@ -149,6 +158,7 @@ window.onload =function init() {
         success:function(result,testStatus)
         {
             currentPage=result.data.currentPage;
+            console.log("页数："+currentPage);
             data=result.data.data;
             //渲染
             innerGoods(data);
@@ -222,6 +232,7 @@ function IsInload() {
         success:function(result,testStatus)
         {
             currentPage=result.data.currentPage;
+            console.log("页数："+currentPage);
             data=result.data.data;
             //渲染
             innerGoods(data);
@@ -241,38 +252,39 @@ function loadXMLDoc()
     if(title==""){
         //无内容时刷新页面
         location.reload();
-    	return;
-	}
+        return;
+    }
     //将flag赋值为search
-	flag="search";
-	token=getCookie("token");
+    flag="search";
+    token=getCookie("token");
     currentPage="1";
-	var saveData={"title":title,"currentPage":currentPage};
-	$("#main").html("");
-	$.ajax({
-		url:"/search",
-		type:"get",
-		headers:{
-			"token":token
-		},
+    var saveData={"title":title,"currentPage":currentPage};
+    $("#main").html("");
+    $.ajax({
+        url:"/search",
+        type:"get",
+        headers:{
+            "token":token
+        },
         data:saveData,
-		contentType:"application/json",
-		success:function(result,testStatus)
-		{
-			currentPage=result.data.currentPage;
-			data=result.data.data;
-			if(result.code== "107"){
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            currentPage=result.data.currentPage;
+            console.log("页数："+currentPage);
+            data=result.data.data;
+            if(result.code== "107"){
                 $(window).scrollTop(250);
-				innerGoods(data);
+                innerGoods(data);
                 document.documentElement.scrollTop = 800;
-			}else{
-				console.log("查询失败！");
-			}
-		},
-		error:function(xhr,errrorMessage,e){
-			alert("系统异常！");
-		}
-	});
+            }else{
+                console.log("查询失败！");
+            }
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！");
+        }
+    });
 }
 //下拉时currentPage不为0或空
 function loadXMLDoc_1()
@@ -292,6 +304,7 @@ function loadXMLDoc_1()
         success:function(result,testStatus)
         {
             currentPage=result.data.currentPage;
+            console.log("页数："+currentPage);
             data=result.data.data;
             if(result.code== "107"){
                 innerGoods(data);
@@ -310,7 +323,7 @@ $(window).scroll(function(){
     var docHeight=$(document).height();//整个窗体的高度
     var winHeight=$(window).height();//当前窗体高度
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
-    console.log(docHeight+"  "+winHeight+"  "+winScrollHeight);
+    // console.log(docHeight+"  "+winHeight+"  "+winScrollHeight);
     if(docHeight==winHeight+winScrollHeight|docHeight<=winHeight+winScrollHeight|docHeight-0.5<=winHeight+winScrollHeight) {
         if (flag == "") {
             IsInload();
@@ -435,6 +448,7 @@ function Selectspecies() {
         {
             currentPage=result.data.currentPage;
             //alert("result.data.page="+currentPage);
+
             data=result.data.data;
             if(result.code== "107"){
                 innerGoods(data);
@@ -469,6 +483,7 @@ function Selectspecies_1() {
         success:function(result,testStatus)
         {
             currentPage=result.data.currentPage;
+            console.log("页数："+currentPage);
             data=result.data.data;
             if(result.code== "107"){
                 innerGoods(data);
