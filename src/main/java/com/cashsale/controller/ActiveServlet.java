@@ -60,6 +60,10 @@ public class ActiveServlet extends HttpServlet{
         }
         
         ResultDTO<String> result = new ActiveService().UserActive(code, currentTime, username, password);
-        writer.print(JSONObject.toJSON(result));
+        if (result.getMsg().equals("激活成功")) {
+        	response.sendRedirect("/activesuccess.html");
+		} else {
+        	response.sendRedirect("/activefailure.html");
+		}
 	}
 }
