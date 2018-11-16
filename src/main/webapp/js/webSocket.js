@@ -2,7 +2,6 @@ var url = "localhost:8080";
 var websocket = null;
 var to = "";
 var username = getCookie("username");
-document.getElementById("messageView").innerHTML = "getCookie(name)="+username+"<br/>";
 if ('WebSocket' in window) {
     websocket = new WebSocket("ws://" + url + "/socket?username="+username);
 } else {
@@ -16,7 +15,6 @@ websocket.onclose = onClose;
 $(function(){
     //to = $('input:radio[name="users"]:checked').val();
     to = getCookie("goodsUsername");
-    alert(to+"a");
 });
 
 
@@ -29,7 +27,6 @@ function onMessage(event) {
     var date = message.date;
     var content = message.content;
     var contact = message.data;
-    alert(message.sender);
     document.getElementById("users").innerHTML =
         "<input type=radio name='users' value='" + message.sender + "' />" + ":" + message.sender + "<br/>";
 
@@ -91,7 +88,6 @@ function doSend() {
             "content":msg,
             "date":time
         }
-        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+to;
         var messageJson = JSON.stringify(messageData);
         if(msg && to !=null){
             document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+
@@ -111,26 +107,7 @@ function doSend() {
     }
 }
 
-function reConnect() {
-    if (websocket != null) {
-        websocket.close();
-        websocket = null;
-    }
-    if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://" + url + "/socket?username="+12);
-        to = "123";
-        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+"username=12<br/>";
-    } else {
-        alert("该浏览器不支持websocket!");
-    }
-    websocket.onopen = onOpen;
-    websocket.onmessage = onMessage;
-    websocket.onerror = onError;
-    websocket.onclose = onClose;
-}
-
 function getmessage() {
-    alert("2");
     var saveData = {"username": getCookie("username")}
     $.ajax({
         url: "/getMessage",
@@ -153,7 +130,7 @@ function getmessage() {
 }
 function innermessagedata(data) {
     $.each(data,function(index,obj) {
-        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +"<br>"+obj.date+"<br>"+obj.content ;
+        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +"<p class='time'>"+obj.date+"</p>"+obj.content ;
     })
     document.getElementById("users").innerHTML =
         "<input type=radio name='users' value='" + data[0].sender + "' />" + ":" + data[0].sender + "<br/>";
@@ -162,6 +139,5 @@ function innermessagedata(data) {
 
 
 window.onload = function getmessag() {
-    alert("1");
     getmessage();
 }
