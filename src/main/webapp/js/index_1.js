@@ -7,9 +7,33 @@ currentPage='';
 //定义全局变量title，方便下拉时使用
 var title;
 function whatULike() {
+    var saveData={"username":getCookie("username")};
     var play = document.getElementById("play");
-    var img
-    play.appendChild()
+    $.ajax({
+        url:"/recommend",
+        type:"get",
+        headers:{
+            "token":token,
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            whatlike(data);
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
+}
+function whatlike(data) {
+    $.each(data,function(index,obj){
+        var play = document.getElementById("play");
+        var img = document.createElement('img');
+        img.src = obj.imageUrl;
+        play.appendChild(img);
+    });
 }
 function innerGoods(data) {
 	$.each(data,function(index,obj){
@@ -71,11 +95,15 @@ function innerConfirm(data) {
     if (data == "1") {
         isConfirm.innerHTML = "已认证";
         var img = document.createElement('img');
-        img.src = "";
+        img.src = "../img/confirm.png";
         var confirm = document.getElementById("isConfirm");
         confirm.appendChild(img);
     } else {
         isConfirm.innerHTML = "未认证";
+        var img = document.createElement('img');
+        img.src = "../img/noconfirm.png";
+        var confirm = document.getElementById("isConfirm");
+        confirm.appendChild(img);
     }
 }
 
@@ -84,6 +112,7 @@ window.onload =function init() {
     currentPage='';
     token='';
     flag="";
+    whatULike();
     var saveData={"time":"desc","currentPage":currentPage};
     $("#main").html("");
     $.ajax({

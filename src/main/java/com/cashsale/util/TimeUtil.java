@@ -40,7 +40,7 @@ public class TimeUtil {
 		Long date = calendar.getTime().getTime(); 
 
 		// 5分钟 （300000）
-		if (date - tempTime > 300000) 
+		if (date - tempTime > 3000000)
 		{ 
 			return false;
 		} 

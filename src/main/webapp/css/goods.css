@@ -81,11 +81,16 @@
     overflow: hidden;
     border: 1px solid #ddd;
     position: absolute;
+    background:#eee;
     z-index: 10;
     left: 350px;
     top: 0;
     display: none;
     /*border:1px solid #fac;*/
+}
+#smallBox img{
+    width: 350px;
+    height: 350px;
 }
 #bigBox img{
     width:800px;
@@ -174,9 +179,10 @@
     border:1px solid #eec;
     border-radius: 20px;
 }
-#Description img{
-    width: 200px;
+#Description table,#Description th,#Description td{
+    border: 1px solid #dddddd;
 }
+
 
 /* 版权 */
 .bottom{
