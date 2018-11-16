@@ -20,6 +20,8 @@ $(function(){
 
 function onOpen(openEvent) {
     document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + "OPEN<br/>";
+    var txt = document.getElementById("messageView");
+    txt.scrollTop=txt.scrollHeight;
 }
 
 function onMessage(event) {
@@ -28,7 +30,7 @@ function onMessage(event) {
     var content = message.content;
     var contact = message.data;
     document.getElementById("users").innerHTML =
-        "<input type=radio name='users' value='" + message.sender + "' />" + ":" + message.sender + "<br/>";
+        "<input type=radio name='users' value='" + message.sender + "' />" + "<p class='usersID'>" + message.sender + "</p><br/>";
 
     // if (undefined == content) {
     //     to=message.sender;
@@ -53,8 +55,10 @@ function onMessage(event) {
     }
     if (undefined != content) {
         document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +
-            "<p class='time'>"+date+"<br/></p><p class='receiver'>"+content+"<br/>"+"</p>";
+            "<p class='time'>"+date+"</p><br/><p class='receiver'>"+content+"</p>"+"<br/>";
     }
+    var txt = document.getElementById("messageView");
+    txt.scrollTop=txt.scrollHeight;
 }
 function onError() {
     alert("链接失败，请重新链接！")
@@ -91,12 +95,12 @@ function doSend() {
         var messageJson = JSON.stringify(messageData);
         if(msg && to !=null){
             document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+
-                "<p class='time'>"+time+"<br/></p><p class='send'>"+msg+"<br/>"+"</p>";
+                "<p class='time'>"+time+"</p><br/><p class='send'>"+msg+"</p>"+"<br/>";
             websocket.send(messageJson);
         }
         else if(to == null && msg){
             document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML+
-                "<p class='time'>"+time+"<br/></p><p class='send'>"+msg+"<br/>"+"</p>";
+                "<p class='time'>"+time+"</p><br/><p class='send'>"+msg+"</p>"+"<br/>";
             websocket.send(messageJson);
         }else{
             alert("消息输入不能为空！");
@@ -105,6 +109,8 @@ function doSend() {
     } else {
         alert("链接断开，消息发送失败，请重新链接！");
     }
+    var txt = document.getElementById("messageView");
+    txt.scrollTop=txt.scrollHeight;
 }
 
 function getmessage() {
@@ -127,17 +133,31 @@ function getmessage() {
             alert("系统异常！");
         }
     });
+
+
+
 }
 function innermessagedata(data) {
     $.each(data,function(index,obj) {
-        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +"<p class='time'>"+obj.date+"</p>"+obj.content ;
+        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +"<p class='time'>"+obj.date+"</p><p class='receiver'>"+obj.content +"</p>";
     })
     document.getElementById("users").innerHTML =
-        "<input type=radio name='users' value='" + data[0].sender + "' />" + ":" + data[0].sender + "<br/>";
+        "<input type=radio name='users' value='" + data[0].sender + "' />" + "<p class='usersID'>" + data[0].sender + "</p><br/>";
     to = data[0].sender;
+    var txt = document.getElementById("messageView");
+    txt.scrollTop=txt.scrollHeight;
 }
 
 
 window.onload = function getmessag() {
     getmessage();
+}
+
+//回车事件
+function enterSubmit(obj) {
+    var button = document.getElementById('send');
+    //enter按键的keyCode编码为13
+    if (obj.keyCode == 83) {
+        button.click();
+    }
 }

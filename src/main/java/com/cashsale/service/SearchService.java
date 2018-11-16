@@ -45,4 +45,6 @@ public class SearchService {
         PagerDTO<ProductDO> product = new PagerDTO<>(page+1,products);
         return  new ResultDTO<PagerDTO>(107, product,"查询成功");
     }
+
+//    public ResultDTO<String>
 }

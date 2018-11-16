@@ -40,6 +40,7 @@
     width: 4%;
     position: absolute;
     border-left: 1px solid #ccc;
+    background: cornflowerblue;
 }
 #userlist{
     height: 100%;
@@ -47,19 +48,47 @@
     position: absolute;
     left: 4%;
     border-left: 1px solid #ccc;
+    background: #e7e7e7;
 }
 #search{
-    position: absolute;
-    left: 6%;
-    top: 2%;
-    width: 85%;
+    width: 170px;
+    margin-top: 10px;
+    margin-left: 15px;
+    height: 15px;
+
 }
 #users{
-    position: relative;
-    left: 6%;
-    top: 6%;
     width: 85%;
     height: 6%;
+}
+.usersID{
+    width: 150px;
+    margin-top: -30px;
+    margin-left: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 10px;
+    /*border: 1px solid #fac;*/
+}
+#users input{
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+    -webkit-appearance: none;
+    outline: none;
+    border:#999 solid 1px;
+    margin-top:10px;
+    margin-left: 11px;
+    width: 180px;
+    height: 30px;
+    border-radius: 4px;
+}
+/* 复选框选中时样式 */
+#users input:checked {
+    background: #3190e8;
+    opacity:.5;
+    border:#3190e8 solid 1px;
 }
 .chat{
     height: 100%;
@@ -73,6 +102,7 @@
     width: 100%;
     height: 80%;
     position: absolute;
+    overflow: auto;
     border-bottom: 1px solid #ccc;
 }
 /* 聊天记录输入框 */
@@ -80,22 +110,29 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 99.3%;
-    height: 60%;
+    font-size: 16px;
+    width: 512px;
+    height: 72px;
+    resize:none;
+    padding:10px 67px 10px 10px;
 }
 .messageInput{
     position: absolute;
     top: 80%;
     left: 0%;
-    height: 20%;
+    height: 148px;
     width: 99.9%;
 }
 #send{
     position: relative;
-    width: 10%;
-    height: 20%;
-    top: 70%;
-    left: 89%;
+    z-index: 1;
+    margin-left: 515px;
+    margin-top: 50px;
+    width:50px;
+    height: 30px;
+    background: rgb(14,143,251);
+    border-radius: 4px;
+    border: 1px solid #ddd;
 }
 #clean{
     position: relative;
@@ -113,17 +150,36 @@
     border-left: 1px solid #ccc;
 }
 .send{
-    text-align: right;
-    width:95%;
-    margin-left: 2.5%;
+    display: block;
+    width:200px;
+    height: auto;
+    word-break:normal;
+    white-space:pre-warp;
+    word-wrapL:break-word;
+    margin-left: 330px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+
 }
 .receiver{
-    text-align: left;
-    width:95%;
-    margin-left: 2.5%;
+    display: block;
+    width:200px;
+    height: auto;
+    word-break:normal;
+    white-space:pre-warp;
+    word-wrapL:break-word;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin:10px 0 10px 28px ;
 }
 .time{
     text-align: center;
     width:95%;
     margin-left: 2.5%;
+    font-size: 14px;
+    color: #999999;
 }

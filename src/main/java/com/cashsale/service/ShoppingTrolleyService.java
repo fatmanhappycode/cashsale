@@ -3,6 +3,7 @@ package com.cashsale.service;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.AddShoppingTrolleyDAO;
 import com.cashsale.dao.IsInTrolleyDAO;
+import com.cashsale.dao.UpdateScoreDAO;
 
 /**
  * @author 肥宅快乐码
@@ -10,6 +11,8 @@ import com.cashsale.dao.IsInTrolleyDAO;
  */
 public class ShoppingTrolleyService {
     public ResultDTO<String> addShoppingTrolley(String username, String productId) {
+        int pro = Integer.parseInt(productId);
+        new UpdateScoreDAO().updateScore(username, pro, "C");
         if (new AddShoppingTrolleyDAO().add(username,productId)) {
             return new ResultDTO<String>(101,"1","成功加入购物车");
         } else {

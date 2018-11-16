@@ -15,7 +15,7 @@
         </div>
         <!-- 用户列表 -->
         <div id="userlist">
-            <input id="search" type="text"/>
+            <input id="search" placeholder="搜索" type="text"/>
             <div id="users"></div>
         </div>
         <!-- 聊天主窗口 -->
@@ -24,8 +24,8 @@
             <div id="messageView"></div>
             <!-- 信息输入窗口 -->
             <div class="messageInput">
-                <input id="message"  type="text"></input>
-                <button id="send" onclick="doSend()">send</button>
+                <textarea id="message" rows="3" cols="20" maxlength="300"></textarea>
+                <button id="send" onclick="doSend()">发送</button>
             </div>
         </div>
         <!-- 用户个人 -->
