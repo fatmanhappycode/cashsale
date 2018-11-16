@@ -46,7 +46,6 @@ public class UpdateScoreDAO {
      * 			判断用户是浏览/收藏/分享……了该商品
      */
     public int updateScore(String username, int productId, String strCode) {
-        /** 评价商品传值为 6;7 or 6;-3 or 6;0 */
         String second = "";
 
         System.out.println(1);
@@ -72,7 +71,6 @@ public class UpdateScoreDAO {
             return changeScore(username, productId, 4, "is_share");
         }
         else if(strCode.equals(PURCHASE_CODE)) {
-            System.out.println(2);
             return changeScore(username, productId, 5, "is_purchase");
         }
         else if(strCode.equals(EVALUATE_CODE)) {
@@ -143,6 +141,8 @@ public class UpdateScoreDAO {
                         changeScore(username,5);
                     }
                 }
+            }else{
+                insertUser(username,productId);
             }
             new Conn().closeConn(result, pstmt, conn);
             new Conn().closeConn(resutl2, pstmt2, conn);
@@ -235,5 +235,32 @@ public class UpdateScoreDAO {
             new Conn().closeConn(result, pstmt, conn);
             return UPDATE_WRONG;
         }
+    }
+
+    /**
+     * 用户第一次该商品，插入记录
+     * @param newUsername
+     * 			用户名
+     * @param productId
+     * 			商品id
+     */
+    private void insertUser(String newUsername, int productId){
+        Connection conn = new com.cashsale.conn.Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        try{
+            sql = "INSERT INTO commodity_score(user_name,product_id,score,is_scan) VALUE(?,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,newUsername);
+            pstmt.setInt(2,productId);
+            pstmt.setInt(3,1);
+            pstmt.setBoolean(4,true);
+            result = pstmt.executeQuery();
+        }catch(Exception e){
+            e.printStackTrace();
+            System.err.println("用户浏览商品失败！");
+        }
+        new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
     }
 }

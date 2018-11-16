@@ -80,7 +80,7 @@ public class PublishServlet extends HttpServlet {
         }
         System.out.println("7");
         String label = p.getLabel();
-        int price = p.getPrice();
+        double price = p.getPrice();
         int tradeMethod = p.getTradeMethod();
         int isBargain = p.getIsBargain();
         String pdDescription = p.getPdDescription();
@@ -92,7 +92,7 @@ public class PublishServlet extends HttpServlet {
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO product_info(title, label, price, trade_method, is_bargain, product_description, image_url,user_name) VALUES (?,?,?,?,?,?,?,?)");
             pstmt.setString(1,title);
             pstmt.setString(2,label);
-            pstmt.setInt(3,price);
+            pstmt.setDouble(3,price);
             pstmt.setInt(4,tradeMethod);
             pstmt.setInt(5,isBargain);
             pstmt.setString(6,pdDescription);

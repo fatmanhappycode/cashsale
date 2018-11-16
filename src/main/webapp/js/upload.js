@@ -93,10 +93,10 @@ function f() {
 				console.log("123");
 				if(result.code==107)
 				{
-				    console.log("234")
+				    alert("234");
 					//发布成功，转跳到页面
 					alert(result.msg);
-
+				    window.location.href="/index.html";
 				}
 				else if(result.code==108){
 					//失败

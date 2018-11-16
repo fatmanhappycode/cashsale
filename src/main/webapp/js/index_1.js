@@ -6,6 +6,11 @@ isLoading=false;
 currentPage='';
 //定义全局变量title，方便下拉时使用
 var title;
+function whatULike() {
+    var play = document.getElementById("play");
+    var img
+    play.appendChild()
+}
 function innerGoods(data) {
 	$.each(data,function(index,obj){
 		var main = document.getElementById("main");
@@ -83,7 +88,7 @@ window.onload =function init() {
     currentPage='';
     token='';
     flag="";
-    var saveData={"time":"asc","currentPage":currentPage};
+    var saveData={"time":"desc","currentPage":currentPage};
     $("#main").html("");
     $.ajax({
         url:"/searchByTime",
@@ -212,6 +217,7 @@ function loadXMLDoc()
 			if(result.code== "107"){
                 $(window).scrollTop(250);
 				innerGoods(data);
+                document.documentElement.scrollTop = 800;
 			}else{
 				console.log("查询失败！");
 			}
@@ -384,6 +390,7 @@ function Selectspecies() {
             data=result.data.data;
             if(result.code== "107"){
                 innerGoods(data);
+                document.documentElement.scrollTop = 800;
             }else{
                 console.log("查询失败！");
             }

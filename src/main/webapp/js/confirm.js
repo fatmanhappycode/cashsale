@@ -1,9 +1,10 @@
 function f() {
     var username = $("#Xusername").val();
     var password = $("#Xpassword").val();
+    var sno = username;
     username = encodeInp(username);
     password = encodeInp(password);
-    var saveData={"encode": username+"%%%"+password};
+    var saveData={"encode": username+"%%%"+password,"sno":sno};
 
     $.ajax({
         url:"/confirm",

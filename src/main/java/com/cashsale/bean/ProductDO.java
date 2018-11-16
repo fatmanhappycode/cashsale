@@ -12,7 +12,6 @@ public class ProductDO {
     /**
      * 商品标题
      */
-
     private String title;
     /**
      * 商品标签
@@ -21,7 +20,7 @@ public class ProductDO {
     /**
      * 商品价格
      */
-    private int price;
+    private double price;
     /**
      * 交易方式
      */
@@ -60,7 +59,7 @@ public class ProductDO {
     public ProductDO(Map<String, Object> map){
         this.title = (String) map.get("title");
         this.label = (String)map.get("label");
-        this.price = Integer.parseInt(map.get("price").toString());
+        this.price = Double.parseDouble(map.get("price").toString());
         this.tradeMethod = Integer.parseInt(map.get("trade_method").toString());
         this.isBargain = Integer.parseInt(map.get("is_bargain").toString());
         this.pdDescription = (String)map.get("product_description");
@@ -84,11 +83,11 @@ public class ProductDO {
         this.label = label;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
