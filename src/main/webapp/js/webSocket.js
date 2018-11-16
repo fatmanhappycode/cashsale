@@ -28,12 +28,27 @@ function onMessage(event) {
     var date = message.date;
     var content = message.content;
     var contact = message.data;
-    if (undefined != contact){
-        for(var i = 0; i < contact.length; i++){
-            if(contact[i] != username) {
+    alert(message.sender);
+    document.getElementById("users").innerHTML =
+        "<input type=radio name='users' value='" + message.sender + "' />" + ":" + message.sender + "<br/>";
+
+    if (undefined == contact) {
+        to=message.sender;
+    }
+    if (undefined != contact) {
+        //to=message.sender;
+        for (var i = 0; i < contact.length; i++) {
+            if (contact[i] != username) {
                 document.getElementById("users").innerHTML =
-                    "<input type=radio name='users' value='"+ contact[i] + "' />" + i + ":" + contact[i] + "<br/>";
+                    "<input type=radio name='users' value='" + contact[i] + "' />" + i + ":" + contact[i] + "<br/>";
             }
+        }
+
+        if (getCookie("goodsUsername") != null) {
+            document.getElementById("users").innerHTML =
+                "<input type=radio name='users' value='" + getCookie("goodsUsername") + "' />" + ":" + getCookie("goodsUsername") + "<br/>";
+        } else {
+            document.getElementById("users").innerHTML ="<p></p><br>";
         }
     }
     if (undefined != content) {
@@ -109,4 +124,7 @@ function reConnect() {
     websocket.onmessage = onMessage;
     websocket.onerror = onError;
     websocket.onclose = onClose;
+}
+window.onload = function () {
+
 }

@@ -79,7 +79,7 @@ window.onload =function init() {
     currentPage='';
     token='';
     flag="";
-    var saveData={"time":"asc","currentPage":currentPage};
+    var saveData={"time":"desc","currentPage":currentPage};
     $("#main").html("");
     $.ajax({
         url:"/searchByTime",
