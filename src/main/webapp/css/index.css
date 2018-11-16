@@ -94,6 +94,7 @@
     float: right;
     width:30px;
     height: 33px;
+	cursor: pointer;
     /*border:1px solid #fac;*/
 }
 #deploy:hover{
@@ -275,7 +276,7 @@
 	margin-left:30px;
 	width:160px;
 	border-radius:10px;
-	border:2px solid rgba(131,111,191,.5);
+	border:2px solid rgba(107,199,176,.5);
 
 	/*border:1px solid #FAC;*/
 }
@@ -442,7 +443,7 @@
 	height:415px;
 	border-radius:10px;
 	overflow: hidden;
-	border:2px solid rgba(166,128,226,.5);
+	border:2px solid rgba(107,199,176,.5);
 }
 .play{
 	width:2800px;
@@ -531,7 +532,7 @@
 	background:#fff;
 	margin:15px;
 	overflow:hidden;
-	border:2px solid rgba(166,128,226,.5);
+	border:2px solid rgba(107,199,176,.5);
 	cursor: pointer;
 }
 .goods:hover{
@@ -539,7 +540,7 @@
 	/* 	border-radius:15px; */
 	margin-bottom:20px;
 	box-shadow:0px 0px 10px rgba(0,0,0,.4);
-	border:2px solid rgba(166,128,226,.8);
+	border:2px solid rgba(107,199,176,.8);
 }
 .imgSee{
 	/* 	display:table-cell; */
@@ -581,6 +582,7 @@
     border:1px solid #000;
     opacity: .4;
 	display: none;
+	cursor: pointer;
 }
 #test img{
     width: 50px;

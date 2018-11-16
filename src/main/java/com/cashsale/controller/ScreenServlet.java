@@ -50,13 +50,17 @@ public class ScreenServlet extends HttpServlet{
 		{
 			tapGroup.add(tapToken.nextToken());
 		}
-		//数据库中保存的label要用分号作为分割符，且字符串末尾也需要分号
+		//数据库中保存的label要用分号作为分割符
 		if(!tapGroup.isEmpty())
 		{
 			String temp = "label LIKE '%";
 			for( int i = 0; i < tapGroup.size(); i++ )
 			{
-				temp += tapGroup.get(i)+";%";
+				if(i == tapGroup.size() - 1){
+					temp += tapGroup.get(i)+"%";
+				}else {
+					temp += tapGroup.get(i) + ";%";
+				}
 			}
 			temp += "'";
 			queryList.add(temp);
@@ -116,7 +120,7 @@ public class ScreenServlet extends HttpServlet{
 			}
 		}
 
-		System.out.println(query);
+		//System.out.println(query);
 
 		ResultDTO<PagerDTO> result = new ScreenService().screen(query, page);
 		writer.println(JSONObject.toJSON(result));

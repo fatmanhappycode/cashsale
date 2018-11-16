@@ -3,7 +3,7 @@
 var flag="";
 isLoading=false;
 //定义全局变量currentPage，方便下拉时使用
-currentPage='';
+currentPage="1";
 //定义全局变量title，方便下拉时使用
 var title;
 
@@ -131,7 +131,7 @@ function innerConfirm(data) {
 
 //加载时返回最新商品
 window.onload =function init() {
-    currentPage='';
+    currentPage="1";
     token='';
     flag="";
     whatULike();
@@ -246,7 +246,7 @@ function loadXMLDoc()
     //将flag赋值为search
 	flag="search";
 	token=getCookie("token");
-    currentPage="";
+    currentPage="1";
 	var saveData={"title":title,"currentPage":currentPage};
 	$("#main").html("");
 	$.ajax({
@@ -415,10 +415,10 @@ function Selectspecies() {
     if(all==""){
         return;
     }
-    //将flag赋值为search
+    //将flag赋值为screen
     flag="screen";
     token=getCookie("token");
-    currentPage="";
+    currentPage="1";
     //定义全局变量saveData，方便下拉时使用
     saveData={"label":label,"currentPage":currentPage,"price":price1+";"+price2,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
     $("#main").html("");
@@ -433,7 +433,8 @@ function Selectspecies() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            currentPage=result.data.page;
+            currentPage=result.data.currentPage;
+            //alert("result.data.page="+currentPage);
             data=result.data.data;
             if(result.code== "107"){
                 innerGoods(data);
@@ -451,8 +452,11 @@ function Selectspecies() {
 function Selectspecies_1() {
     token=getCookie("token");
     //var saveData={"label":label,"page":currentPage,"price":price1,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
-    alert(currentPage);
+    //alert("second="+currentPage);
     saveData.currentPage=currentPage;
+    if(currentPage == "1"){
+        return;
+    }
     $.ajax({
         url:"/screen",
         type:"get",
