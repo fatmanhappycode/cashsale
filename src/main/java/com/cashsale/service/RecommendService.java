@@ -42,7 +42,7 @@ public class RecommendService {
             String other = userPerfEn.getKey();
             if (!username.equals(other)) {
                 double sim = getUserSimilar(recommed, userPerfEn.getValue());
-                System.out.println(username+"与" + other + "之间的相关系数:" + sim);
+                //System.out.println(username+"与" + other + "之间的相关系数:" + sim);
                 // 将被推荐用户与其它用户的相关系数存进map中
                 simUserSimMap.put(other, sim);
             }
@@ -105,12 +105,12 @@ public class RecommendService {
                     sy2 += Math.pow(y, 2);
                     System.out.println("sxy= "+sxy+"  sx= "+sx+"  sy= "+sy+"  sx2="+sx2+" sy2="+sy2);
                 }
-                System.out.println("product_id= "+key+"  x= "+x+"  y= "+y);
+                //System.out.println("product_id= "+key+"  x= "+x+"  y= "+y);
             }
             // p=(Σxy-Σx*Σy/n)/Math.sqrt((Σx2-(Σx)2/n)(Σy2-(Σy)2/n));
             double sd = sxy - sx * sy / n;
             double sm = Math.sqrt((sx2 - Math.pow(sx, 2) / n) * (sy2 - Math.pow(sy, 2) / n));
-            System.out.println("sd= "+sd+" sm= "+sm);
+            //System.out.println("sd= "+sd+" sm= "+sm);
             return Math.abs(sm == 0 ? 1 : sd / sm);
         }
         catch (Exception e){
@@ -160,28 +160,9 @@ public class RecommendService {
 
         List<Entry<String, Double>> enList = getSort(objScoreMap);
 
-       /* for (Entry<String, Double> entry : enList) {
+        /*for (Entry<String, Double> entry : enList) {
             System.out.println(entry.getKey()+"的加权推荐值:"+entry.getValue());
-            if(entry.getValue() > 0){
-                result.add(entry.getKey());
-            }
-            else{
-                //若加权推荐值小于0，则加入不被推荐的列表
-                noResult.add(entry.getKey());
-            }
-        }
-        if(result.size() < 6){
-            ArrayList<String> random = new ListRecommendDAO().getRandom(username);
-            for(int i = 0; i < random.size() && result.size() <= 6; i++){
-                //获得的随机商品id不能已存在被推荐列表以及不被推荐列表
-                if(result.indexOf(random.get(i)) == -1 && noResult.indexOf(random.get(i)) == -1){
-                    result.add(random.get(i));
-                }
-            }
         }*/
-        for (Entry<String, Double> entry : enList) {
-            System.out.println(entry.getKey()+"的加权推荐值:"+entry.getValue());
-        }
         for(int i = 0; i < 4 && i < enList.size(); i++){
             result.add(enList.get(i).getKey());
         }
