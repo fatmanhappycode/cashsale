@@ -31,4 +31,9 @@
     <url-pattern>/socket.html</url-pattern>
   </filter-mapping>
 
+  <filter-mapping>
+    <filter-name>loginFilter</filter-name>
+    <url-pattern>/goods.html</url-pattern>
+  </filter-mapping>
+
 </web-app>

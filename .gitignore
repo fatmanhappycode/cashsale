@@ -17,3 +17,4 @@ src/main/java/com/cashsale/controller/InitServlet.java
 src/main/java/com/cashsale/util/SensitiveWordInitUtil.java
 
 src/main/java/com/cashsale/dao/RegisterDAO.java
+src/main/java/com/cashsale/util/SensitiveWordInitUtil.java
