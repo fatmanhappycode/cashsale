@@ -42,8 +42,8 @@ public class ListRecommendDAO {
 			while(result.next()){
 				String productId = result.getString("product_id");
 				int score = result.getInt("score");
-				System.out.println("被推荐用户：");
-				System.out.println("productId= "+productId+"   score= "+score);
+				//System.out.println("被推荐用户：");
+				//System.out.println("productId= "+productId+"   score= "+score);
 				pref.put(productId, score);
 
 			}
