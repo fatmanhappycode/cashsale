@@ -68,7 +68,11 @@ public class SensitiveWordInitUtil {
     private Set<String> readSensitiveWordFile() throws Exception{
         Set<String> set = null;
         File file = new File("E:\\javawork2\\WebTest\\src\\main\\webapp\\CensorWords.txt");    //读取文件
+<<<<<<< HEAD
+        //File file = new File("C:\\Users\\HP\\IdeaProjects\\cashsale\\src\\main\\webapp\\CensorWords.txt");    //读取文件
+=======
         //File file = new File("C:\\Study\\IdeaProjects\\cashsale\\src\\main\\webapp\\CensorWords.txt");    //读取文件
+>>>>>>> 758d44a44ff6b7f4730c993b256496d710ee246e
         InputStreamReader read = new InputStreamReader(new FileInputStream(file),ENCODING);
         try {
             if(file.isFile() && file.exists()){      //文件流是否存在

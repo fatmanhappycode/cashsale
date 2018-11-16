@@ -53,19 +53,25 @@ document.onmousemove = function (event) {
     //小遮罩层／小图片可移动范围 ＝ 大遮罩层／大图片可移动范围
     var smallMove = smallImg.offsetWidth - mask.offsetWidth;//250px
     var bigMove = bigImg.offsetWidth - bigBox.offsetWidth;//400px
+
+    var smallMove_1 = smallImg.offsetHeight - mask.offsetHeight;//250px
+    var bigMove_1 = bigImg.offsetHeight - bigBox.offsetHeight;//400px
+
     //算出比率，span移动1px bigImg移动rate倍
     var rate = bigMove/smallMove;
+    var rate_1 =bigMove_1/smallMove_1;
+
     var bigtargetX = -rate*targetX;
-    var bigtargetY = -rate*targetY;
+    var bigtargetY = -rate_1*targetY;
 
     bigImg.style.left = bigtargetX + "px";
     bigImg.style.top = bigtargetY + "px";
 }
 
 if(smallImg.offsetWidth<smallImg.offsetHeight){
-    smallImg.style.width="auto";
+    smallImg.style.width="350px";
     smallImg.style.height="350px";
 }else{
     smallImg.style.width="350px";
-    smallImg.style.height="auto";
+    smallImg.style.height="350px";
 }
