@@ -13,3 +13,5 @@ thecashsale.iml
 .idea/workspace.xml___jb_tmp___
 src/main/java/com/cashsale/conn/Conn.java
 src/main/java/com/cashsale/controller/InitServlet.java
+src/main/java/com/cashsale/util/SensitiveWordInitUtil.java
+src/main/webapp/CensorWords.txt
