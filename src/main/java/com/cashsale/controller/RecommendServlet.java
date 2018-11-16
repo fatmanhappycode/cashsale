@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
+import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.RecommendService;
 
 /**
@@ -33,7 +35,7 @@ public class RecommendServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 
 		String username = request.getParameter("username");
-		List<ProductDO> result = new RecommendService().getList(username);
+		ResultDTO<PagerDTO> result = new RecommendService().getList(username);
 		writer.print(JSONObject.toJSON(result));
 	}
 
