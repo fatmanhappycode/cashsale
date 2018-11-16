@@ -157,7 +157,7 @@ window.onload =function init() {
             alert("系统异常！"+e+"\n"+errrorMessage);
         }
     });
-
+    ismessage();
     var saveData2 = {"username":getCookie("username")}
     $.ajax({
         url:"/GetUserData",
@@ -473,6 +473,29 @@ function Selectspecies_1() {
             }
         },
         error:function(xhr,errrorMessage,e){
+            alert("系统异常！");
+        }
+    });
+}
+
+function ismessage() {
+    var saveData = {"username": getCookie("username")}
+    $.ajax({
+        url: "/isMessage",
+        type: "get",
+        headers: {
+            "token": token,
+            contentType: "application/json;charset=UTF-8"
+        },
+        data: saveData,
+        contentType: "application/json",
+        success: function (result, testStatus) {
+            if (result.code == "124") {
+                var img = document.getElementById("youlike");
+                img.setAttribute("style","background:#fff  url('../img/nav(1)3.jpg') no-repeat;") ;
+            }
+        },
+        error: function (xhr, errrorMessage, e) {
             alert("系统异常！");
         }
     });

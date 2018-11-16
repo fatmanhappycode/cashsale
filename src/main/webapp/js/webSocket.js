@@ -128,6 +128,40 @@ function reConnect() {
     websocket.onerror = onError;
     websocket.onclose = onClose;
 }
-window.onload = function () {
 
+function getmessage() {
+    alert("2");
+    var saveData = {"username": getCookie("username")}
+    $.ajax({
+        url: "/getMessage",
+        type: "get",
+        headers: {
+            contentType: "application/json;charset=UTF-8"
+        },
+        data: saveData,
+        contentType: "application/json",
+        success: function (result, testStatus) {
+            if (result.code == "124") {
+                data=result.data;
+                innermessagedata(data);
+            }
+        },
+        error: function (xhr, errrorMessage, e) {
+            alert("系统异常！");
+        }
+    });
+}
+function innermessagedata(data) {
+    $.each(data,function(index,obj) {
+        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +"<br>"+obj.date+"<br>"+obj.content ;
+    })
+    document.getElementById("users").innerHTML =
+        "<input type=radio name='users' value='" + data[0].sender + "' />" + ":" + data[0].sender + "<br/>";
+    to = data[0].sender;
+}
+
+
+window.onload = function getmessag() {
+    alert("1");
+    getmessage();
 }

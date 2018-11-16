@@ -16,6 +16,7 @@ public class MessageDTO {
 	/** 发送的图片 */
 	private String imgUrl;
 
+	public MessageDTO(){ }
 	public MessageDTO(String sender, String receiver, String content, String date, String imgUrl) {
 		super();
 		this.sender = sender;
