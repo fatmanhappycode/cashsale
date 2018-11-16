@@ -18,7 +18,7 @@ public class ScreenService {
 		}
 		List<ProductDO> products =  new ScreenDAO().search(queryInfo, page);
 		PagerDTO<ProductDO> product = new PagerDTO<>(page+1,products);
-		if( product == null )
+		if( products.isEmpty() )
 		{
 			return  new ResultDTO<PagerDTO>(116, null,"没有更多数据了……");
 		}else {

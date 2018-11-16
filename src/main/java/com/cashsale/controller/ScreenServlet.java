@@ -39,8 +39,9 @@ public class ScreenServlet extends HttpServlet{
 		String tradeMethod = request.getParameter("tradMethod");
 		String isBargain = request.getParameter("isBargain");
 		String page = request.getParameter("currentPage");
+		String tradePlace = request.getParameter("trandPlace");
 		ArrayList<String> tapGroup = new ArrayList<String>();
-		ArrayList<String> priceGroup = new ArrayList<String>();
+		//ArrayList<String> priceGroup = new ArrayList<String>();
 		ArrayList<String> queryList = new ArrayList<String>();
 		String query = "";
 
@@ -68,12 +69,13 @@ public class ScreenServlet extends HttpServlet{
 		{
 			queryList.add("is_bargain = " + isBargain );
 		}
-
-		StringTokenizer priceToken = new StringTokenizer(price, ";");
-		while ( priceToken.hasMoreTokens() )
-		{
-			priceGroup.add(priceToken.nextToken());
+		if( tradePlace != null && !tradePlace.equals("")){
+			queryList.add("trade_place = " + tradePlace);
 		}
+
+		String[] priceGroup = price.split(";");
+		/*System.out.println("priceGroup[0]="+priceGroup[0]);
+		System.out.println("priceGroup[1]="+priceGroup[1]);*/
 
 		int i = 0;
 		for( ; i < queryList.size(); i ++ )
@@ -87,16 +89,34 @@ public class ScreenServlet extends HttpServlet{
 				query += queryList.get(i) + " AND ";
 			}
 		}
-		if ( !priceGroup.isEmpty() )
+		if ( priceGroup.length > 0 )
 		{
 			if ( !queryList.isEmpty() )
 			{
-				query += " AND ("+"price>="+priceGroup.get(0)+" AND "+"price<="+priceGroup.get(1)+")";
+				if(priceGroup[0] == null || priceGroup[0].equals("")){
+					query += " AND "+"price<="+priceGroup[1];
+				}else if(priceGroup.length == 2){
+					if(priceGroup[1] == null || priceGroup[1].equals("")) {
+						query += " AND " + "price>=" + priceGroup[0];
+					}else{
+						query += " AND (" + "price>=" + priceGroup[0] + " AND " + "price<=" + priceGroup[1] + ")";
+					}
+				}
 			}
 			else {
-				query += "price>"+priceGroup.get(0)+" AND "+"price<"+priceGroup.get(1);
+				if(priceGroup[0] == null || priceGroup[0].equals("")){
+					query += "price<="+priceGroup[1]+")";
+				}else if(priceGroup.length == 2){
+					if(priceGroup[1] == null || priceGroup[1].equals("")){
+						query += "price>="+priceGroup[0];
+					}else{
+						query += "price>=" + priceGroup[0] + " AND " + "price<=" + priceGroup[1];
+					}
+				}
 			}
 		}
+
+		System.out.println(query);
 
 		ResultDTO<PagerDTO> result = new ScreenService().screen(query, page);
 		writer.println(JSONObject.toJSON(result));

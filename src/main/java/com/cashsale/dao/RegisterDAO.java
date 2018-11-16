@@ -45,11 +45,12 @@ public class RegisterDAO {
 			pstmt3.setString(1, email);
 			rs3 = pstmt3.executeQuery();
 
-			if (rs != null || rs2 != null)  {
+			//System.out.println("rs.next()="+rs.next()+"rs2.next()="+rs2.next()+"rs3.next()="+rs3.next());
+			if (rs.next() || rs2.next())  {
 				closeConn();
 				return NUMBER_IS_REGISTER;
 			}
-			else if(rs3 != null){
+			else if(rs3.next()){
 				closeConn();
 				return EMAIL_IS_REGISTER;
 			}
@@ -62,9 +63,6 @@ public class RegisterDAO {
 				pstmt2.setString(4, email);
 				pstmt2.setString(5, code);
 
-				String sql = "ALTER TABLE commodity_score ADD a"+username+" VARCHAR(10) DEFAULT 0";
-				pstmt3 = conn.prepareStatement(sql);
-
 				//获取当前时间
 				String currentTime = TimeUtil.getTime();
 
@@ -73,7 +71,6 @@ public class RegisterDAO {
 
 				pstmt.execute();
 				pstmt2.execute();
-				pstmt3.executeUpdate();
 
 				closeConn();
 				return ACTIVATION_TIP;
