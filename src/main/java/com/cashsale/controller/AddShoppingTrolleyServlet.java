@@ -2,8 +2,7 @@ package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ResultDTO;
-import com.cashsale.dao.ConfirmDAO;
-import com.cashsale.service.UserService;
+import com.cashsale.service.ShoppingTrolleyService;
 import com.cashsale.util.CommonUtils;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -21,23 +20,15 @@ import java.io.PrintWriter;
 
 /**
  * @author 肥宅快乐码
- * @date 2018/11/1 - 13:08
+ * @date 2018/11/15 - 15:38
  */
-@WebServlet("/confirm")
-public class ConfirmServlet extends HttpServlet {
+@WebServlet("/AddShoppingTrolley")
+public class AddShoppingTrolleyServlet extends HttpServlet {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void doPost (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 设置响应编码
         resp.setContentType("application/json;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
-
-        // 获取响应体的json串
-        BufferedReader br = req.getReader();
-        String str,user = "";
-        while((str = br.readLine()) != null){
-            user += str;
-        }
 
         //获取请求头token
         Cookie[] cookies = req.getCookies();
@@ -59,21 +50,19 @@ public class ConfirmServlet extends HttpServlet {
         }
         String username = claims.getSubject();
 
-        // 解析json串
-        JsonObject jsonObject = (JsonObject) new JsonParser().parse(user);
-        String encoded = jsonObject.get("encode").getAsString();
-        String sno = jsonObject.get("sno").getAsString();
-
-        UserService comfirmUser = new UserService();
-        ResultDTO result = comfirmUser.userComfirm(encoded);
-
-        if (result.getMsg().equals("认证成功")) {
-            new ConfirmDAO().Comfirm(username,sno);
+        BufferedReader br = req.getReader();
+        String str,product = "";
+        while((str = br.readLine()) != null){
+            product += str;
         }
+
+        // 解析json串
+        JsonObject jsonObject = (JsonObject) new JsonParser().parse(product);
+        String productId = jsonObject.get("productId").getAsString();
 
         PrintWriter writer = resp.getWriter();
 
+        ResultDTO<String> result = new ShoppingTrolleyService().addShoppingTrolley(username,productId);
         writer.print(JSONObject.toJSON(result));
-
     }
 }

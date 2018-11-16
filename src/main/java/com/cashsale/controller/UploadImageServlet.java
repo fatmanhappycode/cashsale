@@ -31,6 +31,8 @@ public class UploadImageServlet extends HttpServlet {
 			try {
 				//1. 创建DiskFileItemFactory对象，设置缓冲区大小和临时文件目录
 				DiskFileItemFactory factory = new DiskFileItemFactory();
+				File fileUrl = new File("e:");
+				factory.setRepository(fileUrl);
 				//System.out.println(System.getProperty("java.io.tmpdir"));//默认临时文件夹
 				/*File fileUrl = new File("C:\\Study");
 				factory.setRepository(fileUrl);*/
