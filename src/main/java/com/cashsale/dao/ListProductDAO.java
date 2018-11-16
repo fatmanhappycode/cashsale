@@ -1,6 +1,7 @@
 package com.cashsale.dao;
 
 import com.cashsale.bean.ProductDO;
+import com.cashsale.bean.ResultDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -107,6 +108,34 @@ public class ListProductDAO {
                 }
             }
             return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            // 关闭连接
+            try {
+                rs.close();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public ResultDTO<List<String>> listProductByTrolley(String username) {
+        try {
+            pstmt = conn.prepareStatement("SELECT product_id FROM shopping_trolley WHERE username=?");
+            pstmt.setString(1,username);
+            rs = pstmt.executeQuery();
+
+            List<String> result = new ArrayList<>();
+
+            while (rs.next()) {
+               result.add(rs.getString("product_id"));
+            }
+
+            return new ResultDTO<List<String>>(124,result,"查询成功");
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
