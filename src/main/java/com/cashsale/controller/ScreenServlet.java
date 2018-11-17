@@ -78,8 +78,6 @@ public class ScreenServlet extends HttpServlet{
 		}
 
 		String[] priceGroup = price.split(";");
-		/*System.out.println("priceGroup[0]="+priceGroup[0]);
-		System.out.println("priceGroup[1]="+priceGroup[1]);*/
 
 		int i = 0;
 		for( ; i < queryList.size(); i ++ )

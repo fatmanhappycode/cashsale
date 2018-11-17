@@ -88,8 +88,6 @@ public class RecommendService {
                 Integer x = pme.getValue();
                 //其它用户对该商品的评分
                 Integer y = pm2.get(key);
-                //System.out.println("key="+key);
-                //System.out.println("y="+pm2.get(key));
                 if(x == null){
                     x = 0;
                 }
@@ -103,14 +101,11 @@ public class RecommendService {
                     sy += y;
                     sx2 += Math.pow(x, 2);
                     sy2 += Math.pow(y, 2);
-                    //System.out.println("sxy= "+sxy+"  sx= "+sx+"  sy= "+sy+"  sx2="+sx2+" sy2="+sy2);
                 }
-                //System.out.println("product_id= "+key+"  x= "+x+"  y= "+y);
             }
             // p=(Σxy-Σx*Σy/n)/Math.sqrt((Σx2-(Σx)2/n)(Σy2-(Σy)2/n));
             double sd = sxy - sx * sy / n;
             double sm = Math.sqrt((sx2 - Math.pow(sx, 2) / n) * (sy2 - Math.pow(sy, 2) / n));
-            //System.out.println("sd= "+sd+" sm= "+sm);
             return Math.abs(sm == 0 ? 1 : sd / sm);
         }
         catch (Exception e){
