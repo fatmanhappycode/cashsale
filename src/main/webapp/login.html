@@ -15,10 +15,19 @@
 		<form action="" accept-charset="UTF-8" class="form">
 			<h2>登录</h2>
 			<div class="g-username">
-				<p>用户名:</p><br/><input type="text" id="username"><br/>
+				<p>用户名:</p><br/>
+				<input type="text" id="username" list="list1">
+				<datalist id="list1">
+					<option value="15602792306"></option>
+					<option value="15101970723"></option>
+					<option value="15101970723Y1fe9u213h,"></option>
+				</datalist>
+				<br/>
 			</div>
 			<div class="g-username">
-				<p>密码:</p><br/><input type="password" id="password"><br/>
+				<p>密码:</p><br/>
+				<input type="password" id="password">
+				<br/>
 			</div>
 			<div class="g-username">
 				<input type="button" value="登录" id="login" onclick="loadXMLDoc()">

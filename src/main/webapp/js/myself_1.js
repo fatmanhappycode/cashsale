@@ -19,12 +19,12 @@ test.onclick = function(){
 
 
 
-var saveData={"username":getCookie("username")};
+var saveData1={"username":getCookie("username")};
 $.ajax({
     url:"/getShoppingTrolley",
     type:"post",
     dataType:"json",
-    data:JSON.stringify(saveData),
+    data:JSON.stringify(saveData1),
     contentType:"application/json;charset=UTF-8",
     success:function(result,testStatus)
     {
@@ -94,3 +94,26 @@ function loadgoods(productId) {
         }
     });
 }
+
+
+
+var saveData={"username":getCookie("username")};
+$.ajax({
+    url:"/getPersonInfo",
+    type:"get",
+    data:saveData,
+    contentType:"application/json",
+    success:function(result,testStatus)
+    {
+        if(result.code==200){
+            data=result.data;
+            document.getElementById("nickname").innerHTML=data.nickname;
+            document.getElementById("dataThreeA").innerHTML=data.credit;
+        }else{
+            console.log(result.msg);
+        }
+    },
+    error:function(xhr,errrorMessage,e){
+        alert("系统异常！"+e+"\n"+errrorMessage);
+    }
+});

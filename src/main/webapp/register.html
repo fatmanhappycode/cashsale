@@ -18,10 +18,24 @@
 		<form action="#" class="form" accept-charset="UTF-8">
 			<h2>注册</h2>
 			<div class="g-username">
-				<p>用户名:</p><br/><input type="text" id="username" onchange="Verusername()"><br/>
+				<p>用户名:</p><br/>
+				<input type="text" id="username" onchange="Verusername()" list="list1">
+				<datalist id="list1">
+					<option value="15602792306"></option>
+					<option value="15602792307"></option>
+					<option value="15602792308"></option>
+				</datalist>
+				<br/>
 			</div>
 			<div class="g-username">
-				<p>昵称:</p><br/><input type="text" id="nickname"><br/>
+				<p>昵称:</p><br/>
+				<input type="text" id="nickname" list="list2">
+				<datalist id="list2">
+					<option value="小小"></option>
+					<option value="大大"></option>
+					<option value="中中"></option>
+				</datalist>
+				<br/>
 			</div>
 			<div class="g-username">
 				<p>密码:</p><br/><input type="password" id="password" oninput="Verpassword();Verification()"><br/>
@@ -30,7 +44,12 @@
 				<p>确认密码:</p><br/><input type="password" id="Cpassword" oninput="Verification()"><br/>
 			</div>
 			<div class="g-username Other-g">
-				<p>E-mail:</p><br/><input type="text" id="email" oninput="E_mail()"><br/>
+				<p>E-mail:</p><br/>
+				<input type="text" id="email" oninput="E_mail()" list="list3">
+				<datalist id="list3">
+					<option value="15602792305@163.com"></option>
+				</datalist>
+				<br/>
 			</div>
 			<div class="g-username">
 				<a href="login.html"><input type="button" value="登录" id="login"></a>

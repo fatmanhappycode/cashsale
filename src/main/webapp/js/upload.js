@@ -91,10 +91,8 @@ function f() {
             },
             success:function(result,testStatus)
             {
-                console.log("123");
                 if(result.code==107)
                 {
-                    alert("234");
                     //发布成功，转跳到页面
                     alert(result.msg);
                     window.location.href="/index.html";

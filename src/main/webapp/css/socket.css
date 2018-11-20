@@ -61,7 +61,7 @@
     width: 85%;
     height: 6%;
 }
-.usersID{
+.usersID,#usersID{
     width: 150px;
     margin-top: -30px;
     margin-left: 10px;
@@ -105,6 +105,21 @@
     overflow: auto;
     border-bottom: 1px solid #ccc;
 }
+#messageView::-webkit-scrollbar {
+    width: 8px;
+}
+#messageView::-webkit-scrollbar-track {
+    background-color:rgba(172,172,172,.2);
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius:2em;
+}
+#messageView::-webkit-scrollbar-thumb {
+    background-color:rgba(172,172,172,.5);
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius:2em;
+}
 /* 聊天记录输入框 */
 #message{
     position: absolute;
@@ -128,8 +143,8 @@
     z-index: 1;
     margin-left: 515px;
     margin-top: 50px;
-    width:50px;
-    height: 30px;
+    width:65px;
+    height: 35px;
     background: rgb(14,143,251);
     border-radius: 4px;
     border: 1px solid #ddd;
@@ -143,7 +158,7 @@
 }
 .myself{
     height: 100%;
-    width: 7%;
+    width: 20px;
     position: absolute;
     top: 0%;
     left: 93%;

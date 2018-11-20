@@ -21,6 +21,7 @@ if(getCookie("usernme")!=""&&getCookie("username")!=null) {
 exit.onclick=function(){
     if(confirm("确定要退出吗？")){
         delCookie("username");
+        delCookie("token");
         //window.location.href="index.html";
         location.replace("index.html");
     }

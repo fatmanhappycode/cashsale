@@ -13,40 +13,39 @@
 		<form action="" method="post" accept-charset="UTF-8" class="form" id="uploadForm" oninput="item()" enctype="multipart/form-data">
 			<h2>商品发布</h2>
 			<div class="g-username Other-ggggg">
-				<p>商品标题:</p><br/><input type="text" id="commodity" placeholder="" maxlength="40"><br/>
+				<p>商品标题:</p><br/>
+				<input type="text" id="commodity" placeholder="" maxlength="40" list="list1">
+				<datalist id="list1">
+					<option value="数据结构"></option>
+					<option value="四级资料"></option>
+					<option value="SPANBANG篮球"></option>
+					<option value="冰@!  毒"></option>
+				</datalist>
+				<br/>
 			</div>
 			<div class="g-username Other-ggggg">
 				<p>选择封面:</p><br/>
-				<input type="file" id="myfile" name="uploadFile" onchange="fU(),preview(this)" >
+				<input type="file" id="myfile" name="uploadFile" onchange="fU(),preview(this)">
 				<div id="container"></div>
 			</div>
 			<div class="g-username Other-g">
-				<p>价格:</p><br/><input type="text" id="price" maxlength="40"><br/>
+				<p>价格:</p><br/>
+				<input type="text" id="price" maxlength="40" list="list3">
+				<datalist id="list3">
+					<option value="63.0"></option>
+					<option value="25.0"></option>
+					<option value="149.0"></option>
+				</datalist>
+				<br/>
 			</div>
 			<div class="g-username">
-				<p>交易地点:</p><br/><input type="text" id="place" maxlength="40"><br/>
-			</div>
-			<div class="g-username">
-				<p>是否让买者自提:</p>
-				<div id="myBox">
-					<span id="myText">买家自提</span>
-					<input type="radio" name="bbb" value="自提" class="myCheckBox" id="myCheckbox01">
-				</div>
-				<div id="myBox">
-					<p id="myText">送货上门</p>
-					<input type="radio" name="bbb" value="不自提" class="myCheckBox" id="myCheckbox02">
-				</div>
-			</div>
-			<div class="g-username">
-				<p>可否议价:</p>
-				<div id="myBox">
-					<span id="myText">可议价</span>
-					<input type="radio" name="aaa" value="可议价" class="myCheckBox" id="myCheckbox11">
-				</div>
-				<div id="myBox">
-					<p id="myText">不可议价</p>
-					<input type="radio" name="aaa" value="不可议价" class="myCheckBox" id="myCheckbox12">
-				</div>
+				<p>交易地点:</p><br/>
+				<input type="text" id="place" maxlength="40" list="list4">
+				<datalist id="list4">
+					<option value="南苑"></option>
+					<option value="北苑"></option>
+				</datalist>
+				<br/>
 			</div>
 			<div class="g-username Other-gggg">
 				<p>选择商品标签:</p>
@@ -79,6 +78,29 @@
 					<input type="checkbox" value="其他" class="myCheckBox" id="myCheckbox27">
 				</div>
 			</div>
+			<div class="g-username">
+				<p>是否让买者自提:</p>
+				<div id="myBox">
+					<span id="myText">买家自提</span>
+					<input type="radio" name="bbb" value="自提" class="myCheckBox" id="myCheckbox01">
+				</div>
+				<div id="myBox">
+					<p id="myText">送货上门</p>
+					<input type="radio" name="bbb" value="不自提" class="myCheckBox" id="myCheckbox02">
+				</div>
+			</div>
+			<div class="g-username">
+				<p>可否议价:</p>
+				<div id="myBox">
+					<span id="myText">可议价</span>
+					<input type="radio" name="aaa" value="可议价" class="myCheckBox" id="myCheckbox11">
+				</div>
+				<div id="myBox">
+					<p id="myText">不可议价</p>
+					<input type="radio" name="aaa" value="不可议价" class="myCheckBox" id="myCheckbox12">
+				</div>
+			</div>
+
 			<input id="image" style="display:none">
 			<!-- 				富文本编辑器 -->
 			<div id="div1"  class="g-username Other-gg"></div>

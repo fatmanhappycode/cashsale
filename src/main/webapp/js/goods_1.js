@@ -66,6 +66,7 @@ window.onload =function loadgoods() {
             alert("系统异常！");
         }
     });
+
 }
 
 

@@ -19,7 +19,7 @@ $(function(){
 
 
 function onOpen(openEvent) {
-    document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + "OPEN<br/>";
+    document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML + "<br/>";
     var txt = document.getElementById("messageView");
     txt.scrollTop=txt.scrollHeight;
 }
@@ -30,7 +30,7 @@ function onMessage(event) {
     var content = message.content;
     var contact = message.data;
     document.getElementById("users").innerHTML =
-        "<input type=radio name='users' value='" + message.sender + "' />" + "<p class='usersID'>" + message.sender + "</p><br/>";
+        "<input checked='checked' type=radio name='users' value='" + message.sender + "' />" + "<p class='usersID'>" + message.sender + "</p><br/>";
 
     // if (undefined == content) {
     //     to=message.sender;
@@ -38,7 +38,7 @@ function onMessage(event) {
     if (undefined == content) {
         if (getCookie("goodsUsername") != null) {
             document.getElementById("users").innerHTML =
-                "<input type=radio name='users' value='" + getCookie("goodsUsername") + "' />" + ":" + getCookie("goodsUsername") + "<br/>";
+                "<input checked='checked' type=radio name='users' value='" + getCookie("goodsUsername") + "' />" + "<p class='usersID'>" + getCookie("goodsUsername") + "</p><br/>";
         } else {
             document.getElementById("users").innerHTML ="<p></p><br>";
         }
@@ -126,7 +126,9 @@ function getmessage() {
         success: function (result, testStatus) {
             if (result.code == "124") {
                 data=result.data;
-                innermessagedata(data);
+                if(data!=null&&data!=""&&data!=undefined){
+                    innermessagedata(data);
+                }
             }
         },
         error: function (xhr, errrorMessage, e) {
@@ -139,10 +141,14 @@ function getmessage() {
 }
 function innermessagedata(data) {
     $.each(data,function(index,obj) {
-        document.getElementById("messageView").innerHTML = document.getElementById("messageView").innerHTML +"<p class='time'>"+obj.date+"</p><p class='receiver'>"+obj.content +"</p>";
-    })
+        if(document.getElementById("messageView").innerHTML !=""){
+            document.getElementById("messageView").innerHTML +="<p class='time'>"+obj.date+"</p><p class='receiver'>"+obj.content +"</p>";
+        }else{
+            document.getElementById("messageView").innerHTML ="<p class='time'>"+obj.date+"</p><p class='receiver'>"+obj.content +"</p>";
+        }
+        })
     document.getElementById("users").innerHTML =
-        "<input type=radio name='users' value='" + data[0].sender + "' />" + "<p class='usersID'>" + data[0].sender + "</p><br/>";
+        "<input checked='checked' type=radio name='users' value='" +data[0].sender + "' />" + "<p class='usersID'>" + data[0].sender + "</p><br/>";
     to = data[0].sender;
     var txt = document.getElementById("messageView");
     txt.scrollTop=txt.scrollHeight;

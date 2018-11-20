@@ -22,7 +22,7 @@ function selectCard(s,s1,s2,s3) {
 	var card2 = document.getElementById("card"+s1);
 	var card3 = document.getElementById("card"+s2);
 	var card4 = document.getElementById("card"+s3);
-	card1.style="color:#fff;background:rgba(166,128,226,.5);";
+	card1.style="color:#fff;background:rgba(107,199,176,.5);";
 	card2.style="color:#000;background:#FFF;";
 	card3.style="color:#000;background:#FFF;";
 	card4.style="color:#000;background:#FFF;";

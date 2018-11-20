@@ -4,6 +4,7 @@ import com.cashsale.bean.MessageDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,9 +27,9 @@ public class GetMessageDAO {
             pstmt = conn.prepareStatement("SELECT * FROM chat_history WHERE receiver=? AND is_read=1");
             pstmt.setString(1, username);
             rs = pstmt.executeQuery();
-            MessageDTO message = new MessageDTO();
             List<MessageDTO> result = new ArrayList<>();
             while (rs.next()) {
+                MessageDTO message = new MessageDTO();
                 message.setContent(rs.getString("content"));
                 message.setDate(rs.getString("date"));
                 message.setSender(rs.getString("sender"));

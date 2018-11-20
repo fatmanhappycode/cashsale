@@ -25,11 +25,11 @@ function whatULike() {
             data1=result.data.data;
             whatlike(data1);
             if(data1==""||data1==null||data1==undefined){
-                whatlike(data1);
+                whatlike(data);
             }
         },
         error:function(xhr,errrorMessage,e){
-            alert("系统异常！"+e+"\n"+errrorMessage);
+            alert("系统异常！");
         }
     });
 }
@@ -217,6 +217,7 @@ window.onload =function init() {
 function IsInload() {
     token='';
     if(currentPage==""){
+        alert("没有更多数据！");
         return;
     }
     var saveData={"time":"asc","currentPage":currentPage};
@@ -234,6 +235,10 @@ function IsInload() {
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
             data=result.data.data;
+            if(data==""){
+                alert("没有更多数据！");
+                return;
+            }
             //渲染
             innerGoods(data);
         },
@@ -421,7 +426,7 @@ function Selectspecies() {
             label=label+$("#myCheckbox37").val();
     }
 
-    alert("是否可议价"+myCheckbox0+"\n"+"是否自提"+myCheckbox1+"\n"+"交易地点"+myCheckbox2+"\n"+"价格排序"+myCheckbox5+"\n"+"价格区间"+price1+"\n"+price2+"\n"+"标签"+label);
+    //alert("是否可议价"+myCheckbox0+"\n"+"是否自提"+myCheckbox1+"\n"+"交易地点"+myCheckbox2+"\n"+"价格排序"+myCheckbox5+"\n"+"价格区间"+price1+"\n"+price2+"\n"+"标签"+label);
 
 
     all = ""+myCheckbox0+myCheckbox1+myCheckbox2+myCheckbox5+price1+price2+label;

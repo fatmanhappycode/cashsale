@@ -12,7 +12,7 @@
 	height:1600px;;
 	position: absolute;
 	overflow-x: hidden;
-	background:rgb(249,249,248);
+	background:#d8f3f3;
 	/*条纹 */
 	/* background: linear-gradient(
 		135deg,
@@ -32,7 +32,6 @@
 	height:60px;
 	margin-top:25px;
 	text-align:center;
-	font:2em;/* 字体为斜体的Georgia或者serif */
 }
 /* username等 */
 .form p{
@@ -48,7 +47,7 @@
 	padding-left:70px;
 	margin-left:-530px;
 	margin-top:50px;
-	background: rgb(249,249,247);
+	background: #fff;
 	border-radius: 4px;
 	/*原始边框 */
 	border: 1px solid #eee;
@@ -57,7 +56,7 @@
 /* 所有input元素外套着的div */
 .g-username {
 	width:400px;
-	border: 1px solid #eee;
+	border: 1px solid #d8f3f3;
 	border-radius:4px;
 	margin:5px;
 	padding-bottom:10px;
@@ -67,7 +66,6 @@
 }
 /* 所有input元素外套着的  个别   div ，第二个为Other-g，最后二个为Other-gg*/
 .Other-g,.Other-gg{
-	clear: left;
 	width:400px;
 }
 .Other-gg{
@@ -115,12 +113,10 @@
 	border-radius: 4px;
 	border-color:rgba(251,206,177,0.5);
 
-	border: 1px solid #ddd;
+	border: 1px solid #eee;
 	overflow: hidden;
 	transition: 0.4s;
-&:focus {
-	 border-color: hsl(199, 98%, 48%);
- }
+
 }
 /* 文本介绍 */
 #and{
@@ -203,6 +199,7 @@
 	border:#999 solid 1px;
 	border-radius: 3px;
 	opacity:0;
+	cursor: pointer;
 	/*===========================================设置复选框大小 */
 	min-height: 30px;
 	min-width: 80px;
@@ -238,18 +235,21 @@
 
 /* 按钮 */
 #submit,#reset{
-	display:inline-block;
-	width:100px;
+	display: inline-block;
+	width: 100px;
 	height: 40px;
 	background: rgb(14,143,251);
-	margin-top:12px;
+	margin-top: 12px;
 	border-radius: 4px;
-	border: 1px solid #ddd;
+	border: 1px solid rgb(14,143,251);
 	margin-top: 120px;
 	margin-left: 240px;
+	cursor: pointer;
+	color: #fff;
 }
 #submit{
-	background:rgb(249,249,248);
+	background:#fff;
+	color:rgb(14,143,251);
 }
 /* 提示语 */
 #passwordItem{
