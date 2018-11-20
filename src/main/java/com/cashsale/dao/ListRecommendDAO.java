@@ -136,14 +136,9 @@ public class ListRecommendDAO {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1,username);
 				pstmt.setString(2,enList.get(i).getKey());
-				/*System.out.println("enlist.size()= "+enList.size());
-				System.out.println("i="+i);
-				System.out.println("被推荐用户username="+username);
-				System.out.print("其它用户的username="+enList.get(i).getKey());*/
 				result = pstmt.executeQuery();
 				while(result.next()) {
 					map.put(result.getString("product_id"), result.getInt("score"));
-					//System.out.println("   product_id="+result.getString("product_id")+"  score= "+result.getInt("score"));
 				}
 				simUserObjMap.put(enList.get(i).getKey(), map);
 				j++;
@@ -162,7 +157,7 @@ public class ListRecommendDAO {
 	 *      被推荐用户
 	 * @return
 	 */
-	public ArrayList<String> getRandom(String username){
+	/*public ArrayList<String> getRandom(String username){
 		Connection conn = new Conn().getCon();
 		ArrayList<String> array = new ArrayList<String>();
 		PreparedStatement pstmt = null;
@@ -181,7 +176,7 @@ public class ListRecommendDAO {
 		}
 		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
 		return array;
-	}
+	}*/
 
 	/**
 	 * 获得商品的详细信息

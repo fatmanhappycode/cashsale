@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.util.List;
 
 /**
+ * 获取个人的详细信息
  * @author Sylvia
  * @date 2018/11/17 - 4:25
  */

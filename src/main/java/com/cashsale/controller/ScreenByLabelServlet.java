@@ -1,3 +1,4 @@
+/*
 package com.cashsale.controller;
 
 import java.io.IOException;
@@ -16,11 +17,13 @@ import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.ScreenService;
 
+*/
 /**
  * 按标签分类
  * @author Sylvia
  * 2018年10月26日
- */
+ *//*
+
 @WebServlet("/screenByLabel")
 public class ScreenByLabelServlet extends HttpServlet{
 	
@@ -65,3 +68,4 @@ public class ScreenByLabelServlet extends HttpServlet{
     	doGet(request, response);
     }
 }
+*/

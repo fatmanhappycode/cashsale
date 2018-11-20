@@ -8,6 +8,7 @@ import com.cashsale.util.MailUtil;
 import com.cashsale.util.TimeUtil;
 
 /**
+ * 注册
  * @author Sylvia
  * 2018年11月3日
  */
@@ -74,7 +75,6 @@ public class RegisterDAO {
 
 				closeConn();
 				return ACTIVATION_TIP;
-				//writer.print(JSONObject.toJSON(new ResultDTO<String>(109, null, "请到邮箱进行账号激活！")));
 			}
 		}
 		catch (Exception e) {
