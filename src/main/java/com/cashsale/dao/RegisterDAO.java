@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.MailUtil;
 import com.cashsale.util.TimeUtil;
 
@@ -13,15 +14,6 @@ import com.cashsale.util.TimeUtil;
  * 2018年11月3日
  */
 public class RegisterDAO {
-
-	/** 提示进行邮箱激活的code */
-	private static final int ACTIVATION_TIP = 109;
-	/** 注册失败的code */
-	private static final int REGISTER_FAILED = 102;
-	/** 手机号已被注册 */
-	private static final int NUMBER_IS_REGISTER = 103;
-	/** 邮箱已被注册 */
-	private static final int EMAIL_IS_REGISTER = 110;
 
 	private Connection conn = new com.cashsale.conn.Conn().getCon();
 	private PreparedStatement pstmt = null;
@@ -49,11 +41,11 @@ public class RegisterDAO {
 			//System.out.println("rs.next()="+rs.next()+"rs2.next()="+rs2.next()+"rs3.next()="+rs3.next());
 			if (rs.next() || rs2.next())  {
 				closeConn();
-				return NUMBER_IS_REGISTER;
+				return ResultEnum.REGISTER_NUMBER_ERROR.getCode();
 			}
 			else if(rs3.next()){
 				closeConn();
-				return EMAIL_IS_REGISTER;
+				return ResultEnum.REGISTER_MAIL_ERROR.getCode();
 			}
 			else{
 				//将用户信息存进数据库中
@@ -74,13 +66,13 @@ public class RegisterDAO {
 				pstmt2.execute();
 
 				closeConn();
-				return ACTIVATION_TIP;
+				return ResultEnum.REGISTER_TO_MAIL.getCode();
 			}
 		}
 		catch (Exception e) {
 			closeConn();
 			e.printStackTrace();
-			return REGISTER_FAILED;
+			return ResultEnum.ERROR.getCode();
 		}
 	}
 

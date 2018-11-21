@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.enums.ResultEnum;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -88,9 +89,9 @@ public class SortServlet extends HttpServlet {
                 }
             }
             PagerDTO<ProductDO> product = new PagerDTO<>(currentPage+1,result);
-            writer.print(JSONObject.toJSON(new ResultDTO<>(107, product,"查询成功")));
+            writer.print(JSONObject.toJSON(new ResultDTO<>(ResultEnum.SEARCH_SUCCESS.getCode(), product,ResultEnum.SEARCH_SUCCESS.getMsg())));
         } catch (Exception e) {
-            writer.print(JSONObject.toJSON(new ResultDTO<String>(108,null,"查询失败")));
+            writer.print(JSONObject.toJSON(new ResultDTO<String>(ResultEnum.ERROR.getCode(),null,ResultEnum.ERROR.getMsg())));
             e.printStackTrace();
         }
     }

@@ -2,6 +2,7 @@ package com.cashsale.dao;
 
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.enums.ResultEnum;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,10 +36,10 @@ public class DetailProductInfoDAO {
                 product.setImageUrl(rs.getString("image_url"));
                 product.setUsername(rs.getString("user_name"));
             }
-            return new ResultDTO<ProductDO>(124,product,"查询成功");
+            return new ResultDTO<ProductDO>(ResultEnum.SEARCH_SUCCESS.getCode(),product,ResultEnum.SEARCH_SUCCESS.getMsg());
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResultDTO<ProductDO>(125,null,"查询失败");
+            return new ResultDTO<ProductDO>(ResultEnum.ERROR.getCode(),null,ResultEnum.ERROR.getMsg());
         } finally {
             // 关闭连接
             try {

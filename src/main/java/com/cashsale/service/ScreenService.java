@@ -7,6 +7,7 @@ import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ScreenDAO;
+import com.cashsale.enums.ResultEnum;
 
 public class ScreenService {
 
@@ -20,9 +21,9 @@ public class ScreenService {
 		PagerDTO<ProductDO> product = new PagerDTO<>(page+1,products);
 		if( products.isEmpty() )
 		{
-			return  new ResultDTO<PagerDTO>(116, null,"没有更多数据了……");
+			return  new ResultDTO<PagerDTO>(ResultEnum.NO_MORE_DATA.getCode(), null,ResultEnum.NO_MORE_DATA.getMsg());
 		}else {
-			return  new ResultDTO<PagerDTO>(107, product,"查询成功");
+			return  new ResultDTO<PagerDTO>(ResultEnum.SEARCH_SUCCESS.getCode(), product,ResultEnum.SEARCH_SUCCESS.getMsg());
 		}
 	}
 }

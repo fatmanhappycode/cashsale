@@ -3,6 +3,7 @@ package com.cashsale.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.CustomerDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.CommonUtils;
 import com.google.gson.Gson;
 import org.apache.http.client.methods.HttpPost;
@@ -31,7 +32,7 @@ public class InitServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        JSONObject.toJSON(new ResultDTO<String>(0, null, ""));
+        JSONObject.toJSON(new ResultDTO<String>(ResultEnum.SUCCESS.getCode(), null, ResultEnum.SUCCESS.getMsg()));
         CloseableHttpClient client = null;
         HttpClients.createDefault();
         HttpPost post = new HttpPost();

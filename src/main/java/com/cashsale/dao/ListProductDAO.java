@@ -2,6 +2,7 @@ package com.cashsale.dao;
 
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.enums.ResultEnum;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -135,7 +136,7 @@ public class ListProductDAO {
                result.add(rs.getString("product_id"));
             }
 
-            return new ResultDTO<List<String>>(124,result,"查询成功");
+            return new ResultDTO<List<String>>(ResultEnum.SEARCH_SUCCESS.getCode(),result,ResultEnum.SEARCH_SUCCESS.getMsg());
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

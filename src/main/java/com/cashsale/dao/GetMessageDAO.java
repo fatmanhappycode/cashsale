@@ -3,6 +3,7 @@ package com.cashsale.dao;
 import com.cashsale.bean.MessageDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.enums.ResultEnum;
 
 import java.awt.*;
 import java.sql.Connection;
@@ -35,7 +36,7 @@ public class GetMessageDAO {
                 message.setSender(rs.getString("sender"));
                 result.add(message);
             }
-            return new ResultDTO<List<MessageDTO>>(124,result,"查询成功");
+            return new ResultDTO<List<MessageDTO>>(ResultEnum.SEARCH_SUCCESS.getCode(),result,ResultEnum.SEARCH_SUCCESS.getMsg());
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -56,9 +57,9 @@ public class GetMessageDAO {
             pstmt.setString(1, username);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-               return new ResultDTO<String>(124,"1","查询成功");
+               return new ResultDTO<String>(ResultEnum.SEARCH_SUCCESS.getCode(),"1",ResultEnum.SEARCH_SUCCESS.getMsg());
             }else {
-                return new ResultDTO<String>(125, "0", "查询成功");
+                return new ResultDTO<String>(ResultEnum.SEARCH_SUCCESS.getCode(),"0",ResultEnum.SEARCH_SUCCESS.getMsg());
             }
         } catch (Exception e) {
             e.printStackTrace();

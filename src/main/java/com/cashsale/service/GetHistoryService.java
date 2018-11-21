@@ -10,6 +10,7 @@ import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.SocketDAO;
+import com.cashsale.enums.ResultEnum;
 import sun.plugin2.message.Message;
 
 public class GetHistoryService {
@@ -31,8 +32,8 @@ public class GetHistoryService {
 		List<MessageDTO> list = (List<MessageDTO>)mapSum.get(senderName);
 		PagerDTO<MessageDTO> message = new PagerDTO<>(page+1,list);
 		if(mapSum.get("sender") == null){
-			return  new ResultDTO<PagerDTO>(116, null,"没有更多数据了……");
+			return  new ResultDTO<PagerDTO>(ResultEnum.NO_MORE_DATA.getCode(), null,ResultEnum.NO_MORE_DATA.getMsg());
 		}
-		return new ResultDTO<PagerDTO>(107, message,"查询成功");
+		return new ResultDTO<PagerDTO>(ResultEnum.SEARCH_SUCCESS.getCode(), message,ResultEnum.SEARCH_SUCCESS.getMsg());
 	}
 }

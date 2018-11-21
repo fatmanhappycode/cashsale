@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import com.cashsale.conn.Conn;
+import com.cashsale.enums.ResultEnum;
 
 /**
  * 更新每个用户对商品的评分 and 用户信用
@@ -33,10 +34,6 @@ public class UpdateScoreDAO {
     private static final String MIDDLE_EVALUATE_CODE = "I";
     /** 分割符 */
     private static final String SEPARATOR= ";";
-    /** 更新错误code */
-    private static final int UPDATE_WRONG = 404;
-    /** 更新成功的code */
-    private static final int UPDATE_SUCCESSED = 200;
 
     /**
      * 更新某用户对商品的评分 and 信用
@@ -54,7 +51,6 @@ public class UpdateScoreDAO {
             if(strCode.indexOf(SEPARATOR) != -1) {
                 String[] str = strCode.split(SEPARATOR);
                 strCode = str[0];
-                System.out.println("strCode="+strCode);
                 second = str[1];
             }
         }
@@ -85,7 +81,7 @@ public class UpdateScoreDAO {
                 return changeScore(username, productId, 0, "evaluate","middle");
             }
         }
-        return UPDATE_WRONG;
+        return ResultEnum.ERROR.getCode();
     }
 
     /**
@@ -117,11 +113,7 @@ public class UpdateScoreDAO {
             if(result.next()) {
                 boolean temp = result.getBoolean(code);
                 int origin = result.getInt("score");
-                System.out.println("origin="+origin);
                 score += origin;
-                System.out.println("score="+score);
-                System.out.println("temp="+temp);
-                System.out.println("temp==false"+(temp==false));
                 //判断用户是否对该商品执行过code的操作
                 if(temp == false){
                     //更新该用户对该商品的评分
@@ -146,13 +138,13 @@ public class UpdateScoreDAO {
             }
             new Conn().closeConn(result, pstmt, conn);
             new Conn().closeConn(resutl2, pstmt2, conn);
-            return UPDATE_SUCCESSED;
+            return ResultEnum.SCORE_SUCCESS.getCode();
         }catch(Exception e) {
             e.printStackTrace();
             System.err.println("更改评分失败！");
             new Conn().closeConn(result, pstmt, conn);
             new Conn().closeConn(resutl2, pstmt2, conn);
-            return UPDATE_WRONG;
+            return ResultEnum.ERROR.getCode();
         }
     }
 
@@ -194,12 +186,12 @@ public class UpdateScoreDAO {
                 pstmt.execute();
             }
             new Conn().closeConn(result, pstmt, conn);
-            return UPDATE_SUCCESSED;
+            return ResultEnum.SCORE_SUCCESS.getCode();
         }catch(Exception e) {
             e.printStackTrace();
             System.err.println("更改评分失败！");
             new Conn().closeConn(result, pstmt, conn);
-            return UPDATE_WRONG;
+            return ResultEnum.ERROR.getCode();
         }
     }
 
@@ -228,12 +220,12 @@ public class UpdateScoreDAO {
                 pstmt.execute();
             }
             new Conn().closeConn(result, pstmt, conn);
-            return UPDATE_SUCCESSED;
+            return ResultEnum.SCORE_SUCCESS.getCode();
         }catch(Exception e) {
             e.printStackTrace();
             System.err.println("更改评分失败！");
             new Conn().closeConn(result, pstmt, conn);
-            return UPDATE_WRONG;
+            return ResultEnum.ERROR.getCode();
         }
     }
 

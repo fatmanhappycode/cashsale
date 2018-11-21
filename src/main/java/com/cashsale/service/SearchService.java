@@ -4,6 +4,7 @@ import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ListProductDAO;
+import com.cashsale.enums.ResultEnum;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class SearchService {
         int offset = (page - 1) * NUMBER_OF_PAGE;
         List<ProductDO> products = new ListProductDAO().listProductByTitle(title, offset);
         PagerDTO<ProductDO> product = new PagerDTO<>(page+1,products);
-        return  new ResultDTO<PagerDTO>(107, product,"查询成功");
+        return  new ResultDTO<PagerDTO>(ResultEnum.SEARCH_SUCCESS.getCode(), product,ResultEnum.SEARCH_SUCCESS.getMsg());
     }
 
     public ResultDTO<PagerDTO> searchByTime(String time, String currentPage) {
@@ -43,8 +44,7 @@ public class SearchService {
         int offset = (page - 1) * NUMBER_OF_PAGE;
         List<ProductDO> products = new ListProductDAO().listProductByTime(time, offset);
         PagerDTO<ProductDO> product = new PagerDTO<>(page+1,products);
-        return  new ResultDTO<PagerDTO>(107, product,"查询成功");
+        return  new ResultDTO<PagerDTO>(ResultEnum.SEARCH_SUCCESS.getCode(), product,ResultEnum.SEARCH_SUCCESS.getMsg());
     }
 
-//    public ResultDTO<String>
 }

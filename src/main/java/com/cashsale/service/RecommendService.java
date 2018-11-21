@@ -12,6 +12,7 @@ import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ListRecommendDAO;
+import com.cashsale.enums.ResultEnum;
 
 /**
  * @author Sylvia
@@ -42,7 +43,6 @@ public class RecommendService {
             String other = userPerfEn.getKey();
             if (!username.equals(other)) {
                 double sim = getUserSimilar(recommed, userPerfEn.getValue());
-                //System.out.println(username+"与" + other + "之间的相关系数:" + sim);
                 // 将被推荐用户与其它用户的相关系数存进map中
                 simUserSimMap.put(other, sim);
             }
@@ -50,10 +50,9 @@ public class RecommendService {
         //根据皮尔逊系数对相似用户进行排序
         List<Entry<String, Double>> enList = getSort(simUserSimMap);
         Map<String, Map<String, Integer>> simUserObjMap = new ListRecommendDAO().getSimUserObjMap(username, enList);
-        //System.out.println("推荐结果:" + getRecommend(simUserObjMap, simUserSimMap));
         List<ProductDO> list =  getRecommend(simUserObjMap, simUserSimMap);
         PagerDTO<ProductDO> product = new PagerDTO<>(0,list);
-        return new ResultDTO<PagerDTO>(200, product,"推荐成功！");
+        return new ResultDTO<PagerDTO>(ResultEnum.RECOMMEND_SUCCESS.getCode(), product,ResultEnum.RECOMMEND_SUCCESS.getMsg());
     }
 
     /**
@@ -155,13 +154,9 @@ public class RecommendService {
 
         List<Entry<String, Double>> enList = getSort(objScoreMap);
 
-        /*for (Entry<String, Double> entry : enList) {
-            System.out.println(entry.getKey()+"的加权推荐值:"+entry.getValue());
-        }*/
         for(int i = 0; i < 4 && i < enList.size(); i++){
             result.add(enList.get(i).getKey());
         }
-
 
         //返回推荐结果
         return new ListRecommendDAO().getProductData(result);

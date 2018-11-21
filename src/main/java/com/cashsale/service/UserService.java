@@ -3,6 +3,7 @@ package com.cashsale.service;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.IsConfirmDAO;
 import com.cashsale.dao.UserLoginDAO;
+import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.SendPostUtil;
 import org.apache.http.NameValuePair;
 
@@ -22,9 +23,9 @@ public class UserService {
     public ResultDTO<String> userLogin(String userName, String password) {
         String token = new UserLoginDAO().isLogin(userName,password);
         if (!token.equals("")) {
-            return new ResultDTO<String>(105, token, "登录成功");
+            return new ResultDTO<String>(ResultEnum.LOGIN_SUCCESS.getCode(), token, ResultEnum.LOGIN_SUCCESS.getMsg());
         } else {
-            return new ResultDTO<String>(106, null, "登录失败,用户名或密码错误");
+            return new ResultDTO<String>(ResultEnum.LOGIN_ERROR.getCode(), null, ResultEnum.LOGIN_ERROR.getMsg());
         }
     }
 
@@ -42,21 +43,21 @@ public class UserService {
         }
         if (a == 302) {
 
-            return new ResultDTO<String>(121, null,"认证成功");
+            return new ResultDTO<String>(ResultEnum.CONFIRM_SUCCESS.getCode(), null,ResultEnum.CONFIRM_SUCCESS.getMsg());
         }
         else if (a == 200) {
-            return new ResultDTO<>(122, null,"认证失败");
+            return new ResultDTO<>(ResultEnum.CONFIRM_ERROR.getCode(), null,ResultEnum.CONFIRM_ERROR.getMsg());
         }
         else {
-            return new ResultDTO<>(123, null,"认证失败，系统异常");
+            return new ResultDTO<>(ResultEnum.ERROR.getCode(), null,ResultEnum.ERROR.getMsg());
         }
     }
     public ResultDTO<String> isConfirm(String userName) {
         Boolean isConfirm = new IsConfirmDAO().isConfirm(userName);
         if (isConfirm) {
-            return new ResultDTO<String>(105, "1", "已认证");
+            return new ResultDTO<String>(ResultEnum.ALREADY_CONFIRM.getCode(), "1", ResultEnum.ALREADY_CONFIRM.getMsg());
         } else {
-            return new ResultDTO<String>(106, "0", "未认证");
+            return new ResultDTO<String>(ResultEnum.NOT_CONFIMR.getCode(), "0", ResultEnum.NOT_CONFIMR.getMsg());
         }
     }
 }
