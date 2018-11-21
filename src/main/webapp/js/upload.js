@@ -91,16 +91,16 @@ function f() {
             },
             success:function(result,testStatus)
             {
-                if(result.code==107)
+                if(result.code==200)
                 {
                     //发布成功，转跳到页面
                     alert(result.msg);
                     window.location.href="/index.html";
                 }
-                else if(result.code==108){
+                else if(result.code==500){
                     //失败
                     alert(result.msg);
-                }else if (result.code==109) {
+                }else if (result.code==409) {
                     alert(result.msg);
                 } else{
                     //请先登录

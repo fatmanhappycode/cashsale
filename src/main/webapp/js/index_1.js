@@ -278,7 +278,7 @@ function loadXMLDoc()
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
             data=result.data.data;
-            if(result.code== "107"){
+            if(result.code== "200"){
                 $(window).scrollTop(250);
                 innerGoods(data);
                 document.documentElement.scrollTop = 800;
@@ -311,7 +311,7 @@ function loadXMLDoc_1()
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
             data=result.data.data;
-            if(result.code== "107"){
+            if(result.code== "200"){
                 innerGoods(data);
             }else{
                 console.log("查询失败！");
@@ -455,7 +455,7 @@ function Selectspecies() {
             //alert("result.data.page="+currentPage);
 
             data=result.data.data;
-            if(result.code== "107"){
+            if(result.code== "200"){
                 innerGoods(data);
                 document.documentElement.scrollTop = 800;
             }else{
@@ -490,7 +490,7 @@ function Selectspecies_1() {
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
             data=result.data.data;
-            if(result.code== "107"){
+            if(result.code== "200"){
                 innerGoods(data);
             }else{
                 console.log("查询失败！");
@@ -514,7 +514,7 @@ function ismessage() {
         data: saveData,
         contentType: "application/json",
         success: function (result, testStatus) {
-            if (result.code == "124") {
+            if (result.code == "200") {
                 var img = document.getElementById("youlike");
                 img.setAttribute("style","background:#fff  url('../img/nav(1)3.jpg') no-repeat;") ;
             }

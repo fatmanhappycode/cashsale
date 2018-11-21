@@ -22,7 +22,7 @@ window.onload =function loadgoods() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            if(result.code==124){
+            if(result.code==200){
 
                 data=result.data;
                 goodsUsername=data.username;
@@ -102,11 +102,11 @@ JOshopping.onclick=function () {
         },
         success:function(result,testStatus)
         {
-            if (result.code == "101") {
+            if (result.code == "200") {
                 $("#JOshopping").val("已加入购物车");
                 var JOshopping = document.getElementById("JOshopping");
                 JOshopping.setAttribute("style","background-color:#da7370ad");
-            } else if (result.code == "102") {
+            } else if (result.code == "401") {
                 alert("加入失败");
             }
         },
@@ -128,7 +128,7 @@ function isInTrolley() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            if (result.code == "101") {
+            if (result.code == "401") {
                 $("#JOshopping").val("已加入购物车");
                 var JOshopping = document.getElementById("JOshopping");
                 JOshopping.setAttribute("style","background-color:#da7370ad");

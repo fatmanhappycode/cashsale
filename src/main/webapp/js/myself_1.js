@@ -28,7 +28,7 @@ $.ajax({
     contentType:"application/json;charset=UTF-8",
     success:function(result,testStatus)
     {
-        if(result.code=="124"){
+        if(result.code=="200"){
             var data=result.data;
             if(data!=null&&data!=""&&data!=undefined){
                 document.getElementById("main2").innerHTML="";
@@ -82,7 +82,7 @@ function loadgoods(productId) {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            if(result.code==124){
+            if(result.code=="200"){
                 var data=result.data;
                 innerGoods(data);
             }else{

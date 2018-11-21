@@ -124,7 +124,7 @@ function getmessage() {
         data: saveData,
         contentType: "application/json",
         success: function (result, testStatus) {
-            if (result.code == "124") {
+            if (result.code == "200") {
                 data=result.data;
                 if(data!=null&&data!=""&&data!=undefined){
                     innermessagedata(data);

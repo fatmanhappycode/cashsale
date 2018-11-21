@@ -16,11 +16,11 @@ function loadXMLDoc()
             token=result.data;
             setCookie("token",token);
             //alert(result.msg);
-            if(result.code== "105"&& token!=""){
+            if(result.code== "200"&& token!=""){
                 setCookie("token",token);
                 setCookie("username",username)
                 window.location.href="index.html";
-            }else if(result.code== "106"){
+            }else if(result.code== "401"){
                 alert(result.msg);
             }
         },

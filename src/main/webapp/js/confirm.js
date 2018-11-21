@@ -14,9 +14,9 @@ function f() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            if(result.code== "121"){
+            if(result.code== "200"){
                 window.location.href="verifysuccess.html";
-            }else if(result.code== "122"){
+            }else if(result.code== "401" || result.code == "500"){
                 window.location.href="verifyfailure.html";
             }
         },

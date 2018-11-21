@@ -35,7 +35,7 @@ function clickregister() {
             },
 			success:function(result,testStatus)
 			{
-				if(result.code==101)
+				if(result.code==200)
 				{
 					alert("激活成功，请登录！")
 					window.location.href="login.html";
