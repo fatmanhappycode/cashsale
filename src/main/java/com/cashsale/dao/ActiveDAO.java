@@ -29,7 +29,6 @@ public class ActiveDAO {
 
 	public int active(String code, String currentTime, String username, String password) {
 		try {
-			//System.out.println(code);
 			//根据激活码查询用户
 			pstmt = conn.prepareStatement("SELECT user_name FROM register_user WHERE code = ?");
 			pstmt.setString(1, code);
@@ -44,7 +43,6 @@ public class ActiveDAO {
 				result2 = pstmt2.executeQuery();
 			}
 
-			//result2.next();
 			//若根据验证码找得到该用户，且密码正确，时间未超过五分钟，则验证通过
 			if( result2.next() || result2.getString(1).equals(password) )
 			{
@@ -72,26 +70,22 @@ public class ActiveDAO {
 					pstmt2.execute();
 					pstmt2.execute();
 
-					//writer.println(JSONObject.toJSON(new Result<String>(113, null, "验证码已过期，请重新注册！")));
 					closeConn();
 					return ACTIVE_SUCCESSED;
 				}
 				else
 				{
-					//writer.println(JSONObject.toJSON(new Result<String>(101, null, "激活成功！")));
 					closeConn();
 					return CODE_IS_EXPIRE;
 				}
 			}
 			else
 			{
-				//writer.println(JSONObject.toJSON(new Result<String>(111, null, "验证码有误，请重新激活！")));
 				closeConn();
 				return CODE_IS_WRONG;
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-			//writer.println(JSONObject.toJSON(new Result<String>(112, null, "验证失败！")));
 			closeConn();
 			return VERTIFY_FAILED;
 		}

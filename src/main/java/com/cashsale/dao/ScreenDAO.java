@@ -20,12 +20,6 @@ public class ScreenDAO {
 
 	/** 每页显示的数据数目 */
 	static int DATA_NUMBER = 9;
-	/** 查询成功的code */
-	private static final int SCREEN_SUCCESSED = 200;
-	/** 没有更多数据了 */
-	private static final int NO_MORE_DATA = 116;
-	/** 查询失败 */
-	private static final int SCREEN_FAILED = 115;
 
 	/**
 	 * 查询
@@ -68,7 +62,6 @@ public class ScreenDAO {
 					String columnName = metaData.getColumnLabel(j);
 					String value = result.getString(columnName);
 					map.put(columnName, value);
-					//System.out.println("map.columnName="+columnName+"  map.value="+value);
 				}
 				list.add(map);
 			}

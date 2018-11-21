@@ -31,11 +31,6 @@ public class LoginServlet extends HttpServlet {
         resp.setContentType("application/json;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
-//        String user = req.getParameter("user");
-//        CustomerDO c = new Gson().fromJson(user,CustomerDO.class);
-//        String userName = c.getUsername();
-//        String password = c.getPassword();
-
         BufferedReader br = req.getReader();
         String str,user = "";
         while((str = br.readLine()) != null){

@@ -70,14 +70,12 @@ public class RegisterServlet extends HttpServlet {
         String  privateKey = keyMap.get("privateKey");
         //保存密钥
         this.getServletContext().setAttribute(username, privateKey);
-        System.out.println(privateKey);
         //公钥加密
         try {
 			encodedCode = RSAUtil.publicEncrypt(code, RSAUtil.getPublicKey(publicKey)); 
 	        encodedPass = RSAUtil.publicEncrypt(password, RSAUtil.getPublicKey(publicKey));
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("加密失败！");
 		}
         
         ResultDTO<String> result = new RegisterService().UserRegister(username, email, encodedPass, encodedCode, nickname,

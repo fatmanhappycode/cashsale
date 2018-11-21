@@ -42,8 +42,6 @@ public class ListRecommendDAO {
 			while(result.next()){
 				String productId = result.getString("product_id");
 				int score = result.getInt("score");
-				//System.out.println("被推荐用户：");
-				//System.out.println("productId= "+productId+"   score= "+score);
 				pref.put(productId, score);
 
 			}
@@ -84,7 +82,6 @@ public class ListRecommendDAO {
 
 			//分别获得每一个用户对被推荐用户所浏览过的商品的id和评分
 			while(result2.next()) {
-				System.out.println("result2.getString('user_name')= "+result2.getString("user_name"));
 				Map<String, Integer> pref = new HashMap<String, Integer>();
 				String sql = "SELECT * FROM commodity_score WHERE product_id IN (" +
 						"SELECT product_id FROM commodity_score WHERE user_name=? AND score != 0) AND user_name = ?";
@@ -96,7 +93,6 @@ public class ListRecommendDAO {
 				while (result.next()) {
 					String productId = result.getString("product_id");
 					int score = result.getInt("score");
-					//System.out.println("productId= "+productId+"  score= "+score+"  ;  ");
 					pref.put(productId,score);
 				}
 
@@ -212,7 +208,6 @@ public class ListRecommendDAO {
 						String columnName = metaData.getColumnLabel(j);
 						String value = result.getString(columnName);
 						map.put(columnName, value);
-						//System.out.println("map.columnName="+columnName+"  map.value="+value);
 					}
 					list.add(map);
 				}

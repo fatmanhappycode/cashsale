@@ -41,7 +41,6 @@ public class ScreenServlet extends HttpServlet{
 		String page = request.getParameter("currentPage");
 		String tradePlace = request.getParameter("trandPlace");
 		ArrayList<String> tapGroup = new ArrayList<String>();
-		//ArrayList<String> priceGroup = new ArrayList<String>();
 		ArrayList<String> queryList = new ArrayList<String>();
 		String query = "";
 

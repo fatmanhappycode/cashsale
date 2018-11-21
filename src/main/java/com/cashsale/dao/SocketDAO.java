@@ -14,12 +14,8 @@ import com.cashsale.bean.MessageDTO;
  */
 public class SocketDAO {
 
-	/** 暂无更多消息的code */
-	private static final int NO_MORE_MESSAGE = 403;
 	/** 每页显示的数据数目 */
 	private static final int MESSAGE_NUMBER = 8;
-	/** 查询成功 */
-	//private static final int QUERY_SUCCESSED = 200;
 
 	/**
 	 * 获取历史记录
