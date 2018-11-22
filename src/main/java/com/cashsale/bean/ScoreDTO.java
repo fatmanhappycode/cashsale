@@ -1,5 +1,9 @@
 package com.cashsale.bean;
 
+/**
+ * @author Sylvia
+ * 2018年11月3日
+ */
 public class ScoreDTO {
 
     /** 用户名 */

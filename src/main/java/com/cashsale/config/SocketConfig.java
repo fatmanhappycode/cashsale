@@ -13,7 +13,7 @@ import javax.websocket.server.ServerEndpointConfig;
  * 2018年10月28日
  */
 public class SocketConfig implements ServerApplicationConfig {
-
+	
 	/**
 	 * 扫描src下所有类（@ServerEndPoint注解的类）</br>
 	 * EndPoint 指的是一个webSocket的一个服务端程序
@@ -38,5 +38,4 @@ public class SocketConfig implements ServerApplicationConfig {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
