@@ -71,7 +71,10 @@ public enum ResultEnum {
     /** 已认证 */
     ALREADY_CONFIRM(401,"已认证"),
     /** 未认证 */
-    NOT_CONFIMR(412,"未认证")
+    NOT_CONFIMR(412,"未认证"),
+
+    /** 密码修改成功 */
+    PASSWORD_SUCCESS(200,"密码修改成功")
     ;
 
     /** 状态码 */

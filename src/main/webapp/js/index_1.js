@@ -514,7 +514,7 @@ function ismessage() {
         data: saveData,
         contentType: "application/json",
         success: function (result, testStatus) {
-            if (result.code == "200") {
+            if (result.data == "1") {
                 var img = document.getElementById("youlike");
                 img.setAttribute("style","background:#fff  url('../img/nav(1)3.jpg') no-repeat;") ;
             }
