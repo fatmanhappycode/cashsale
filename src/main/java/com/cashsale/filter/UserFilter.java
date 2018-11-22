@@ -23,7 +23,6 @@ import com.cashsale.util.CommonUtils;
  * @author 肥宅快乐码
  * @date 2018/10/11 - 22:29
  */
-/*@WebFilter(urlPatterns = "/*")*/
     public class UserFilter extends HttpServlet implements Filter {
 
     /**
