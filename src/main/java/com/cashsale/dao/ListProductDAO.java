@@ -126,7 +126,7 @@ public class ListProductDAO {
 
     public ResultDTO<List<String>> listProductByTrolley(String username) {
         try {
-            pstmt = conn.prepareStatement("SELECT product_id FROM shopping_trolley WHERE username=?");
+            pstmt = conn.prepareStatement("SELECT product_id FROM commodity_score WHERE user_name=?");
             pstmt.setString(1,username);
             rs = pstmt.executeQuery();
 

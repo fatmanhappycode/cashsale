@@ -8,6 +8,7 @@ var getGoods = document.getElementById("getGoods");
 var Description = document.getElementById("Description");
 // 加入内容
 window.onload =function loadgoods() {
+
     var string=window.location.href;
     productId=string.split("=")[1];
     var saveData={"productId":productId};
@@ -90,9 +91,9 @@ city.onclick= function(){
 }
 // 加入购物车
 JOshopping.onclick=function () {
-    var saveData = {"productId":window.location.href.split("=")[1]};
+    var saveData = {"productId":window.location.href.split("=")[1],"scoreCode":"C"};
     $.ajax({
-        url:"/AddShoppingTrolley",
+        url:"/score",
         type:"post",
         dataType:"json",
         data:JSON.stringify(saveData),

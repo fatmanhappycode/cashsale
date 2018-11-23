@@ -2,7 +2,7 @@ package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ResultDTO;
-import com.cashsale.service.ShoppingTrolleyService;
+import com.cashsale.service.UpdateScoreService;
 import com.cashsale.util.CommonUtils;
 import io.jsonwebtoken.Claims;
 
@@ -53,7 +53,7 @@ public class IsInTrolleyServlet extends HttpServlet {
 
         PrintWriter writer = resp.getWriter();
 
-        ResultDTO<String> result = new ShoppingTrolleyService().isShoppingTrolley(username,productId);
+        ResultDTO<String> result = new UpdateScoreService().isShoppingTrolley(username,productId);
         writer.print(JSONObject.toJSON(result));
     }
 }

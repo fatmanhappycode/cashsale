@@ -1,3 +1,4 @@
+/*
 package com.cashsale.dao;
 
 import com.cashsale.conn.Conn;
@@ -7,10 +8,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+*/
 /**
  * @author 肥宅快乐码
  * @date 2018/11/15 - 15:50
- */
+ *//*
+
 public class AddShoppingTrolleyDAO {
 
     private Connection conn = new com.cashsale.conn.Conn().getCon();
@@ -41,3 +44,4 @@ public class AddShoppingTrolleyDAO {
         }
     }
 }
+*/

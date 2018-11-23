@@ -16,7 +16,7 @@ public class IsInTrolleyDAO {
     ResultSet rs = null;
     public boolean isInTrolley(String username, String productId) {
         try {
-            pstmt = conn.prepareStatement("SELECT * FROM shopping_trolley WHERE username=? AND product_id=?");
+            pstmt = conn.prepareStatement("SELECT * FROM commodity_score WHERE user_name=? AND product_id=? AND is_collect=1");
             pstmt.setString(1,username);
             pstmt.setString(2, productId);
             rs = pstmt.executeQuery();

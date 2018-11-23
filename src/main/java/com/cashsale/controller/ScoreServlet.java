@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +16,9 @@ import com.cashsale.bean.CustomerDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.bean.ScoreDTO;
 import com.cashsale.service.UpdateScoreService;
+import com.cashsale.util.CommonUtils;
 import com.google.gson.Gson;
+import io.jsonwebtoken.Claims;
 
 /**
  * 商品评分  and 用户信用评分
@@ -49,11 +52,31 @@ public class ScoreServlet extends HttpServlet{
 		ScoreDTO s = new Gson().fromJson(score, ScoreDTO.class);
 		//对商品进行的操作编码
 		String strCode = s.getScoreCode();
-		//浏览者
-		String username = s.getUsername();
 		//被浏览的商品
 		int productId = s.getProductId();
 
+		//浏览者
+		//获取请求头token
+		Cookie[] cookies = request.getCookies();
+		String token = "";
+		for (Cookie cookie : cookies) {
+			switch(cookie.getName()){
+				case "token":
+					token = cookie.getValue();
+					break;
+				default:
+					break;
+			}
+		}
+		Claims claims = null;
+		try {
+			claims = CommonUtils.parseJWT(token);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String username = claims.getSubject();
+
+		System.out.println("strCode="+strCode);
 		ResultDTO<String> result = new UpdateScoreService().updateScore(username, productId, strCode);
 		PrintWriter writer = response.getWriter();
 		writer.println(JSONObject.toJSONString(result));

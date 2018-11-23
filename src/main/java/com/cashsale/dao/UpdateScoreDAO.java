@@ -18,7 +18,7 @@ public class UpdateScoreDAO {
     private static final String SCAN_CODE = "A";
     /** 询问商家 B */
     private static final String INQUIRE_SELLER_CODE = "B";
-    /** 收藏商品 C */
+    /** 收藏商品 / 加入购物车 C */
     private static final String COLLECTION_CODE = "C";
     /** 分享商品 D */
     private static final String SHARE_CODE = "D";
@@ -61,6 +61,7 @@ public class UpdateScoreDAO {
             return changeScore(username, productId, 2, "is_inquire");
         }
         else if(strCode.equals(COLLECTION_CODE)) {
+            System.out.println(2);
             return changeScore(username, productId, 3, "is_collect");
         }
         else if(strCode.equals(SHARE_CODE)) {
@@ -114,6 +115,7 @@ public class UpdateScoreDAO {
                 boolean temp = result.getBoolean(code);
                 int origin = result.getInt("score");
                 score += origin;
+                System.out.println("temp="+temp);
                 //判断用户是否对该商品执行过code的操作
                 if(temp == false){
                     //更新该用户对该商品的评分
@@ -124,7 +126,7 @@ public class UpdateScoreDAO {
                     pstmt.execute();
                     //更新该用户对该商品的操作
                     sql2 = "UPDATE commodity_score SET "+code+"=true WHERE product_id =? AND user_name=?";
-                    pstmt2 = conn.prepareStatement(sql);
+                    pstmt2 = conn.prepareStatement(sql2);
                     pstmt2.setInt(1,productId);
                     pstmt2.setString(2,username);
                     pstmt2.execute();
@@ -230,7 +232,7 @@ public class UpdateScoreDAO {
     }
 
     /**
-     * 用户第一次该商品，插入记录
+     * 用户第一次浏览该商品，插入记录
      * @param newUsername
      * 			用户名
      * @param productId
@@ -248,7 +250,7 @@ public class UpdateScoreDAO {
             pstmt.setInt(2,productId);
             pstmt.setInt(3,1);
             pstmt.setBoolean(4,true);
-            result = pstmt.executeQuery();
+            pstmt.execute();
         }catch(Exception e){
             e.printStackTrace();
             System.err.println("用户浏览商品失败！");

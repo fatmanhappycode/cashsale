@@ -1,3 +1,4 @@
+/*
 package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
@@ -18,10 +19,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+*/
 /**
  * @author 肥宅快乐码
  * @date 2018/11/15 - 15:38
- */
+ *//*
+
 @WebServlet("/AddShoppingTrolley")
 public class AddShoppingTrolleyServlet extends HttpServlet {
     @Override
@@ -66,3 +69,4 @@ public class AddShoppingTrolleyServlet extends HttpServlet {
         writer.print(JSONObject.toJSON(result));
     }
 }
+*/
