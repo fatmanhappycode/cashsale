@@ -1,3 +1,7 @@
+/*
+* 图片放大功能
+* 作者：lu
+* */
 var all= document.getElementById("all");
 var box = document.getElementById("box");
 var smallBox = document.getElementById("smallBox");

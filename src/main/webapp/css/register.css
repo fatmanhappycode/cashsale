@@ -1,4 +1,7 @@
-
+/*
+*注册css
+*作者：lu
+*/
 /*全局样式*/
 *{
 	padding: 0;
@@ -12,7 +15,6 @@
 	position: absolute;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	/*margin-bottom:60px;*/
 	background:rgb(249,249,248);
 	/*条纹 */
 	/* background: linear-gradient(
@@ -72,14 +74,12 @@
 
 /* 标题登录 */
 .form-div h2{
-	/* width:600px; */
 	width:370px;
 	text-align:center;
 	/* font:2em Georgia, serif;字体为斜体的Georgia或者serif */
 	font: 2.0em SimHei;
 	color: #da7370;
 	margin-top: 21px;
-	/* margin-left: 16px; */
 	margin-left: 8px;
 }
 /* username等 */
@@ -101,10 +101,9 @@
 /* 所有input元素外套着的div */
 .g-username {
 	float:left;
-	/* padding :15px; */
 	padding :13px;
 	transition: 0.4s;
-	/*     border: 1px solid #fac; */
+	/*border: 1px solid #fac; */
 	margin-left: 35px;
 }
 .Other-g{
@@ -113,8 +112,6 @@
 /* 所有输入框 */
 #username,#password,#login,#register,#nickname,#Cpassword,#email{
 	width:220px;
-	/* height: 30px;
-	font-size: 18px; */
 	height: 26px;
 	font-size: 16px;
 	margin-left:25px;
@@ -125,10 +122,11 @@
 	border: 1px solid #ddd;
 	overflow: hidden;
 	transition: 0.4s;
-&:focus {
+}
+/*获取焦点时*/
+#username:focus,#password:focus,#login:focus,#register:focus,#nickname:focus,#Cpassword:focus,#email:focus {
 	 border-color: hsl(199, 98%, 48%);
  }
-}
 /* 按钮 */
 #login,#register{
 	display:inline-block;
@@ -158,7 +156,7 @@
 }
 
 
-
+/*from或其子类获取焦点时*/
 .form:focus-within {
 	transform: translateY(-4px);
 	border-color: hsl(199, 98%, 48%);
@@ -192,14 +190,10 @@
 	margin-left:433px;
 } */
 #passwordItem2{
-	/* margin-top:320px;
-	margin-left:33px; */
 	margin-top: 442px;
 	margin-left: 25px;
 }
 #passwordItem3{
-	/* margin-top:220px;
-	margin-left:33px; */
 	margin-top: 274px;
 	margin-left: -38px;
 }

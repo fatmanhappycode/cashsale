@@ -1,3 +1,8 @@
+/*
+* 渲染页面内容
+* 作者：lu
+* */
+
 //获取容器
 var smallImg = document.getElementById("smallImg");
 var bigImg = document.getElementById("bigImg");
@@ -6,7 +11,7 @@ var price1 = document.getElementById("price1");
 var price2 = document.getElementById("price2");
 var getGoods = document.getElementById("getGoods");
 var Description = document.getElementById("Description");
-// 加入内容
+// 加载时加入内容
 window.onload =function loadgoods() {
 
     var string=window.location.href;
@@ -71,16 +76,12 @@ window.onload =function loadgoods() {
 }
 
 
-
+//是否已经加入购物车
 isInTrolley();
+
+
 var allimg=document.getElementsByTagName("img");
 for(var i=0;i<allimg.length;i++){
-    /*
-    var str=allimg[0].getAttribute("alt");
-    alert(str);
-    str=str.split("");
-    alert(allimg[i].getAttribute("alt")+"\n"+allimg[0].getAttribute("src")+"\n"+str[0]);
-    */
     if(allimg[i].getAttribute("alt")!=null){
         allimg[i].style="width:16px;height:16px;"
     }
@@ -89,7 +90,7 @@ for(var i=0;i<allimg.length;i++){
 city.onclick= function(){
     $("#city").val("已关注");
 }
-// 加入购物车
+// 点击加入购物车按钮
 JOshopping.onclick=function () {
     var saveData = {"productId":window.location.href.split("=")[1],"scoreCode":"C"};
     $.ajax({
@@ -116,7 +117,7 @@ JOshopping.onclick=function () {
         }
     });
 }
-
+//是否已经加入购物车
 function isInTrolley() {
     var saveData = {"productId":window.location.href.split("=")[1]};
     $.ajax({

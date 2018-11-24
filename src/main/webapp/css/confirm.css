@@ -45,8 +45,6 @@
 }
 .form-div{
     position:absolute;
-    /* width:860px;
-    height:350px; */
     width:1010px;
     height:440px;
     left:50%;
@@ -56,11 +54,8 @@
 }
 .form-div img{
     display:block;
-    /* width:560px;
-    height:350px; */
     width: 680px;
     height: 440px;
-    /* border-radius: 4px; */
     position:absolute;
     /* border:1px solid #FAC; */
     /* 阴影 */
@@ -86,17 +81,11 @@
 
 .form {
     position:absolute;
-    /* width:300px;
-    height:350px;
-    left:50%;
-    margin-left:130px; */
     width:330px;
     height:440px;
     left:67%;
     margin-left:3px;
     background: #fdfdfd;
-    /* border-radius: 4px;
-        border: 1px solid #EEE; */
     transition: all .4s;
     /* 阴影 */
     -webkit-box-shadow:0 0 10px rgba(172,172,172,.8);
@@ -123,11 +112,12 @@
     /*border: 1px solid #ddd;*/
     overflow: hidden;
     transition: 0.4s;
-/*&:focus {
-     !* border-color: hsl(199, 98%, 48%); *!
-     border-color:hsl(203, 69%, 76%);
- }*/
 }
+/*获取焦点时*/
+#Xusername:focus,#Xpassword:focus,#confirm:focus {
+     border-color: hsl(199, 98%, 48%);
+     border-color:hsl(203, 69%, 76%);
+ }
 
 #confirm{
     width: 100px;

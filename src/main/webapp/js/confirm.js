@@ -1,3 +1,8 @@
+/*
+* 认证ajax请求
+* 作者：lu
+* */
+// 点击认证时调用
 function f() {
     var username = $("#Xusername").val();
     var password = $("#Xpassword").val();
@@ -25,6 +30,8 @@ function f() {
         }
     });
 }
+
+//模拟教务系统加密的请求
 var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
 function encodeInp(input) {
@@ -52,7 +59,7 @@ function encodeInp(input) {
     return output
 }
 
-//回车事件
+//认证回车事件
 function enterSubmit(obj) {
     var button = document.getElementById('confirm');
     //enter按键的keyCode编码为13
@@ -61,7 +68,7 @@ function enterSubmit(obj) {
     }
 }
 
-//获取焦点
+//刷新input获取焦点
 window.onload=function setFocus()
 {
     document.getElementById('Xusername').focus();

@@ -47,6 +47,7 @@ function preview(file) {
                 if (!validateImg(srcpath)) {
                     //控制台打印信息
                     console.log("H5"+msg);
+                    showPreviewImage(srcpath);
                 } else {
                     showPreviewImage(srcpath);
                 }
@@ -68,7 +69,7 @@ function preview(file) {
 }
 
 function validateImg(data) {
-    console.log("我的"+data);
+    console.log(data);
     var pos = data.indexOf(",") + 1;
     for (var e in filter) {
         if (data.indexOf(filter[e]) === pos) {

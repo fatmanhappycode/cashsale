@@ -1,7 +1,15 @@
+/*
+* 链接商品详情
+* 作者：lu
+* */
+// 点击猜你喜欢、最新商品调用
 function goodsclick(str) {
+    //goods为其子标签
     var goods=str.childNodes;
+    // 获取第四个自类
     var productId=goods[3].value;
     // alert(productId);
+    // 把id拼接到URL
     var string="goods.html?productId="+productId;
 
     //浏览商品事件

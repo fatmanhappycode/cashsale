@@ -155,6 +155,10 @@
 	box-shadow: 0 0 50px rgba(172,172,172,1);
 	/*border:1px solid #FAC;*/
 }
+.all:after{
+	height: auto;
+}
+
 .back-head img{
 	width:100%;
 	height:400px;
@@ -532,12 +536,12 @@
 	padding-bottom:60px;
 	/*border:1px solid #FAC;*/
 }
-
 /* 商品 */
 .goods{
-	float:left;
+	/*float:left;*/
 	width:200px;
 	height:280px;
+	display: inline-block;
 	/* 	border-radius:15px; */
 	background:#fff;
 	margin:15px;
@@ -599,6 +603,20 @@
 	height: 50px;
 	margin-top: 10px;
 	margin-left: 10px;
+}
+#loadingImg{
+	width: 20px;
+	position: relative;
+	z-index: 1000000;
+	margin-left: 585px;
+	display: none;
+	/*border: 1px solid #fac;*/
+}
+#loadingSpan{
+	width: 200px;
+	margin-left: 509px;
+	display: none;
+	/*border: 1px solid #fac;*/
 }
 /* 版权 */
 .bottom{

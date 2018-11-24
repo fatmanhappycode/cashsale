@@ -1,11 +1,130 @@
-//data=[{"price": 23,"imageUrl": "www.abc.com","isBargain": 1,"label": "23","title": "bc"},{"price": 223,"imageUrl": "www.abc.com","isBargain": 12,"label": "223","title": "b2c"}];
+/*
+* 所有ajax请求
+* 作者：lu
+* */
 
+
+
+//判断下拉类型
 var flag="";
+//判断是否正在加载
 isLoading=false;
 //定义全局变量currentPage，方便下拉时使用
 currentPage="1";
 //定义全局变量title，方便下拉时使用
 var title;
+
+
+
+//加载时返回最新商品
+window.onload =function init() {
+    currentPage="1";
+    token='';
+    flag="";
+
+    //请求猜你喜欢
+    whatULike();
+
+    var saveData={"time":"desc","currentPage":currentPage};
+    $("#main").html("");
+    $.ajax({
+        url:"/searchByTime",
+        type:"get",
+        headers:{
+            "token":token,
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            currentPage=result.data.currentPage;
+            console.log("页数："+currentPage);
+            data=result.data.data;
+            //渲染
+            innerGoods(data);
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
+
+    //请求是否有新消息
+    ismessage();
+
+    // 请求是否认证
+    var saveData2 = {"username":getCookie("username")}
+    $.ajax({
+        url:"/GetUserData",
+        type:"get",
+        headers:{
+            "token":token,
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData2,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            var username=result.data;
+            //渲染函数
+            innerConfirm(username);
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
+
+
+    //筛选下拉时的变化
+    var oDiv = document.getElementById("species"),
+        H = 0,
+        Y = oDiv
+    i=0;
+    while (Y) {
+        H += Y.offsetTop;
+        if(i==0){
+            H=H+200;
+        }
+        Y = Y.offsetParent;
+        i++;
+    }
+    window.onscroll = function()
+    {
+        var s = document.body.scrollTop || document.documentElement.scrollTop
+        if(s+280>H) {
+            oDiv.style = "position:fixed;top:17px;"
+        } else {
+            oDiv.style = ""
+        }
+    }
+
+
+}
+
+//下拉是返回新页
+$(window).scroll(function(){
+    var docHeight=$(document).height();//整个窗体的高度
+    var winHeight=$(window).height();//当前窗体高度
+    var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
+    // console.log(docHeight+"  "+winHeight+"  "+winScrollHeight);
+    if(docHeight==winHeight+winScrollHeight|docHeight<=winHeight+winScrollHeight|docHeight-0.5<=winHeight+winScrollHeight) {
+        document.getElementById("loadingSpan").style.display="none";
+        document.getElementById("loadingImg").style.display="block";
+        if (flag == "") {
+            window.setTimeout('IsInload()',300);
+        } else if (flag == "search") {
+            window.setTimeout('loadXMLDoc_1()',300);
+        } else if (flag == "screen") {
+            window.setTimeout('Selectspecies_1()',300);
+        }
+    }
+});
+
+
+
+
+
+
 
 //猜你喜欢
 function whatULike() {
@@ -91,6 +210,8 @@ function whatlike(data) {
         likeGoods.appendChild(goodsId);
     });
 }
+
+//渲染下拉的商品
 function innerGoods(data) {
     $.each(data,function(index,obj){
         var main = document.getElementById("main");
@@ -120,16 +241,19 @@ function innerGoods(data) {
     });
 }
 
-//是否验证
+//是否验证，加载时调用
 function innerConfirm(data) {
     var isConfirm = document.getElementById("Confirm");
+    // data为1时则为已验证
     if (data == "1") {
+        // 渲染到页面
         isConfirm.innerHTML = "已认证";
         var img = document.createElement('img');
         img.src = "../img/confirm.png";
         var confirm = document.getElementById("isConfirm");
         confirm.appendChild(img);
     } else {
+        // 渲染到页面
         isConfirm.innerHTML = "未认证";
         var img = document.createElement('img');
         img.src = "../img/noconfirm.png";
@@ -138,82 +262,7 @@ function innerConfirm(data) {
     }
 }
 
-//加载时返回最新商品
-window.onload =function init() {
-    currentPage="1";
-    token='';
-    flag="";
-    whatULike();
-    var saveData={"time":"desc","currentPage":currentPage};
-    $("#main").html("");
-    $.ajax({
-        url:"/searchByTime",
-        type:"get",
-        headers:{
-            "token":token,
-            contentType:"application/json;charset=UTF-8"
-        },
-        data:saveData,
-        contentType:"application/json",
-        success:function(result,testStatus)
-        {
-            currentPage=result.data.currentPage;
-            console.log("页数："+currentPage);
-            data=result.data.data;
-            //渲染
-            innerGoods(data);
-        },
-        error:function(xhr,errrorMessage,e){
-            alert("系统异常！"+e+"\n"+errrorMessage);
-        }
-    });
-    ismessage();
-    var saveData2 = {"username":getCookie("username")}
-    $.ajax({
-        url:"/GetUserData",
-        type:"get",
-        headers:{
-            "token":token,
-            contentType:"application/json;charset=UTF-8"
-        },
-        data:saveData2,
-        contentType:"application/json",
-        success:function(result,testStatus)
-        {
-            var username=result.data;
-            //渲染
-            innerConfirm(username);
-        },
-        error:function(xhr,errrorMessage,e){
-            alert("系统异常！"+e+"\n"+errrorMessage);
-        }
-    });
-
-
-    var oDiv = document.getElementById("species"),
-        H = 0,
-        Y = oDiv
-    i=0;
-    while (Y) {
-        H += Y.offsetTop;
-        if(i==0){
-            H=H+200;
-        }
-        Y = Y.offsetParent;
-        i++;
-    }
-    window.onscroll = function()
-    {
-        var s = document.body.scrollTop || document.documentElement.scrollTop
-        if(s+280>H) {
-            oDiv.style = "position:fixed;top:17px;"
-        } else {
-            oDiv.style = ""
-        }
-    }
-
-
-}
+//直接下拉时调用
 function IsInload() {
     token='';
     if(currentPage==""){
@@ -236,7 +285,9 @@ function IsInload() {
             console.log("页数："+currentPage);
             data=result.data.data;
             if(data==""){
-                alert("没有更多数据！");
+                console.log("没有更多数据！");
+                document.getElementById("loadingImg").style.display="none";
+                document.getElementById("loadingSpan").style.display="block";
                 return;
             }
             //渲染
@@ -246,6 +297,7 @@ function IsInload() {
             alert("系统异常！");
         }
     });
+    document.getElementById("loadingImg").style.display="none";
 }
 
 
@@ -291,7 +343,7 @@ function loadXMLDoc()
         }
     });
 }
-//下拉时currentPage不为0或空
+//搜索完下拉时调用，currentPage不为0或空
 function loadXMLDoc_1()
 {
     token=getCookie("token");
@@ -311,8 +363,15 @@ function loadXMLDoc_1()
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
             data=result.data.data;
-            if(result.code== "200"){
-                innerGoods(data);
+            if(result.code== "404"){
+                if(data==""){
+                    console.log("没有更多数据！");
+                    document.getElementById("loadingImg").style.display="none";
+                    document.getElementById("loadingSpan").style.display="block";
+                    return;
+                }else{
+                    innerGoods(data);
+                }
             }else{
                 console.log("查询失败！");
             }
@@ -321,26 +380,10 @@ function loadXMLDoc_1()
             alert("系统异常！");
         }
     });
+    document.getElementById("loadingImg").style.display="none";
 }
 
-//下拉是返回新页
-$(window).scroll(function(){
-    var docHeight=$(document).height();//整个窗体的高度
-    var winHeight=$(window).height();//当前窗体高度
-    var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
-    // console.log(docHeight+"  "+winHeight+"  "+winScrollHeight);
-    if(docHeight==winHeight+winScrollHeight|docHeight<=winHeight+winScrollHeight|docHeight-0.5<=winHeight+winScrollHeight) {
-        if (flag == "") {
-            IsInload();
-        } else if (flag == "search") {
-            setTimeout("loadXMLDoc_1()","0");
-        } else if (flag == "screen") {
-            Selectspecies_1();
-        }
-    }
-});
-
-
+//筛选时调用
 function Selectspecies() {
     //是否可议价myCheckbox0
     //是否自提myCheckbox1
@@ -457,7 +500,6 @@ function Selectspecies() {
             data=result.data.data;
             if(result.code== "200"){
                 innerGoods(data);
-                document.documentElement.scrollTop = 800;
             }else{
                 console.log("查询失败！");
             }
@@ -467,7 +509,7 @@ function Selectspecies() {
         }
     });
 }
-
+//筛选完下拉时调用
 function Selectspecies_1() {
     token=getCookie("token");
     //var saveData={"label":label,"page":currentPage,"price":price1,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
@@ -490,8 +532,15 @@ function Selectspecies_1() {
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
             data=result.data.data;
-            if(result.code== "200"){
-                innerGoods(data);
+            if(result.code== "404"){
+                if(data==""){
+                    console.log("没有更多数据！");
+                    document.getElementById("loadingImg").style.display="none";
+                    document.getElementById("loadingSpan").style.display="block";
+                    return;
+                }else{
+                    innerGoods(data);
+                }
             }else{
                 console.log("查询失败！");
             }
@@ -500,8 +549,9 @@ function Selectspecies_1() {
             alert("系统异常！");
         }
     });
+    document.getElementById("loadingImg").style.display="none";
 }
-
+//是否有新消息，加载时调用
 function ismessage() {
     var saveData = {"username": getCookie("username")}
     $.ajax({

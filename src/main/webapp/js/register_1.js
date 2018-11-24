@@ -1,17 +1,19 @@
+/*
+*注册ajax请求
+*作者：lu
+*/
 var isLoading=false;
 function clickregister() {
 	//获取节点、值
 	sp=document.getElementById("passwordItem1");
-
 	var username = $("#username").val();
 	var nickname = $("#nickname").val();
 	var password = $("#password").val();
 	var email = $("#email").val();
 	if(!Verusername()||!E_mail()||!Verpassword()||!Verification())
 	{
-        alert("wufa");
+        alert("请填写完内容！");
 		//如果没填完数据，则弹出指示
-		// sp.style.display='block';
 	}
 	else
 	{

@@ -28,10 +28,12 @@
 
 /* 标题登录 */
 .form-div h2{
-	width:1000px;
+	width:100%;
 	height:60px;
-	margin-top:25px;
+	margin-top:50px;
+	margin-left: -38px;
 	text-align:center;
+	/*border:1px solid #fac;*/
 }
 /* username等 */
 .form p{
@@ -42,7 +44,7 @@
 .form {
 	position:absolute;
 	width:1000px;
-	height:1400px;
+	height:1300px;
 	left:50%;
 	padding-left:70px;
 	margin-left:-530px;
@@ -82,6 +84,9 @@
 }
 .Other-ggggg{
 	height: 182px;
+}
+.Other-gggggg{
+	height: 80px;
 }
 
 /* 获取焦点时 */
@@ -129,34 +134,46 @@
 	resize:none;
 	border: 1px solid #ddd;
 	transition: 0.4s;
-&:focus {
+}
+#and:focus {
 	 border-color: hsl(199, 98%, 48%);
  }
-}
 /* 图片 */
 #myfile{
+	width: 120px;
+	height: 120px;
 	margin-left:30px;
+	background: rgba(0,0,0,0);
+	border: 1px solid #fac;
+	opacity: 0;
+	cursor: pointer;
 }
 /* 图片容器 */
 #container{
-	width:100px;
-	height: 100px;
+	width:120px;
+	height: 120px;
 	padding: 0;
-	margin-top: 10px;
-	margin-left:40px;
+	margin-top: -120px;
+	margin-left:30px;
+	border: 1px solid #eee;
+}
+#container img{
+	width:120px;
+	height:120px;
 }
 .myfile_img{
-	width:100px;
-	height:100px;
+	width:120px;
+	height:120px;
 }
 #imgDelete{
 	position:absolute;
 	z-index:10000;
-	width:100px;
-	height:62px;
-	padding-top:40px;
-	/*border:1px solid #FAC;*/
-	margin-top:-105px;
+	width:110px;
+	height:72px;
+	padding-top:50px;
+	padding-left: 10px;
+	border:1px solid #FAC;
+	margin-top:-125px;
 	background:#FFF;
 	cursor:pointer;
 	opacity: 0;
