@@ -5,9 +5,8 @@ import com.cashsale.dao.RegisterDAO;
 import com.cashsale.enums.ResultEnum;
 
 public class RegisterService {
-	public ResultDTO<String> UserRegister(String username, String email, String encodedPass, String encodedCode, String nickname, String vertifyCode,
-                                          String password) {
-        int code = new RegisterDAO().register(username, email, encodedPass, encodedCode, nickname, vertifyCode, password);
+	public ResultDTO<String> UserRegister(String username, String email, String encodedPass, String encodedCode, String nickname, String vertifyCode) {
+        int code = new RegisterDAO().register(username, email, encodedPass, encodedCode, nickname, vertifyCode);
         if (code == ResultEnum.ERROR.getCode()) {
             return new ResultDTO<String>(ResultEnum.ERROR.getCode(), null, ResultEnum.ERROR.getMsg());
         } else if(code == ResultEnum.REGISTER_NUMBER_ERROR.getCode()){

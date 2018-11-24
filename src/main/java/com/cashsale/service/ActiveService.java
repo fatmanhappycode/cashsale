@@ -6,8 +6,9 @@ import com.cashsale.enums.ResultEnum;
 
 public class ActiveService {
 	
-	public ResultDTO<String> UserActive(String vertifyCode, String currentTime, String username, String password) {
-       int code = new ActiveDAO().active(vertifyCode, currentTime, username, password);
+	public ResultDTO<String> UserActive(String vertifyCode, String currentTime, String username) {
+       int code = new ActiveDAO().active(vertifyCode, currentTime, username);
+
 		if(code == ResultEnum.ACTIVE_TIME_ERROR.getCode())
 		{
 			return new ResultDTO<String>(ResultEnum.ACTIVE_TIME_ERROR.getCode(), null, ResultEnum.ACTIVE_TIME_ERROR.getMsg());

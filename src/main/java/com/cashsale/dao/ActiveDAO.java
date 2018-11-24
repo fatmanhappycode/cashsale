@@ -20,21 +20,12 @@ public class ActiveDAO {
 	private ResultSet result = null;
 	private ResultSet result2 = null;
 
-	public int active(String code, String currentTime, String username/*, String password*/) {
+	public int active(String code, String currentTime, String username) {
 		try {
 			//根据激活码查询用户
 			pstmt = conn.prepareStatement("SELECT user_name FROM register_user WHERE code = ?");
 			pstmt.setString(1, code);
 			result = pstmt.executeQuery();
-			//根据用户名查询密码
-			/*pstmt2 = conn.prepareStatement("SELECT pass_word FROM register_user WHERE user_name = ? ");
-			result2 = null;
-
-			if( result.next() )
-			{
-				pstmt2.setString(1, result.getString(1));
-				result2 = pstmt2.executeQuery();
-			}*/
 
 			//若根据验证码找得到该用户，且用户名正确，时间未超过五分钟，则验证通过
 			if( result.next() && result.getString("user_name").equals(username) )
@@ -90,5 +81,6 @@ public class ActiveDAO {
 	public void closeConn() {
 		new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
 		new com.cashsale.conn.Conn().closeConn(result2, pstmt2, conn);
+		new com.cashsale.conn.Conn().closeConn(null,pstmt3,conn);
 	}
 }

@@ -30,15 +30,13 @@ public class MailUtil {
 	 * 			验证码
 	 * @param username
 	 * 			用户名
-	 * @param password
-	 * 			密码
 	 * @param nickname
 	 * 			昵称
 	 * @param currentTime
 	 * 			发送邮件的时间
 	 * @throws Exception
 	 */
-	public static void sendMail(String to, String code, String username, String password, String nickname, String currentTime) throws Exception
+	public static void sendMail(String to, String code, String username/*, String password*/, String nickname, String currentTime) throws Exception
 	{
 		//创建连接对象，连接到邮箱服务器
 		Properties props = new Properties();
@@ -77,7 +75,7 @@ public class MailUtil {
 		//设置邮件的正文
 		message.setContent("<h1>亲爱的"+nickname+"：</h1>"+"<br><h3>欢迎加入现卖！<br>" + 
 				"请点击下面的连接完成注册：<br></h3>" + "<a href='http://localhost:8080/active?code="+code
-				+"&username="+username+"&password="+password+"&currentTime="+currentTime+"'>"+"点击验证"+"<h5>如以上连接无法点击，请将其复制到浏览器中打开（请于5"
+				+"&username="+username+"&currentTime="+currentTime+"'>"+"点击验证"+"<h5>如以上连接无法点击，请将其复制到浏览器中打开（请于5"
 				+ "分钟内完成验证，逾期需重新注册）</h5>",
 				"text/html;charset=UTF-8");
 		// 根据 Session 获取邮件传输对象
@@ -132,7 +130,7 @@ public class MailUtil {
 		message.setSubject("来自“现卖”的重置密码邮件");
 		//设置邮件的正文
 		message.setContent("<h1>您好：</h1>"+
-						"您在现卖申请找回密码：<br>" + "<a href='http://localhost:8080/setPassword?code="+code
+						"您在现卖申请找回密码：<br>" + "<a href='http://localhost:8080/comfirmSet?code="+code
 						+"&username="+username+"&currentTime="+currentTime+"'>"+"点击重置密码</a>"+"<h5>如以上连接无法点击，请将其复制到浏览器中打开（请于3"
 						+ "分钟内完成验证，逾期需重新申请。如不是本人操作，请忽略本邮件，并及时修改密码！）</h5>",
 				"text/html;charset=UTF-8");

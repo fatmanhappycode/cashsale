@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.enums.ResultEnum;
 import com.cashsale.service.ActiveService;
 import com.cashsale.util.RSAUtil;
 
@@ -36,14 +37,11 @@ public class ActiveServlet extends HttpServlet{
 		// 接收激活码
 		String code = request.getParameter("code");
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
 		String currentTime = request.getParameter("currentTime");
 		
 		// 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-		
-		PrintWriter writer = response.getWriter();
         
         //获取密钥
         String privateKey = (String) this.getServletContext().getAttribute(username);
@@ -51,7 +49,6 @@ public class ActiveServlet extends HttpServlet{
         {
         	//解密
         	code = RSAUtil.privateDecrypt(code, RSAUtil.getPrivateKey(privateKey));
-        	password = RSAUtil.privateDecrypt(password, RSAUtil.getPrivateKey(privateKey));
         }
         catch(Exception e )
         {
@@ -59,8 +56,8 @@ public class ActiveServlet extends HttpServlet{
         	e.printStackTrace();
         }
         
-        ResultDTO<String> result = new ActiveService().UserActive(code, currentTime, username, password);
-        if (result.getMsg().equals("激活成功")) {
+        ResultDTO<String> result = new ActiveService().UserActive(code, currentTime, username);
+        if (result.getCode() == ResultEnum.ACTIVE_SUCCESS.getCode()) {
         	response.sendRedirect("/activesuccess.html");
 		} else {
         	response.sendRedirect("/activesuccess.html");
