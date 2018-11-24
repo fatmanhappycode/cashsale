@@ -47,7 +47,7 @@ public class ConfirmSetPassServlet extends HttpServlet{
             String StrCode = (String) this.getServletContext().getAttribute(username+"code");
             if(code.equals(StrCode)){
                 //跳转到重置密码的页面
-                response.sendRedirect("");
+                response.sendRedirect("RetrievePassword.html?flag=1");
             }else{
                 //跳转到验证失败的页面
                 response.sendRedirect("");
