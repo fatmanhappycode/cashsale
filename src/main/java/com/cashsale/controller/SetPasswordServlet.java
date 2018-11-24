@@ -6,6 +6,8 @@ import com.cashsale.bean.CustomerInfoDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.SetPasswordService;
 import com.cashsale.util.CommonUtils;
+import com.cashsale.util.KeytoolUtil;
+import com.cashsale.util.RSAUtil;
 import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
 
@@ -17,7 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
+/**
+ * 设置新的密码
+ * @author Sylvia
+ * 2018年11月24日
+ */
 @WebServlet("/setPassword")
 public class SetPasswordServlet extends HttpServlet {
 
@@ -44,10 +52,9 @@ public class SetPasswordServlet extends HttpServlet {
         }
         CustomerDO c = new Gson().fromJson(user, CustomerDO.class);
         String password = c.getPassword();
-        String username = c.getUsername();
 
         //获取请求头token
-        /*Cookie[] cookies = request.getCookies();
+        Cookie[] cookies = request.getCookies();
         String token = "";
         for (Cookie cookie : cookies) {
             switch(cookie.getName()){
@@ -64,10 +71,28 @@ public class SetPasswordServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String username = claims.getSubject();*/
+        String username = claims.getSubject();
+        String encodedPass = "";
+        try{
+            //创建密钥对
+            Map<String, String> keyMap = RSAUtil.createKeys(1024);
+            //获取公钥
+            String  publicKey = keyMap.get("publicKey");
+            //获取密钥
+            String  privateKey = keyMap.get("privateKey");
+            //删除原来的密钥
+            new KeytoolUtil().DeleteAlias(request.getServletContext().getRealPath("keytool")+"\\cashsale.keystore",username);
+            //保存新的密钥
+            new KeytoolUtil().addNew(request.getServletContext().getRealPath("keytool")+"\\cashsale.keystore",username,
+                    RSAUtil.getPrivateKey(privateKey));
+            //公钥加密
+            encodedPass = RSAUtil.publicEncrypt(password, RSAUtil.getPublicKey(publicKey));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         PrintWriter writer = response.getWriter();
-        ResultDTO result = new SetPasswordService().setPassword(username, password);
+        ResultDTO result = new SetPasswordService().setPassword(username, encodedPass);
         writer.print(JSONObject.toJSON(result));
     }
 }

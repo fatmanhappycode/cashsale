@@ -7,6 +7,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * 设置新的密码
+ * @author Sylvia
+ * 2018年11月24日
+ */
 public class SetPasswordDAO {
 
     public int setPassword(String username, String password){

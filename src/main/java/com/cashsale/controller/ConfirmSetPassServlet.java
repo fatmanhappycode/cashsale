@@ -1,7 +1,5 @@
 package com.cashsale.controller;
 
-import com.cashsale.bean.ResultDTO;
-import com.cashsale.service.ActiveService;
 import com.cashsale.util.RSAUtil;
 
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 确认修改密码的操作是否正确
+ * @author Sylvia
+ * 2018年11月24日
+ */
 @WebServlet("/comfirmSet")
 public class ConfirmSetPassServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
@@ -41,9 +44,7 @@ public class ConfirmSetPassServlet extends HttpServlet{
         {
             //解密
             code = RSAUtil.privateDecrypt(code, RSAUtil.getPrivateKey(privateKey));
-            /*username = RSAUtil.privateDecrypt(username, RSAUtil.getPrivateKey(privateKey));*/
-
-            String StrCode = (String) this.getServletContext().getAttribute(username);
+            String StrCode = (String) this.getServletContext().getAttribute(username+"code");
             if(code.equals(StrCode)){
                 //跳转到重置密码的页面
                 response.sendRedirect("");
@@ -59,12 +60,5 @@ public class ConfirmSetPassServlet extends HttpServlet{
             //跳转到验证失败的页面
             response.sendRedirect("");
         }
-
-        /*ResultDTO<String> result = new ActiveService().UserActive(code, currentTime, username, password);
-        if (result.getMsg().equals("激活成功")) {
-            response.sendRedirect("/activesuccess.html");
-        } else {
-            response.sendRedirect("/activesuccess.html");
-        }*/
     }
 }
