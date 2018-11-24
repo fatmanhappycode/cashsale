@@ -20,8 +20,8 @@ public class UserService {
      * @param password
      * @return ResultDTO<String>
      */
-    public ResultDTO<String> userLogin(String userName, String password) {
-        String token = new UserLoginDAO().isLogin(userName,password);
+    public ResultDTO<String> userLogin(String userName, String password, String keystoreUrl) {
+        String token = new UserLoginDAO().isLogin(userName,password, keystoreUrl);
         if (!token.equals("")) {
             return new ResultDTO<String>(ResultEnum.LOGIN_SUCCESS.getCode(), token, ResultEnum.LOGIN_SUCCESS.getMsg());
         } else {

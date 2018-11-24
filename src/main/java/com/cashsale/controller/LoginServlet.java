@@ -41,10 +41,11 @@ public class LoginServlet extends HttpServlet {
 
         String userName = c.getUsername();
         String password = c.getPassword();
+        String keystoreUrl = req.getServletContext().getRealPath("keytool")+"\\cashsale.keystore";
 
         PrintWriter writer = resp.getWriter();
 
-        ResultDTO<String> result = new UserService().userLogin(userName,password);
+        ResultDTO<String> result = new UserService().userLogin(userName,password, keystoreUrl);
         writer.print(JSONObject.toJSON(result));
     }
 }

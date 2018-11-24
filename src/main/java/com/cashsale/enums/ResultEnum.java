@@ -74,7 +74,9 @@ public enum ResultEnum {
     NOT_CONFIMR(412,"未认证"),
 
     /** 密码修改成功 */
-    PASSWORD_SUCCESS(200,"密码修改成功")
+    PASSWORD_SUCCESS(200,"密码修改成功"),
+    /** 重置密码邮件发送成功 */
+    SET_PASSWORD_EMAIL(200,"重置密码邮件发送成功，请到邮箱进行确认")
     ;
 
     /** 状态码 */

@@ -1,7 +1,11 @@
 package com.cashsale.dao;
 
 import com.cashsale.util.CommonUtils;
+import com.cashsale.util.KeytoolUtil;
+import com.cashsale.util.RSAUtil;
 
+import java.security.PrivateKey;
+import java.security.interfaces.RSAPrivateKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,18 +21,25 @@ public class UserLoginDAO {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
-    public String isLogin(String userName, String password) {
+    public String isLogin(String userName, String password, String keystoreUrl) {
         try {
+            String pass = "";
             // 查询是否存在账号密码在all_user
-            pstmt = conn.prepareStatement("SELECT * FROM all_user WHERE user_name=? AND pass_word=?");
+            pstmt = conn.prepareStatement("SELECT pass_word FROM all_user WHERE user_name=?");
             pstmt.setString(1, userName);
-            pstmt.setString(2, password);
             rs = pstmt.executeQuery();
-            // 有则创建token
-            if (rs.next()) {
-                String token = CommonUtils.createJWT(userName, 30 * 60 * 1000);
-                return token;
-            } else {
+            System.out.println();
+            if(rs.next()){
+                RSAPrivateKey key = new KeytoolUtil().getPrivate(userName, keystoreUrl);
+                pass = RSAUtil.privateDecrypt(rs.getString("pass_word"), key);
+                if(pass.equals(password)){
+                    // 账号密码正确则创建token
+                    String token = CommonUtils.createJWT(userName, 30 * 60 * 1000);
+                    return token;
+                }else{
+                    return "";
+                }
+            }else{
                 return "";
             }
         } catch (Exception e) {

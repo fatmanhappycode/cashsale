@@ -24,7 +24,7 @@ public class RegisterDAO {
 	private ResultSet rs3 = null;
 
 	public int register(String username, String email, String encodedPass, String encodedCode, String nickname,
-						String code, String password){
+						String code){
 
 		try {
 			//判断该用户名和邮箱是否已被注册
@@ -38,7 +38,6 @@ public class RegisterDAO {
 			pstmt3.setString(1, email);
 			rs3 = pstmt3.executeQuery();
 
-			//System.out.println("rs.next()="+rs.next()+"rs2.next()="+rs2.next()+"rs3.next()="+rs3.next());
 			if (rs.next() || rs2.next())  {
 				closeConn();
 				return ResultEnum.REGISTER_NUMBER_ERROR.getCode();
@@ -51,7 +50,7 @@ public class RegisterDAO {
 				//将用户信息存进数据库中
 				pstmt2 = conn.prepareStatement("INSERT INTO register_user(user_name,pass_word,nick_name,email,code) VALUES(?,?,?,?,?)");
 				pstmt2.setString(1, username);
-				pstmt2.setString(2, password);
+				pstmt2.setString(2, encodedPass);
 				pstmt2.setString(3, nickname);
 				pstmt2.setString(4, email);
 				pstmt2.setString(5, code);
@@ -60,7 +59,7 @@ public class RegisterDAO {
 				String currentTime = TimeUtil.getTime();
 
 				//发送邮件
-				MailUtil.sendMail(email, encodedCode, username, encodedPass, nickname, currentTime);
+				MailUtil.sendMail(email, encodedCode, username, nickname, currentTime);
 
 				pstmt.execute();
 				pstmt2.execute();

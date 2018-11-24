@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.CustomerInfoDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.RegisterService;
+import com.cashsale.util.KeytoolUtil;
 import com.cashsale.util.RSAUtil;
 import com.cashsale.util.UUIDUtil;
 import com.google.gson.Gson;
@@ -36,7 +37,10 @@ public class RegisterServlet extends HttpServlet {
 	
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
+        //request.getServletContext().getRealPath("");
+        System.out.println(request.getServletContext().getRealPath("."));
+
     	// 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -68,10 +72,11 @@ public class RegisterServlet extends HttpServlet {
         String  publicKey = keyMap.get("publicKey");
         //获取密钥
         String  privateKey = keyMap.get("privateKey");
-        //保存密钥
-        this.getServletContext().setAttribute(username, privateKey);
-        //公钥加密
         try {
+            //保存密钥
+            this.getServletContext().setAttribute(username, privateKey);
+            new KeytoolUtil().addNew(request.getServletContext().getRealPath("keytool")+"\\cashsale.keystore",username,RSAUtil.getPrivateKey(privateKey));
+            //公钥加密
 			encodedCode = RSAUtil.publicEncrypt(code, RSAUtil.getPublicKey(publicKey)); 
 	        encodedPass = RSAUtil.publicEncrypt(password, RSAUtil.getPublicKey(publicKey));
 		} catch (Exception e) {
@@ -79,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
 		}
         
         ResultDTO<String> result = new RegisterService().UserRegister(username, email, encodedPass, encodedCode, nickname,
-    		 code, password);
+    		 code);
         
         writer.print(JSONObject.toJSON(result));
     }
