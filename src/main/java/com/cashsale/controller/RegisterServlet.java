@@ -38,9 +38,6 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //request.getServletContext().getRealPath("");
-        System.out.println(request.getServletContext().getRealPath("."));
-
     	// 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
