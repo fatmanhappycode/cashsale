@@ -4,7 +4,6 @@ import com.cashsale.util.CommonUtils;
 import com.cashsale.util.KeytoolUtil;
 import com.cashsale.util.RSAUtil;
 
-import java.security.PrivateKey;
 import java.security.interfaces.RSAPrivateKey;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,10 +27,12 @@ public class UserLoginDAO {
             pstmt = conn.prepareStatement("SELECT pass_word FROM all_user WHERE user_name=?");
             pstmt.setString(1, userName);
             rs = pstmt.executeQuery();
-            System.out.println();
             if(rs.next()){
                 RSAPrivateKey key = new KeytoolUtil().getPrivate(userName, keystoreUrl);
-                pass = RSAUtil.privateDecrypt(rs.getString("pass_word"), key);
+                pass = rs.getString("pass_word");
+                if(key != null) {
+                    pass = RSAUtil.privateDecrypt(pass, key);
+                }
                 if(pass.equals(password)){
                     // 账号密码正确则创建token
                     String token = CommonUtils.createJWT(userName, 30 * 60 * 1000);
