@@ -79,7 +79,10 @@ public enum ResultEnum {
     SET_PASSWORD_EMAIL(200,"重置密码邮件发送成功，请到邮箱进行确认"),
 
     /** 交易成功 */
-    TRANSACT_SUCCESS(200,"交易成功")
+    TRANSACT_SUCCESS(200,"交易成功"),
+
+    /** 评论商品成功 */
+    COMMENT_SUCCESS(200,"评论成功")
     ;
 
     /** 状态码 */

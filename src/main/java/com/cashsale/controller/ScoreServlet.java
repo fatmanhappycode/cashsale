@@ -54,6 +54,8 @@ public class ScoreServlet extends HttpServlet{
 		String strCode = s.getScoreCode();
 		//被浏览的商品
 		int productId = s.getProductId();
+		//评论内容
+		String comments = s.getComments();
 
 		//浏览者
 		//获取请求头token
@@ -76,8 +78,7 @@ public class ScoreServlet extends HttpServlet{
 		}
 		String username = claims.getSubject();
 
-		System.out.println("strCode="+strCode);
-		ResultDTO<String> result = new UpdateScoreService().updateScore(username, productId, strCode);
+		ResultDTO<String> result = new UpdateScoreService().updateScore(username, productId, strCode, comments);
 		PrintWriter writer = response.getWriter();
 		writer.println(JSONObject.toJSONString(result));
 	}
