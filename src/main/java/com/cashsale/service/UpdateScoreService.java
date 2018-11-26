@@ -11,11 +11,13 @@ import com.cashsale.enums.ResultEnum;
  */
 public class UpdateScoreService {
 
-	public ResultDTO<String> updateScore(String username, int productId, String strCode){
-		int code = new UpdateScoreDAO().updateScore(username, productId, strCode);
+	public ResultDTO<String> updateScore(String username, int productId, String strCode, String comments){
+		int code = new UpdateScoreDAO().updateScore(username, productId, strCode, comments);
 		if( code == ResultEnum.ERROR.getCode())
 		{
 			return new ResultDTO<String>(ResultEnum.ERROR.getCode(), null, ResultEnum.ERROR.getMsg());
+		} else if(strCode.equals("F") && code == ResultEnum.COMMENT_SUCCESS.getCode()){
+			return new ResultDTO<String>(ResultEnum.COMMENT_SUCCESS.getCode(), null, ResultEnum.COMMENT_SUCCESS.getMsg());
 		} else if (code == ResultEnum.SCORE_SUCCESS.getCode()) {
 			return new ResultDTO<String>(ResultEnum.SCORE_SUCCESS.getCode(), null, ResultEnum.SCORE_SUCCESS.getMsg());
 		}
