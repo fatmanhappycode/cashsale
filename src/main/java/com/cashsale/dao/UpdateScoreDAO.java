@@ -44,14 +44,12 @@ public class UpdateScoreDAO {
             return changeScore(username, productId, 2, "is_inquire");
         }
         else if(strCode.equals(COLLECTION_CODE)) {
-            System.out.println(2);
             return changeScore(username, productId, 3, "is_collect");
         }
         else if(strCode.equals(SHARE_CODE)) {
             return changeScore(username, productId, 4, "is_share");
         }
         else if(strCode.equals(LOVE_CODE)){
-            System.out.println("E");
             return changeScore(username, productId, 1, "is_like");
         }else if(strCode.equals(COMMENT_CODE)){
             return commentProduct(username, productId, comments);
@@ -162,7 +160,6 @@ public class UpdateScoreDAO {
      * @param code
      */
     private void interactProduct(String username, int productId, String code){
-        System.out.println("code="+code);
         String currentTime = new TimeUtil().getCurrentTime();
         Connection conn = new com.cashsale.conn.Conn().getCon();
         PreparedStatement pstmt2 = null;
@@ -183,7 +180,6 @@ public class UpdateScoreDAO {
             pstmt2.setString(2,username);
             result2 = pstmt2.executeQuery();
             if(result2.next()){
-                System.out.println("currentTime="+currentTime);
                 sql = "UPDATE product_interaction SET "+code+"='"+currentTime+"' WHERE product_id =? AND user_name=?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1,productId);
