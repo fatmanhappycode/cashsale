@@ -58,8 +58,9 @@ public class ScoreServlet extends HttpServlet{
 		String comments = s.getComments();
 
 		//浏览者
+		String username = s.getUsername();
 		//获取请求头token
-		Cookie[] cookies = request.getCookies();
+		/*Cookie[] cookies = request.getCookies();
 		String token = "";
 		for (Cookie cookie : cookies) {
 			switch(cookie.getName()){
@@ -76,7 +77,7 @@ public class ScoreServlet extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String username = claims.getSubject();
+		String username = claims.getSubject();*/
 
 		ResultDTO<String> result = new UpdateScoreService().updateScore(username, productId, strCode, comments);
 		PrintWriter writer = response.getWriter();

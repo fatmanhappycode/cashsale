@@ -1,24 +1,25 @@
 package com.cashsale.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cashsale.bean.InteractDTO;
 import com.cashsale.bean.PagerDTO;
-import com.cashsale.bean.ProductDO;
-import com.cashsale.dao.GetMyProductDAO;
+import com.cashsale.dao.GetInteractDAO;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 /**
  * @Description:
  * @Author: 8-0416
  * @Date: 2018/11/26
  */
-public class GetInteractNumberServlet extends HttpServlet {
+@WebServlet("/getInteract")
+public class GetInteractServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,13 +31,15 @@ public class GetInteractNumberServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         String strProductId = request.getParameter("productId");
+        String strPage = request.getParameter("page");
         int productId = Integer.parseInt(strProductId);
-
-        /*PrintWriter writer = response.getWriter();
-        List<ProductDO> product = new GetMyProductDAO().getMyProduct(username);
-        int number = new GetMyProductDAO().getProductNum(username);
-        PagerDTO<ProductDO> result = new PagerDTO<>(number,product);
-        writer.println(JSONObject.toJSON(result));*/
+        int page = 0;
+        if(strPage != null && !strPage.equals("")){
+            page = Integer.parseInt(strPage);
+        }
+        PrintWriter writer = response.getWriter();
+        PagerDTO<InteractDTO> result = new GetInteractDAO().getInteract(page, productId);
+        writer.print(JSONObject.toJSON(request));
     }
 
     @Override

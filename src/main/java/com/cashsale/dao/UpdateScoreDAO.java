@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 import com.cashsale.conn.Conn;
 import com.cashsale.enums.ResultEnum;
+import com.cashsale.util.TimeUtil;
 
 /**
  * 更新每个用户对商品的评分 and 用户信用
@@ -50,7 +51,8 @@ public class UpdateScoreDAO {
             return changeScore(username, productId, 4, "is_share");
         }
         else if(strCode.equals(LOVE_CODE)){
-            return changeScore(username, productId, 1, "is_love");
+            System.out.println("E");
+            return changeScore(username, productId, 1, "is_like");
         }else if(strCode.equals(COMMENT_CODE)){
             return commentProduct(username, productId, comments);
         }
@@ -100,9 +102,12 @@ public class UpdateScoreDAO {
                     pstmt2.setInt(1,productId);
                     pstmt2.setString(2,username);
                     pstmt2.execute();
+                    if(code.equals("is_like") || code.equals("is_share")){
+                        interactProduct(username, productId, code);
+                    }
                 }
             }else{
-                insertUser(username,productId);
+                insertUser(username,productId,score,code);
             }
             new Conn().closeConn(result, pstmt, conn);
             new Conn().closeConn(resutl2, pstmt2, conn);
@@ -127,16 +132,18 @@ public class UpdateScoreDAO {
      * @return
      */
     private int commentProduct(String username, int productId, String comments) {
+        String currentTime = new TimeUtil().getCurrentTime();
         Connection conn = new com.cashsale.conn.Conn().getCon();
         PreparedStatement pstmt = null;
         ResultSet result = null;
         String sql = "";
         try {
-            sql = "INSERT INTO product_comment VALUES(?,?,?)";
+            sql = "INSERT INTO product_interaction(product_id, user_name, comments, commnets_time) VALUES(?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1,productId);
             pstmt.setString(2,username);
             pstmt.setString(3,comments);
+            pstmt.setString(4,currentTime);
             pstmt.execute();
             new Conn().closeConn(result, pstmt, conn);
             return ResultEnum.COMMENT_SUCCESS.getCode();
@@ -149,13 +156,65 @@ public class UpdateScoreDAO {
     }
 
     /**
+     * 点赞、分享商品
+     * @param username
+     * @param productId
+     * @param code
+     */
+    private void interactProduct(String username, int productId, String code){
+        System.out.println("code="+code);
+        String currentTime = new TimeUtil().getCurrentTime();
+        Connection conn = new com.cashsale.conn.Conn().getCon();
+        PreparedStatement pstmt2 = null;
+        PreparedStatement pstmt = null;
+        ResultSet result2 = null;
+        ResultSet result = null;
+        String sql2 = "";
+        String sql = "";
+        if(code.equals("is_like")){
+            code = "like_time";
+        }else if(code.equals("is_share")){
+            code = "share_time";
+        }
+        try {
+            sql2 = "SELECT * FROM product_interaction WHERE product_id = ? AND user_name = ?";
+            pstmt2 = conn.prepareStatement(sql2);
+            pstmt2.setInt(1,productId);
+            pstmt2.setString(2,username);
+            result2 = pstmt2.executeQuery();
+            if(result2.next()){
+                System.out.println("currentTime="+currentTime);
+                sql = "UPDATE product_interaction SET "+code+"='"+currentTime+"' WHERE product_id =? AND user_name=?";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1,productId);
+                pstmt.setString(2,username);
+                pstmt.execute();
+            }else {
+                sql = "INSERT INTO product_interaction(product_id, user_name, " + code + ") VALUE(?,?,?)";
+                pstmt = conn.prepareStatement(sql);
+                pstmt.setInt(1, productId);
+                pstmt.setString(2, username);
+                pstmt.setString(3, currentTime);
+                pstmt.execute();
+            }
+            new Conn().closeConn(result, pstmt, conn);
+            new Conn().closeConn(result2, pstmt2, conn);
+        }catch(Exception e) {
+            e.printStackTrace();
+            System.err.println("点赞或分享商品失败！");
+            new Conn().closeConn(result, pstmt, conn);
+            new Conn().closeConn(result2, pstmt2, conn);
+        }
+    }
+
+    /**
      * 用户第一次浏览该商品，插入记录
-     * @param newUsername
+     * @param username
      * 			用户名
      * @param productId
      * 			商品id
      */
-    private void insertUser(String newUsername, int productId){
+    private void insertUser(String username, int productId, int score, String code){
         Connection conn = new com.cashsale.conn.Conn().getCon();
         PreparedStatement pstmt = null;
         ResultSet result = null;
@@ -163,11 +222,12 @@ public class UpdateScoreDAO {
         try{
             sql = "INSERT INTO commodity_score(user_name,product_id,score,is_scan) VALUE(?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1,newUsername);
+            pstmt.setString(1,username);
             pstmt.setInt(2,productId);
             pstmt.setInt(3,1);
             pstmt.setBoolean(4,true);
             pstmt.execute();
+            changeScore(username,productId,score,code);
         }catch(Exception e){
             e.printStackTrace();
             System.err.println("用户浏览商品失败！");

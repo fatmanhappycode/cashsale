@@ -42,12 +42,13 @@ public class TransactDAO {
                 pstmt2.setString(9,result.getString("user_name"));
                 pstmt2.setTimestamp(10,result.getTimestamp("publish_time"));
                 pstmt2.setString(11,result.getString("trade_place"));
-                pstmt2.execute();
 
                 //在product_info中删除该商品
                 sql = "DELETE FROM product_info WHERE product_id = ?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1,productId);
+
+                pstmt2.execute();
                 pstmt.execute();
             }
             new Conn().closeConn(result,pstmt,conn);
