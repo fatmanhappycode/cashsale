@@ -23,15 +23,17 @@ public class UserLoginDAO {
 
     public String isLogin(String userName, String password, String keystoreUrl) {
         try {
-            String pass = "";
             // 查询是否存在账号密码在all_user
             pstmt = conn.prepareStatement("SELECT pass_word FROM all_user WHERE user_name=?");
             pstmt.setString(1, userName);
             rs = pstmt.executeQuery();
             System.out.println();
             if(rs.next()){
+                String pass = rs.getString("pass_word");
                 RSAPrivateKey key = new KeytoolUtil().getPrivate(userName, keystoreUrl);
-                pass = RSAUtil.privateDecrypt(rs.getString("pass_word"), key);
+                if(key != null){
+                    pass = RSAUtil.privateDecrypt(pass, key);
+                }
                 if(pass.equals(password)){
                     // 账号密码正确则创建token
                     String token = CommonUtils.createJWT(userName, 30 * 60 * 1000);

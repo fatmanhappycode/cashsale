@@ -95,7 +95,7 @@ function f() {
                 {
                     //发布成功，转跳到页面
                     alert(result.msg);
-                    window.location.href="/index.html";
+                    window.location.href="/cashsale/index.html";
                 }
                 else if(result.code==500){
                     //失败

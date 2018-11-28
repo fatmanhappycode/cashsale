@@ -3,7 +3,7 @@ var websocket = null;
 var to = "";
 var username = getCookie("username");
 if ('WebSocket' in window) {
-    websocket = new WebSocket("ws://" + url + "/socket?username="+username);
+    websocket = new WebSocket("ws://" + url + "/cashsale/socket?username="+username);
 } else {
     alert("该浏览器不支持websocket!");
 }
@@ -116,7 +116,7 @@ function doSend() {
 function getmessage() {
     var saveData = {"username": getCookie("username")}
     $.ajax({
-        url: "/getMessage",
+        url: "/cashsale/getMessage",
         type: "get",
         headers: {
             contentType: "application/json;charset=UTF-8"

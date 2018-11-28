@@ -57,9 +57,9 @@ public class ActiveServlet extends HttpServlet{
         
         ResultDTO<String> result = new ActiveService().UserActive(code, currentTime, username);
         if (result.getCode() == ResultEnum.ACTIVE_SUCCESS.getCode()) {
-        	response.sendRedirect("/activesuccess.html");
+        	response.sendRedirect("/cashsale/activesuccess.html");
 		} else {
-        	response.sendRedirect("/activesuccess.html");
+        	response.sendRedirect("/cashsale/activesuccess.html");
 		}
 	}
 }

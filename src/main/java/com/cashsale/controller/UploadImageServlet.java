@@ -74,7 +74,8 @@ public class UploadImageServlet extends HttpServlet {
 						System.out.println("新文件名：" + newFileName);
 
 						//5. 调用FileItem的write()方法，写入文件
-						File file = new File(request.getServletContext().getRealPath("image") + "\\" + newFileName);
+						//File file = new File(request.getServletContext().getRealPath("image") + "\\" + newFileName);
+						File file = new File("E:\\javawork2\\cashsaleResource\\cashsale\\image" + "\\" + newFileName);
 						System.out.println(file.getAbsolutePath());
 						fileItem.write(file);
 

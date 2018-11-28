@@ -15,7 +15,7 @@ function goodsclick(str) {
     //浏览商品事件
     var saveData = {"productId":productId,"scoreCode":"A"};
     $.ajax({
-        url:"/score",
+        url:"/cashsale/score",
         type:"post",
         dataType:"json",
         data:JSON.stringify(saveData),
