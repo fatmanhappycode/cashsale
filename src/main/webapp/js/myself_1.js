@@ -21,7 +21,7 @@ test.onclick = function(){
 
 var saveData1={"username":getCookie("username")};
 $.ajax({
-    url:"/getShoppingTrolley",
+    url:"/cashsale/getShoppingTrolley",
     type:"post",
     dataType:"json",
     data:JSON.stringify(saveData1),
@@ -73,7 +73,7 @@ function loadgoods(productId) {
     var saveData={"productId":productId};
     // alert(productId);
     $.ajax({
-        url:"/GetDetailProduct",
+        url:"/cashsale/GetDetailProduct",
         type:"get",
         headers:{
             contentType:"application/json;charset=UTF-8"
@@ -99,7 +99,7 @@ function loadgoods(productId) {
 
 var saveData={"username":getCookie("username")};
 $.ajax({
-    url:"/getPersonInfo",
+    url:"/cashsale/getPersonInfo",
     type:"get",
     data:saveData,
     contentType:"application/json",

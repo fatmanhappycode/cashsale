@@ -1,17 +1,13 @@
 package com.cashsale.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.cashsale.bean.MessageDTO;
 import com.cashsale.bean.PagerDTO;
-import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.SocketDAO;
 import com.cashsale.enums.ResultEnum;
-import sun.plugin2.message.Message;
 
 public class GetHistoryService {
 

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.enums.ResultEnum;
 import com.cashsale.service.ActiveService;

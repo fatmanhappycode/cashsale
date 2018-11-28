@@ -28,7 +28,7 @@ function clickregister() {
 		//定义json串
 		var saveData={"username":username,"nickname":nickname,"password":password,"email":email};
 		$.ajax({
-			url:"/register",
+			url:"/cashsale/register",
 			type:"post",
 			dataType:"json",
 			data:JSON.stringify(saveData),

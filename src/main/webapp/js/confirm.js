@@ -12,7 +12,7 @@ function f() {
     var saveData={"encode": username+"%%%"+password,"sno":sno};
 
     $.ajax({
-        url:"/confirm",
+        url:"/cashsale/confirm",
         type:"post",
         dataType:"json",
         data:JSON.stringify(saveData),

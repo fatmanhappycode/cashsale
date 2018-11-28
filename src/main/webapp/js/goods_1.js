@@ -19,7 +19,7 @@ window.onload =function loadgoods() {
     var saveData={"productId":productId};
     // alert(productId);
     $.ajax({
-        url:"/GetDetailProduct",
+        url:"/cashsale/GetDetailProduct",
         type:"get",
         headers:{
             contentType:"application/json;charset=UTF-8"
@@ -94,7 +94,7 @@ city.onclick= function(){
 JOshopping.onclick=function () {
     var saveData = {"productId":window.location.href.split("=")[1],"scoreCode":"C"};
     $.ajax({
-        url:"/score",
+        url:"/cashsale/score",
         type:"post",
         dataType:"json",
         data:JSON.stringify(saveData),
@@ -121,7 +121,7 @@ JOshopping.onclick=function () {
 function isInTrolley() {
     var saveData = {"productId":window.location.href.split("=")[1]};
     $.ajax({
-        url:"/isInTrolley",
+        url:"/cashsale/isInTrolley",
         type:"get",
         headers:{
             contentType:"application/json;charset=UTF-8"

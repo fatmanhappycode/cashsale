@@ -13,7 +13,7 @@ function loadXMLDoc()
     var password = $("#password").val();
     var saveData={"username":username,"password":password};
     $.ajax({
-        url:"/login",
+        url:"/cashsale/login",
         type:"post",
         dataType:"json",
         data:JSON.stringify(saveData),

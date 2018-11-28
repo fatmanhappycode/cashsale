@@ -28,7 +28,7 @@ window.onload =function init() {
     var saveData={"time":"desc","currentPage":currentPage};
     $("#main").html("");
     $.ajax({
-        url:"/searchByTime",
+        url:"/cashsale/searchByTime",
         type:"get",
         headers:{
             "token":token,
@@ -55,7 +55,7 @@ window.onload =function init() {
     // 请求是否认证
     var saveData2 = {"username":getCookie("username")}
     $.ajax({
-        url:"/GetUserData",
+        url:"/cashsale/GetUserData",
         type:"get",
         headers:{
             "token":token,
@@ -131,7 +131,7 @@ function whatULike() {
     var saveData={"username":getCookie("username")};
     var play = document.getElementById("play");
     $.ajax({
-        url:"/recommend",
+        url:"/cashsale/recommend",
         type:"get",
         headers:{
             "token":token,
@@ -271,7 +271,7 @@ function IsInload() {
     }
     var saveData={"time":"asc","currentPage":currentPage};
     $.ajax({
-        url:"/searchByTime",
+        url:"/cashsale/searchByTime",
         type:"get",
         headers:{
             "token":token,
@@ -318,7 +318,7 @@ function loadXMLDoc()
     var saveData={"title":title,"currentPage":currentPage};
     $("#main").html("");
     $.ajax({
-        url:"/search",
+        url:"/cashsale/search",
         type:"get",
         headers:{
             "token":token
@@ -350,7 +350,7 @@ function loadXMLDoc_1()
     console.log(currentPage);
     var saveData={"title":title,"currentPage":currentPage};
     $.ajax({
-        url:"/search",
+        url:"/cashsale/search",
         type:"get",
         headers:{
             "token":token,
@@ -484,7 +484,7 @@ function Selectspecies() {
     saveData={"label":label,"currentPage":currentPage,"price":price1+";"+price2,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
     $("#main").html("");
     $.ajax({
-        url:"/screen",
+        url:"/cashsale/screen",
         type:"get",
         headers:{
             "token":token,
@@ -519,7 +519,7 @@ function Selectspecies_1() {
         return;
     }
     $.ajax({
-        url:"/screen",
+        url:"/cashsale/screen",
         type:"get",
         headers:{
             "token":token,
@@ -555,7 +555,7 @@ function Selectspecies_1() {
 function ismessage() {
     var saveData = {"username": getCookie("username")}
     $.ajax({
-        url: "/isMessage",
+        url: "/cashsale/isMessage",
         type: "get",
         headers: {
             "token": token,

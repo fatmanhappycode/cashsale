@@ -7,7 +7,7 @@ var filter = {
 //富文本编辑器
 function fU() {
     $.ajax({
-        url: "/UploadImageServlet",
+        url: "/cashsale/UploadImageServlet",
         type: 'POST',
         cache: false,
         data: new FormData($("#uploadForm")[0]),

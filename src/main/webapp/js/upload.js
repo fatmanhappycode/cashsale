@@ -80,7 +80,7 @@ function f() {
         var token=getCookie("token");
         var saveData={"title":commodity,"label":label,"price":price,"tradeMethod":myCheckbox0,"isBargain":myCheckbox1,"tradePlace":place,"pdDescription":editor.txt.html(), "imageUrl":image};
         $.ajax({
-            url:"/publish",
+            url:"/cashsale/publish",
             type:"post",
             dataType:"json",
             async: false,
