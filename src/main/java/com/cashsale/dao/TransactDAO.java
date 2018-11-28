@@ -50,6 +50,10 @@ public class TransactDAO {
 
                 pstmt2.execute();
                 pstmt.execute();
+            }else{
+                new Conn().closeConn(result,pstmt,conn);
+                new Conn().closeConn(null,pstmt2,conn);
+                return ResultEnum.NO_FOUND.getCode();
             }
             new Conn().closeConn(result,pstmt,conn);
             new Conn().closeConn(null,pstmt2,conn);

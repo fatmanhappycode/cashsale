@@ -15,8 +15,12 @@ public class TransactService {
         int code = new TransactDAO().transact(productId);
         if(code == ResultEnum.TRANSACT_SUCCESS.getCode()){
             return new ResultDTO(ResultEnum.TRANSACT_SUCCESS.getCode(),null,ResultEnum.TRANSACT_SUCCESS.getMsg());
-        }else{
+        }else if(code == ResultEnum.ERROR.getCode()){
             return new ResultDTO(ResultEnum.ERROR.getCode(),null,ResultEnum.ERROR.getMsg());
+        }else if(code == ResultEnum.NO_FOUND.getCode()){
+            return new ResultDTO(ResultEnum.NO_FOUND.getCode(),null,ResultEnum.NO_FOUND.getMsg());
+        }else{
+            return null;
         }
     }
 }
