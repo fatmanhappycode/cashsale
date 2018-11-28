@@ -45,6 +45,18 @@ public class ProductDO {
      * id
      */
     private int productId;
+    /**
+     * 评论数
+     */
+    private int commentsNumber;
+    /**
+     * 点赞数
+     */
+    private int likeNumber;
+    /**
+     * 分享数
+     */
+    private int shareNumber;
 
     public int getProductId() {
         return productId;
@@ -128,5 +140,29 @@ public class ProductDO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getCommentsNumber() {
+        return commentsNumber;
+    }
+
+    public void setCommentsNumber(int commentsNumber) {
+        this.commentsNumber = commentsNumber;
+    }
+
+    public int getLikeNumber() {
+        return likeNumber;
+    }
+
+    public void setLikeNumber(int likeNumber) {
+        this.likeNumber = likeNumber;
+    }
+
+    public int getShareNumber() {
+        return shareNumber;
+    }
+
+    public void setShareNumber(int shareNumber) {
+        this.shareNumber = shareNumber;
     }
 }
