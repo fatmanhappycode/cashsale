@@ -39,7 +39,7 @@ public class GetInteractServlet extends HttpServlet {
         }
         PrintWriter writer = response.getWriter();
         PagerDTO<InteractDTO> result = new GetInteractDAO().getInteract(page, productId);
-        writer.print(JSONObject.toJSON(request));
+        writer.print(JSONObject.toJSON(result));
     }
 
     @Override

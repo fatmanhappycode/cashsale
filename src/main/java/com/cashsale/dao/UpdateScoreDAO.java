@@ -87,7 +87,7 @@ public class UpdateScoreDAO {
                 int origin = result.getInt("score");
                 score += origin;
                 //判断用户是否对该商品执行过code的操作
-                if(temp == false){
+                if(temp == false && !code.equals("is_share")){
                     //更新该用户对该商品的评分
                     sql = "UPDATE commodity_score SET score="+score+" WHERE product_id = ? AND user_name=?";
                     pstmt = conn.prepareStatement(sql);
@@ -103,6 +103,8 @@ public class UpdateScoreDAO {
                     if(code.equals("is_like") || code.equals("is_share")){
                         interactProduct(username, productId, code);
                     }
+                }else if(code.equals("is_share")){
+                    interactProduct(username, productId, code);
                 }
             }else{
                 insertUser(username,productId,score,code);
@@ -136,7 +138,7 @@ public class UpdateScoreDAO {
         ResultSet result = null;
         String sql = "";
         try {
-            sql = "INSERT INTO product_interaction(product_id, user_name, comments, commnets_time) VALUES(?,?,?,?)";
+            sql = "INSERT INTO product_interaction(product_id, user_name, comments, comments_time) VALUES(?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1,productId);
             pstmt.setString(2,username);
@@ -174,25 +176,25 @@ public class UpdateScoreDAO {
             code = "share_time";
         }
         try {
-            sql2 = "SELECT * FROM product_interaction WHERE product_id = ? AND user_name = ?";
+            /*sql2 = "SELECT * FROM product_interaction WHERE product_id = ? AND user_name = ?";
             pstmt2 = conn.prepareStatement(sql2);
             pstmt2.setInt(1,productId);
             pstmt2.setString(2,username);
             result2 = pstmt2.executeQuery();
-            if(result2.next()){
+            if(result2.next() && code.equals("like_time")){
                 sql = "UPDATE product_interaction SET "+code+"='"+currentTime+"' WHERE product_id =? AND user_name=?";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1,productId);
                 pstmt.setString(2,username);
                 pstmt.execute();
-            }else {
+            }else {*/
                 sql = "INSERT INTO product_interaction(product_id, user_name, " + code + ") VALUE(?,?,?)";
                 pstmt = conn.prepareStatement(sql);
                 pstmt.setInt(1, productId);
                 pstmt.setString(2, username);
                 pstmt.setString(3, currentTime);
                 pstmt.execute();
-            }
+            /*}*/
             new Conn().closeConn(result, pstmt, conn);
             new Conn().closeConn(result2, pstmt2, conn);
         }catch(Exception e) {

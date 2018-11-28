@@ -8,8 +8,6 @@ import java.util.List;
  * @Date: 2018/11/26
  */
 public class InteractDTO {
-    /** 商品id */
-    private int productId;
     /** 评论数 */
     private int commentsNumber;
     /** 点赞数 */
@@ -37,14 +35,6 @@ public class InteractDTO {
 
     public void setLikeNumber(int likeNumber) {
         this.likeNumber = likeNumber;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
     }
 
     public int getShareNumber() {

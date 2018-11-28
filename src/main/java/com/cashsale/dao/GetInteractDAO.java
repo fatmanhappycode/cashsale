@@ -4,6 +4,7 @@ import com.cashsale.bean.InteractDTO;
 import com.cashsale.bean.InteractInfoDTO;
 import com.cashsale.bean.PagerDTO;
 import com.cashsale.conn.Conn;
+import com.cashsale.enums.ResultEnum;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,43 +32,63 @@ public class GetInteractDAO {
         String sql2 = "";
         String sql = "";
         try{
-            sql = "SELECT COUNT(comments), COUNT(like_time), COUNT(share_time) FROM product_interaction WHERE product_id=?";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, productId);
-            result = pstmt.executeQuery();
             int commentsNumber = 0;
             int like = 0;
             int share = 0;
+
+            //评论条数
+            sql = "SELECT COUNT(comments) FROM product_interaction WHERE product_id=? AND comments_time != ''";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productId);
+            result = pstmt.executeQuery();
             if(result.next()){
                 commentsNumber = result.getInt(1);
-                like = result.getInt(2);
-                share = result.getInt(3);
             }
             interact.setCommentsNumber(commentsNumber);
+
+            //点赞条数
+            sql = "SELECT COUNT(like_time) FROM product_interaction WHERE product_id=? AND like_time != ''";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productId);
+            result = pstmt.executeQuery();
+            if(result.next()){
+                like = result.getInt(1);
+            }
             interact.setLikeNumber(like);
+
+            //分享条数
+            sql = "SELECT COUNT(share_time) FROM product_interaction WHERE product_id=? AND share_time != ''";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productId);
+            result = pstmt.executeQuery();
+            if(result.next()){
+                share = result.getInt(1);
+            }
             interact.setShareNumber(share);
 
             int temp = (page - 1)*DATA_NUMBER;
 
             //查询评论
-            sql2 = "SELECT * FROM product_interaction WHERE product_id=? ORDER BY comments_time DESC LIMIT ?,"+DATA_NUMBER;
+            sql2 = "SELECT * FROM product_interaction WHERE product_id=? AND comments_time != '' ORDER BY comments_time DESC LIMIT ?,"+DATA_NUMBER;
             pstmt2 = conn.prepareStatement(sql2);
-            pstmt2.setInt(1,temp);
+            pstmt2.setInt(1,productId);
+            pstmt2.setInt(2,temp);
             result2 = pstmt2.executeQuery();
             List<InteractInfoDTO> list = new ArrayList<>();
             while(result2.next()){
                 InteractInfoDTO interactInfo = new InteractInfoDTO();
                 interactInfo.setUserName(result2.getString("user_name"));
                 interactInfo.setComments(result2.getString("comments"));
-                interactInfo.setCommentsTime("comments_time");
+                interactInfo.setCommentsTime(result2.getString("comments_time"));
                 list.add(interactInfo);
             }
             interact.setComments(list);
 
             //查询点赞
-            sql = "SELECT * FROM product_interaction WHERE product_id = ? ORDER BY like_time DESC LIMIT ?,"+DATA_NUMBER;
+            sql = "SELECT * FROM product_interaction WHERE product_id = ? AND like_time != '' ORDER BY like_time DESC LIMIT ?,"+DATA_NUMBER;
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1,temp);
+            pstmt.setInt(1,productId);
+            pstmt.setInt(2,temp);
             result = pstmt.executeQuery();
             List<InteractInfoDTO> list2 = new ArrayList<>();
             while(result.next()){
@@ -79,9 +100,10 @@ public class GetInteractDAO {
             interact.setLike(list2);
 
             //查询分享
-            sql = "SELECT * FROM product_interaction WHERE product_id = ? ORDER BY like_time DESC LIMIT ?,"+DATA_NUMBER;
+            sql = "SELECT * FROM product_interaction WHERE product_id = ? AND share_time != '' ORDER BY share_time DESC LIMIT ?,"+DATA_NUMBER;
             pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1,temp);
+            pstmt.setInt(1,productId);
+            pstmt.setInt(2,temp);
             result = pstmt.executeQuery();
             List<InteractInfoDTO> list3 = new ArrayList<>();
             while(result.next()){
@@ -90,15 +112,52 @@ public class GetInteractDAO {
                 interactInfo.setShareTime(result.getString("share_time"));
                 list3.add(interactInfo);
             }
-            interact.setLike(list3);
+            interact.setShare(list3);
 
             new Conn().closeConn(result,pstmt,conn);
             new Conn().closeConn(result2,pstmt2,conn);
-            return new PagerDTO<InteractDTO>(page+1,interact);
+            return new PagerDTO<>(page + 1, interact);
         }catch (Exception e){
             e.printStackTrace();
+            return null;
         }
 
-        return null;
     }
+
+    /**
+     * 判断用户是否已点赞该商品
+     * @param username
+     * @param productId
+     * @return
+     */
+    public int isLike(String username, int productId){
+        Connection conn = new Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        try{
+            sql = "SELECT is_like FROM commodity_score WHERE product_id=? AND user_name=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,productId);
+            pstmt.setString(2,username);
+            result = pstmt.executeQuery();
+            if(result.next()){
+                if(result.getBoolean("is_like")) {
+                    new Conn().closeConn(result, pstmt, conn);
+                    return ResultEnum.ALREADY_LIKE.getCode();
+                }else{
+                    new Conn().closeConn(result,pstmt,conn);
+                    return ResultEnum.NOT_LIKE.getCode();
+                }
+            }else{
+                new Conn().closeConn(result,pstmt,conn);
+                return ResultEnum.NOT_LIKE.getCode();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            new Conn().closeConn(result,pstmt,conn);
+            return ResultEnum.NOT_LIKE.getCode();
+        }
+    }
+
 }
