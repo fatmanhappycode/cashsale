@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * @Description:
+ * @Description:获取评论、点赞、分享
  * @Author: 8-0416
  * @Date: 2018/11/26
  */

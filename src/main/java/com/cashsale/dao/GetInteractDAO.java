@@ -24,98 +24,33 @@ public class GetInteractDAO {
 
     public PagerDTO<InteractDTO> getInteract(int page, int productId){
         InteractDTO interact = new InteractDTO();
-        Connection conn = new Conn().getCon();
-        PreparedStatement pstmt2 = null;
-        PreparedStatement pstmt = null;
-        ResultSet result2 = null;
-        ResultSet result = null;
-        String sql2 = "";
-        String sql = "";
         try{
-            int commentsNumber = 0;
-            int like = 0;
-            int share = 0;
-
             //评论条数
-            sql = "SELECT COUNT(comments) FROM product_interaction WHERE product_id=? AND comments_time != ''";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, productId);
-            result = pstmt.executeQuery();
-            if(result.next()){
-                commentsNumber = result.getInt(1);
-            }
+            int commentsNumber = getCommentNumber(productId);
             interact.setCommentsNumber(commentsNumber);
 
             //点赞条数
-            sql = "SELECT COUNT(like_time) FROM product_interaction WHERE product_id=? AND like_time != ''";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, productId);
-            result = pstmt.executeQuery();
-            if(result.next()){
-                like = result.getInt(1);
-            }
+            int like = getLikeNumber(productId);
             interact.setLikeNumber(like);
 
             //分享条数
-            sql = "SELECT COUNT(share_time) FROM product_interaction WHERE product_id=? AND share_time != ''";
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, productId);
-            result = pstmt.executeQuery();
-            if(result.next()){
-                share = result.getInt(1);
-            }
+            int share = getShareNumber(productId);
             interact.setShareNumber(share);
 
             int temp = (page - 1)*DATA_NUMBER;
 
             //查询评论
-            sql2 = "SELECT * FROM product_interaction WHERE product_id=? AND comments_time != '' ORDER BY comments_time DESC LIMIT ?,"+DATA_NUMBER;
-            pstmt2 = conn.prepareStatement(sql2);
-            pstmt2.setInt(1,productId);
-            pstmt2.setInt(2,temp);
-            result2 = pstmt2.executeQuery();
-            List<InteractInfoDTO> list = new ArrayList<>();
-            while(result2.next()){
-                InteractInfoDTO interactInfo = new InteractInfoDTO();
-                interactInfo.setUserName(result2.getString("user_name"));
-                interactInfo.setComments(result2.getString("comments"));
-                interactInfo.setCommentsTime(result2.getString("comments_time"));
-                list.add(interactInfo);
-            }
+            List<InteractInfoDTO> list = getComments(productId, temp);
             interact.setComments(list);
 
             //查询点赞
-            sql = "SELECT * FROM product_interaction WHERE product_id = ? AND like_time != '' ORDER BY like_time DESC LIMIT ?,"+DATA_NUMBER;
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1,productId);
-            pstmt.setInt(2,temp);
-            result = pstmt.executeQuery();
-            List<InteractInfoDTO> list2 = new ArrayList<>();
-            while(result.next()){
-                InteractInfoDTO interactInfo = new InteractInfoDTO();
-                interactInfo.setUserName(result.getString("user_name"));
-                interactInfo.setLikeTime(result.getString("like_time"));
-                list2.add(interactInfo);
-            }
-            interact.setLike(list2);
+            list = getLike(productId, temp);
+            interact.setLike(list);
 
             //查询分享
-            sql = "SELECT * FROM product_interaction WHERE product_id = ? AND share_time != '' ORDER BY share_time DESC LIMIT ?,"+DATA_NUMBER;
-            pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1,productId);
-            pstmt.setInt(2,temp);
-            result = pstmt.executeQuery();
-            List<InteractInfoDTO> list3 = new ArrayList<>();
-            while(result.next()){
-                InteractInfoDTO interactInfo = new InteractInfoDTO();
-                interactInfo.setUserName(result.getString("user_name"));
-                interactInfo.setShareTime(result.getString("share_time"));
-                list3.add(interactInfo);
-            }
-            interact.setShare(list3);
+            list = getShare(productId, temp);
+            interact.setShare(list);
 
-            new Conn().closeConn(result,pstmt,conn);
-            new Conn().closeConn(result2,pstmt2,conn);
             return new PagerDTO<>(page + 1, interact);
         }catch (Exception e){
             e.printStackTrace();
@@ -160,4 +95,176 @@ public class GetInteractDAO {
         }
     }
 
+    /**
+     * 获取商品的评论数目
+     * @param productId
+     * @return
+     */
+    public int getCommentNumber(int productId){
+        Connection conn = new Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        int commentsNumber = 0;
+        try {
+            sql = "SELECT COUNT(comments) FROM product_interaction WHERE product_id=? AND comments_time != ''";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productId);
+            result = pstmt.executeQuery();
+            if(result.next()){
+                commentsNumber = result.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        new Conn().closeConn(result,pstmt,conn);
+        return commentsNumber;
+    }
+
+    /**
+     * 查询评论的具体内容
+     * @param productId
+     * @param temp
+     * @return
+     */
+    public List<InteractInfoDTO> getComments(int productId, int temp){
+        List<InteractInfoDTO> list = new ArrayList<>();
+        Connection conn = new Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        try{
+            sql = "SELECT * FROM product_interaction WHERE product_id=? AND comments_time != '' ORDER BY comments_time DESC LIMIT ?,"+DATA_NUMBER;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,productId);
+            pstmt.setInt(2,temp);
+            result = pstmt.executeQuery();
+            while(result.next()){
+                InteractInfoDTO interactInfo = new InteractInfoDTO();
+                interactInfo.setUserName(result.getString("user_name"));
+                interactInfo.setComments(result.getString("comments"));
+                interactInfo.setCommentsTime(result.getString("comments_time"));
+                list.add(interactInfo);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        new Conn().closeConn(result,pstmt,conn);
+        return list;
+    }
+
+    /**
+     * 获取商品的点赞数
+     * @param productId
+     * @return
+     */
+    public int getLikeNumber(int productId){
+        Connection conn = new Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        int like = 0;
+        try {
+            sql = "SELECT COUNT(like_time) FROM product_interaction WHERE product_id=? AND like_time != ''";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productId);
+            result = pstmt.executeQuery();
+            if(result.next()){
+                like = result.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        new Conn().closeConn(result,pstmt,conn);
+        return like;
+    }
+
+    /**
+     * 查询点赞的具体内容
+     * @param productId
+     * @param temp
+     * @return
+     */
+    public List<InteractInfoDTO> getLike(int productId, int temp){
+        List<InteractInfoDTO> list = new ArrayList<>();
+        Connection conn = new Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        try{
+            sql = "SELECT * FROM product_interaction WHERE product_id = ? AND like_time != '' ORDER BY like_time DESC LIMIT ?,"+DATA_NUMBER;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,productId);
+            pstmt.setInt(2,temp);
+            result = pstmt.executeQuery();
+            while(result.next()){
+                InteractInfoDTO interactInfo = new InteractInfoDTO();
+                interactInfo.setUserName(result.getString("user_name"));
+                interactInfo.setLikeTime(result.getString("like_time"));
+                list.add(interactInfo);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        new Conn().closeConn(result,pstmt,conn);
+        return list;
+    }
+
+    /**
+     * 获取商品的分享数
+     * @param productId
+     * @return
+     */
+    public int getShareNumber(int productId){
+        Connection conn = new Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        int share = 0;
+        try {
+            sql = "SELECT COUNT(share_time) FROM product_interaction WHERE product_id=? AND share_time != ''";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productId);
+            result = pstmt.executeQuery();
+            if(result.next()){
+                share = result.getInt(1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        new Conn().closeConn(result,pstmt,conn);
+        return share;
+    }
+
+    /**
+     * 查询分享的具体内容
+     * @param productId
+     * @param temp
+     * @return
+     */
+    public List<InteractInfoDTO> getShare(int productId, int temp){
+        List<InteractInfoDTO> list = new ArrayList<>();
+        Connection conn = new Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        try{
+            sql = "SELECT * FROM product_interaction WHERE product_id = ? AND share_time != '' ORDER BY share_time DESC LIMIT ?,"+DATA_NUMBER;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1,productId);
+            pstmt.setInt(2,temp);
+            result = pstmt.executeQuery();
+            while(result.next()){
+                InteractInfoDTO interactInfo = new InteractInfoDTO();
+                interactInfo.setUserName(result.getString("user_name"));
+                interactInfo.setShareTime(result.getString("share_time"));
+                list.add(interactInfo);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        new Conn().closeConn(result,pstmt,conn);
+        return list;
+    }
+    
 }
