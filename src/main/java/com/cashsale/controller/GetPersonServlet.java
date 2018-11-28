@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /**
+ * 获取个人信息
  * @author Sylvia
  * @date 2018/11/17 - 4:23
  */

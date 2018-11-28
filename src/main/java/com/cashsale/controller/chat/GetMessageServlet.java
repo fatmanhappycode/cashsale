@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+package com.cashsale.controller.chat;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.MessageDTO;
@@ -15,11 +15,12 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
+ * 获取聊天记录
  * @author 肥宅快乐码
- * @date 2018/11/16 - 22:04
+ * @date 2018/11/16 - 21:17
  */
-@WebServlet("/isMessage")
-public class IsMessageServlet extends HttpServlet {
+@WebServlet("/getMessage")
+public class GetMessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 设置响应编码
@@ -27,7 +28,7 @@ public class IsMessageServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
 
         String username = req.getParameter("username");
-        ResultDTO<String> result = new GetMessageDAO().isMessage(username);
+        ResultDTO<List< MessageDTO >> result = new GetMessageDAO().getMessage(username);
 
         PrintWriter writer = resp.getWriter();
         writer.print(JSONObject.toJSON(result));
