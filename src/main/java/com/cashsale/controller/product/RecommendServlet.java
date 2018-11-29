@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.cashsale.controller;
+package com.cashsale.controller.product;
 
 import java.io.IOException;
 import java.io.PrintWriter;

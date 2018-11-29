@@ -198,10 +198,17 @@ public class ListRecommendDAO {
 				result = pstmt.executeQuery();
 				ResultSetMetaData metaData = result.getMetaData();
 				int columnCount = metaData.getColumnCount();
+				int productId = Integer.parseInt(array.get(i));
+				int commentNumber = new GetInteractDAO().getCommentNumber(productId);
+				int likeNumber = new GetInteractDAO().getLikeNumber(productId);
+				int shareNumber = new GetInteractDAO().getShareNumber(productId);
 
 				// 遍历每一行数据
 				while (result.next()) {
 					Map<String, Object> map = new HashMap<String, Object>();
+					map.put("commentsNumber",commentNumber);
+					map.put("likeNumber",likeNumber);
+					map.put("shareNumber",shareNumber);
 
 					// 遍历每一列
 					for (int j = 1; j <= columnCount; j++) {

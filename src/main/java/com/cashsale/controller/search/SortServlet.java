@@ -1,9 +1,10 @@
-package com.cashsale.controller;
+package com.cashsale.controller.search;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.dao.GetInteractDAO;
 import com.cashsale.enums.ResultEnum;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -70,8 +71,14 @@ public class SortServlet extends HttpServlet {
             List<ProductDO> result = new ArrayList<>();
 
             while (rs.next()) {
+                int commentsNumber = new GetInteractDAO().getCommentNumber(rs.getInt("product_id"));
+                int likeNumber = new GetInteractDAO().getLikeNumber(rs.getInt("product_id"));
+                int shareNumber = new GetInteractDAO().getShareNumber(rs.getInt("product_id"));
                 // 存放列名和对应值
                 Map<String, Object> map = new HashMap<String, Object>();
+                map.put("commentsNumber",commentsNumber);
+                map.put("likeNumber",likeNumber);
+                map.put("shareNumber",shareNumber);
                 for (int i = 0; i < cols_len; i++) {
                     String cols_name = metaData.getColumnName(i + 1);
                     Object cols_value = rs.getObject(cols_name);

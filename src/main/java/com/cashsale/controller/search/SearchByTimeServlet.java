@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+package com.cashsale.controller.search;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.PagerDTO;
@@ -15,10 +15,10 @@ import java.io.PrintWriter;
 
 /**
  * @author 肥宅快乐码
- * @date 2018/10/23 - 21:47
+ * @date 2018/11/5 - 0:16
  */
-@WebServlet("/search")
-public class SearchServlet extends HttpServlet {
+@WebServlet("/searchByTime")
+public class SearchByTimeServlet  extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 设置响应编码
@@ -26,9 +26,10 @@ public class SearchServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
 
         // 获取参数
-        String title = req.getParameter("title");
+        String time = req.getParameter("time");
         String currentPage = req.getParameter("currentPage");
-        ResultDTO<PagerDTO> result = new SearchService().searchByTitle(title, currentPage);
+        ResultDTO<PagerDTO> result = new SearchService().searchByTime(time, currentPage);
+        System.out.println(result.getData().getData().size());
 
         PrintWriter writer = resp.getWriter();
         writer.print(JSONObject.toJSON(result));

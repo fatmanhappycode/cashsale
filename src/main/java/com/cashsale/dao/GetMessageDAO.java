@@ -1,11 +1,9 @@
 package com.cashsale.dao;
 
 import com.cashsale.bean.MessageDTO;
-import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.enums.ResultEnum;
 
-import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

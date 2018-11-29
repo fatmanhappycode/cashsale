@@ -22,6 +22,13 @@ public class DetailProductInfoDAO {
 
     public ResultDTO<ProductDO> showDetailProduct(String product_id) {
         try {
+            int productId = 0;
+            if(product_id != null & !product_id.equals("")){
+                productId = Integer.parseInt(product_id);
+            }
+            int commentNumber = new GetInteractDAO().getCommentNumber(productId);
+            int likeNumber = new GetInteractDAO().getLikeNumber(productId);
+            int shareNumber = new GetInteractDAO().getShareNumber(productId);
             pstmt = conn.prepareStatement("SELECT * FROM product_info WHERE product_id=?");
             pstmt.setString(1, product_id);
             rs = pstmt.executeQuery();
@@ -35,6 +42,9 @@ public class DetailProductInfoDAO {
                 product.setPdDescription(rs.getString("product_description"));
                 product.setImageUrl(rs.getString("image_url"));
                 product.setUsername(rs.getString("user_name"));
+                product.setCommentsNumber(commentNumber);
+                product.setLikeNumber(likeNumber);
+                product.setShareNumber(shareNumber);
             }
             return new ResultDTO<ProductDO>(ResultEnum.SEARCH_SUCCESS.getCode(),product,ResultEnum.SEARCH_SUCCESS.getMsg());
         } catch (Exception e) {

@@ -1,12 +1,9 @@
-package com.cashsale.controller;
+package com.cashsale.controller.product;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.CustomerInfoDO;
+import com.cashsale.bean.InteractDTO;
 import com.cashsale.bean.PagerDTO;
-import com.cashsale.bean.ResultDTO;
-import com.cashsale.enums.ResultEnum;
-import com.cashsale.service.GetPersonService;
-import com.cashsale.service.ScreenService;
+import com.cashsale.dao.GetInteractDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,16 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 /**
- * 获取个人信息
- * @author Sylvia
- * @date 2018/11/17 - 4:23
+ * @Description:获取评论、点赞、分享
+ * @Author: 8-0416
+ * @Date: 2018/11/26
  */
-@WebServlet("/getPersonInfo")
-public class GetPersonServlet extends HttpServlet{
+@WebServlet("/getInteract")
+public class GetInteractServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -34,12 +30,16 @@ public class GetPersonServlet extends HttpServlet{
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        String username = request.getParameter("username");
-
+        String strProductId = request.getParameter("productId");
+        String strPage = request.getParameter("page");
+        int productId = Integer.parseInt(strProductId);
+        int page = 0;
+        if(strPage != null && !strPage.equals("")){
+            page = Integer.parseInt(strPage);
+        }
         PrintWriter writer = response.getWriter();
-        CustomerInfoDO customer = new GetPersonService().getPersonInfo(username);
-        ResultDTO<CustomerInfoDO> result = new ResultDTO<>(ResultEnum.PERSON_SUCCESS.getCode(),customer,ResultEnum.PERSON_SUCCESS.getMsg());
-        writer.println(JSONObject.toJSON(result));
+        PagerDTO<InteractDTO> result = new GetInteractDAO().getInteract(page, productId);
+        writer.print(JSONObject.toJSON(result));
     }
 
     @Override

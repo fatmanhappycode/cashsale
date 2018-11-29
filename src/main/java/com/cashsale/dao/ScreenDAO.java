@@ -55,7 +55,14 @@ public class ScreenDAO {
 
 			// 遍历每一行数据
 			while (result.next()) {
+				int commentsNumber = new GetInteractDAO().getCommentNumber(result.getInt("product_id"));
+				int likeNumber = new GetInteractDAO().getLikeNumber(result.getInt("product_id"));
+				int shareNumber = new GetInteractDAO().getShareNumber(result.getInt("product_id"));
+				// 存放列名和对应值
 				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("commentsNumber",commentsNumber);
+				map.put("likeNumber",likeNumber);
+				map.put("shareNumber",shareNumber);
 
 				// 遍历每一列
 				for (int j = 1; j <= columnCount; j++) {
