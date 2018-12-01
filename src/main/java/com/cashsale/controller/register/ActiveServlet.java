@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+package com.cashsale.controller.register;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -59,7 +59,7 @@ public class ActiveServlet extends HttpServlet{
         if (result.getCode() == ResultEnum.ACTIVE_SUCCESS.getCode()) {
         	response.sendRedirect("/cashsale/activesuccess.html");
 		} else {
-        	response.sendRedirect("/cashsale/activesuccess.html");
+        	response.sendRedirect("/cashsale/activefailure.html");
 		}
 	}
 }

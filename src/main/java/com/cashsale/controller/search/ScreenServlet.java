@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+package com.cashsale.controller.search;
 
 import java.io.IOException;
 import java.io.PrintWriter;

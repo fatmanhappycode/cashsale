@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+package com.cashsale.controller.chat;
 
 import java.net.URLDecoder;
 import java.util.*;
@@ -16,7 +16,6 @@ import com.cashsale.bean.MessageDTO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.SocketDAO;
 import com.cashsale.enums.ResultEnum;
-import com.cashsale.util.TimeUtil;
 import com.google.gson.Gson;
 
 /**

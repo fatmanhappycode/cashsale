@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+package com.cashsale.controller.person;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ResultDTO;

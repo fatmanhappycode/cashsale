@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+package com.cashsale.controller.product;
 
 import java.io.BufferedReader;
 import java.io.IOException;
