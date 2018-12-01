@@ -57,7 +57,7 @@
 	/* border:1px solid #FAC; */
 }
 /*左边图片*/
-.form-div img{
+.bgImg{
 	display:block;
 	width: 680px;
 	height: 440px;
@@ -75,13 +75,13 @@
 	/* font: 2em Georgia, serif;字体为斜体的Georgia或者serif */
 	font: 2.0em SimHei;
 	color: #da7370;
-	margin-top: 45px;
+	margin-top: 20px;
 	margin-left: 16px;
 }
 /*用户名等*/
 .form p{
 	font-size:18px;
-	margin-left:25px;
+	margin-left:34px;
 	color: #464745;
 }
 /*整个表单*/
@@ -97,11 +97,11 @@
 }
 /*每个input块*/
 .g-username {
-	padding :4.5%;
+	padding :2.5%;
 	transition: 0.4s;
 }
 /*input*/
-#username,#password,#login,#register {
+#username,#password,#login,#register,#verifyCode{
 	width: 220px;
 	height: 30px;
 	font-size: 18px;
@@ -113,6 +113,9 @@
 	border: 1px solid #ddd;
 	overflow: hidden;
 	transition: 0.4s;
+}
+#verifyCode{
+	width:130px;
 }
 /*获取焦点时*/
 #username:focus,#password:focus,#login:focus,#register:focus {
@@ -130,11 +133,11 @@
 	cursor:pointer;
 }
 #login{
+	margin-top:8%;
 	color: #da7370;
-	margin-top:4%;
 }
 #register{
-	margin-top:-6%;
+	margin-top:3%;
 	background: #da7370;
 	color:#fff;
 	/* 阴影 */
@@ -152,6 +155,41 @@
 	box-shadow:3px 3px 11px #969696;
 	border-color:hsl(199, 98%, 48%);
     border-radius: 5px;
+}
+
+/*验证码图片*/
+#verifyImg{
+	position:absolute;
+	top: 65%;
+	left: 57%;
+}
+#verifyA {
+	text-decoration: none;
+	font-size: 10px;
+	position:absolute;
+	top: 71%;
+	left: 86%;
+	opacity:.75;
+	color:red;
+}
+
+/* 提示语 */
+#Item{
+	position: absolute;
+	margin-top: -12%;
+	margin-left: 13%;
+	height: 22px;
+	width: 221px;
+}
+#verifyCodeItem,#verifyCodeIsNull{
+	position:absolute;
+	width:240px;
+	height: 15px;
+	opacity:.75;
+	font-size:12px;
+	padding-top: 4px;
+	color:red;
+	display: none;
 }
 
 /*版权*/

@@ -35,3 +35,5 @@ cashsale.iml
 src/main/java/com/cashsale/conn/Conn.java
 src/main/java/com/cashsale/conn/Conn.java
 src/main/java/com/cashsale/util/SensitiveWordInitUtil.java
+src/main/java/com/cashsale/conn/Conn.java
+src/main/java/com/cashsale/util/SensitiveWordInitUtil.java

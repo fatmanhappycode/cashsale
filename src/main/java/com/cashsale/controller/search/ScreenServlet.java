@@ -73,7 +73,7 @@ public class ScreenServlet extends HttpServlet{
 			queryList.add("is_bargain = " + isBargain );
 		}
 		if( tradePlace != null && !tradePlace.equals("")){
-			queryList.add("trade_place = " + tradePlace);
+			queryList.add("trade_place = '" + tradePlace +"'");
 		}
 
 		String[] priceGroup = price.split(";");

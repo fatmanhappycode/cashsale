@@ -10,7 +10,7 @@
 <div class="all">
 	<div class="bg"></div>
 	<div class="form-div">
-		<img src="img/theme2.jpg">
+		<img src="img/theme2.jpg" class="bgImg">
 		<div class="webName">C A S H S A L E</div>
 		<form action="" accept-charset="UTF-8" class="form">
 			<h2>登录</h2>
@@ -30,10 +30,23 @@
 				<br/>
 			</div>
 			<div class="g-username">
+				<p>验证码:</p><br/>
+				<input type="text" id="verifyCode" oninput="verCode()">
+				<a href="javascript:void(0)" onclick="changeVerifyCode()">
+					<img src="Kaptcha.jpg" id="verifyImg">
+				</a>
+				<a href="javascript:void(0)" onclick="changeVerifyCode()" id="verifyA">换一张</a>
+				<br/>
+			</div>
+			<div class="g-username">
 				<input type="button" value="登录" id="login" onclick="loadXMLDoc()">
 			</div>
 			<div class="g-username">
 				<a href="register.html"><input type="button" value="注册" id="register"></a>
+			</div>
+			<div id="Item">
+				<span id="verifyCodeItem">验证码不正确</span>
+				<span id="verifyCodeIsNull">请输入验证码</span>
 			</div>
 		</form>
 
@@ -43,9 +56,9 @@
 
 
 </div>
-<script type="text/javascript" src="js/cookie.js"></script>
-<script type="text/javascript" src="js/login.js"></script>
-<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 </body>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
 
 </html>

@@ -34,6 +34,10 @@ public enum ResultEnum {
     LOGIN_SUCCESS(200,"登录成功"),
     /** 用户名或密码错误 */
     LOGIN_ERROR(401,"登录失败，用户名或密码错误"),
+    /** 验证码错误 */
+    VERIFYCODE_ERROR(401,"验证码错误"),
+    /** 验证码正确 */
+    VERIFYCODE_RIGHT(200,"验证码正确"),
 
     /** 发布成功 */
     PUBLISH_SUCCESS(200,"发布成功"),
