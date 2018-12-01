@@ -52,26 +52,8 @@ public class SetPasswordServlet extends HttpServlet {
         }
         CustomerDO c = new Gson().fromJson(user, CustomerDO.class);
         String password = c.getPassword();
+        String username = (String)this.getServletContext().getAttribute("username");
 
-        //获取请求头token
-        Cookie[] cookies = request.getCookies();
-        String token = "";
-        for (Cookie cookie : cookies) {
-            switch(cookie.getName()){
-                case "token":
-                    token = cookie.getValue();
-                    break;
-                default:
-                    break;
-            }
-        }
-        Claims claims = null;
-        try {
-            claims = CommonUtils.parseJWT(token);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String username = claims.getSubject();
         String encodedPass = "";
         try{
             //创建密钥对

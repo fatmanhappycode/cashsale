@@ -53,6 +53,7 @@ public class ForgetPasswordServlet extends HttpServlet {
         //生成一个64位的随机验证码
         String code = UUIDUtil.getUUID() + UUIDUtil.getUUID();
         this.getServletContext().setAttribute(username+"code",code);
+        this.getServletContext().setAttribute("username",username);
 
         PrintWriter writer = response.getWriter();
         String encodedCode = "";

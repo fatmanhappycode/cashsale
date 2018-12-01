@@ -3,7 +3,7 @@
 * 作者：lu
 * */
 
-// 点击登录时调用
+
 /*
 * 获取value后请求后台，若存储在此用户且密码正确，则登录成功
 * */
@@ -52,7 +52,7 @@ function loadXMLDoc_1()
     var Cpassword = $("#Cpassword").val();
     var saveData={"password":password,"Cpassword":Cpassword};
     $.ajax({
-        url:"/cashsale/SetPassword",
+        url:"/cashsale/setPassword",
         type:"post",
         dataType:"json",
         data:JSON.stringify(saveData),
