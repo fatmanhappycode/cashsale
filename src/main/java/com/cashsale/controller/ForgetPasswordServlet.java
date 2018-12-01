@@ -3,6 +3,7 @@ package com.cashsale.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.CustomerInfoDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.dao.SetPasswordDAO;
 import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.*;
 import com.google.gson.Gson;
@@ -50,46 +51,53 @@ public class ForgetPasswordServlet extends HttpServlet {
         String username = c.getUsername();
         String email = c.getEmail();
 
-        //生成一个64位的随机验证码
-        String code = UUIDUtil.getUUID() + UUIDUtil.getUUID();
-        this.getServletContext().setAttribute(username+"code",code);
-        this.getServletContext().setAttribute("username",username);
-
+        boolean tag = new SetPasswordDAO().isRight(username, email);
         PrintWriter writer = response.getWriter();
-        String encodedCode = "";
-        String encodedUsername = username;
-        //创建密钥对
-        Map<String, String> keyMap = RSAUtil.createKeys(1024);
-        //获取公钥
-        String  publicKey = keyMap.get("publicKey");
-        //获取密钥
-        String  privateKey = keyMap.get("privateKey");
-        try {
-            //保存密钥
-            this.getServletContext().setAttribute(username, privateKey);
-            //公钥加密
-            encodedCode = RSAUtil.publicEncrypt(code, RSAUtil.getPublicKey(publicKey));
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        if(tag) {
+            //生成一个64位的随机验证码
+            String code = UUIDUtil.getUUID() + UUIDUtil.getUUID();
+            this.getServletContext().setAttribute(username + "code", code);
+            this.getServletContext().setAttribute("username", username);
+
+            String encodedCode = "";
+            String encodedUsername = username;
+            //创建密钥对
+            Map<String, String> keyMap = RSAUtil.createKeys(1024);
+            //获取公钥
+            String publicKey = keyMap.get("publicKey");
+            //获取密钥
+            String privateKey = keyMap.get("privateKey");
+            try {
+                //保存密钥
+                this.getServletContext().setAttribute(username, privateKey);
+                //公钥加密
+                encodedCode = RSAUtil.publicEncrypt(code, RSAUtil.getPublicKey(publicKey));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            //获取当前时间
+            String currentTime = TimeUtil.getTime();
+
+            int statusCode = ResultEnum.ERROR.getCode();
+            String message = ResultEnum.ERROR.getMsg();
+            /* 发送邮件 */
+            try {
+                MailUtil.sendMail(email, encodedCode, encodedUsername, currentTime);
+                statusCode = ResultEnum.SET_PASSWORD_EMAIL.getCode();
+                message = ResultEnum.SET_PASSWORD_EMAIL.getMsg();
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.err.println("重置密码邮件发送失败！");
+            }
+
+            ResultDTO<String> result = new ResultDTO<>(statusCode, null, message);
+            writer.print(JSONObject.toJSON(result));
+        }else{
+            ResultDTO<String> result = new ResultDTO<>(ResultEnum.SET_PASSWORD_ERROR.getCode(), null, ResultEnum.SET_PASSWORD_ERROR.getMsg());
+            writer.print(JSONObject.toJSON(request));
         }
-
-        //获取当前时间
-        String currentTime = TimeUtil.getTime();
-
-        int statusCode = ResultEnum.ERROR.getCode();
-        String message = ResultEnum.ERROR.getMsg();
-        /* 发送邮件 */
-        try {
-            MailUtil.sendMail(email, encodedCode, encodedUsername, currentTime);
-            statusCode = ResultEnum.SET_PASSWORD_EMAIL.getCode();
-            message = ResultEnum.SET_PASSWORD_EMAIL.getMsg();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("重置密码邮件发送失败！");
-        }
-
-        ResultDTO<String> result = new ResultDTO<>(statusCode,null,message);
-        writer.print(JSONObject.toJSON(result));
     }
 }
 

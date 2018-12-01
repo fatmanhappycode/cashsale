@@ -130,7 +130,7 @@ public class MailUtil {
 		message.setSubject("来自“现卖”的重置密码邮件");
 		//设置邮件的正文
 		message.setContent("<h1>您好：</h1>"+
-						"您在现卖申请找回密码：<br>" + "<a href='http://localhost:8080/cashsale/comfirmSet?code="+code
+						"您在现卖申请找回密码：<br>" + "<a href='http://localhost:8080/cashsale/confirmSet?code="+code
 						+"&username="+username+"&currentTime="+currentTime+"'>"+"点击重置密码</a>"+"<h5>如以上连接无法点击，请将其复制到浏览器中打开（请于3"
 						+ "分钟内完成验证，逾期需重新申请。如不是本人操作，请忽略本邮件，并及时修改密码！）</h5>",
 				"text/html;charset=UTF-8");

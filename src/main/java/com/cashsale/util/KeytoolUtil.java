@@ -99,7 +99,7 @@ public class KeytoolUtil {
      * @param aliasName
      * @param keystoreName
      */
-    public static void DeleteAlias(String aliasName, String keystoreName){
+    public static void DeleteAlias(String keystoreName, String aliasName){
         try{
             FileInputStream in=new FileInputStream(keystoreName);
             KeyStore ks=KeyStore.getInstance("JKS");
