@@ -9,6 +9,8 @@ public enum ResultEnum {
     ERROR(500,"请求失败"),
     /** 请求成功 */
     SUCCESS(200,"请求成功"),
+    /** 该商品不存在 */
+    NO_FOUND(401,"该商品不存在"),
 
     /** 邮箱激活成功 */
     ACTIVE_SUCCESS(200, "激活成功！"),
@@ -76,7 +78,18 @@ public enum ResultEnum {
     /** 密码修改成功 */
     PASSWORD_SUCCESS(200,"密码修改成功"),
     /** 重置密码邮件发送成功 */
-    SET_PASSWORD_EMAIL(200,"重置密码邮件发送成功，请到邮箱进行确认")
+    SET_PASSWORD_EMAIL(200,"重置密码邮件发送成功，请到邮箱进行确认"),
+
+    /** 交易成功 */
+    TRANSACT_SUCCESS(200,"交易成功"),
+
+    /** 评论商品成功 */
+    COMMENT_SUCCESS(200,"评论成功"),
+
+    /** 已点赞该商品 */
+    ALREADY_LIKE(401,"已点赞"),
+    /** 未点赞 */
+    NOT_LIKE(412,"未点赞")
     ;
 
     /** 状态码 */

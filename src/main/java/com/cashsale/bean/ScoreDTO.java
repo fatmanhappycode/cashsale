@@ -15,6 +15,9 @@ public class ScoreDTO {
     /** 操作代码 */
     private String scoreCode;
 
+    /** 评论内容 */
+    private String comments;
+
     public String getUsername() {
         return username;
     }
@@ -37,5 +40,13 @@ public class ScoreDTO {
 
     public void setScoreCode(String scoreCode) {
         this.scoreCode = scoreCode;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 }

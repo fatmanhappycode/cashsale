@@ -54,10 +54,13 @@ public class ScoreServlet extends HttpServlet{
 		String strCode = s.getScoreCode();
 		//被浏览的商品
 		int productId = s.getProductId();
+		//评论内容
+		String comments = s.getComments();
 
 		//浏览者
+		String username = s.getUsername();
 		//获取请求头token
-		Cookie[] cookies = request.getCookies();
+		/*Cookie[] cookies = request.getCookies();
 		String token = "";
 		for (Cookie cookie : cookies) {
 			switch(cookie.getName()){
@@ -74,10 +77,9 @@ public class ScoreServlet extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String username = claims.getSubject();
+		String username = claims.getSubject();*/
 
-		System.out.println("strCode="+strCode);
-		ResultDTO<String> result = new UpdateScoreService().updateScore(username, productId, strCode);
+		ResultDTO<String> result = new UpdateScoreService().updateScore(username, productId, strCode, comments);
 		PrintWriter writer = response.getWriter();
 		writer.println(JSONObject.toJSONString(result));
 	}

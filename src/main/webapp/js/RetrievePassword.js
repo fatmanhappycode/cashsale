@@ -24,7 +24,7 @@ function loadXMLDoc()
     document.getElementById('step2').style.borderColor="#3190e8";
     document.getElementById('step3').style.background="#3190e8";
     alert("请到邮箱完成验证！");
-    var email = $("#email").val();
+    var email = $("#Email").val();
     var username = $("#username").val();
     var saveData={"email":email,"username":username};
     $.ajax({
