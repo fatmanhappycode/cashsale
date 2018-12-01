@@ -32,3 +32,4 @@ bin/.settings/org.eclipse.wst.jsdt.ui.superType.name
 *.xml
 cashsale.iml
 
+src/main/java/com/cashsale/conn/Conn.java
