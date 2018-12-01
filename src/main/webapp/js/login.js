@@ -15,21 +15,22 @@ function loadXMLDoc()
     var saveData={"username":username,"password":password};
     if(verify == true) {
         $.ajax({
-            url: "/login",
-            type: "post",
-            dataType: "json",
-            data: JSON.stringify(saveData),
-            contentType: "application/json;charset=UTF-8",
-            success: function (result, testStatus) {
-                token = result.data;
-                setCookie("token", token);
+            url:"/cashsale/login",
+            type:"post",
+            dataType:"json",
+            data:JSON.stringify(saveData),
+            contentType:"application/json;charset=UTF-8",
+            success:function(result,testStatus)
+            {
+                token=result.data;
+                setCookie("token",token);
                 //alert(result.msg);
-                if (result.code == "200" && token != "") {
+                if(result.code== "200"&& token!=""){
                     // 存入token和username
-                    setCookie("token", token);
-                    setCookie("username", username)
-                    window.location.href = "index.html";
-                } else if (result.code == "401") {
+                    setCookie("token",token);
+                    setCookie("username",username)
+                    window.location.href="index.html";
+                }else if(result.code== "401") {
                     alert(result.msg);
                 }
             },
