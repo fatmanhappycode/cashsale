@@ -79,6 +79,8 @@ public enum ResultEnum {
     PASSWORD_SUCCESS(200,"密码修改成功"),
     /** 重置密码邮件发送成功 */
     SET_PASSWORD_EMAIL(200,"重置密码邮件发送成功，请到邮箱进行确认"),
+    /** 用户名或邮箱错误 */
+    SET_PASSWORD_ERROR(401, "用户名或邮箱错误"),
 
     /** 交易成功 */
     TRANSACT_SUCCESS(200,"交易成功"),

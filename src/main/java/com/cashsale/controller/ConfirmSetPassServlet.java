@@ -14,7 +14,7 @@ import java.io.PrintWriter;
  * @author Sylvia
  * 2018年11月24日
  */
-@WebServlet("/comfirmSet")
+@WebServlet("/confirmSet")
 public class ConfirmSetPassServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class ConfirmSetPassServlet extends HttpServlet{
                 response.sendRedirect("RetrievePassword.html?flag=1");
             }else{
                 //跳转到验证失败的页面
-                response.sendRedirect("");
+                response.sendRedirect("verifyfailure.html");
             }
         }
         catch(Exception e )
@@ -58,7 +58,7 @@ public class ConfirmSetPassServlet extends HttpServlet{
             System.err.println("解密失败！");
             e.printStackTrace();
             //跳转到验证失败的页面
-            response.sendRedirect("");
+            response.sendRedirect("verifyfailure.html");
         }
     }
 }

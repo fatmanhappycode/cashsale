@@ -24,10 +24,42 @@ public class SetPasswordDAO {
             pstmt.setString(1,password);
             pstmt.setString(2,username);
             pstmt.execute();
+            new Conn().closeConn(null,pstmt,conn);
             return ResultEnum.PASSWORD_SUCCESS.getCode();
         }catch (Exception e){
             e.printStackTrace();
             return  ResultEnum.ERROR.getCode();
+        }
+    }
+
+    /**
+     * 判断用户名和邮箱是否已经注册且正确
+     * @param username
+     * @param email
+     * @return
+     */
+    public boolean isRight(String username, String email){
+        Connection conn = new Conn().getCon();
+        PreparedStatement pstmt = null;
+        ResultSet result = null;
+        String sql = "";
+        try{
+            sql = "SELECT * FROM user_data WHERE user_name = ? AND email =?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1,username);
+            pstmt.setString(2,email);
+            result = pstmt.executeQuery();
+            if(result.next()){
+                new Conn().closeConn(null,pstmt,conn);
+                return true;
+            }else{
+                new Conn().closeConn(null,pstmt,conn);
+                return false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            new Conn().closeConn(null,pstmt,conn);
+            return false;
         }
     }
 
