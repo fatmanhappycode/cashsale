@@ -24,11 +24,11 @@ function loadXMLDoc()
     document.getElementById('step2').style.borderColor="#3190e8";
     document.getElementById('step3').style.background="#3190e8";
     alert("请到邮箱完成验证！");
-    var email = $("#Email").val();
+    var email = $("#email").val();
     var username = $("#username").val();
     var saveData={"email":email,"username":username};
     $.ajax({
-        url:"/forgetPassword",
+        url:"/cashsale/forgetPassword",
         type:"post",
         dataType:"json",
         headers:{
@@ -52,7 +52,7 @@ function loadXMLDoc_1()
     var Cpassword = $("#Cpassword").val();
     var saveData={"password":password,"Cpassword":Cpassword};
     $.ajax({
-        url:"/setPassword",
+        url:"/cashsale/SetPassword",
         type:"post",
         dataType:"json",
         data:JSON.stringify(saveData),

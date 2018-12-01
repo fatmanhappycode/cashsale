@@ -84,6 +84,7 @@ function f() {
             type:"post",
             dataType:"json",
             async: false,
+            contentType:"application/json;charset=UTF-8",
             data:JSON.stringify(saveData),
             headers: {
                 "token":token,

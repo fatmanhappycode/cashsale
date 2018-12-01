@@ -311,7 +311,15 @@
 /* 第一个li */
 .OtherIspecies{
 	border-radius:10px 10px 0 0;
-	border-bottom:2px solid rgba(172,172,172,.5);
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom:2px solid rgba(172,172,172,.5);
+}
+.OtherIspecies p{
+    padding-top:12px;
+    padding-bottom: 3px;
+    background:url(../img/index/OtherIspecies.png)  40px 16px no-repeat;
+    background-size: 20px 20px;
 }
 /* �?后一个li */
 .OtherIspecies1{
@@ -324,7 +332,7 @@
 .species p{height:35px;}
 /* li滑过样式 */
 .Ispecies:hover{
-	background:rgba(166,128,226,.5);
+	background:rgba(107,199,176,.5);
 	cursor: pointer;
 }
 /* li滑过样式 下拉子框显示*/
@@ -335,7 +343,6 @@
 }
 .Ispecies:hover .g-username input{
 	display:block;
-	box-shadow:0px 0px 10px rgba(0,0,0,.5);
 	autofocus:autofocus;
 }
 
@@ -351,7 +358,7 @@
 	background: #FFF;
 	display:none;
 	border-radius:0 10px 10px 10px;
-	border:2px solid rgba(131,111,191,.5);
+	border:2px solid rgba(107,199,176,.5);
 }
 /* 标签子框大小 */
 .Other-gggg{
@@ -395,7 +402,7 @@
 }
 /* 复�?�框选中时样�? */
 .myCheckBox:checked {
-	background:rgba(166,128,226,1);
+	background:rgba(107,199,176,.8);
 	opacity:.5;
 	border:#3190e8 solid 1px;
 	border-radius: 4px;
@@ -446,7 +453,7 @@
 	border: 1px solid #ddd;
 }
 #Ispeciesbutton:hover{
-	background:rgba(166,128,226,.5);
+	background:rgba(107,199,176,.5);
 }
 
 /* 轮播�? */
@@ -550,11 +557,10 @@
 	cursor: pointer;
 }
 .goods:hover{
-	margin-top:10px;
-	/* 	border-radius:15px; */
-	margin-bottom:20px;
-	box-shadow:0px 0px 10px rgba(0,0,0,.4);
 	border:2px solid rgba(107,199,176,.8);
+}
+.goods:hover .Hoverdiv{
+    display: block;
 }
 .imgSee{
 	/* 	display:table-cell; */
@@ -569,7 +575,52 @@
 .goods img{
 	width:200px;
 	height:200px;
-	border-bottom: 1.5px solid rgba(166,128,226,.5);
+	border-bottom: 1.5px solid rgba(107,199,176,.8);
+}
+.Hoverdiv{
+    position: relative;
+    width:45px;
+    height:200px;
+    maring-top: 35px;
+    /*background: linear-gradient(
+        to right,
+        rgba(255,255,255,1),
+        rgba(255,255,255,0)
+    );*/
+    background: rgba(255,255,255,.8);
+    margin-top: -230px;
+    display: none;
+    /*border:1px solid #fac;*/
+    border-radius: 8px;
+}
+.Hoverdiv img{
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+    margin-top: 12px;
+    opacity: 1;
+    border-bottom:none;
+    /*border:1px solid #fac;*/
+}
+.Hoverdiv img:hover{
+    opacity: 1;
+    /*margin-left: 5px;*/
+}
+.Hoverdiv span{
+    display: block;
+    margin-left: 5px;
+    width: 35px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: -12px;
+    text-overflow: ellipsis;/*文本超出提示三个�?*/
+    white-space: nowrap;/*�?行显�?*/
+    overflow: hidden;/*超出隐藏*/
+    /*border:1px solid #fac;*/
+    transition: all .8s;
+}
+.Hoverdiv span:hover{
+    /*margin-left: 5px;*/
 }
 .myH{
 	width:200px;
@@ -610,6 +661,7 @@
 	z-index: 1000000;
 	margin-left: 585px;
 	display: none;
+	margin-top: -60px;
 	/*border: 1px solid #fac;*/
 }
 #loadingSpan{

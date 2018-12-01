@@ -32,6 +32,5 @@ function goodsclick(str) {
     });
 
     window.open(string);
-
 }
 

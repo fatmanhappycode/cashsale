@@ -40,7 +40,7 @@ $(window).scroll(function(){
 
 var string=window.location.href;
 var flag=string.split("=")[1];
-if(flag="like"){
+if(flag=="goods"){
     selectCard('2','1','3','4');
 }
 

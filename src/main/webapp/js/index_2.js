@@ -18,7 +18,8 @@ if(getCookie("usernme")!=""&&getCookie("username")!=null) {
     $("#username").html(getCookie("username"));
     document.getElementById('userImg').setAttribute("title","点击修改资料");
     // 已登录时，点击头像跳转到修改资料
-    document.getElementById('userImg').setAttribute("href","#");
+    document.getElementById('userImg').setAttribute("href","personalData.html");
+    document.getElementById('userImg').setAttribute("target","_self");
     // 已登录时显示退出按钮
     document.getElementById('exit').style="display:block;";
 }

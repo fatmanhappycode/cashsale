@@ -1,5 +1,5 @@
 var n=0;
-window.onscroll = function()
+/*window.onscroll = function()
 {
     oDiv=document.getElementById("self_left")
     var H =document.getElementById("self_left").offsetTop;
@@ -7,7 +7,17 @@ window.onscroll = function()
     console.log(H+"  "+s);
     if(s>=304) {
         oDiv.style = "position:fixed;top:-100px;left:40px;";
-    } else{
+    } else if(s<=0){
+        oDiv.style = "";
+    }
+}*/
+window.onscroll = function(){
+    oDiv=document.getElementById("self_left");
+    var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
+    console.log(winScrollHeight);
+    if(s>=304) {
+        oDiv.style = "position:fixed;top:0px;left:0px;";
+    } else if(s<=0){
         oDiv.style = "";
     }
 }
@@ -35,6 +45,7 @@ $.ajax({
             }
             for(var i=0;i<data.length;i++){
                 loadgoods(data[i]);
+                console.log(i);
             }
         }
     },

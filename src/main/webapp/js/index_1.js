@@ -108,14 +108,21 @@ $(window).scroll(function(){
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
     // console.log(docHeight+"  "+winHeight+"  "+winScrollHeight);
     if(docHeight==winHeight+winScrollHeight|docHeight<=winHeight+winScrollHeight|docHeight-0.5<=winHeight+winScrollHeight) {
+        if(document.getElementById("loadingSpan").style.display=="block"){
+            console.log("数据完了");
+            return ;
+        }
         document.getElementById("loadingSpan").style.display="none";
         document.getElementById("loadingImg").style.display="block";
         if (flag == "") {
             window.setTimeout('IsInload()',300);
+            isLoading=false;
         } else if (flag == "search") {
             window.setTimeout('loadXMLDoc_1()',300);
+            isLoading=false;
         } else if (flag == "screen") {
             window.setTimeout('Selectspecies_1()',300);
+            isLoading=false;
         }
     }
 });
@@ -221,6 +228,7 @@ function innerGoods(data) {
         var p= document.createElement('p');
 
         goods.setAttribute("class", "goods");
+        goods.setAttribute("title", "点击查看详情");
         goods.setAttribute("onclick", "goodsclick(this)");
 
         h4.setAttribute("class", "myH");
@@ -231,6 +239,7 @@ function innerGoods(data) {
         goods.appendChild(img);
         goods.appendChild(h4);
         goods.appendChild(p);
+
         main.appendChild(goods);
         //商品id
         var goodsId= document.createElement('input');
@@ -238,6 +247,36 @@ function innerGoods(data) {
         goodsId.setAttribute("type","hidden");
         goodsId.setAttribute("value",obj.productId);
         goods.appendChild(goodsId);
+
+        var div= document.createElement('div');
+        var img1 = document.createElement('img');
+        var img2 = document.createElement('img');
+        var img3 = document.createElement('img');
+        var span1 = document.createElement('span');
+        var span2 = document.createElement('span');
+        var span3 = document.createElement('span');
+
+        div.setAttribute("class", "Hoverdiv");
+        img1.src = "img/index/zhuan.ico";
+        img2.src = "img/index/ping.ico";
+        img3.src = "img/index/zan.ico";
+        img1.setAttribute("title", "转发数");
+        img2.setAttribute("title", "评论数");
+        img3.setAttribute("title", "点赞数");
+        span1.innerHTML="23";
+        span2.innerHTML="69";
+        span3.innerHTML="13588";
+        span1.setAttribute("title", "转发数");
+        span2.setAttribute("title", "评论数");
+        span3.setAttribute("title", "点赞数");
+
+        div.appendChild(img1);
+        div.appendChild(span1);
+        div.appendChild(img2);
+        div.appendChild(span2);
+        div.appendChild(img3);
+        div.appendChild(span3);
+        goods.appendChild(div);
     });
 }
 
@@ -264,10 +303,17 @@ function innerConfirm(data) {
 
 //直接下拉时调用
 function IsInload() {
+    console.log(isLoading);
+    if(isLoading){
+        console.log("重复页数："+currentPage);
+        return ;
+    }else{
+        isLoading=true;
+    }
     token='';
     if(currentPage==""){
         alert("没有更多数据！");
-        return;
+        return ;
     }
     var saveData={"time":"asc","currentPage":currentPage};
     $.ajax({
@@ -346,6 +392,13 @@ function loadXMLDoc()
 //搜索完下拉时调用，currentPage不为0或空
 function loadXMLDoc_1()
 {
+    if(isLoading){
+        console.log("重复页数："+currentPage);
+        return ;
+    }else{
+        isLoading=true;
+    }
+    console.log(isLoading);
     token=getCookie("token");
     console.log(currentPage);
     var saveData={"title":title,"currentPage":currentPage};
@@ -511,6 +564,14 @@ function Selectspecies() {
 }
 //筛选完下拉时调用
 function Selectspecies_1() {
+    if(isLoading){
+        console.log("重复页数："+currentPage);
+        return ;
+    }else{
+        isLoading=true;
+    }
+
+    console.log(isLoading);
     token=getCookie("token");
     //var saveData={"label":label,"page":currentPage,"price":price1,"tradeMethod":myCheckbox1,"trandPlace":myCheckbox2,"isBargain":myCheckbox0};
     //alert("second="+currentPage);
