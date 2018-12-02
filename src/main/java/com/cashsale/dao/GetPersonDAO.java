@@ -1,12 +1,10 @@
 package com.cashsale.dao;
 
-import com.cashsale.bean.CustomerDO;
 import com.cashsale.bean.CustomerInfoDO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
 
 /**
  * 获取个人的详细信息
@@ -33,6 +31,7 @@ public class GetPersonDAO {
                 c.setNickname(result.getString("nick_name"));
                 c.setCertificate(result.getBoolean("is_certificate"));
                 c.setEmail(result.getString("email"));
+                c.setMobile_certificate(result.getBoolean("mobile_certificate"));
 
                 new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
                 return c;
