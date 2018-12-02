@@ -9,7 +9,7 @@ public class MobileCodeConfig {
     /**
      * url前半部分
      */
-    public static final String BASE_URL = "https://api.miaodiyun.com/20150822/industrySMS/sendSMS";
+    public static final String BASE_URL = "https://api.miaodiyun.com/20150822";
 
     /**
      * 开发者注册后系统自动生成的账号，可在官网登录后查看
