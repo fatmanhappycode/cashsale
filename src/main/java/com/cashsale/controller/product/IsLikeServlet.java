@@ -37,9 +37,9 @@ public class IsLikeServlet extends HttpServlet {
             productId = Integer.parseInt(strProductId);
         }
         //获取用户名
-        String username = req.getParameter("username");
+        //String username = req.getParameter("username");
         //获取请求头token
-        /*Cookie[] cookies = req.getCookies();
+        Cookie[] cookies = req.getCookies();
         String token = "";
         for (Cookie cookie : cookies) {
             switch(cookie.getName()){
@@ -56,7 +56,7 @@ public class IsLikeServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String username = claims.getSubject();*/
+        String username = claims.getSubject();
 
         PrintWriter writer = resp.getWriter();
 

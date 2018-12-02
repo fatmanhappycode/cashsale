@@ -9,7 +9,7 @@ import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.TimeUtil;
 
 /**
- * 更新每个用户对商品的评分 and 用户信用
+ * 更新每个用户对商品的评分
  * @author Sylvia
  * 2018年11月3日
  */
@@ -29,7 +29,7 @@ public class UpdateScoreDAO {
     private static final String COMMENT_CODE = "F";
 
     /**
-     * 更新某用户对商品的评分 and 信用
+     * 更新某用户对商品的评分
      * @param username
      * 			用户名
      * @param strCode
@@ -176,25 +176,12 @@ public class UpdateScoreDAO {
             code = "share_time";
         }
         try {
-            /*sql2 = "SELECT * FROM product_interaction WHERE product_id = ? AND user_name = ?";
-            pstmt2 = conn.prepareStatement(sql2);
-            pstmt2.setInt(1,productId);
-            pstmt2.setString(2,username);
-            result2 = pstmt2.executeQuery();
-            if(result2.next() && code.equals("like_time")){
-                sql = "UPDATE product_interaction SET "+code+"='"+currentTime+"' WHERE product_id =? AND user_name=?";
-                pstmt = conn.prepareStatement(sql);
-                pstmt.setInt(1,productId);
-                pstmt.setString(2,username);
-                pstmt.execute();
-            }else {*/
-                sql = "INSERT INTO product_interaction(product_id, user_name, " + code + ") VALUE(?,?,?)";
-                pstmt = conn.prepareStatement(sql);
-                pstmt.setInt(1, productId);
-                pstmt.setString(2, username);
-                pstmt.setString(3, currentTime);
-                pstmt.execute();
-            /*}*/
+            sql = "INSERT INTO product_interaction(product_id, user_name, " + code + ") VALUE(?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, productId);
+            pstmt.setString(2, username);
+            pstmt.setString(3, currentTime);
+            pstmt.execute();
             new Conn().closeConn(result, pstmt, conn);
             new Conn().closeConn(result2, pstmt2, conn);
         }catch(Exception e) {

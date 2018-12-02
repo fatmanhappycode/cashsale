@@ -2,17 +2,13 @@ package com.cashsale.controller.password;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.CustomerDO;
-import com.cashsale.bean.CustomerInfoDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.service.SetPasswordService;
-import com.cashsale.util.CommonUtils;
 import com.cashsale.util.KeytoolUtil;
 import com.cashsale.util.RSAUtil;
 import com.google.gson.Gson;
-import io.jsonwebtoken.Claims;
 
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

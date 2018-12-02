@@ -1,6 +1,5 @@
 package com.cashsale.dao;
 
-import com.cashsale.bean.CustomerInfoDO;
 import com.cashsale.bean.ProductDO;
 
 import java.sql.Connection;
