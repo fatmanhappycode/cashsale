@@ -288,14 +288,14 @@ function innerConfirm(data) {
         // 渲染到页面
         isConfirm.innerHTML = "已认证";
         var img = document.createElement('img');
-        img.src = "../img/confirm.png";
+        img.src = "img/confirm.png";
         var confirm = document.getElementById("isConfirm");
         confirm.appendChild(img);
     } else {
         // 渲染到页面
         isConfirm.innerHTML = "未认证";
         var img = document.createElement('img');
-        img.src = "../img/noconfirm.png";
+        img.src = "img/noconfirm.png";
         var confirm = document.getElementById("isConfirm");
         confirm.appendChild(img);
     }
@@ -627,7 +627,7 @@ function ismessage() {
         success: function (result, testStatus) {
             if (result.data == "1") {
                 var img = document.getElementById("youlike");
-                img.setAttribute("style","background:#fff  url('/cashsale/img/nav(1)3.jpg') no-repeat;") ;
+                img.setAttribute("style","background:#fff  url('/cashsale/img/haveMessage.png') no-repeat;") ;
             }
         },
         error: function (xhr, errrorMessage, e) {
