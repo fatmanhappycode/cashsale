@@ -70,7 +70,12 @@
     <!-- 字体大小 -->
     <init-param>
       <param-name>kaptcha.textproducer.font.size</param-name>
-      <param-value>25</param-value>
+      <param-value>28</param-value>
+    </init-param>
+    <!-- 图片样式 -->
+    <init-param>
+      <param-name>kaptcha.obscurificator.impl</param-name>
+      <param-value>com.google.code.kaptcha.impl.FishEyeGimpy</param-value>
     </init-param>
     <!-- 干扰线的颜色 -->
     <init-param>
@@ -85,7 +90,7 @@
     <!-- 使用哪些字体 -->
     <init-param>
       <param-name>kaptcha.textproducer.font.names</param-name>
-      <param-value>Arial</param-value>
+      <param-value>Arial, Courier</param-value>
     </init-param>
   </servlet>
   <!-- 映射的url -->
