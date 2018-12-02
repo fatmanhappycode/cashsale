@@ -15,7 +15,7 @@ function loadXMLDoc()
     var saveData={"username":username,"password":password};
     if(verify == true) {
         $.ajax({
-            url: "/login",
+            url: "/cashsale/login",
             type: "post",
             dataType: "json",
             data: JSON.stringify(saveData),
