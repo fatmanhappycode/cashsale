@@ -27,7 +27,7 @@ public enum ResultEnum {
     REGISTER_TO_MAIL(100,"请到邮箱进行账号激活"),
 
     /** 用户名错误 */
-    LOGIN_USERNAME_ERROR(401,"用户名不存在"),
+    LOGIN_USERNAME_ERROR(401,"该用户不存在"),
     /** 密码错误 */
     LOGIN_PASSWORD_ERROR(401,"密码错误"),
     /** 登录成功 */
