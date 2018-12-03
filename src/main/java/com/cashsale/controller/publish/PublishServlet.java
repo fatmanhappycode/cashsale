@@ -146,7 +146,7 @@ public class PublishServlet extends HttpServlet {
                     .field("publish_time",time)
                     .endObject();
 
-            IndexResponse response = EsConn.client.prepareIndex("cashsale3","product_info",null)
+            IndexResponse response = EsConn.client.prepareIndex("cashsale3","doc",null)
                     .setSource(doc).get();
 
             System.out.println(response.status());

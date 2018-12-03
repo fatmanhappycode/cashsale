@@ -578,6 +578,8 @@
 	border-bottom: 1.5px solid rgba(107,199,176,.8);
 }
 .goods em{
+	font-style: normal;
+	font-weight: 700;
 	color: red;
 }
 .Hoverdiv{
@@ -626,10 +628,14 @@
     /*margin-left: 5px;*/
 }
 .myH{
-	width:200px;
+	width:180px;
 	margin-top:15px;
 	text-align:center;
-	/* 	border-bottom:1px solid rgba(166,128,226,.5); */
+	padding: 0 10px 0 10px;
+	 	/*border:1px solid rgba(166,128,226,.5);*/
+	text-overflow: ellipsis;/*文本超出提示三个�?*/
+	white-space: nowrap;/*�?行显�?*/
+	overflow: hidden;/*超出隐藏*/
 }
 .price{
 	color:red;

@@ -1,12 +1,9 @@
 package com.cashsale.controller.person;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.CustomerInfoDO;
 import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
-import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.GetMyProductDAO;
-import com.cashsale.service.GetPersonService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -6,7 +6,9 @@ package com.cashsale.bean;
  * 用户的个人信息
  */
 public class CustomerInfoDO {
-	/**  用户名 */
+	/**
+	 * 用户名
+	 */
 	private String username;
 	/**
 	 * 信用值
@@ -25,13 +27,9 @@ public class CustomerInfoDO {
 	 */
 	private String nickname;
 	/**
-	 * 是否验证
+	 * 是否验证学号
 	 */
 	private boolean isCertificate;
-	/**
-	 *手机号码
-	 */
-	private String number;
 	/**
 	 * 邮箱
 	 */
@@ -40,14 +38,11 @@ public class CustomerInfoDO {
 	 * 密码
 	 */
 	private String password;
+
 	/**
-	 * 状态（邮箱验证是否通过）
+	 * 是否验证手机号
 	 */
-	private boolean state;
-	/**
-	 * 验证码
-	 */
-	private String code;
+	private boolean mobile_certificate;
 	
 	public CustomerInfoDO(String username) {
 		super();
@@ -94,14 +89,6 @@ public class CustomerInfoDO {
 		this.isCertificate = isCertificate;
 	}
 
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -118,22 +105,6 @@ public class CustomerInfoDO {
 		this.password = password;
 	}
 
-	public boolean isState() {
-		return state;
-	}
-
-	public void setState(boolean state) {
-		this.state = state;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public String getRealname() {
 		return realname;
 	}
@@ -141,6 +112,12 @@ public class CustomerInfoDO {
 	public void setRealname(String realname) {
 		this.realname = realname;
 	}
-	
-	
+
+	public boolean isMobile_certificate() {
+		return mobile_certificate;
+	}
+
+	public void setMobile_certificate(boolean mobile_certificate) {
+		this.mobile_certificate = mobile_certificate;
+	}
 }
