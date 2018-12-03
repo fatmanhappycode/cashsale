@@ -211,7 +211,28 @@
 	background:#fff url("../img/mySearch-img.png") no-repeat center;
 	background-size: 40px 40px;
 }
-
+#tips{
+	position: relative;
+	z-index: 1000000;
+	width: 310px;
+	height: auto;
+	border:1px solid #fff;
+	/*border:1px solid rgba(172,172,172,.6);*/
+	margin-top: 39px;
+	margin-left:-314px;
+	background: rgba(231,238,254,1);
+}
+#tips li{
+	padding: 3px;
+	list-style-type: none;
+	font-size: 16px;
+	text-overflow: ellipsis;/*文本超出提示三个�?*/
+	white-space: nowrap;/*�?行显�?*/
+	overflow: hidden;/*超出隐藏*/
+}
+#tips li:hover{
+	background: rgba(172,172,172,.8);
+}
 
 
 

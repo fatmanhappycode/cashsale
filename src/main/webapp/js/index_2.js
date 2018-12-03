@@ -27,10 +27,12 @@ if(getCookie("usernme")!=""&&getCookie("username")!=null) {
 //退出登录
 exit.onclick=function(){
     if(confirm("确定要退出吗？")){
-        delCookie("username");
-        // 清除cookie，然后刷新
-        delCookie("token");
-        //window.location.href="index.html";
+        //清除所有cookie函数
+        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+        if(keys) {
+            for(var i = keys.length; i--;)
+                document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+        }
         location.replace("index.html");
     }
 }
