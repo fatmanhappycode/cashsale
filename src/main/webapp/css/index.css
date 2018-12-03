@@ -237,28 +237,28 @@
 	list-style-type: none;
 	text-decoration:none;
 	cursor:pointer;
-	background:#fff  url("../img/nav (2).gif") no-repeat;
+	background:#fff  url("../img/home.png") no-repeat;
 	background-size: 120px 120px;
 	background-position: center center;
 }
 
 .upload{
-	background:#fff  url("../img/nav (2).png") no-repeat;
+	background:#fff  url("../img/publish.png") no-repeat;
 	background-size: 120px 120px;
 	background-position: center center;
 }
 .youlike{
-	background:#fff url("../img/nav (1)1.gif") no-repeat;
+	background:#fff url("../img/message.png") no-repeat;
 	background-size: 120px 120px;
 	background-position: center center;
 }
 .box{
-	background:#fff  url("../img/nav (1).png") no-repeat;
+	background:#fff  url("../img/trolley.png") no-repeat;
 	background-size: 120px 120px;
 	background-position: center center;
 }
 .myself{
-	background:#fff  url("../img/nav (3).gif") no-repeat;
+	background:#fff  url("../img/person.png") no-repeat;
 	background-size: 120px 120px;
 	background-position: center center;
 }
@@ -576,6 +576,9 @@
 	width:200px;
 	height:200px;
 	border-bottom: 1.5px solid rgba(107,199,176,.8);
+}
+.goods em{
+	color: red;
 }
 .Hoverdiv{
     position: relative;
