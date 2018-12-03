@@ -1,5 +1,7 @@
 package com.cashsale.dao;
 
+import com.cashsale.bean.ResultDTO;
+import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.CommonUtils;
 
 import java.sql.Connection;
@@ -15,12 +17,14 @@ public class ConfirmDAO {
     Connection conn = new com.cashsale.conn.Conn().getCon();
     PreparedStatement pstmt = null;
 
-    public boolean Comfirm(String username,String sno) {
+    public boolean Confirm(String username, String sno) {
         try {
             pstmt = conn.prepareStatement("UPDATE user_data SET is_certificate = 1,sno = ? WHERE user_name=?");
             pstmt.setString(1,sno);
             pstmt.setString(2, username);
             pstmt.executeUpdate();
+            //更新信用 +5分
+            new UpdateCreditDAO().updateCredit(username);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,4 +39,32 @@ public class ConfirmDAO {
             }
         }
     }
+
+    /**
+     * 手机验证
+     * @param username
+     * @return
+     */
+    public ResultDTO MobileConfirm(String username){
+        try{
+            pstmt = conn.prepareStatement("UPDATE user_data SET mobile_certificate = 1 WHERE user_name = ?");
+            pstmt.setString(1,username);
+            pstmt.executeUpdate();
+            //更新信用 +5分
+            new UpdateCreditDAO().updateCredit(username);
+            return new ResultDTO(ResultEnum.CONFIRM_SUCCESS.getCode(), null, ResultEnum.CONFIRM_SUCCESS.getMsg());
+        }catch (Exception e) {
+            e.printStackTrace();
+            return new ResultDTO(ResultEnum.ERROR.getCode(), null, ResultEnum.ERROR.getMsg());
+        } finally {
+            // 关闭连接
+            try {
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }

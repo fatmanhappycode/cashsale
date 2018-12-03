@@ -1,4 +1,4 @@
-package com.cashsale.controller;
+package com.cashsale.controller.confirm;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ResultDTO;
@@ -68,7 +68,7 @@ public class ConfirmServlet extends HttpServlet {
         ResultDTO result = comfirmUser.userComfirm(encoded);
 
         if (result.getMsg().equals("认证成功")) {
-            new ConfirmDAO().Comfirm(username,sno);
+            new ConfirmDAO().Confirm(username,sno);
         }
 
         PrintWriter writer = resp.getWriter();

@@ -2,11 +2,9 @@ package com.cashsale.controller.person;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.CustomerInfoDO;
-import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.enums.ResultEnum;
 import com.cashsale.service.GetPersonService;
-import com.cashsale.service.ScreenService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 /**
  * @author Sylvia

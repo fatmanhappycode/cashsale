@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.conn.EsConn;
+import com.cashsale.conn.Conn;
 import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.CommonUtils;
 
@@ -150,6 +151,7 @@ public class PublishServlet extends HttpServlet {
                     .setSource(doc).get();
 
             System.out.println(response.status());
+            new Conn().closeConn(null, pstmt, conn);
             writer.print(JSONObject.toJSON(new ResultDTO<String>(ResultEnum.PUBLISH_SUCCESS.getCode(),null,ResultEnum.PUBLISH_SUCCESS.getMsg())));
         } catch (Exception e) {
             writer.print(JSONObject.toJSON(new ResultDTO<String>(ResultEnum.ERROR.getCode(),null,ResultEnum.ERROR.getMsg())));

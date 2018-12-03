@@ -24,6 +24,7 @@ import com.cashsale.enums.ResultEnum;
 public class RecommendService {
 
     public static String username = "";
+    public static int finalPage = 1;
     /**
      * 返回推荐结果
      * @param username
@@ -31,7 +32,11 @@ public class RecommendService {
      * @return
      *        推荐结果
      */
-    public ResultDTO<PagerDTO> getList(String username){
+    public ResultDTO<PagerDTO> getList(String username, String strPage){
+        int page = 1;
+        if(strPage != null && !strPage.equals("")){
+            page = Integer.parseInt(strPage);
+        }
         this.username = username;
         Map<String, Double> simUserSimMap = new HashMap<String, Double>();
         Map<String, Map<String, Integer>> userPerfMap = new ListRecommendDAO().getUserScore(username);
@@ -50,8 +55,15 @@ public class RecommendService {
         //根据皮尔逊系数对相似用户进行排序
         List<Entry<String, Double>> enList = getSort(simUserSimMap);
         Map<String, Map<String, Integer>> simUserObjMap = new ListRecommendDAO().getSimUserObjMap(username, enList);
-        List<ProductDO> list =  getRecommend(simUserObjMap, simUserSimMap);
-        PagerDTO<ProductDO> product = new PagerDTO<>(0,list);
+        List<ProductDO> list =  getRecommend(simUserObjMap, simUserSimMap, page);
+        PagerDTO<ProductDO> product = null;
+        if (finalPage == -1){
+             product = new PagerDTO<>(finalPage,list);
+        }else if(finalPage == 0){
+            product = new PagerDTO<>(0,list);
+        }else {
+            product = new PagerDTO<>(page + 1, list);
+        }
         return new ResultDTO<PagerDTO>(ResultEnum.RECOMMEND_SUCCESS.getCode(), product,ResultEnum.RECOMMEND_SUCCESS.getMsg());
     }
 
@@ -125,7 +137,7 @@ public class RecommendService {
      *        推荐结果
      */
     private static List<ProductDO> getRecommend(Map<String, Map<String, Integer>> simUserObjMap,
-                                                Map<String, Double> simUserSimMap) {
+                                                Map<String, Double> simUserSimMap, int page) {
         Map<String, Double> objScoreMap = new HashMap<String, Double>();
         //被推荐的商品id列表
         ArrayList<String> result = new ArrayList<String>();
@@ -153,8 +165,26 @@ public class RecommendService {
         }
 
         List<Entry<String, Double>> enList = getSort(objScoreMap);
+        int limit = enList.size() / 2;
+        int start = page * 4 - 4;
+        int end = page * 4;
+        //页数需要重新循环
+        if(end > limit){
+            start = limit - 4;
+            end = limit;
+            finalPage = -1;
+        }
+        //只有4个推荐
+        if(enList.size() <= 10){
+            start = 0;
+            end = 4;
+            finalPage = 0;
+        }
+        for(int i = start; i < end; i++){
+            System.out.println("product_id = "+enList.get(i).getKey() + " score = "+enList.get(i).getValue());
+        }
 
-        for(int i = 0; i < 4 && i < enList.size(); i++){
+        for(int i = start; i < end && i < enList.size(); i++){
             result.add(enList.get(i).getKey());
         }
 
