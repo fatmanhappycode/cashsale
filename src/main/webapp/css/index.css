@@ -577,6 +577,9 @@
 	height:200px;
 	border-bottom: 1.5px solid rgba(107,199,176,.8);
 }
+.goods em{
+	color: red;
+}
 .Hoverdiv{
     position: relative;
     width:45px;
