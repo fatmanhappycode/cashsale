@@ -234,7 +234,11 @@ function innerGoods(data) {
         h4.setAttribute("class", "myH");
         p.setAttribute("class", "price");
         img.src = obj.imageUrl;
-        h4.innerHTML=obj.title;
+        if(obj.highLight==undefined||obj.highLight==null||obj.highLight==""){
+            h4.innerHTML=obj.title;
+        }else {
+            h4.innerHTML=obj.highLight;
+        }
         p.innerHTML="￥"+obj.price;
         goods.appendChild(img);
         goods.appendChild(h4);
@@ -416,7 +420,7 @@ function loadXMLDoc_1()
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
             data=result.data.data;
-            if(result.code== "404"){
+            if(result.code== "200"){
                 if(data==""){
                     console.log("没有更多数据！");
                     document.getElementById("loadingImg").style.display="none";
@@ -593,7 +597,7 @@ function Selectspecies_1() {
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
             data=result.data.data;
-            if(result.code== "404"){
+            if(result.code== "200"){
                 if(data==""){
                     console.log("没有更多数据！");
                     document.getElementById("loadingImg").style.display="none";
