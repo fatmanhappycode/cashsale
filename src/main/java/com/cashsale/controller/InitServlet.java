@@ -3,6 +3,7 @@ package com.cashsale.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.CustomerDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.conn.EsConn;
 import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.CommonUtils;
 import com.google.gson.Gson;
@@ -13,6 +14,7 @@ import org.apache.http.impl.client.HttpClients;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import java.io.IOException;
+import java.net.UnknownHostException;
 import java.sql.Connection;
 
 /**
@@ -36,5 +38,10 @@ public class InitServlet extends HttpServlet {
         CloseableHttpClient client = null;
         HttpClients.createDefault();
         HttpPost post = new HttpPost();
+        try {
+            new EsConn();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
     }
 }

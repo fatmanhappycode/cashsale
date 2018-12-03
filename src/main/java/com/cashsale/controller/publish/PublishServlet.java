@@ -3,12 +3,20 @@ package com.cashsale.controller.publish;
 import com.alibaba.fastjson.JSONObject;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
+import com.cashsale.conn.EsConn;
 import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.CommonUtils;
 
 import com.cashsale.util.SensitivewordFilterUtil;
 import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
+import org.elasticsearch.action.index.IndexResponse;
+import org.elasticsearch.client.transport.TransportClient;
+import org.elasticsearch.common.transport.TransportAddress;
+import org.elasticsearch.common.xcontent.XContentBuilder;
+import org.elasticsearch.common.xcontent.XContentFactory;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
+import org.elasticsearch.common.settings.Settings;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,8 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import java.net.InetAddress;
+import java.sql.*;
 import java.util.Set;
 
 /**
@@ -95,6 +103,53 @@ public class PublishServlet extends HttpServlet {
             pstmt.setString(7,imageUrl);
             pstmt.setString(8,username);
             pstmt.executeUpdate();
+            pstmt = conn.prepareStatement("SELECT LAST_INSERT_ID();");
+            ResultSet rs = pstmt.executeQuery();
+            Integer id = null;
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+            pstmt = conn.prepareStatement("SELECT publish_time FROM product_info WHERE product_id = ?");
+            pstmt.setInt(1,id);
+            rs = pstmt.executeQuery();
+            Timestamp time = null;
+            if (rs.next()) {
+                time = rs.getTimestamp(1);
+            }
+            System.out.println(time);
+
+            /**
+             * Json
+             * {
+             *  product_id
+             *  title
+             *  label
+             *  price
+             *  trade_method
+             *  is_bargain
+             *  product_description
+             *  image_url
+             *  user_name
+             *  trade_place
+             * }
+             */
+            XContentBuilder doc = XContentFactory.jsonBuilder().startObject()
+                    .field("product_id",id)
+                    .field("title",title)
+                    .field("label",label)
+                    .field("price",price)
+                    .field("trade_method",tradeMethod)
+                    .field("is_bargain",isBargain)
+                    .field("product_description",pdDescription)
+                    .field("image_url",imageUrl)
+                    .field("user_name",username)
+                    .field("publish_time",time)
+                    .endObject();
+
+            IndexResponse response = EsConn.client.prepareIndex("cashsale3","product_info",null)
+                    .setSource(doc).get();
+
+            System.out.println(response.status());
             writer.print(JSONObject.toJSON(new ResultDTO<String>(ResultEnum.PUBLISH_SUCCESS.getCode(),null,ResultEnum.PUBLISH_SUCCESS.getMsg())));
         } catch (Exception e) {
             writer.print(JSONObject.toJSON(new ResultDTO<String>(ResultEnum.ERROR.getCode(),null,ResultEnum.ERROR.getMsg())));

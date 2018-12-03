@@ -1,11 +1,14 @@
 package com.cashsale.service;
 
+import com.cashsale.bean.HightLightDTO;
 import com.cashsale.bean.PagerDTO;
 import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ListProductDAO;
+import com.cashsale.dao.ListTitleDAO;
 import com.cashsale.enums.ResultEnum;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,8 +21,6 @@ public class SearchService {
      */
     public static final int NUMBER_OF_PAGE = 9;
     public ResultDTO<PagerDTO> searchByTitle(String title, String currentPage) {
-        // 添加模糊查询需要的%
-        title = "%" + title + "%";
         int page;
         if (currentPage == "") {
             page = 1;
@@ -28,8 +29,8 @@ public class SearchService {
         }
         // 根据页数计算出从第几条开始查询的offset
         int offset = (page - 1) * NUMBER_OF_PAGE;
-        List<ProductDO> products = new ListProductDAO().listProductByTitle(title, offset);
-        PagerDTO<ProductDO> product = new PagerDTO<>(page+1,products);
+        List<HightLightDTO> h = new ListProductDAO().listProductByTitle(title, offset);
+        PagerDTO<HightLightDTO> product = new PagerDTO<>(page+1,h);
         return  new ResultDTO<PagerDTO>(ResultEnum.SEARCH_SUCCESS.getCode(), product,ResultEnum.SEARCH_SUCCESS.getMsg());
     }
 
@@ -47,4 +48,8 @@ public class SearchService {
         return  new ResultDTO<PagerDTO>(ResultEnum.SEARCH_SUCCESS.getCode(), product,ResultEnum.SEARCH_SUCCESS.getMsg());
     }
 
+    public ResultDTO<ArrayList<String>> searchHint(String title) {
+        ArrayList<String> list = new ListTitleDAO().titleHint(title);
+        return new ResultDTO<ArrayList<String>>(ResultEnum.SEARCH_SUCCESS.getCode(), list,ResultEnum.SEARCH_SUCCESS.getMsg());
+    }
 }
