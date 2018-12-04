@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author 肥宅快乐码
@@ -28,7 +29,7 @@ public class SearchHintServlet extends HttpServlet {
 
         // 获取参数
         String title = req.getParameter("title");
-        ResultDTO<ArrayList<String>> result = new SearchService().searchHint(title);
+        ResultDTO<List<String>> result = new SearchService().searchHint(title);
 
         PrintWriter writer = resp.getWriter();
         writer.print(JSONObject.toJSON(result));

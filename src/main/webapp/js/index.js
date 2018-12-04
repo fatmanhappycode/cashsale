@@ -38,28 +38,25 @@ function mySearcfOnload() {
     Otitle = $(".mySearch").val();
     console.log(Otitle);
 
-    var saveData={
-        "suggest":{
-            "prefix":Otitle,
-            "completion":{
-                "field":"title.suggest"
-            }
-        }
-    };
+    var saveData={"title":Otitle};
     // $("#main").html("");
     $.ajax({
-        url:"http://localhost:9200/cashsale3/doc/_search",
-        type:"post",
+        url:"/cashsale/searchhint",
+        type:"get",
         dataType:"json",
-        data:JSON.stringify(saveData),
-        contentType:"application/json;charset=UTF-8",
+        data:saveData,
+        contentType:"application/x-www-form-urlencoded;charset=UTF-8",
         headers:{
-            contentType:"application/json;charset=UTF-8"
+            "title":Otitle,
+            contentType:"application/x-www-form-urlencoded;charset=UTF-8"
         },
         success:function(result,testStatus)
         {
-            if(result.timed_out== "200"){
-                data=result.suggest.my-suggest.options;
+            if(result.code== "200"){
+                data=result.data;
+                console.log(data);
+                var ul = document.getElementById("tips");
+                ul.innerHTML="";
                 if(data!=undefined&&data!=null&&data!="") {
                     innerTips(data);
                 }
@@ -74,23 +71,12 @@ function mySearcfOnload() {
 }
 
 function innerTips(data) {
-    $.each(data,function(index,obj){
-        var flag=false;
-        var ul = document.getElementById("tips");
-        var ulLi = document.getElementById("tips").childNodes;
-        for(var i=0;i<ulLi.length;i++){
-            if(obj.text==ulLi[i]){
-                flag=true;
-                break;
-            }
-        }
-        if(flag){
-            console.log("重复");
-        }else {
-            var li= document.createElement('li');
-            li.setAttribute("onclick", "");
-            li.innerHTML=obj.text;
-            ul.appendChild(li);
-        }
-    });
+    var ul = document.getElementById("tips");
+    for(var i=0;i<data.length;i++){
+        var li= document.createElement('li');
+        li.setAttribute("onclick", "");
+        li.innerHTML=data[i];
+        ul.appendChild(li);
+        console.log(data[i]);
+    }
 }

@@ -48,8 +48,8 @@ public class SearchService {
         return  new ResultDTO<PagerDTO>(ResultEnum.SEARCH_SUCCESS.getCode(), product,ResultEnum.SEARCH_SUCCESS.getMsg());
     }
 
-    public ResultDTO<ArrayList<String>> searchHint(String title) {
-        ArrayList<String> list = new ListTitleDAO().titleHint(title);
-        return new ResultDTO<ArrayList<String>>(ResultEnum.SEARCH_SUCCESS.getCode(), list,ResultEnum.SEARCH_SUCCESS.getMsg());
+    public ResultDTO<List<String>> searchHint(String title) {
+        List<String> list = new ListTitleDAO().titleHint(title);
+        return new ResultDTO<List<String>>(ResultEnum.SEARCH_SUCCESS.getCode(), list,ResultEnum.SEARCH_SUCCESS.getMsg());
     }
 }
