@@ -172,7 +172,14 @@
 	opacity:.75;
 	color:red;
 }
-
+#forgetPassword{
+	/*border:1px solid #fac;*/
+	font-size: 12px;
+	margin-left: 250px;
+	margin-top: 20px;
+	text-align: right;
+	text-decoration-line: none;
+}
 /* Ã· æ”Ô */
 #Item{
 	position: absolute;

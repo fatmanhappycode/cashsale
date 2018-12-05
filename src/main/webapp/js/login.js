@@ -32,6 +32,12 @@ function loadXMLDoc()
                     window.location.href="index.html";
                 }else if(result.code== "401") {
                     alert(result.msg);
+                }else if(result.code==""){
+                    // 存入token和username
+                    setCookie("code","true");
+                    setCookie("token",token);
+                    setCookie("username",username)
+                    window.location.href="index.html";
                 }
             },
             error: function (xhr, errrorMessage, e) {

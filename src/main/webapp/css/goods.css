@@ -139,7 +139,7 @@
     font-size: 18px;
 }
 /*按钮*/
-#chat,#JOshopping,#city{
+#chat,#JOshopping,#city,#comment input{
     display:inline-block;
     width:150px;
     height: 40px;
@@ -173,10 +173,16 @@
 
 
 /*富文本编辑器*/
-#Description{
+.FirstH3{
+    margin-left: 70px;
+    margin-top: 40px;
+}
+#FirstH3{
+    margin-top: 430px;
+}
+#Description,#comment{
     padding: 30px;
     width: 830px;
-    margin-top: 450px;
     margin-left: 70px;
     border:1px solid #eec;
     border-radius: 20px;
@@ -184,6 +190,33 @@
 #Description table,#Description th,#Description td{
     border: 1px solid #dddddd;
 }
+#comment{
+    position: relative;
+    margin-top: 15px;
+}
+#comment textarea{
+    width: 780px;
+    height: 60px;
+    resize:none;
+    border-radius: 10px 0 0 10px;
+    font-size: 18px;
+}
+#comment input{
+    position: absolute;
+    width: 50px;
+    height: 66px;
+    margin-left: -1px;
+    background: #da7370;
+    color: #fff;
+    border-radius: 0 10px 10px 0;
+}
+#comment textarea:focus,#comment input:focus{
+    border-radius: 2px;
+}
+#myComment{
+    width: 800px;
+}
+
 
 
 /* 版权 */

@@ -14,7 +14,7 @@ currentPage="1";
 //定义全局变量title，方便下拉时使用
 var title;
 
-
+var datas="";
 
 //加载时返回最新商品
 window.onload =function init() {
@@ -40,9 +40,9 @@ window.onload =function init() {
         {
             currentPage=result.data.currentPage;
             console.log("页数："+currentPage);
-            data=result.data.data;
+            datas=result.data.data;
             //渲染
-            innerGoods(data);
+            innerGoods(datas);
         },
         error:function(xhr,errrorMessage,e){
             alert("系统异常！"+e+"\n"+errrorMessage);
@@ -76,7 +76,8 @@ window.onload =function init() {
 
 
     //筛选下拉时的变化
-    var oDiv = document.getElementById("species"),
+    var oDiv = document.getElementById("species");
+    var span = document.getElementById("notice");
         H = 0,
         Y = oDiv
     i=0;
@@ -92,9 +93,12 @@ window.onload =function init() {
     {
         var s = document.body.scrollTop || document.documentElement.scrollTop
         if(s+280>H) {
-            oDiv.style = "position:fixed;top:17px;"
+            oDiv.style = "position:fixed;top:17px;";
+            span.style = "margin-left:737px;";
+
         } else {
-            oDiv.style = ""
+            oDiv.style = "";
+            span.style = "margin-left:555px;";
         }
     }
 
@@ -131,11 +135,11 @@ $(window).scroll(function(){
 
 
 
-
-
+//猜你喜欢专用页数
+var currentPage1=-1;
 //猜你喜欢
 function whatULike() {
-    var saveData={"username":getCookie("username")};
+    var saveData={"username":getCookie("username"),"currentPage":currentPage1};
     var play = document.getElementById("play");
     $.ajax({
         url:"/cashsale/recommend",
@@ -148,10 +152,16 @@ function whatULike() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
+            whatlike(datas);
+            console.log(result);
+            if(result==null){
+                whatlike(datas);
+            }
             data1=result.data.data;
-            whatlike(data1);
             if(data1==""||data1==null||data1==undefined){
-                whatlike(data);
+                 whatlike(datas);
+            }else{
+                whatlike(data1);
             }
         },
         error:function(xhr,errrorMessage,e){
@@ -267,9 +277,9 @@ function innerGoods(data) {
         img1.setAttribute("title", "转发数");
         img2.setAttribute("title", "评论数");
         img3.setAttribute("title", "点赞数");
-        span1.innerHTML="23";
-        span2.innerHTML="69";
-        span3.innerHTML="13588";
+        span1.innerHTML= obj.shareNumber;
+        span2.innerHTML= obj.commentsNumber;
+        span3.innerHTML= obj.likeNumber;
         span1.setAttribute("title", "转发数");
         span2.setAttribute("title", "评论数");
         span3.setAttribute("title", "点赞数");
