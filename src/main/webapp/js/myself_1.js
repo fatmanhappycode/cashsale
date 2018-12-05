@@ -27,8 +27,6 @@ test.onclick = function(){
 
 
 
-
-
 var saveData1={"username":getCookie("username")};
 $.ajax({
     url:"/cashsale/getShoppingTrolley",
@@ -53,6 +51,88 @@ $.ajax({
         alert("系统异常！");
     }
 });
+
+/*获取我发布的商品*/
+var saveData2={"username":getCookie("username")};
+$.ajax({
+    url:"/cashsale/getMyProduct",
+    type:"get",
+    dataType:"json",
+    data:saveData2,
+    contentType:"application/json;charset=UTF-8",
+    success:function(result,testStatus)
+    {
+        if(result.currentPage > 0){
+            var data=result.data;
+            if(data!=null&&data!=""&&data!=undefined){
+                document.getElementById("main1").innerHTML="";
+                document.getElementsByClassName("main1_div").item("");
+                document.getElementById("myProduct").innerHTML=result.currentPage;
+            }
+            for(var i=0;i<data.length;i++){
+                loadMyGoods(data[i].productId);
+                console.log(i);
+            }
+        }
+    },
+    error:function(xhr,errrorMessage,e){
+        alert("系统异常！");
+    }
+});
+
+function loadMyGoods(productId) {
+    var saveData={"productId":productId};
+    // alert(productId);
+    $.ajax({
+        url:"/cashsale/GetDetailProduct",
+        type:"get",
+        headers:{
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            if(result.code=="200"){
+                var data=result.data;
+                innerMyGoods(data);
+            }else{
+                console.log(result.msg);
+            }
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！");
+        }
+    });
+}
+
+function innerMyGoods(data) {
+    var main = document.getElementById("main1");
+    var goods= document.createElement('div');
+    var img = document.createElement('img');
+    var h4= document.createElement('h4');
+    var p= document.createElement('p');
+
+    goods.setAttribute("class", "goods");
+    goods.setAttribute("onclick", "goodsclick(this)");
+
+    h4.setAttribute("class", "myH");
+    p.setAttribute("class", "price");
+    img.src = data.imageUrl;
+    h4.innerHTML=data.title;
+    p.innerHTML="￥"+data.price;
+    goods.appendChild(img);
+    goods.appendChild(h4);
+    goods.appendChild(p);
+    main.appendChild(goods);
+    //商品id
+    var goodsId= document.createElement('input');
+    goodsId.setAttribute("id","goodsId");
+    goodsId.setAttribute("type","hidden");
+    goodsId.setAttribute("value",data.productId);
+    goods.appendChild(goodsId);
+}
+
 function innerGoods(data) {
         var main = document.getElementById("main2");
         var goods= document.createElement('div');
@@ -105,7 +185,6 @@ function loadgoods(productId) {
         }
     });
 }
-
 
 
 var saveData={"username":getCookie("username")};
