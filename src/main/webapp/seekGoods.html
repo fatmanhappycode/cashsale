@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>现卖-变闲为现的买卖|发布界面</title>
+    <meta charset="utf-8">
+    <meta http-equiv=Expires content="1s" />
+    <link rel="stylesheet" type="text/css" href="css/seekGoods.css">
+    <link rel="shortcut icon" type="image/x-icon"  href="img/icon.jpg" />
+</head>
+<body>
+<div class="all">
+    <div class="form-div">
+        <form action="" method="post" accept-charset="UTF-8" class="form" id="uploadForm" oninput="item()" enctype="multipart/form-data">
+            <h2>发布寻求</h2>
+            <div class="g-username Otherg-g">
+                <p>选择样图:</p><br/>
+                <input type="file" id="myfile" name="uploadFile" onchange="preview(this)">
+                <div id="container"></div>
+            </div>
+            <div class="g-username Other-g">
+                <p>商品标题:</p><br/>
+                <input type="text" id="commodity" placeholder="" maxlength="40" list="list1">
+                <datalist id="list1">
+                    <option value="数据结构"></option>
+                    <option value="四级资料"></option>
+                    <option value="SPANBANG篮球"></option>
+                    <option value="冰@!  毒"></option>
+                </datalist>
+                <br/>
+            </div>
+
+            <input id="image" style="display:none">
+            <!-- 				富文本编辑器 -->
+            <div id="div1"  class="g-username Other-gggg" onchange="fU()"></div>
+            <div class="Other-ggggg">
+                <span id="passwordItem">请填写完信息，否则提交时将清空！</span>
+                <input type="button" id="submit" value="提交"  onclick="f()">
+                <input type="reset" id="reset" value="重置" onclick="clearimg()">
+            </div>
+        </form>
+    </div>
+    <p class="bottom">版本所有权 &copy;2018&nbsp;现卖——变闲为现的买卖</p>
+    <br>
+</div>
+
+<script type="text/javascript" src="wangEditor-3.1.1/release/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor;
+    var editor = new E('#div1');
+    editor.customConfig.uploadImgServer = 'UploadImageServlet';
+    editor.customConfig.uploadImgMaxLength = 5;
+    editor.create();
+</script>
+</body>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script type="text/javascript" src="js/seekGoods.js"></script>
+<script type="text/javascript" src="js/seekGoods_1.js"></script>
+</html>

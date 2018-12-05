@@ -38,6 +38,7 @@ exit.onclick=function(){
 }
 
 
+
 //搜索回车事件
 function enterSubmit(obj) {
     var button = document.getElementById('mySearch_img');
@@ -56,7 +57,17 @@ $(window).scroll(function(){
         document.getElementById("test").style.display="none";
     }
 });
-//点击图标回到顶部id名加事件直接调用函数
+//点击图标回到顶部  id名加事件直接调用函数
 test.onclick = function(){
     document.documentElement.scrollTop = 0;
+}
+
+
+
+// 公告
+notice.onclick = function(){
+    document.getElementById("noticeDiv").style.display="block";
+}
+noticeX.onclick = function(){
+    document.getElementById("noticeDiv").style.display="none";
 }
