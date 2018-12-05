@@ -261,9 +261,9 @@ function innerGoods(data) {
         var span3 = document.createElement('span');
 
         div.setAttribute("class", "Hoverdiv");
-        img1.src = "img/index/zhuan.ico";
-        img2.src = "img/index/ping.ico";
-        img3.src = "img/index/zan.ico";
+        img1.src = "img/index/share.png";
+        img2.src = "img/index/commend.png";
+        img3.src = "img/index/noLike.png";
         img1.setAttribute("title", "转发数");
         img2.setAttribute("title", "评论数");
         img3.setAttribute("title", "点赞数");
