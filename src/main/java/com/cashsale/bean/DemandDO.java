@@ -1,131 +1,34 @@
 package com.cashsale.bean;
 
-import java.util.Map;
-
 /**
- * @Description:
+ * @Description: 需求
  * @Author: 8-0416
- * @Date: 2018/12/3
+ * @Date: 2018/12/4
  */
 public class DemandDO {
-    /**
-     * 商品标题
-     */
-    private String title;
-    /**
-     * 商品标签
-     */
-    private String label;
-    /**
-     * 商品价格
-     */
-    private double price;
-    /**
-     * 交易方式
-     */
-    private int tradeMethod;
-    /**
-     * 是否议价
-     */
-    private int isBargain;
-    /**
-     * 商品描述
-     */
-    private String demandDescription;
-    /**
-     * 商品图片地址
-     */
-    private String imageUrl;
-    /**
-     * 上传的用户名
-     */
-    private String username;
-    /**
-     * id
-     */
+    /** 需求id */
     private int demandId;
-    /**
-     * 评论数
-     */
-    private int commentsNumber;
-    /**
-     * 点赞数
-     */
-    private int likeNumber;
-    /**
-     * 分享数
-     */
-    private int shareNumber;
+    /** 发布者 */
+    private String username;
+    /** 标题 */
+    private String title;
+    /** 内容 */
+    private String content;
+    /** 图片 */
+    private String imgUrl;
+    /** 发布者所属组织 */
+    private String organization;
+    /** 发布时间 */
+    private String time;
+    /** 推文链接 */
+    private String tweetLink;
 
-    public DemandDO() {
+    public int getDemandId() {
+        return demandId;
     }
 
-    public DemandDO(Map<String, Object> map){
-        this.title = (String) map.get("title");
-        this.label = (String)map.get("label");
-        this.price = Double.parseDouble(map.get("price").toString());
-        this.tradeMethod = Integer.parseInt(map.get("trade_method").toString());
-        this.isBargain = Integer.parseInt(map.get("is_bargain").toString());
-        this.demandDescription = (String)map.get("demand_description");
-        this.imageUrl = (String)map.get("image_url");
-        this.username = (String)map.get("user_name");
-        this.demandId = Integer.parseInt(map.get("demand_id").toString());
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getTradeMethod() {
-        return tradeMethod;
-    }
-
-    public void setTradeMethod(int tradeMethod) {
-        this.tradeMethod = tradeMethod;
-    }
-
-    public int getIsBargain() {
-        return isBargain;
-    }
-
-    public void setIsBargain(int isBargain) {
-        this.isBargain = isBargain;
-    }
-
-    public String getDemandDescription() {
-        return demandDescription;
-    }
-
-    public void setDemandDescription(String demandDescription) {
-        this.demandDescription = demandDescription;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setDemandId(int demandId) {
+        this.demandId = demandId;
     }
 
     public String getUsername() {
@@ -136,35 +39,51 @@ public class DemandDO {
         this.username = username;
     }
 
-    public int getDemandId() {
-        return demandId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDemandId(int demandId) {
-        this.demandId = demandId;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getCommentsNumber() {
-        return commentsNumber;
+    public String getContent() {
+        return content;
     }
 
-    public void setCommentsNumber(int commentsNumber) {
-        this.commentsNumber = commentsNumber;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public int getLikeNumber() {
-        return likeNumber;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setLikeNumber(int likeNumber) {
-        this.likeNumber = likeNumber;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
-    public int getShareNumber() {
-        return shareNumber;
+    public String getOrganization() {
+        return organization;
     }
 
-    public void setShareNumber(int shareNumber) {
-        this.shareNumber = shareNumber;
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTweetLink() {
+        return tweetLink;
+    }
+
+    public void setTweetLink(String tweetLink) {
+        this.tweetLink = tweetLink;
     }
 }

@@ -43,6 +43,8 @@ public enum ResultEnum {
     PUBLISH_SUCCESS(200,"发布成功"),
     /** 包含敏感词汇 */
     PUBLISH_CONTENT_ERROR(409,"不能包含敏感词汇"),
+    /** 无权发布捐赠 */
+    NO_ENTITLED_TO_PUBLISH(403,"您无权发布捐赠信息"),
 
     /** 没有更多数据了 */
     NO_MORE_DATA(404,"没有更多数据了"),
@@ -95,7 +97,17 @@ public enum ResultEnum {
     /** 已点赞该商品 */
     ALREADY_LIKE(401,"已点赞"),
     /** 未点赞 */
-    NOT_LIKE(412,"未点赞")
+    NOT_LIKE(412,"未点赞"),
+
+    /** 关注成功 */
+    CONCERN_SUCCESS(200,"关注成功"),
+    /** 已关注 */
+    ALREADY_CONCERN(401,"已关注"),
+    /** 未关注 */
+    NOT_CONCERN(412, "未关注"),
+
+    /** 属于组织 */
+    IS_ORGANIZATION(201,"属于组织")
     ;
 
     /** 状态码 */

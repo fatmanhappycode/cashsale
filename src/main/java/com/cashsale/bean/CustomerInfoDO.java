@@ -43,6 +43,16 @@ public class CustomerInfoDO {
 	 * 是否验证手机号
 	 */
 	private boolean mobile_certificate;
+
+	/**
+	 * 我的粉丝
+	 */
+	private int myFans;
+
+	/**
+	 * 我关注的
+	 */
+	private int myConcern;
 	
 	public CustomerInfoDO(String username) {
 		super();
@@ -119,5 +129,21 @@ public class CustomerInfoDO {
 
 	public void setMobile_certificate(boolean mobile_certificate) {
 		this.mobile_certificate = mobile_certificate;
+	}
+
+	public int getMyFans() {
+		return myFans;
+	}
+
+	public void setMyFans(int myFans) {
+		this.myFans = myFans;
+	}
+
+	public int getMyConcern() {
+		return myConcern;
+	}
+
+	public void setMyConcern(int myConcern) {
+		this.myConcern = myConcern;
 	}
 }
