@@ -2,6 +2,7 @@ package com.cashsale.service;
 
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.IsConfirmDAO;
+import com.cashsale.dao.PublishDemandDAO;
 import com.cashsale.dao.UserLoginDAO;
 import com.cashsale.enums.ResultEnum;
 import com.cashsale.util.SendPostUtil;
@@ -21,9 +22,14 @@ public class UserService {
      * @return ResultDTO<String>
      */
     public ResultDTO<String> userLogin(String userName, String password, String keystoreUrl) {
+        String organization = new PublishDemandDAO().getOrganization(userName);
         String token = new UserLoginDAO().isLogin(userName,password, keystoreUrl);
         if (!token.equals("")) {
-            return new ResultDTO<String>(ResultEnum.LOGIN_SUCCESS.getCode(), token, ResultEnum.LOGIN_SUCCESS.getMsg());
+            if(organization != null && !organization.equals("")){
+                return new ResultDTO<String>(ResultEnum.IS_ORGANIZATION.getCode(), token, ResultEnum.IS_ORGANIZATION.getMsg());
+            }else {
+                return new ResultDTO<String>(ResultEnum.LOGIN_SUCCESS.getCode(), token, ResultEnum.LOGIN_SUCCESS.getMsg());
+            }
         } else {
             return new ResultDTO<String>(ResultEnum.LOGIN_ERROR.getCode(), null, ResultEnum.LOGIN_ERROR.getMsg());
         }

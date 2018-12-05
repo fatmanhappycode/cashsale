@@ -1,18 +1,12 @@
-package com.cashsale.controller.publish;
+package com.cashsale.controller.interact;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cashsale.bean.DemandDO;
-import com.cashsale.bean.ProductDO;
 import com.cashsale.bean.ResultDTO;
-import com.cashsale.dao.PublishDemandDAO;
-import com.cashsale.util.CommonUtils;
+import com.cashsale.bean.UserInteractDTO;
+import com.cashsale.dao.UserInteractDAO;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import io.jsonwebtoken.Claims;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,33 +15,33 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * @Description: 发布需求（号召捐赠等）
+ * @Description: 用户之间的关注
  * @Author: 8-0416
- * @Date: 2018/12/3
+ * @Date: 2018/12/4
  */
-@WebServlet("/publishDemand")
-public class PublishDemandServlet extends HttpServlet {
+@WebServlet("/concern")
+public class UserInteractServlet extends HttpServlet{
 
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.setCharacterEncoding("utf-8");
+
         // 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
 
+        // 读取前端传过来的json串
         BufferedReader br = request.getReader();
-        String str,dem = "";
-        while ((str = br.readLine()) != null) {
-            dem += str;
+        String str,user = "";
+        while((str = br.readLine()) != null){
+            user += str;
         }
-        System.out.println(dem);
-        DemandDO demand = new Gson().fromJson(dem, DemandDO.class);
-        PrintWriter writer = response.getWriter();
-        
+        UserInteractDTO c = new Gson().fromJson(user, UserInteractDTO.class);
+        //获取被关注者
+        String concern = c.getConcern();
         //获取用户名
-        String username = demand.getUsername();
+        String username = c.getUsername();
 
         //获取请求头token
         /*Cookie[] cookies = request.getCookies();
@@ -69,10 +63,12 @@ public class PublishDemandServlet extends HttpServlet {
         }
         String username = claims.getSubject();*/
 
-        ResultDTO result = new PublishDemandDAO().publishDemand(demand, username);
-        writer.print(JSONObject.toJSON(result));
+        PrintWriter writer = response.getWriter();
+        ResultDTO result = new UserInteractDAO().concern(username, concern);
+        writer.println(JSONObject.toJSON(result));
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         doPost(request, response);
     }
