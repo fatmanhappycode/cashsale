@@ -217,3 +217,29 @@ $.ajax({
         alert("系统异常！"+e+"\n"+errrorMessage);
     }
 });
+
+var username = getCookie("username");
+function getMyConcern(username) {
+    $.ajax({
+        url:"/getMyConcern",
+        type:"get",
+        headers:{
+            contentType:"application/json;charset=UTF-8"
+        },
+        data:saveData,
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            if(result.code==124){
+                var data=result.data;
+                alert("cg");
+                innerGoods(data);
+            }else{
+                console.log(result.msg);
+            }
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！");
+        }
+    });
+}
