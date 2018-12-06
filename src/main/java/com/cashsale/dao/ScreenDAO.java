@@ -39,7 +39,7 @@ public class ScreenDAO {
 		ResultSet result = null;
 		Connection conn = new com.cashsale.conn.Conn().getCon();
 
-		String query = "SELECT * FROM product_info ORDER BY publish_time DESC LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER+" ORDER BY publish_time DESC";
+		String query = "SELECT * FROM product_info ORDER BY publish_time DESC LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;
 		if(queryInfo != null && !queryInfo.equals(""))
 		{
 			query = "SELECT * FROM product_info WHERE "+queryInfo+" ORDER BY publish_time DESC LIMIT "+((page-1)*DATA_NUMBER)+","+DATA_NUMBER;

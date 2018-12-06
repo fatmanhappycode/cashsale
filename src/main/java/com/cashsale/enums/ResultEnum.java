@@ -22,7 +22,7 @@ public enum ResultEnum {
     /** 改手机号已被注册 */
     REGISTER_NUMBER_ERROR(412,"该手机号已被注册"),
     /** 该邮箱已被注册 */
-    REGISTER_MAIL_ERROR(412,"该邮箱已被注册"),
+    REGISTER_MAIL_ERROR(413,"该邮箱已被注册"),
     /** 请到邮箱进行账号激活 */
     REGISTER_TO_MAIL(100,"请到邮箱进行账号激活"),
 
