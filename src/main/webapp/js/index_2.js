@@ -22,6 +22,7 @@ if(getCookie("usernme")!=""&&getCookie("username")!=null) {
     document.getElementById('userImg').setAttribute("target","_self");
     // 已登录时显示退出按钮
     document.getElementById('exit').style="display:block;";
+    document.getElementById('deploy').style="display:block;";
 }
 
 //退出登录
@@ -70,4 +71,24 @@ notice.onclick = function(){
 }
 noticeX.onclick = function(){
     document.getElementById("noticeDiv").style.display="none";
+}
+
+{
+    var saveData = {"productId":productId,"scoreCode":"A"};
+    $.ajax({
+        url:"/cashsale/score",
+        type:"post",
+        dataType:"json",
+        data:JSON.stringify(saveData),
+        contentType:"application/json;charset=UTF-8",
+        headers:{
+            contentType:"application/json;charset=UTF-8"
+        },
+        success:function(result,testStatus)
+        {
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
 }

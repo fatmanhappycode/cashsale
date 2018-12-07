@@ -14,7 +14,7 @@ currentPage="1";
 //定义全局变量title，方便下拉时使用
 var title;
 
-var datas="";
+
 
 //加载时返回最新商品
 window.onload =function init() {
@@ -43,6 +43,7 @@ window.onload =function init() {
             datas=result.data.data;
             //渲染
             innerGoods(datas);
+            whatlike(datas);
         },
         error:function(xhr,errrorMessage,e){
             alert("系统异常！"+e+"\n"+errrorMessage);
@@ -77,7 +78,6 @@ window.onload =function init() {
 
     //筛选下拉时的变化
     var oDiv = document.getElementById("species");
-    var span = document.getElementById("notice");
         H = 0,
         Y = oDiv
     i=0;
@@ -94,11 +94,8 @@ window.onload =function init() {
         var s = document.body.scrollTop || document.documentElement.scrollTop
         if(s+280>H) {
             oDiv.style = "position:fixed;top:17px;";
-            span.style = "margin-left:737px;";
-
         } else {
             oDiv.style = "";
-            span.style = "margin-left:555px;";
         }
     }
 
@@ -136,7 +133,7 @@ $(window).scroll(function(){
 
 
 //猜你喜欢专用页数
-var currentPage1=-1;
+var currentPage1;
 //猜你喜欢
 function whatULike() {
     var saveData={"username":getCookie("username"),"currentPage":currentPage1};
@@ -152,16 +149,20 @@ function whatULike() {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            whatlike(datas);
-            console.log(result);
-            if(result==null){
-                whatlike(datas);
-            }
-            data1=result.data.data;
-            if(data1==""||data1==null||data1==undefined){
-                 whatlike(datas);
-            }else{
-                whatlike(data1);
+            if(getCookie("username")!=""&&getCookie("username")!=null&&getCookie("username")!=undefined){
+                if(result.code==200){
+                    if(result.currentPage!=0){
+                        document.getElementById("Refresh").style.display="block";
+                    }
+                    console.log(result.currentPage);
+                    var data1=result.data.data;
+                    currentPage1=result.currentPage+1;
+                    if(data1==""||data1==undefined||data1==null){
+
+                    }else{
+                        whatlike(data1);
+                    }
+                }
             }
         },
         error:function(xhr,errrorMessage,e){
@@ -171,6 +172,7 @@ function whatULike() {
 }
 //渲染猜你喜欢
 function whatlike(data) {
+    $("#play").html("");
     $.each(data,function(index,obj){
         //获取容器
         var play = document.getElementById("play");

@@ -139,7 +139,7 @@
     font-size: 18px;
 }
 /*按钮*/
-#chat,#JOshopping,#city,#comment input{
+#chat,#JOshopping,#city,#delete,#comment input{
     display:inline-block;
     width:150px;
     height: 40px;
@@ -155,10 +155,20 @@
     height: 25px;
     margin-top:8px;
     color: #da7370;
+    display: none;
 }
 #city:hover{
     color:red;
     border-color:#da7370;
+}
+#Lidelete{
+    display: none;
+    text-align: center;
+    /*border: 1px solid #fac;*/
+}
+#delete{
+    margin-top: 25px;
+    color: #da7370;
 }
 /*聊天按钮*/
 #chat{
@@ -214,8 +224,46 @@
     border-radius: 2px;
 }
 #myComment{
-    width: 800px;
+    padding: 0;
+    width: 835px;
+    border-top: 1px solid #ddd;
 }
+#myComment li{
+    padding: 8px;
+    list-style-type: none;
+    border-bottom: 1px solid #ddd;
+}
+#myComment img{
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+#myComment h4{
+    width: 220px;
+    position: absolute;
+    display: inline-block;
+    margin-top: 10px;
+    text-overflow: ellipsis;/*文本超出提示三个点*/
+    white-space: nowrap;/*一行显示*/
+    overflow: hidden;/*超出隐藏*/
+    /*border: 1px solid #fac;*/
+}
+#myComment p{
+    padding-left: 20px;
+    text-indent: 2em;
+    margin-top: -12px;
+    /*border: 1px solid #fac;*/
+}
+#myComment span{
+    font-size: 14px;
+    color: #dddddd;
+    width: 118px;
+    float: right;
+    overflow: hidden;
+    white-space: nowrap;/*一行显示*/
+    /*border: 1px solid #fac;*/
+}
+
 
 
 
