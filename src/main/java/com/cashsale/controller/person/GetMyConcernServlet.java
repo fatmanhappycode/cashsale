@@ -38,26 +38,6 @@ public class GetMyConcernServlet extends HttpServlet{
 
         String username = request.getParameter("username");
 
-        //获取请求头token
-        /*Cookie[] cookies = request.getCookies();
-        String token = "";
-        for (Cookie cookie : cookies) {
-            switch(cookie.getName()){
-                case "token":
-                    token = cookie.getValue();
-                    break;
-                default:
-                    break;
-            }
-        }
-        Claims claims = null;
-        try {
-            claims = CommonUtils.parseJWT(token);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String username = claims.getSubject();*/
-
         PrintWriter writer = response.getWriter();
         UserInteractDTO userInteractDTO = new GetMyConcernService().getMyConcern(username);
         ResultDTO<UserInteractDTO> result = new ResultDTO<>(0, userInteractDTO, null);

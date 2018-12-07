@@ -156,8 +156,9 @@ public class GetPersonDAO {
             pstmt.setString(1,username);
             result = pstmt.executeQuery();
             if(result.next()){
+                int temp = result.getInt(1);
                 new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
-                return result.getInt(1);
+                return temp;
             }else{
                 new com.cashsale.conn.Conn().closeConn(result, pstmt, conn);
                 return 0;

@@ -171,7 +171,7 @@ function loadgoods(productId) {
     var saveData={"productId":productId};
     // alert(productId);
     $.ajax({
-        url:"/GetDetailProduct",
+        url:"/cashsale/GetDetailProduct",
         type:"get",
         headers:{
             contentType:"application/json;charset=UTF-8"
@@ -209,6 +209,7 @@ $.ajax({
                 document.getElementById("nickname").innerHTML=data.nickname;
             }
             document.getElementById("dataThreeA").innerHTML=data.credit;
+            document.getElementById("concern").innerHTML=data.myFans;
         }else{
             console.log(result.msg);
         }
@@ -218,28 +219,59 @@ $.ajax({
     }
 });
 
-var username = getCookie("username");
-function getMyConcern(username) {
-    $.ajax({
-        url:"/getMyConcern",
-        type:"get",
-        headers:{
-            contentType:"application/json;charset=UTF-8"
-        },
-        data:saveData,
-        contentType:"application/json",
-        success:function(result,testStatus)
-        {
-            if(result.code==124){
-                var data=result.data;
-                alert("cg");
-                innerGoods(data);
-            }else{
-                console.log(result.msg);
+$.ajax({
+    url: "/cashsale/getMyConcern",
+    type: "get",
+    data: saveData,
+    contentType: "application/json",
+    success: function (result, testStatus) {
+        if (result.data.concernNumber != 0) {
+            document.getElementById("main3").innerHTML="";
+            var str = JSON.stringify(result.data.concernsProductNumber);
+            var str1 = str.replace("{","");
+            str1 = str1.replace("}","");
+            str1 = str1.split(",");
+            for(var i = 0; i < str1.length; i++){
+                var user = str1[i].substr(1,11);
+                var concernNum = str1[i].substring(14);
+                innerPerson(user, concernNum);
             }
-        },
-        error:function(xhr,errrorMessage,e){
-            alert("系统异常！");
+        } else {
+            alert("没有关注的人")
         }
-    });
+    },
+    error: function (xhr, errrorMessage, e) {
+        alert("系统异常！");
+    }
+});
+
+function innerPerson(user, number) {
+    var main = document.getElementById("main3");
+    var people= document.createElement('div');
+    var img = document.createElement('img');
+    var name= document.createElement('span');
+    var a= document.createElement('a');
+
+
+    people.setAttribute("id", "people");
+    /*people.setAttribute("onclick", "goodsclick(this)");
+
+    img.src = data.imageUrl;*/
+    name.innerHTML = user;
+    a.innerHTML = "发布商品数："+number;
+    people.appendChild(img);
+    people.appendChild(name);
+    people.appendChild(a);
+
+    //我关注的
+    var myConcernName= document.createElement('input');
+    myConcernName.setAttribute("id","myConcernName");
+    myConcernName.setAttribute("type","hidden");
+    myConcernName.setAttribute("value",user);
+    people.appendChild(myConcernName);
+
+    //取消关注
+    var but=document.createElement('input');
+
+    main.appendChild(people);
 }

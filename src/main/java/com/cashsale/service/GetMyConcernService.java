@@ -19,6 +19,7 @@ public class GetMyConcernService {
     public UserInteractDTO getMyConcern(String username){
         GetPersonDAO getPersonDAO = new GetPersonDAO();
         List<String> myConcern = getPersonDAO.getConcern(username);
+        int fans = getPersonDAO.getMyFans(username);
         UserInteractDTO userInteractDTO = new UserInteractDTO();
         Map<String, Integer> map = new HashMap<>();
         for(String user : myConcern){
@@ -26,6 +27,8 @@ public class GetMyConcernService {
             map.put(user, product.size());
         }
         userInteractDTO.setConcernsProductNumber(map);
+        userInteractDTO.setConcernNumber(myConcern.size());
+        userInteractDTO.setFanNumber(fans);
         return userInteractDTO;
     }
 }

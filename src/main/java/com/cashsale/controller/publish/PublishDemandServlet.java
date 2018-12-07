@@ -47,10 +47,10 @@ public class PublishDemandServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         
         //获取用户名
-        String username = demand.getUsername();
+        //String username = demand.getUsername();
 
         //获取请求头token
-        /*Cookie[] cookies = request.getCookies();
+        Cookie[] cookies = request.getCookies();
         String token = "";
         for (Cookie cookie : cookies) {
             switch(cookie.getName()){
@@ -67,7 +67,7 @@ public class PublishDemandServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        String username = claims.getSubject();*/
+        String username = claims.getSubject();
 
         ResultDTO result = new PublishDemandDAO().publishDemand(demand, username);
         writer.print(JSONObject.toJSON(result));
