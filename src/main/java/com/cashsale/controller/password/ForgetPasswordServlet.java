@@ -45,11 +45,12 @@ public class ForgetPasswordServlet extends HttpServlet {
         BufferedReader br = request.getReader();
         String str,user = "";
         while((str = br.readLine()) != null){
+            System.out.println(str);
             user += str;
         }
         CustomerInfoDO c = new Gson().fromJson(user, CustomerInfoDO.class);
-        String username = c.getUsername();
         String email = c.getEmail();
+        String username = c.getUsername();
 
         boolean tag = new SetPasswordDAO().isRight(username, email);
         PrintWriter writer = response.getWriter();
@@ -96,7 +97,7 @@ public class ForgetPasswordServlet extends HttpServlet {
             writer.print(JSONObject.toJSON(result));
         }else{
             ResultDTO<String> result = new ResultDTO<>(ResultEnum.SET_PASSWORD_ERROR.getCode(), null, ResultEnum.SET_PASSWORD_ERROR.getMsg());
-            writer.print(JSONObject.toJSON(request));
+            writer.print(JSONObject.toJSON(result));
         }
     }
 }

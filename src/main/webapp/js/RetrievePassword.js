@@ -21,9 +21,6 @@ if(flag=="1"){
 }
 function loadXMLDoc()
 {
-    document.getElementById('step2').style.borderColor="#3190e8";
-    document.getElementById('step3').style.background="#3190e8";
-
     var email = $("#Email").val();
     var username = $("#username").val();
     var saveData={"email":email,"username":username};
@@ -31,14 +28,13 @@ function loadXMLDoc()
         url:"/cashsale/forgetPassword",
         type:"post",
         dataType:"json",
-        headers:{
-            contentType:"application/json;charset=UTF-8"
-        },
         data:JSON.stringify(saveData),
         contentType:"application/json;charset=UTF-8",
         success:function(result,testStatus)
         {
             if(result.code == "200"){
+                document.getElementById('step2').style.borderColor="#3190e8";
+                document.getElementById('step3').style.background="#3190e8";
                 alert("请到邮箱完成验证！");
             }else if(result.code == "401"){
                 alert("用户名或邮箱错误！");
