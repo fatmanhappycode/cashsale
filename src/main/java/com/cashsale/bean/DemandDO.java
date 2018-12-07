@@ -20,8 +20,6 @@ public class DemandDO {
     private String organization;
     /** 发布时间 */
     private String time;
-    /** 推文链接 */
-    private String tweetLink;
 
     public int getDemandId() {
         return demandId;
@@ -77,13 +75,5 @@ public class DemandDO {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public String getTweetLink() {
-        return tweetLink;
-    }
-
-    public void setTweetLink(String tweetLink) {
-        this.tweetLink = tweetLink;
     }
 }

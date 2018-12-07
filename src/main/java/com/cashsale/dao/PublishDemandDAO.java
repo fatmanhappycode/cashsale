@@ -26,19 +26,18 @@ public class PublishDemandDAO {
         String title = demandDO.getTitle();
         String imgUrl = demandDO.getImgUrl();
         String content = demandDO.getContent();
-        String tweetLink = demandDO.getTweetLink();
+        String tweetLink = demandDO.getImgUrl();
         String organization = getOrganization(username);
 
         try{
 
-            sql = "INSERT INTO demand_info(user_name, title, content, organization, tweet_link, img_url) VALUE(?,?,?,?,?,?)";
+            sql = "INSERT INTO demand_info(user_name, title, content, organization, img_url) VALUE(?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,username);
             pstmt.setString(2, title);
             pstmt.setString(3, content);
             pstmt.setString(4, organization);
-            pstmt.setString(5, tweetLink);
-            pstmt.setString(6, imgUrl);
+            pstmt.setString(5, imgUrl);
             pstmt.executeUpdate();
             new Conn().closeConn(null, pstmt, conn);
             return new ResultDTO(ResultEnum.PUBLISH_SUCCESS.getCode(), null, ResultEnum.PUBLISH_SUCCESS.getMsg());
