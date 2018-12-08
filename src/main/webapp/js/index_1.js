@@ -646,7 +646,7 @@ function ismessage() {
         success: function (result, testStatus) {
             if (result.data == "1") {
                 var img = document.getElementById("youlike");
-                img.setAttribute("style","background:#fff  url('/cashsale/img/haveMessage.png') no-repeat;") ;
+                img.setAttribute("style","background:#fff  url('/cashsale/img/haveMessage.png') no-repeat center center;") ;
             }
         },
         error: function (xhr, errrorMessage, e) {

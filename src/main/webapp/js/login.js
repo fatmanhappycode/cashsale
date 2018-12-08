@@ -35,7 +35,7 @@ function loadXMLDoc()
                     changeVerifyCode();
                     $("#verifyCode").val('');
                     $("#password").val('');
-                }else if(result.code==""){
+                }else if(result.code=="201"){
                     // 存入token和username
                     setCookie("code","true");
                     setCookie("token",token);
@@ -85,35 +85,26 @@ function verCode() {
         document.getElementById("verifyCodeItem").style.display='none';
         document.getElementById("verifyCodeIsNull").style.display='block';
         verify = false;
-    }else if(verifyCodeValue.length > 5){
-        document.getElementById("verifyCodeItem").style.display = 'block';
-        document.getElementById("verifyCodeIsNull").style.display = 'none';
-        verify = false;
-    }else if(verifyCodeValue.length==5){
+    }else {
         document.getElementById("verifyCodeItem").style.display = 'none';
         document.getElementById("verifyCodeIsNull").style.display = 'none';
-        $("#verifyCode").blur(function () {
-            $.ajax({
-                type: "GET",
-                url: "/cashsale/verifyCode?verifyCode=" + verifyCodeValue,
-                success: function (returnData) {
-                    console.log("1"+returnData=="200");
-                    console.log("2"+returnData==200);
-                    if(returnData == "200") {
-                        document.getElementById("verifyCodeItem").style.display = 'none';
-                        document.getElementById("verifyCodeIsNull").style.display = 'none';
-
-                        verify = true;
-                    }else if (returnData != "200") {
-                        document.getElementById("verifyCodeItem").style.display = 'block';
-                        document.getElementById("verifyCodeIsNull").style.display = 'none';
-                        verify = false;
-                    }
-                },
-                error: function (e) {
-                    alert(e);
+        $.ajax({
+            type: "GET",
+            url: "/cashsale/verifyCode?verifyCode=" + verifyCodeValue,
+            success: function (returnData) {
+                if (returnData == "200") {
+                    document.getElementById("verifyCodeItem").style.display = 'none';
+                    document.getElementById("verifyCodeIsNull").style.display = 'none';
+                    verify = true;
+                } else {
+                    document.getElementById("verifyCodeItem").style.display = 'block';
+                    document.getElementById("verifyCodeIsNull").style.display = 'none';
+                    verify = false;
                 }
-            });
+            },
+            error: function (e) {
+                alert(e);
+            }
         });
     }
 }

@@ -328,56 +328,59 @@
 	z-index:10000;
 	height:135px;
 	margin-left:110px;
-	margin-top:-5px;
+	margin-top:15px;
 
 	/*border:2px solid #FAC;*/
 }
 .index,.upload,.youlike,.box,.myself{
 	float:left;
-	border:1px solid rgba(172,172,172,.6);
-	border-radius:10px;
-	width:140px;
-	height:135px;
-	margin-right:25px;
+	/*border:1px solid rgba(172,172,172,.6);*/
+	border-radius:60px;
+	width:120px;
+	height:120px;
+	margin-right:50px;
 	text-align:center;
+	overflow: hidden;
 	list-style-type: none;
 	text-decoration:none;
 	cursor:pointer;
 	background:#fff  url("../img/home.png") no-repeat;
-	background-size: 120px 120px;
+	background-size: 124px 124px;
 	background-position: center center;
+	transition: transform 0.5s linear 0s;
 }
 
 .upload{
 	background:#fff  url("../img/publish.png") no-repeat;
-	background-size: 120px 120px;
+	background-size: 124px 124px;
 	background-position: center center;
 }
 .youlike{
 	background:#fff url("../img/message.png") no-repeat;
-	background-size: 120px 120px;
+	background-size: 124px 124px;
 	background-position: center center;
 }
 .box{
 	background:#fff  url("../img/trolley.png") no-repeat;
-	background-size: 120px 120px;
+	background-size: 124px 124px;
 	background-position: center center;
 }
 .myself{
 	background:#fff  url("../img/person.png") no-repeat;
-	background-size: 120px 120px;
+	background-size: 124px 124px;
 	background-position: center center;
 }
 .index a,.upload a,.youlike a,.box a,.myself a{
 	display:block;
-	width:140px;
-	height:80px;
-	padding:55px 0 0 0;
+	width:120px;
+	height:75px;
+	padding:45px 0 0 0;
 	border-radius:8px;
 	text-decoration:none;
+	text-align: center;
 	color: #000;
 	font-size:22px;
-	background:rgba(255,255,255,.6);
+	background:rgba(255,255,255,.8);
 	opacity: 0;
 	/* 	border:1px solid #FAC; */
 }
@@ -386,7 +389,7 @@
 }
 .index:hover,.upload:hover,.youlike:hover,.box:hover,.myself:hover{
 	/* 	border:3px solid rgba(131,111,191,1); */
-	/* 	box-shadow:-10px 10px 10px rgba(0,0,0,.5) inset; */
+	 	box-shadow:10px 10px 10px rgba(0,0,0,.5);
 }
 
 /* 分类 */
