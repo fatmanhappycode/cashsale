@@ -1,11 +1,9 @@
 package com.cashsale.service;
 
-import com.cashsale.bean.HightLightDTO;
-import com.cashsale.bean.PagerDTO;
-import com.cashsale.bean.ProductDO;
-import com.cashsale.bean.ResultDTO;
+import com.cashsale.bean.*;
 import com.cashsale.dao.ListProductDAO;
 import com.cashsale.dao.ListTitleDAO;
+import com.cashsale.dao.SearchDemandDAO;
 import com.cashsale.enums.ResultEnum;
 
 import java.util.ArrayList;
@@ -51,5 +49,10 @@ public class SearchService {
     public ResultDTO<List<String>> searchHint(String title) {
         List<String> list = new ListTitleDAO().titleHint(title);
         return new ResultDTO<List<String>>(ResultEnum.SEARCH_SUCCESS.getCode(), list,ResultEnum.SEARCH_SUCCESS.getMsg());
+    }
+
+    public ResultDTO<DemandDO> searchDemand(){
+        DemandDO demandDO = new SearchDemandDAO().getDemand();
+        return new ResultDTO<DemandDO>(ResultEnum.SEARCH_SUCCESS.getCode(), demandDO, ResultEnum.SEARCH_SUCCESS.getMsg());
     }
 }
