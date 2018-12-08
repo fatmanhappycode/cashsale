@@ -101,21 +101,26 @@
     cursor: pointer;
 }
 /* 图片容器 */
-#container,#container1{
+#container,#container2{
     width:120px;
     height: 120px;
     padding: 0;
-    /*margin-top: -120px;*/
+    margin-top: -120px;
     margin-left:30px;
     border: 1px solid #eee;
 }
 #container1{
-    width: auto;
+    width: 300px;
     height: 120px;
+    border:1px solid #fac;
 }
 #container img,#container1 img{
     width:120px;
     height:120px;
+}
+#container1 img{
+    display: inline-block;
+    float: left;
 }
 .myfile_img{
     width:120px;

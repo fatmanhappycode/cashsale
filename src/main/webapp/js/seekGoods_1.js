@@ -5,6 +5,8 @@ function f() {
     commodity = $("#commodity").val();
     name= $("#name").val();
     var image = $("#image").val();
+    alert(image);
+
 
     if(name=="" ||commodity==""||document.getElementById("myfile").files.length==0){
         alert("请填写完信息再提交，否则将清空！");

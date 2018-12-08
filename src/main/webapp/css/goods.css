@@ -180,16 +180,70 @@
     background: #da7370;
     color:#fff;
 }
-
+#noticeP{
+    position: absolute;
+    z-index: 10000;
+    width: 460px;
+    height: 215px;
+    letter-spacing: 3px;
+    background: #fff;
+    float: right;
+    left: 520px;
+    top: 164px;
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+    display: none;
+}
 
 /*富文本编辑器*/
 .FirstH3{
+    width: 300px;
     margin-left: 70px;
     margin-top: 40px;
+    border: 1px solid #fac;
 }
 #FirstH3{
     margin-top: 430px;
 }
+/*点赞 转发*/
+#GoodsLike{
+    float: right;
+    margin-right: 90px;
+    margin-top: -65px;
+    /*border: 1px solid #fac;*/
+}
+#GoodsLike li{
+    width: 40px;
+    margin-right: 15px;
+    float: left;
+    cursor: pointer;
+    /*border: 1px solid #fac;*/
+    list-style-type: none;
+}
+#GoodsLike img{
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+    margin-top: 12px;
+    opacity: 1;
+    border-bottom:none;
+    /*border:1px solid #fac;*/
+}
+#GoodsLike span{
+    display: block;
+    margin-left: 5px;
+    width: 35px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: -6px;
+    text-overflow: ellipsis;/*文本超出提示三个�?*/
+    white-space: nowrap;/*�?行显�?*/
+    overflow: hidden;/*超出隐藏*/
+    /*border:1px solid #fac;*/
+}
+
+
+
 #Description,#comment{
     padding: 30px;
     width: 830px;

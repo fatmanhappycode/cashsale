@@ -19,9 +19,12 @@ function getComments() {
         },
         success:function(result,testStatus)
         {
+            alert(result.data2.likeNumber);
             if (result.data2.comments != "") {
                 data1=result.data2.comments;
                 innerComments(data1);
+
+
             } else if (result.code == "401") {
                 alert("加入失败");
             }
@@ -50,6 +53,7 @@ function innerComments(data) {
         p.innerHTML=data[i].comments;
         span.innerHTML=data[i].commentsTime;
 
+
         li.appendChild(img);
         li.appendChild(h4);
         li.appendChild(span);
@@ -66,6 +70,56 @@ function setComments() {
         alert("内容不能为空！");
         return ;
     }
+    var saveData = {"productId":window.location.href.split("=")[1],"scoreCode":"F","comments":comments};
+    $.ajax({
+        url:"/cashsale/score",
+        type:"post",
+        dataType:"json",
+        data:JSON.stringify(saveData),
+        contentType:"application/json;charset=UTF-8",
+        headers:{
+            contentType:"application/json;charset=UTF-8"
+        },
+        success:function(result,testStatus)
+        {
+            if (result.code == "200") {
+                getComments();
+            } else if (result.code == "401") {
+                alert("加入失败");
+            }
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
+}
+// 点赞时
+function clicklikeNumber() {
+    var saveData = {"productId":window.location.href.split("=")[1],"scoreCode":"F","comments":comments};
+    $.ajax({
+        url:"/cashsale/score",
+        type:"post",
+        dataType:"json",
+        data:JSON.stringify(saveData),
+        contentType:"application/json;charset=UTF-8",
+        headers:{
+            contentType:"application/json;charset=UTF-8"
+        },
+        success:function(result,testStatus)
+        {
+            if (result.code == "200") {
+                getComments();
+            } else if (result.code == "401") {
+                alert("加入失败");
+            }
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！"+e+"\n"+errrorMessage);
+        }
+    });
+}
+// 转发时
+function clickshareNumber() {
     var saveData = {"productId":window.location.href.split("=")[1],"scoreCode":"F","comments":comments};
     $.ajax({
         url:"/cashsale/score",
