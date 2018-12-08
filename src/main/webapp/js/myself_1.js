@@ -1,31 +1,3 @@
-var n=0;
-/*window.onscroll = function()
-{
-    oDiv=document.getElementById("self_left")
-    var H =document.getElementById("self_left").offsetTop;
-    var s = document.body.scrollTop || document.documentElement.scrollTop;
-    console.log(H+"  "+s);
-    if(s>=304) {
-        oDiv.style = "position:fixed;top:-100px;left:40px;";
-    } else if(s<=0){
-        oDiv.style = "";
-    }
-}*/
-window.onscroll = function(){
-    oDiv=document.getElementById("self_left");
-    var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
-    console.log(winScrollHeight);
-    if(s>=304) {
-        oDiv.style = "position:fixed;top:0px;left:0px;";
-    } else if(s<=0){
-        oDiv.style = "";
-    }
-}
-test.onclick = function(){
-     document.body.scrollTop = document.documentElement.scrollTop = 0;
-}
-
-
 var saveData1={"username":getCookie("username")};
 $.ajax({
     url:"/cashsale/getShoppingTrolley",
@@ -35,7 +7,7 @@ $.ajax({
     contentType:"application/json;charset=UTF-8",
     success:function(result,testStatus)
     {
-        if(result.code=="200"){
+        if(result.code=="124"){
             var data=result.data;
             if(data!=null&&data!=""&&data!=undefined){
                 document.getElementById("main2").innerHTML="";
@@ -82,7 +54,7 @@ function loadMyGoods(productId) {
     var saveData={"productId":productId};
     // alert(productId);
     $.ajax({
-        url:"/cashsale/GetDetailProduct",
+        url:"/GetDetailProduct",
         type:"get",
         headers:{
             contentType:"application/json;charset=UTF-8"
@@ -91,9 +63,10 @@ function loadMyGoods(productId) {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            if(result.code=="200"){
+            if(result.code==124){
                 var data=result.data;
                 innerMyGoods(data);
+
             }else{
                 console.log(result.msg);
             }
@@ -160,7 +133,6 @@ function innerGoods(data) {
 
     //删除商品
     var but=document.createElement('input');
-
 
 
     main.appendChild(goods);

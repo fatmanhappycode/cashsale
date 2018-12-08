@@ -83,33 +83,16 @@ function verCode() {
     var verifyCodeValue = $("#verifyCode").val();
     if(verifyCodeValue == "" || verifyCodeValue == null) {
         document.getElementById("verifyCodeItem").style.display='none';
-        document.getElementById("verifyCodeIsNull").style.display='none';
+        document.getElementById("verifyCodeIsNull").style.display='block';
         verify = false;
     }else {
-        if(verifyCodeValue.length == 5){
-            $.ajax({
-                type: "GET",
-                url: "/cashsale/verifyCode?verifyCode=" + verifyCodeValue,
-                success: function (returnData) {
-                    if (returnData != "200") {
-                        document.getElementById("verifyCodeItem").style.display = 'block';
-                        document.getElementById("verifyCodeIsNull").style.display = 'none';
-                        verify = false;
-                    } else {
-                        document.getElementById("verifyCodeItem").style.display = 'none';
-                        document.getElementById("verifyCodeIsNull").style.display = 'none';
-                        verify = true;
-                    }
-                },
-                error: function (e) {
-                    alert(e);
-                }
-            });
-        }else if(verifyCodeValue.length > 5){
+        if(verifyCodeValue.length > 5){
             document.getElementById("verifyCodeItem").style.display = 'block';
             document.getElementById("verifyCodeIsNull").style.display = 'none';
             verify = false;
         }else {
+            document.getElementById("verifyCodeItem").style.display = 'none';
+            document.getElementById("verifyCodeIsNull").style.display = 'none';
             $("#verifyCode").blur(function () {
                 $.ajax({
                     type: "GET",
@@ -119,7 +102,7 @@ function verCode() {
                             document.getElementById("verifyCodeItem").style.display = 'block';
                             document.getElementById("verifyCodeIsNull").style.display = 'none';
                             verify = false;
-                        } else {
+                        } else if(returnData == "200") {
                             document.getElementById("verifyCodeItem").style.display = 'none';
                             document.getElementById("verifyCodeIsNull").style.display = 'none';
                             verify = true;

@@ -20,6 +20,6 @@ public class EsConn {
 
         // 创建访问es服务器的客户端
         client = new PreBuiltTransportClient(settings)
-                .addTransportAddress(new TransportAddress(InetAddress.getByName("127.0.0.1"),9300));
+                .addTransportAddress(new TransportAddress(InetAddress.getByName("120.76.58.120"),9300));
     }
 }

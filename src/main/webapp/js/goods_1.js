@@ -60,6 +60,17 @@ window.onload =function loadgoods() {
                 // 用户名 发布者
                 if(data.username!="undefined"||data.username!=""||data.username!=null){
                     $("#username").html(data.username);
+                    var goodsUserName = getCookie("goodsUsername");
+
+                    //判断是否是不能收藏的人
+                    if(data.username==goodsUserName){
+                        document.getElementById("chat").disabled=true;
+                        document.getElementById("JOshopping").disabled=true;
+
+                        document.getElementById("lichat").style.display="none";
+                        document.getElementById("liJOshopping").style.display="none";
+                        document.getElementById("Lidelete").style.display="block";
+                    }
                 }else{
                     $("#username").html("匿名");
                 }
@@ -76,9 +87,6 @@ window.onload =function loadgoods() {
 }
 
 
-//是否已经加入购物车
-isInTrolley();
-
 
 var allimg=document.getElementsByTagName("img");
 for(var i=0;i<allimg.length;i++){
@@ -90,6 +98,7 @@ for(var i=0;i<allimg.length;i++){
 city.onclick= function(){
     $("#city").val("已关注");
 }
+
 // 点击加入购物车按钮
 JOshopping.onclick=function () {
     var saveData = {"productId":window.location.href.split("=")[1],"scoreCode":"C"};
@@ -117,7 +126,9 @@ JOshopping.onclick=function () {
         }
     });
 }
+
 //是否已经加入购物车
+isInTrolley();
 function isInTrolley() {
     var saveData = {"productId":window.location.href.split("=")[1]};
     $.ajax({
@@ -141,3 +152,15 @@ function isInTrolley() {
         }
     });
 }
+
+
+
+/*
+var userName = document.getElementById("username").value;
+var goodsUserName = getCookie("goodsUsername");
+alert(userName==goodsUserName);
+alert("\n"+userName+"\n"+goodsUserName);
+if(userName==goodsUserName){
+    document.getElementById("chat").style="disabled='disabled';";
+    document.getElementById("JOshopping").style="disabled='disabled';";
+}*/

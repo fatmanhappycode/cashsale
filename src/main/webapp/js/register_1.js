@@ -12,7 +12,7 @@ function clickregister() {
 	var email = $("#email").val();
 	if(!Verusername()||!E_mail()||!Verpassword()||!Verification())
 	{
-        alert("请填写完内容！");
+        alert("请填写完内容！ Verusername="+!Verusername() + "  E_mail="+!E_mail() + "  Verpassword="+!Verpassword()+"  Verification()="+!Verification());
 		//如果没填完数据，则弹出指示
 	}
 	else

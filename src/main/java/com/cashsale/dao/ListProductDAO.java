@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Date;
 
 import static org.elasticsearch.index.query.QueryBuilders.matchPhraseQuery;
+import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
 
 /**
  * @author 肥宅快乐码
@@ -43,7 +44,7 @@ public class ListProductDAO {
                 .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
                 .setFrom(offset)
                 .setSize(9)
-                .setQuery(QueryBuilders.boolQuery().must(matchPhraseQuery("title", title)))
+                .setQuery(QueryBuilders.boolQuery().must(matchQuery("title", title)))
                 .highlighter(highlightBuilder);
         SearchResponse response = request.get();
 

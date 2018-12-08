@@ -74,7 +74,7 @@ public class MailUtil {
 		message.setSubject("来自“现卖”的激活邮件");
 		//设置邮件的正文
 		message.setContent("<h1>亲爱的"+nickname+"：</h1>"+"<br><h3>欢迎加入现卖！<br>" + 
-				"请点击下面的连接完成注册：<br></h3>" + "<a href='http://localhost:8080/cashsale/active?code="+code
+				"请点击下面的连接完成注册：<br></h3>" + "<a href='http://cashsale.myjnxj.top/cashsale/active?code="+code
 				+"&username="+username+"&currentTime="+currentTime+"'>"+"点击验证"+"<h5>如以上连接无法点击，请将其复制到浏览器中打开（请于5"
 				+ "分钟内完成验证，逾期需重新注册）</h5>",
 				"text/html;charset=UTF-8");
@@ -130,7 +130,7 @@ public class MailUtil {
 		message.setSubject("来自“现卖”的重置密码邮件");
 		//设置邮件的正文
 		message.setContent("<h1>您好：</h1>"+
-						"您在现卖申请找回密码：<br>" + "<a href='http://localhost:8080/cashsale/confirmSet?code="+code
+						"您在现卖申请找回密码：<br>" + "<a href='http://cashsale.myjnxj.top/cashsale/confirmSet?code="+code
 						+"&username="+username+"&currentTime="+currentTime+"'>"+"点击重置密码</a>"+"<h5>如以上连接无法点击，请将其复制到浏览器中打开（请于3"
 						+ "分钟内完成验证，逾期需重新申请。如不是本人操作，请忽略本邮件，并及时修改密码！）</h5>",
 				"text/html;charset=UTF-8");

@@ -69,7 +69,10 @@ public class SensitiveWordInitUtil {
         Set<String> set = null;
         //File file = new File("E:\\javawork2\\WebTest\\src\\main\\webapp\\CensorWords.txt");    //读取文件
         //File file = new File("C:\\Users\\HP\\IdeaProjects\\cashsale\\src\\main\\webapp\\CensorWords.txt");    //读取文件
-        File file = new File("C:\\Study\\IdeaProjects\\cashsale\\src\\main\\webapp\\CensorWords.txt");    //读取文件
+        String classpath = this.getClass().getResource("/").getPath().replaceFirst("/", "");
+        String webappRoot = classpath.replaceAll("WEB-INF/classes/", "");
+        File file = new File(webappRoot + "CensorWords.txt");    //读取文件
+        System.out.println(file.getAbsolutePath());
         InputStreamReader read = new InputStreamReader(new FileInputStream(file),ENCODING);
         try {
             if(file.isFile() && file.exists()){      //文件流是否存在
