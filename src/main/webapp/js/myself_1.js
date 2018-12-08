@@ -1,3 +1,5 @@
+
+/*获取购物车的商品id*/
 var saveData1={"username":getCookie("username")};
 $.ajax({
     url:"/cashsale/getShoppingTrolley",
@@ -12,6 +14,7 @@ $.ajax({
             if(data!=null&&data!=""&&data!=undefined){
                 document.getElementById("main2").innerHTML="";
             }
+            // 通过id获取商品
             for(var i=0;i<data.length;i++){
                 loadgoods(data[i]);
             }
@@ -21,40 +24,12 @@ $.ajax({
         alert("系统异常！");
     }
 });
-
-/*获取我发布的商品*/
-var saveData2={"username":getCookie("username")};
-$.ajax({
-    url:"/cashsale/getMyProduct",
-    type:"get",
-    dataType:"json",
-    data:saveData2,
-    contentType:"application/json;charset=UTF-8",
-    success:function(result,testStatus)
-    {
-        if(result.currentPage > 0){
-            var data=result.data;
-            if(data!=null&&data!=""&&data!=undefined){
-                document.getElementById("main1").innerHTML="";
-                document.getElementsByClassName("main1_div").item("");
-                document.getElementById("myProduct").innerHTML=result.currentPage;
-            }
-            for(var i=0;i<data.length;i++){
-                loadMyGoods(data[i].productId);
-                console.log(i);
-            }
-        }
-    },
-    error:function(xhr,errrorMessage,e){
-        alert("系统异常！");
-    }
-});
-
-function loadMyGoods(productId) {
+// 通过id请求返回购物车商品
+function loadgoods(productId) {
     var saveData={"productId":productId};
     // alert(productId);
     $.ajax({
-        url:"/GetDetailProduct",
+        url:"/cashsale/GetDetailProduct",
         type:"get",
         headers:{
             contentType:"application/json;charset=UTF-8"
@@ -63,10 +38,9 @@ function loadMyGoods(productId) {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            if(result.code==124){
+            if(result.code==200){
                 var data=result.data;
-                innerMyGoods(data);
-
+                innerGoods(data);
             }else{
                 console.log(result.msg);
             }
@@ -76,34 +50,7 @@ function loadMyGoods(productId) {
         }
     });
 }
-
-function innerMyGoods(data) {
-    var main = document.getElementById("main1");
-    var goods= document.createElement('div');
-    var img = document.createElement('img');
-    var h4= document.createElement('h4');
-    var p= document.createElement('p');
-
-    goods.setAttribute("class", "goods");
-    goods.setAttribute("onclick", "goodsclick(this)");
-
-    h4.setAttribute("class", "myH");
-    p.setAttribute("class", "price");
-    img.src = data.imageUrl;
-    h4.innerHTML=data.title;
-    p.innerHTML="￥"+data.price;
-    goods.appendChild(img);
-    goods.appendChild(h4);
-    goods.appendChild(p);
-    main.appendChild(goods);
-    //商品id
-    var goodsId= document.createElement('input');
-    goodsId.setAttribute("id","goodsId");
-    goodsId.setAttribute("type","hidden");
-    goodsId.setAttribute("value",data.productId);
-    goods.appendChild(goodsId);
-}
-
+// 渲染购物车商品
 function innerGoods(data) {
     var main = document.getElementById("main2");
     var goods= document.createElement('div');
@@ -137,8 +84,45 @@ function innerGoods(data) {
 
     main.appendChild(goods);
 }
-// 通过id请求返回购物车商品
-function loadgoods(productId) {
+
+
+
+
+
+
+
+
+
+/*获取我发布的商品id*/
+var saveData2={"username":getCookie("username")};
+$.ajax({
+    url:"/cashsale/getMyProduct",
+    type:"get",
+    dataType:"json",
+    data:saveData2,
+    contentType:"application/json;charset=UTF-8",
+    success:function(result,testStatus)
+    {
+        if(result.currentPage > 0){
+            var data=result.data;
+            if(data!=null&&data!=""&&data!=undefined){
+                document.getElementById("main1").innerHTML="";
+                document.getElementById("myProduct").innerHTML=result.currentPage;
+            }
+            // 根据id获取商品
+            for(var i=0;i<data.length;i++){
+                loadMyGoods(data[i].productId);
+                console.log(i);
+            }
+        }
+    },
+    error:function(xhr,errrorMessage,e){
+        alert("系统异常！");
+    }
+});
+
+// 根据我发布的商品id获取商品
+function loadMyGoods(productId) {
     var saveData={"productId":productId};
     // alert(productId);
     $.ajax({
@@ -153,7 +137,8 @@ function loadgoods(productId) {
         {
             if(result.code==200){
                 var data=result.data;
-                innerGoods(data);
+                innerMyGoods(data,productId);
+
             }else{
                 console.log(result.msg);
             }
@@ -163,9 +148,38 @@ function loadgoods(productId) {
         }
     });
 }
+// 渲染我发布的商品
+function innerMyGoods(data,id) {
+    var main = document.getElementById("main1");
+    var goods= document.createElement('div');
+    var img = document.createElement('img');
+    var h4= document.createElement('h4');
+    var p= document.createElement('p');
 
-// 个人信息
-var saveData={"username":getCookie("username")};
+    goods.setAttribute("class", "goods");
+    goods.setAttribute("onclick", "goodsclick(this)");
+
+    h4.setAttribute("class", "myH");
+    p.setAttribute("class", "price");
+    img.src = data.imageUrl;
+    h4.innerHTML=data.title;
+    p.innerHTML="￥"+data.price;
+    goods.appendChild(img);
+    goods.appendChild(h4);
+    goods.appendChild(p);
+    main.appendChild(goods);
+    //商品id
+    var goodsId= document.createElement('input');
+    goodsId.setAttribute("id","goodsId");
+    goodsId.setAttribute("type","hidden");
+    goodsId.setAttribute("value",id);
+    goods.appendChild(goodsId);
+}
+
+
+
+
+/*// 个人信息
 $.ajax({
     url:"/cashsale/getPersonInfo",
     type:"get",
@@ -185,10 +199,11 @@ $.ajax({
         }
     },
     error:function(xhr,errrorMessage,e){
-        alert("系统异常！"+e+"\n"+errrorMessage);
+        alert("系统异常！");
     }
-});
-
+});*/
+// 关注的人
+var saveData={"username":getCookie("username")};
 $.ajax({
     url: "/cashsale/getMyConcern",
     type: "get",
@@ -207,14 +222,14 @@ $.ajax({
                 innerPerson(user, concernNum);
             }
         } else {
-            alert("没有关注的人")
+            // alert("没有关注的人");
         }
     },
     error: function (xhr, errrorMessage, e) {
         alert("系统异常！");
     }
 });
-
+// 渲染我关注的人
 function innerPerson(user, number) {
     var main = document.getElementById("main3");
     var people= document.createElement('div');
