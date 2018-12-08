@@ -27,6 +27,8 @@ public class SearchDemandDAO {
                 demandDO.setContent(result.getString("content"));
                 demandDO.setImgUrl(result.getString("img_url"));
                 demandDO.setTitle(result.getString("title"));
+                demandDO.setOrganization(result.getString("organization"));
+                demandDO.setDemandId(result.getInt("demand_id"));
             }
         }catch (Exception e){
             e.printStackTrace();
