@@ -71,7 +71,6 @@ public class RegisterServlet extends HttpServlet {
         String  privateKey = keyMap.get("privateKey");
         try {
             //保存密钥
-            this.getServletContext().setAttribute(username, privateKey);
             new KeytoolUtil().addNew(request.getServletContext().getRealPath("keytool")+"\\cashsale.keystore",username,RSAUtil.getPrivateKey(privateKey));
             //公钥加密
 			encodedCode = RSAUtil.publicEncrypt(code, RSAUtil.getPublicKey(publicKey)); 

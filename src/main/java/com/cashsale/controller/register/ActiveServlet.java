@@ -2,6 +2,7 @@ package com.cashsale.controller.register;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.interfaces.RSAPrivateKey;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.enums.ResultEnum;
 import com.cashsale.service.ActiveService;
+import com.cashsale.util.KeytoolUtil;
 import com.cashsale.util.RSAUtil;
 
 /**
@@ -43,11 +45,12 @@ public class ActiveServlet extends HttpServlet{
         response.setCharacterEncoding("UTF-8");
         
         //获取密钥
-        String privateKey = (String) this.getServletContext().getAttribute(username);
+		String keystoreUrl = request.getServletContext().getRealPath("keytool")+"\\cashsale.keystore";
+		RSAPrivateKey privateKey = new KeytoolUtil().getPrivate(username, keystoreUrl);
         try
         {
         	//解密
-        	code = RSAUtil.privateDecrypt(code, RSAUtil.getPrivateKey(privateKey));
+        	code = RSAUtil.privateDecrypt(code, privateKey);
         }
         catch(Exception e )
         {
