@@ -149,6 +149,7 @@ function whatULike() {
         },
         data:saveData,
         contentType:"application/json",
+        async:false,
         success:function(result,testStatus)
         {
             if(getCookie("username")!=""&&getCookie("username")!=null&&getCookie("username")!=undefined){
@@ -277,7 +278,7 @@ function innerGoods(data) {
         div.setAttribute("class", "Hoverdiv");
         img1.src = "img/index/share.png";
         img2.src = "img/index/commend.png";
-        img3.src = "img/index/noLike.png";
+        img3.src = "img/index/like.png";
         img1.setAttribute("title", "转发数");
         img2.setAttribute("title", "评论数");
         img3.setAttribute("title", "点赞数");

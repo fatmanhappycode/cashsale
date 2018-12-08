@@ -67,14 +67,11 @@
     position: absolute;
     bottom: 50px;
 }
-.Other-gg{
-    padding-bottom: 60px;
-}
 .Other-g{
     height: 102px;
 }
 .Otherg-g{
-    height: 343px;
+    height: 267px;
 }
 .Other-gggg{
     width: 862px;
@@ -100,7 +97,7 @@
 
 
 /* 所有输入框 */
-#commodity,#price,#place{
+#commodity,#name{
     appearance: none;
     width:320px;
     height: 30px;

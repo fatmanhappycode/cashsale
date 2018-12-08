@@ -116,8 +116,8 @@
 	margin-left: 220px;
 	position: fixed;
 	border-radius: 10px;
-	box-shadow:12px 12px 12px rgba(172,172,172,.8);
-	background: rgba(0,0,0,.5);
+	box-shadow:rgba(109,199,178,.55) 0px 0px 10px;
+	background: rgba(109,199,178,1);
 	color: #fff;
 	display: none;
 	transition:all 0.8s;
@@ -134,11 +134,15 @@
 #noticeDiv img{
 	display: inline-block;
 	width: 220px;
+	height: 220px;
+	border: 1px solid #eee;
 }
 #noticeX img{
 	padding: 5px;
 	border-radius: 20px;
 	width: 30px;
+	height: auto;
+	border: 0px;
 }
 #noticeDiv h4{
 	width: 270px;
@@ -148,7 +152,7 @@
 	text-overflow: ellipsis;/*文本超出提示三个�?*/
 	white-space: nowrap;/*�?行显�?*/
 	overflow: hidden;/*超出隐藏*/
-	border: 1px solid #fac;
+	/*border: 1px solid #fac;*/
 }
 #noticeDiv p{
 	width: 260px;
@@ -157,14 +161,14 @@
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
+		-webkit-line-clamp: 8;
 
 	text-indent: 2em;
 	letter-spacing: 3px;
-	-webkit-line-clamp: 8;
 	float: right;
 	margin-top: -180px;
 	margin-right: 10px;
-	border: 1px solid #fac;
+	/*border: 1px solid #fac;*/
 }
 
 
@@ -844,6 +848,7 @@
 	cursor: pointer;
 }
 #testa{
+    /*display: none;*/
 }
 #upload{
 	width:50px;

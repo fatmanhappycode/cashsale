@@ -29,10 +29,10 @@ function preview(file) {
     if (window.FileReader)
     {
         //如果上传图片图片超过1张，直接清理
-        if(file.files.length>4){
+        if(file.files.length>1){
             var obj=document.getElementById('myfile');
             obj.outerHTML=obj.outerHTML;
-            alert("对不起，最多上传一张封面!");
+            alert("对不起，最多上传一张样图!");
             return;
         }
 

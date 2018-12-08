@@ -14,12 +14,12 @@
             <h2>发布寻求</h2>
             <div class="g-username Otherg-g">
                 <p>选择样图:</p><br/>
-                <input type="file" id="myfile" name="uploadFile" onchange="preview(this)">
+                <input type="file" id="myfile" name="uploadFile" onchange="preview(this);fU()">
                 <div id="container"></div>
             </div>
             <div class="g-username Other-g">
                 <p>商品标题:</p><br/>
-                <input type="text" id="commodity" placeholder="" maxlength="40" list="list1">
+                <input type="text" id="commodity" placeholder="" maxlength="400" list="list1">
                 <datalist id="list1">
                     <option value="数据结构"></option>
                     <option value="四级资料"></option>
@@ -28,10 +28,15 @@
                 </datalist>
                 <br/>
             </div>
+            <div class="g-username Other-g">
+                <p>发布组织:</p><br/>
+                <input type="text" id="name" placeholder="" maxlength="40">
+                <br/>
+            </div>
 
             <input id="image" style="display:none">
             <!-- 				富文本编辑器 -->
-            <div id="div1"  class="g-username Other-gggg" onchange="fU()"></div>
+            <div id="div1"  class="g-username Other-gggg"></div>
             <div class="Other-ggggg">
                 <span id="passwordItem">请填写完信息，否则提交时将清空！</span>
                 <input type="button" id="submit" value="提交"  onclick="f()">

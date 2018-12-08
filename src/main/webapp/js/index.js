@@ -141,7 +141,7 @@ function mySearcfOnload() {
         }
     });
 }
-
+// 加入搜搜下拉内容
 function innerTips(data) {
     var ul = document.getElementById("tips");
     for(var i=0;i<data.length;i++){

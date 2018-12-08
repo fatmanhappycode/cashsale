@@ -167,3 +167,38 @@ notice.onclick = function(){
 noticeX.onclick = function(){
     document.getElementById("noticeDiv").style.display="none";
 }
+
+if(getCookie("code")!=undefined&&getCookie("code")!=""&&getCookie("code")!=null){
+    document.getElementById("testa").style.display="block";
+}
+function getnotice() {
+    $.ajax({
+        url:"/cashsale/searchDemand",
+        type:"get",
+        headers:{
+            contentType:"application/json;charset=UTF-8"
+        },
+        contentType:"application/json",
+        success:function(result,testStatus)
+        {
+            if(result.code==200){
+                var dataQ=result.data;
+                innernotice(dataQ)
+            }
+        },
+        error:function(xhr,errrorMessage,e){
+            alert("系统异常！");
+        }
+    });
+}
+function innernotice(dataQ) {
+    var img = document.getElementById('noticeImg');
+    var h4= document.getElementById('noticeH4');
+    var p= document.getElementById('noticeP');
+    var id= document.getElementById('noticeId');
+
+    img.src = dataQ.imageUrl;
+    p.innerHTML=dataQ.title;
+    h4.innerHTML=dataQ.organization;
+    id.innerHTML=dataQ.demandId;
+}
