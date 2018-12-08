@@ -35,7 +35,7 @@ public class RecommendServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 
 		String username = request.getParameter("username");
-		String page = request.getParameter("page");
+		String page = request.getParameter("currentPage");
 		if(username != null && !username.equals("")) {
 			ResultDTO<PagerDTO> result = new RecommendService().getList(username, page);
 			writer.print(JSONObject.toJSON(result));
