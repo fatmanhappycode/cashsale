@@ -180,9 +180,6 @@ public class RecommendService {
             end = 4;
             finalPage = 0;
         }
-        for(int i = 0; i < enList.size(); i++){
-            System.out.println("product_id = "+enList.get(i).getKey() + " score = "+enList.get(i).getValue());
-        }
 
         for(int i = start; i < end && i < enList.size(); i++){
             result.add(enList.get(i).getKey());
