@@ -833,36 +833,53 @@
 }
 
 
-#test,#upload{
+
+
+
+
+
+
+
+#testS{
 	z-index:100000000;
 	position:fixed;
-	right:30px;
+	right:15px;
 	bottom:30px;
-	height:70px;
-	width:70px;
+	height:auto;
+	width:80px;
 	border:none;
+	/*border:1px solid #000;*/
+}
+#testS li{
+	width: 72px;
+	height: 72px;
 	border-radius: 35px;
-	border:1px solid #000;
-	opacity: .4;
-	display: none;
+	margin-top: 10px;
+	overflow: hidden;
+	transition: all .4s;
+	list-style-type: none;
 	cursor: pointer;
+	/*border: 1px solid #fac;*/
 }
-#testa{
-    /*display: none;*/
-}
-#upload{
-	width:50px;
-	height:50px;
-	padding: 10px;
-    bottom:120px;
-    display: block;
-}
-#test img{
+#testA img,#testB img,#testC img{
 	width: 50px;
 	height: 50px;
-	margin-top: 10px;
-	margin-left: 10px;
+	border:1px solid #000;
+	border-radius: 40px;
+	padding: 10px;
 }
+#testC img{
+	width: 70px;
+	height: 70px;
+	padding: 0;
+}
+#testA{
+	display: none;
+}
+
+
+
+/*下拉转圈*/
 #loadingImg{
 	width: 20px;
 	position: relative;
