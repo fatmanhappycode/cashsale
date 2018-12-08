@@ -32,6 +32,9 @@ function loadXMLDoc()
                     window.location.href="index.html";
                 }else if(result.code== "401") {
                     alert(result.msg);
+                    changeVerifyCode();
+                    $("#verifyCode").val('');
+                    $("#password").val('');
                 }else if(result.code==""){
                     // 存入token和username
                     setCookie("code","true");
@@ -83,23 +86,50 @@ function verCode() {
         document.getElementById("verifyCodeIsNull").style.display='none';
         verify = false;
     }else {
-        $.ajax({
-            type:"GET",
-            url:"/cashsale/verifyCode?verifyCode="+verifyCodeValue,
-            success:function(returnData){
-                if(returnData != "200") {
-                    document.getElementById("verifyCodeItem").style.display='block';
-                    document.getElementById("verifyCodeIsNull").style.display='none';
-                    verify = false;
-                }else {
-                    document.getElementById("verifyCodeItem").style.display='none';
-                    document.getElementById("verifyCodeIsNull").style.display='none';
-                    verify = true;
+        if(verifyCodeValue.length == 5){
+            $.ajax({
+                type: "GET",
+                url: "/cashsale/verifyCode?verifyCode=" + verifyCodeValue,
+                success: function (returnData) {
+                    if (returnData != "200") {
+                        document.getElementById("verifyCodeItem").style.display = 'block';
+                        document.getElementById("verifyCodeIsNull").style.display = 'none';
+                        verify = false;
+                    } else {
+                        document.getElementById("verifyCodeItem").style.display = 'none';
+                        document.getElementById("verifyCodeIsNull").style.display = 'none';
+                        verify = true;
+                    }
+                },
+                error: function (e) {
+                    alert(e);
                 }
-            },
-            error:function(e){
-                alert(e);
-            }
-        });
+            });
+        }else if(verifyCodeValue.length > 5){
+            document.getElementById("verifyCodeItem").style.display = 'block';
+            document.getElementById("verifyCodeIsNull").style.display = 'none';
+            verify = false;
+        }else {
+            $("#verifyCode").blur(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/cashsale/verifyCode?verifyCode=" + verifyCodeValue,
+                    success: function (returnData) {
+                        if (returnData != "200") {
+                            document.getElementById("verifyCodeItem").style.display = 'block';
+                            document.getElementById("verifyCodeIsNull").style.display = 'none';
+                            verify = false;
+                        } else {
+                            document.getElementById("verifyCodeItem").style.display = 'none';
+                            document.getElementById("verifyCodeIsNull").style.display = 'none';
+                            verify = true;
+                        }
+                    },
+                    error: function (e) {
+                        alert(e);
+                    }
+                });
+            });
+        }
     }
 }

@@ -133,11 +133,11 @@
 	cursor:pointer;
 }
 #login{
-	margin-top:8%;
+	margin-top:0%;
 	color: #da7370;
 }
 #register{
-	margin-top:3%;
+	margin-top:-5%;
 	background: #da7370;
 	color:#fff;
 	/* “ı”∞ */
@@ -183,7 +183,7 @@
 /* Ã· æ”Ô */
 #Item{
 	position: absolute;
-	margin-top: -12%;
+	margin-top: -18%;
 	margin-left: 13%;
 	height: 22px;
 	width: 221px;
