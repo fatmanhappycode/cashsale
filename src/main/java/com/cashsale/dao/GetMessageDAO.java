@@ -25,9 +25,12 @@ public class GetMessageDAO {
 
     public ResultDTO<List<MessageDTO>> getMessage(String username) {
         try {
-            pstmt = conn.prepareStatement("SELECT * FROM chat_history WHERE receiver=? AND is_read=1");
+            pstmt = conn.prepareStatement("SELECT * FROM chat_history WHERE receiver=?");
             pstmt.setString(1, username);
             rs = pstmt.executeQuery();
+            pstmt = conn.prepareStatement("UPDATE chat_history SET is_read=0 WHERE receiver=?");
+            pstmt.setString(1,username);
+            pstmt.executeUpdate();
             List<MessageDTO> result = new ArrayList<>();
             while (rs.next()) {
                 MessageDTO message = new MessageDTO();

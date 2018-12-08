@@ -164,7 +164,7 @@ function imgPlay_1(s1) {
 notice.onclick = function(){
     document.getElementById("noticeDiv").style.display="block";
 }
-noticeX.onclick = function(){
+function closeNoticeX(){
     document.getElementById("noticeDiv").style.display="none";
 }
 
@@ -202,4 +202,13 @@ function innernotice(dataQ) {
     h4.innerHTML=dataQ.organization;
     // id.setAttribute("value",dataQ.demandId);
     id.value=dataQ.demandId;
+}
+function goodsnotice() {
+    //goods为其子标签
+    var demandId=$("#noticeId").val();
+    // alert(demandId);
+    // 把id拼接到URL
+    var string="goods.html?demandId="+demandId;
+
+    window.open(string);
 }

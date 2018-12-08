@@ -46,17 +46,16 @@
         <li id="lichat"><a href="socket.html"><input type="button"  value="联系卖家" id="chat"></a></li>
         <li id="liJOshopping"><input type="button"  value="加入购物车" id="JOshopping"></li>
         <li id="Lidelete"><input type="button"  value="下架此商品" id="delete"></li>
+        <li id="noticeP"></li>
     </ul>
     <h3 class="FirstH3" id="FirstH3">更多内容：</h3>
     <div id="Description">
     </div>
     <h3 class="FirstH3">评论：</h3>
-    <div id="comment">
-        <textarea placeholder="快来发表你的评论吧~" id="message" maxlength="500"></textarea>
-        <input type="button" value="提交">
-        <div id="myComment"></div>
-    </div>
-    <h3 class="FirstH3">评论：</h3>
+    <ul id="GoodsLike">
+        <li><img src="img/index/like.png"><span id="likeNumber">1</span></li>
+        <li><img src="img/index/share.png"><span id="shareNumber">1</span></li>
+    </ul>
     <div id="comment">
         <textarea placeholder="快来发表你的评论吧~" id="message" maxlength="500"></textarea>
         <input type="button" value="提交" onclick="setComments()">

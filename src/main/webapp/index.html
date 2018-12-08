@@ -33,11 +33,11 @@
 		<img id="notice" title="点击查看通知通告" src="img/index/notice%20(2).gif" onclick="getnotice()">
 	</div>
 	<div id="noticeDiv">
-		<div id="noticeX"><img title="关闭" src="img/index/noticeX.png"></div>
-		<img src="img/icon.jpg" id="noticeImg">
-		<h4 id="noticeH4"></h4>
-		<p id="noticeP"></p>
-		<input id="noticeId" type="text" >
+		<input id="noticeId" type="hidden" >
+		<div id="noticeX" onclick="closeNoticeX()"><img title="关闭" src="img/index/noticeX.png" onclick="closeNoticeX()"></div>
+		<img src="img/icon.jpg" id="noticeImg" onclick="goodsnotice()">
+		<h4 id="noticeH4" onclick="goodsnotice()"></h4>
+		<p id="noticeP" onclick="goodsnotice()"></p>
 	</div>
 </div>
 <div class="all">

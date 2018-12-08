@@ -155,7 +155,7 @@ function whatULike() {
             if(getCookie("username")!=""&&getCookie("username")!=null&&getCookie("username")!=undefined){
                 if(result.code==200){
                     if(result.currentPage!=0){
-                        document.getElementById("Refresh").style.display="block";
+                        // document.getElementById("Refresh").style.display="block";
                     }
                     console.log(result.currentPage);
                     var data1=result.data.data;
