@@ -136,7 +136,7 @@ $(window).scroll(function(){
 
 
 //猜你喜欢专用页数
-var currentPage1=-1;
+var currentPage1 = 1;
 //猜你喜欢
 function whatULike() {
     var saveData={"username":getCookie("username"),"currentPage":currentPage1};
@@ -156,12 +156,13 @@ function whatULike() {
             console.log(result);
             if(result==null){
                 whatlike(datas);
-            }
-            data1=result.data.data;
-            if(data1==""||data1==null||data1==undefined){
-                 whatlike(datas);
-            }else{
-                whatlike(data1);
+            }else {
+                data1 = result.data.data;
+                if (data1 == "" || data1 == null || data1 == undefined) {
+                    whatlike(datas);
+                } else {
+                    whatlike(data1);
+                }
             }
         },
         error:function(xhr,errrorMessage,e){

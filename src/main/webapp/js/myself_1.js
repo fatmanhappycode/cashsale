@@ -35,7 +35,7 @@ $.ajax({
     contentType:"application/json;charset=UTF-8",
     success:function(result,testStatus)
     {
-        if(result.code=="124"){
+        if(result.code=="200"){
             var data=result.data;
             if(data!=null&&data!=""&&data!=undefined){
                 document.getElementById("main2").innerHTML="";
@@ -164,7 +164,6 @@ function innerGoods(data) {
 
 
     main.appendChild(goods);
-    alert("cggg");
 }
 // 通过id请求返回购物车商品
 function loadgoods(productId) {
@@ -180,9 +179,8 @@ function loadgoods(productId) {
         contentType:"application/json",
         success:function(result,testStatus)
         {
-            if(result.code==124){
+            if(result.code==200){
                 var data=result.data;
-                alert("cg");
                 innerGoods(data);
             }else{
                 console.log(result.msg);
