@@ -72,23 +72,3 @@ notice.onclick = function(){
 noticeX.onclick = function(){
     document.getElementById("noticeDiv").style.display="none";
 }
-
-{
-    var saveData = {"productId":productId,"scoreCode":"A"};
-    $.ajax({
-        url:"/cashsale/score",
-        type:"post",
-        dataType:"json",
-        data:JSON.stringify(saveData),
-        contentType:"application/json;charset=UTF-8",
-        headers:{
-            contentType:"application/json;charset=UTF-8"
-        },
-        success:function(result,testStatus)
-        {
-        },
-        error:function(xhr,errrorMessage,e){
-            alert("系统异常！"+e+"\n"+errrorMessage);
-        }
-    });
-}
