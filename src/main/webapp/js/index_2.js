@@ -65,6 +65,101 @@ test.onclick = function(){
 
 
 
+
+//显示当前时间 ( setInterval() 函数会每秒执行一次函数，类似手表)。使用 clearInterval() 来停止执行
+var timer1 = null;
+var isLaoding1=false;
+function imgPlay(str) {
+    if(isLaoding1){
+        return ;
+    }else {
+        isLaoding1=true;
+    }
+    p=str;
+    window.setTimeout("imgPlay_1('45',p)",0);
+    window.setTimeout("imgPlay_1('90',p)",500);
+    window.setTimeout("imgPlay_1('135',p)",1000);
+    window.setTimeout("imgPlay_1('180',p)",1500);
+    window.setTimeout("imgPlay_1('225',p)",2000);
+    window.setTimeout("imgPlay_1('270',p)",2500);
+    window.setTimeout("imgPlay_1('315',p)",3000);
+    window.setTimeout("imgPlay_1('360',p)",3500);
+    timer1=setInterval(function () {
+        p=str;
+        window.setTimeout("imgPlay_1('45',p)",0);
+        window.setTimeout("imgPlay_1('90',p)",500);
+        window.setTimeout("imgPlay_1('135',p)",1000);
+        window.setTimeout("imgPlay_1('180',p)",1500);
+        window.setTimeout("imgPlay_1('225',p)",2000);
+        window.setTimeout("imgPlay_1('270',p)",2500);
+        window.setTimeout("imgPlay_1('315',p)",3000);
+        window.setTimeout("imgPlay_1('360',p)",3500);
+    },4000);
+}
+function noimgPlay() {
+    clearInterval(timer1);
+    isLaoding1=false;
+}
+function imgPlay_1(s,s1) {
+    if(s==45){
+        s1.style="-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);"
+    }else if(s==90){
+        s1.style="-moz-transform:rotate(90deg);-webkit-transform:rotate(90deg);transform:rotate(90deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);"
+    }else if(s==135){
+        s1.style="-moz-transform:rotate(1350deg);-webkit-transform:rotate(1350deg);transform:rotate(1350deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);"
+    }else if(s==180){
+        s1.style="-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);transform:rotate(180deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);"
+    }else if(s==225){
+        s1.style="-moz-transform:rotate(225deg);-webkit-transform:rotate(225deg);transform:rotate(225deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2.5);"
+    }else if(s==270){
+        s1.style="-moz-transform:rotate(270deg);-webkit-transform:rotate(270deg);transform:rotate(270deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);"
+    }else if(s==315){
+        s1.style="-moz-transform:rotate(315deg);-webkit-transform:rotate(315deg);transform:rotate(315deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3.5);"
+    }else if(s==360){
+        s1.style="-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg);transform:rotate(360deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=4);"
+    }
+/*
+    if(s==45){
+        s1.style="-moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);transform:rotate(45deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0.5);transition-duration:0.2s;"
+    }else if(s==90){
+        s1.style="-moz-transform:rotate(90deg);-webkit-transform:rotate(90deg);transform:rotate(90deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);transition-duration:0.2s;"
+    }else if(s==135){
+        s1.style="-moz-transform:rotate(1350deg);-webkit-transform:rotate(1350deg);transform:rotate(1350deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5);transition-duration:0.2s;"
+    }else if(s==180){
+        s1.style="-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);transform:rotate(180deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);transition-duration:0.2s;"
+    }else if(s==225){
+        s1.style="-moz-transform:rotate(225deg);-webkit-transform:rotate(225deg);transform:rotate(225deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2.5);transition-duration:0.2s;"
+    }else if(s==270){
+        s1.style="-moz-transform:rotate(270deg);-webkit-transform:rotate(270deg);transform:rotate(270deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);transition-duration:0.2s;"
+    }else if(s==315){
+        s1.style="-moz-transform:rotate(315deg);-webkit-transform:rotate(315deg);transform:rotate(315deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3.5);transition-duration:0.2s;"
+    }else if(s==360){
+        s1.style="-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg);transform:rotate(360deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=4);transition-duration:0.2s;"
+    }*/
+}
+
+/*
+* function imgPlay(str) {
+    p=str;
+    window.setTimeout("imgPlay_1(p)",0);
+}
+function imgPlay_1(s1) {
+    for(var i=0;;i++){
+        if(i==360){
+            i=0;
+        }
+        s1.style="-moz-transform:rotate("+i+"deg);-webkit-transform:rotate("+i+"deg);transform:rotate("+i+"deg);filter:progid:DXImageTransform.Microsoft.BasicImage(rotation="+(i/90)+");";
+        s1.onmouseout=function () {
+            return ;
+            break;
+        }
+    }
+}
+* */
+
+
+
+
 // 公告
 notice.onclick = function(){
     document.getElementById("noticeDiv").style.display="block";
