@@ -200,5 +200,6 @@ function innernotice(dataQ) {
     img.src = dataQ.imageUrl;
     p.innerHTML=dataQ.title;
     h4.innerHTML=dataQ.organization;
-    id.innerHTML=dataQ.demandId;
+    // id.setAttribute("value",dataQ.demandId);
+    id.value=dataQ.demandId;
 }
