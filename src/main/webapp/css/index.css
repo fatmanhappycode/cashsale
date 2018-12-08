@@ -186,7 +186,7 @@
 	/*border:1px solid #fac;*/
 }
 #deploy:hover{
-	background:#fff;
+	/*background:#fff;*/
 }
 #deploy:hover #Townav{
 	display: block;
@@ -196,31 +196,35 @@
 	opacity: .6;
 }
 #Townav{
-	width: 126px;
-	margin-left:-70px;
+	width: 103px;
+	margin-left: -39px;
 	margin-top: 5px;
-	background:#fff;
+	background: #fff;
 	display: none;
 	border-radius: 4px;
-	border: 1px solid #dddddd;
+	/* border: 1px solid #dddddd; */
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
 }
 #Townav a{
     text-decoration: none;
 }
 #Townav li{
-	width: 120px;
+	width: 103px;
 	height: 30px;
 	text-align: center;
-	color: #000;
-	margin: 2px;
-	padding-top: 10px;
+	color: #716969;
+	/* margin: 2px; */
+	/* margin-left: 6px; */
+	padding-top: 6px;
 	list-style-type: none;
 	cursor: pointer;
-	border: 1px solid #dddddd;
+	border-bottom: 1px solid #ddd;
 	/*border:1px solid #fac;*/
 }
 #Townav li:hover{
-	background: #dddddd;
+	background: #89c148;
+	color : white;
 }
 #exit{
 	padding-top: 14px;
@@ -419,6 +423,7 @@
 	list-style-type: none;
 	text-align:center;
 	background: #FFF;
+	height: 50px;
 }
 .species p{
 	padding-top:15px;
@@ -517,6 +522,7 @@
 	min-height: 30px;
 	min-width: 80px;
 	border-radius: 4px;
+	cursor: pointer;
 }
 /* 复�?�框选中时样�? */
 .myCheckBox:checked {
@@ -561,17 +567,19 @@
 	border: 1px solid #ddd;
 }
 #Ispeciesbutton{
-	display:inline-block;
-	width:100px;
-	height: 40px;
-	background:rgb(249,249,248);
-	margin-top:-10px;
+	display: inline-block;
+	width: 84px;
+	height: 38px;
+	background: white;
+	margin-top: -1px;
 	border-radius: 4px;
-	font-size:16px;
+	font-size: 16px;
 	border: 1px solid #ddd;
 }
 #Ispeciesbutton:hover{
 	background:rgba(107,199,176,.5);
+	color:white;
+	border:0px;
 }
 
 /* 轮播�? */
@@ -774,7 +782,7 @@
 .Hoverdiv{
     position: relative;
     width:45px;
-    height:200px;
+    height:181px;
     maring-top: 35px;
     /*background: linear-gradient(
         to right,
@@ -782,7 +790,7 @@
         rgba(255,255,255,0)
     );*/
     background: rgba(255,255,255,.8);
-    margin-top: -230px;
+    margin-top: -251px;
     display: none;
     /*border:1px solid #fac;*/
     border-radius: 8px;
@@ -791,7 +799,7 @@
     width: 35px;
     height: 35px;
     margin-left: 5px;
-    margin-top: 12px;
+    margin-top: 6px;
     opacity: 1;
     border-bottom:none;
     /*border:1px solid #fac;*/
@@ -806,7 +814,7 @@
     width: 35px;
     text-align: center;
     font-size: 14px;
-    margin-top: -12px;
+    margin-top: -4px;
     text-overflow: ellipsis;/*文本超出提示三个�?*/
     white-space: nowrap;/*�?行显�?*/
     overflow: hidden;/*超出隐藏*/
