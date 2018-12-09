@@ -6,6 +6,7 @@ import com.cashsale.bean.MobileCodeDTO;
 import com.cashsale.bean.ResultDTO;
 import com.cashsale.dao.ConfirmDAO;
 import com.cashsale.util.CommonUtils;
+import com.cashsale.util.UUIDUtil;
 import com.cashsale.util.mobileCode.IndustrySMS;
 import com.google.gson.Gson;
 import io.jsonwebtoken.Claims;
@@ -31,7 +32,7 @@ public class MobileConfirmServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // 设置响应编码
         response.setContentType("application/json;charset=UTF-8");
@@ -41,52 +42,25 @@ public class MobileConfirmServlet extends HttpServlet {
 
         PrintWriter writer = response.getWriter();
 
-        // 读取前端传过来的json串
-        BufferedReader br = request.getReader();
-        String str,user = "";
-        while((str = br.readLine()) != null){
-            user += str;
-        }
-        CustomerInfoDO c = new Gson().fromJson(user, CustomerInfoDO.class);
-        //获取用户名
-        String username = c.getUsername();
-
-        //获取请求头token
-        /*Cookie[] cookies = request.getCookies();
-        String token = "";
-        for (Cookie cookie : cookies) {
-            switch(cookie.getName()){
-                case "token":
-                    token = cookie.getValue();
-                    break;
-                default:
-                    break;
-            }
-        }
-        Claims claims = null;
-        try {
-            claims = CommonUtils.parseJWT(token);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        String username = claims.getSubject();*/
+        String username = request.getParameter("username");
 
         //发送手机验证码
-        String statu = IndustrySMS.execute(username);
+        int originCode = UUIDUtil.getVerifyCode();
+        String statu = IndustrySMS.execute(username ,originCode);
         MobileCodeDTO mobileCodeDTO = new Gson().fromJson(statu, MobileCodeDTO.class);
         String statuCode = mobileCodeDTO.getRespCode();
         String desc = mobileCodeDTO.getRespDesc();
         ResultDTO result = null;
         if(statuCode.equals("00000")){
-            result = new ConfirmDAO().MobileConfirm(username);
+            result = new ConfirmDAO().MobileConfirm(username, originCode);
         }else{
             result = new ResultDTO(Integer.parseInt(statuCode), null, desc);
         }
         writer.print(JSONObject.toJSON(result));
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 
 }
