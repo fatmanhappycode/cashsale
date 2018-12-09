@@ -82,7 +82,7 @@
     border: 1px solid #ddd;
     position: absolute;
     background:#eee;
-    z-index: 10;
+    z-index: 9999;
     left: 350px;
     top: 0;
     display: none;
@@ -93,6 +93,8 @@
     height: 350px;
 }
 #bigBox img{
+    position: absolute;
+    z-index: 9999;
     width:800px;
     position: absolute;
     /*border:1px solid #fac;*/
@@ -182,7 +184,7 @@
 }
 #noticeP{
     position: absolute;
-    z-index: 10000;
+    z-index: 10;
     width: 460px;
     height: 215px;
     letter-spacing: 3px;
@@ -200,7 +202,7 @@
     width: 300px;
     margin-left: 70px;
     margin-top: 40px;
-    border: 1px solid #fac;
+    /*border: 1px solid #fac;*/
 }
 #FirstH3{
     margin-top: 430px;

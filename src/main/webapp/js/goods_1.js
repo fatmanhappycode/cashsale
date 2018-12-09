@@ -119,16 +119,16 @@ function getDemand(){
 
 
                 // 加入内容
-                smallImg.setAttribute("src",data.imageUrl)
-                bigImg.setAttribute("src",data.imageUrl);
+                smallImg.setAttribute("src",data.imgUrl)
+                bigImg.setAttribute("src",data.imgUrl);
                 title.innerHTML=data.organization;
                 noticeP.innerHTML=data.title;
                 $("#chat").val("联系组织");
                 $("#delete").val("撤销此发布");
                 document.getElementById("noticeP").style.display="block";
-                if(data.pdDescription!=undefined&&data.pdDescription!=null){
+                if(data.content!=undefined&&data.content!=null){
                     // 富文本编辑器加入内容
-                    Description.innerHTML+="更多内容："+"<br>"+data.pdDescription;
+                    Description.innerHTML+="更多内容："+"<br>"+data.content;
                 }else{
                     Description.innerHTML+="更多内容："+"<br>"+"该卖家很佛系，没有发布更多内容";
                 }

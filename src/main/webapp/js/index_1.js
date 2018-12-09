@@ -119,13 +119,13 @@ $(window).scroll(function(){
         document.getElementById("loadingImg").style.display="block";
         if (flag == "") {
             window.setTimeout('IsInload()',300);
-            isLoading=false;
+            // isLoading=false;
         } else if (flag == "search") {
             window.setTimeout('loadXMLDoc_1()',300);
-            isLoading=false;
+            // isLoading=false;
         } else if (flag == "screen") {
             window.setTimeout('Selectspecies_1()',300);
-            isLoading=false;
+            // isLoading=false;
         }
     }
 });
@@ -297,6 +297,7 @@ function innerGoods(data) {
         div.appendChild(span3);
         goods.appendChild(div);
     });
+    isLoading=false;
 }
 
 //是否验证，加载时调用

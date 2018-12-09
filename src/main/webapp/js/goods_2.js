@@ -19,7 +19,6 @@ function getComments() {
         },
         success:function(result,testStatus)
         {
-            alert(result.data2.likeNumber);
             if (result.data2.comments != "") {
                 data1=result.data2.comments;
                 innerComments(data1);

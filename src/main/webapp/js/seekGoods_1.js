@@ -12,7 +12,7 @@ function f() {
         alert("请填写完信息再提交，否则将清空！");
     }else{
         document.getElementById("passwordItem");
-        var saveData={"title":commodity,"pdDescription":editor.txt.html(),"imageUrl":image};
+        var saveData={"title":commodity,"content":editor.txt.html(),"imgUrl":image};
         $.ajax({
             url:"/cashsale/publishDemand",
             type:"post",

@@ -53,13 +53,13 @@ function enterSubmit(obj) {
 $(window).scroll(function(){
     var winScrollHeight=$(window).scrollTop();//滚动条滚动距离
     if(winScrollHeight>=100){
-        document.getElementById("test").style.display="block";
+        document.getElementById("testB").style.display="block";
     }else{
-        document.getElementById("test").style.display="none";
+        document.getElementById("testB").style.display="none";
     }
 });
 //点击图标回到顶部  id名加事件直接调用函数
-test.onclick = function(){
+testB.onclick = function(){
     document.documentElement.scrollTop = 0;
 }
 
@@ -161,7 +161,7 @@ function imgPlay_1(s1) {
 
 
 // 公告
-notice.onclick = function(){
+testC.onclick = function(){
     document.getElementById("noticeDiv").style.display="block";
 }
 function closeNoticeX(){
@@ -169,7 +169,7 @@ function closeNoticeX(){
 }
 
 if(getCookie("code")!=undefined&&getCookie("code")!=""&&getCookie("code")!=null){
-    document.getElementById("testa").style.display="block";
+    document.getElementById("testA").style.display="block";
 }
 function getnotice() {
     $.ajax({
@@ -197,7 +197,7 @@ function innernotice(dataQ) {
     var p= document.getElementById('noticeP');
     var id= document.getElementById('noticeId');
 
-    img.src = dataQ.imageUrl;
+    img.src = dataQ.imgUrl;
     p.innerHTML=dataQ.title;
     h4.innerHTML=dataQ.organization;
     // id.setAttribute("value",dataQ.demandId);
