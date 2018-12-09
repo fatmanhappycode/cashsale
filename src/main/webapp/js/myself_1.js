@@ -177,13 +177,11 @@ function innerMyGoods(data,id) {
 }
 
 
-
-
-/*// 个人信息
+// 个人信息
 $.ajax({
     url:"/cashsale/getPersonInfo",
     type:"get",
-    data:saveData,
+    data:saveData2,
     contentType:"application/json",
     success:function(result,testStatus)
     {
@@ -201,7 +199,7 @@ $.ajax({
     error:function(xhr,errrorMessage,e){
         alert("系统异常！");
     }
-});*/
+});
 // 关注的人
 var saveData={"username":getCookie("username")};
 $.ajax({

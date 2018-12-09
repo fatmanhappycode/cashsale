@@ -17,7 +17,6 @@ function clickregister() {
 	}
 	else
 	{
-		alert("请到邮箱进行验证");
         $("#register").html("注册中…");
 		if(isLoading){
 			alert("请不要重复点击");
